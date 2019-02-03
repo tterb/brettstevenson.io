@@ -1,0 +1,133 @@
+
+@keyframes flipY {
+    0% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(0deg) rotatez(0deg); }
+    20.25% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(90deg) rotatez(0deg); }
+    100% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(90deg) rotatez(0deg); }
+}
+@keyframes hoverY {
+    0% { transform: translatey(0px); }
+    100% { transform: translatey(-10px); }
+}
+@keyframes border-front {
+  0% { border-width: 3px 5px 5px 3px; }
+  2.25% { border-width: 3px 5px 5px 3px; }
+  5.75% { border-width: 3px 3px 3px 3px; }
+  100% { border-width: 3px 3px 3px 3px; }
+}
+@keyframes border-back {
+  0% { border-width: 3px 3px 3px 3px; }
+  2.25% { border-width: 3px 3px 3px 3px; }
+  5.75% { border-width: 3px 3px 5px 5px; }
+  100% { border-width: 3px 3px 5px 5px; }
+}
+@keyframes border-top {
+  0% { border-width: 5px 5px 3px 3px; }
+  2.25% { border-width: 5px 5px 3px 3px; }
+  5.75% { border-width: 3px 5px 5px 3px; }
+  100% { border-width: 3px 5px 5px 3px; }
+}
+@keyframes border-left {
+  0% { border-width: 3px 3px 5px 5px; }
+  2.25% { border-width: 3px 3px 5px 5px; }
+  5.75% { border-width: 3px 5px 5px 3px; }
+  100% { border-width: 3px 5px 5px 3px; }
+}
+
+
+.cube-wrap {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  top: 78px;
+  left: -58px;
+  transform: translateY(0) rotatex(-33.5deg) rotatey(45deg);
+  transform-style: preserve-3D;
+  margin-left: 20px;
+  .cube-wrap-inner {
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3D;
+    animation: hoverY 2s infinite alternate;
+    backface-visibility: hidden;
+    .cube {
+      position: absolute;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      left: -10px;
+      top: 10px;
+      transform-style: preserve-3D;
+      animation: flipY 5.2s infinite;
+      backface-visibility: hidden;
+      .cube-side {
+        position: absolute;
+        background: rgba(#000, 0.2);
+        line-height: 100px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transform: rotatex(90deg) translate3d(0, 0, 15px);
+        transform-style: preserve-3D;
+        border-image: linear-gradient(to top, #EF4C45, #EB9D5C) 1 3%;
+        border: 2px solid #EF4C45;
+        border-top-color: #EB9D5C;
+        backface-visibility: hidden;
+        &.cube-side-top {
+          border-top-width: 4px;
+          border-right-width: 4px;
+          animation: border-top 5.2s infinite;
+          animation-fill-mode: forwards;
+          border-image: none;
+          border-color: #EB9D5C;
+        }
+        &.cube-side-bottom {
+          background: transparent;
+          border-image: none;
+          border-color: #EB9D5C;
+        }
+        &.cube-side-left {
+          border-left-width: 4px;
+          border-bottom-width: 4px;
+          animation: border-left 5.2s infinite;
+          animation-fill-mode: forwards;
+          border-image: linear-gradient(to top, #EF4C45, #EB9D5C) 1 3%;
+          transform: rotateY(-90deg) translate3d(0, 0, 15px);
+        }
+        &.cube-side-right {
+          border-image: linear-gradient(to top, #EF4C45, #EB9D5C) 1 3%;
+          transform: rotateY(90deg) translate3d(0, 0, 15px);
+        }
+        &.cube-side-front {
+          border-right-width: 4px;
+          border-bottom-width: 4px;
+          border-image: linear-gradient(to top, #EF4C45, #EB9D5C) 1 3%;
+          animation: border-front 5.2s infinite;
+          animation-fill-mode: forwards;
+          transform: translate3d(0, 0, 15px);
+        }
+        &.cube-side-back {
+          border-image: linear-gradient(to top, #EF4C45, #EB9D5C) 1 3%;
+          animation: border-back 5.2s infinite;
+          animation-fill-mode: forwards;
+          transform: rotateY(180deg) translate3d(0, 0, 15px);
+        }
+      }
+      &.cube-blue .cube-side {
+        border-image: linear-gradient(to top, #4F72B8, #00B29A) 1 3%;
+        border-top-color: #00B29A;
+        &.cube-side-top, 
+        &.cube-side-bottom {
+          border-image: none;
+          border-color: #00B29A;
+        }
+      }
+      &.cube-purple .cube-side {
+        border-image: linear-gradient(to top, #4F72B8, #A065AA) 1 3%;
+        &.cube-side-top, 
+        &.cube-side-bottom {
+          border-image: none;
+          border-color: #A065AA;
+        }
+      }
+    }
+  }
+}
