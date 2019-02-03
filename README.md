@@ -1,8 +1,7 @@
-<h1><img src="https://user-images.githubusercontent.com/16360374/52173956-58a45400-2742-11e9-92b3-3e63bda91ef1.png" alt="GatsbyJS"/> Gatsby Portfolio</h1>
+<h1><img src="https://user-images.githubusercontent.com/16360374/52173956-58a45400-2742-11e9-92b3-3e63bda91ef1.png" alt="GatsbyJS" height="90"/> Gatsby Portfolio</h1>
 
 <p align="right">
   <a href="https://app.netlify.com/start/deploy?repository=https://github.com/LeKoArts/gatsby-starter-portfolio-cara"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"/></a>
-  <a href="https://codesandbox.io/s/github/LeKoArts/gatsby-starter-portfolio-cara/tree/master/"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit gatsby-starter-portfolio-caray"/></a>
   <a href="https://circleci.com/gh/LekoArts/gatsby-starter-portfolio-cara"><img src="https://circleci.com/gh/LekoArts/gatsby-starter-portfolio-cara.svg?style=svg" alt="CircleCI"/></a>
   <a href="https://app.netlify.com/sites/portfolio-cara/deploys"><img src="https://api.netlify.com/api/v1/badges/88bbaef1-6f83-4894-8acd-e6512ff39265/deploy-status" alt="Netlify Status"/></a>
 </p>
