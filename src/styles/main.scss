@@ -1,39 +1,50 @@
-
-@keyframes flipY {
-    0% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(0deg) rotatez(0deg); }
-    20.25% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(90deg) rotatez(0deg); }
-    100% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(90deg) rotatez(0deg); }
-}
-@keyframes hoverY {
-    0% { transform: translatey(0px); }
-    100% { transform: translatey(-10px); }
-}
-@keyframes border-front {
-  0% { border-width: 3px 5px 5px 3px; }
-  2.25% { border-width: 3px 5px 5px 3px; }
-  5.75% { border-width: 3px 3px 3px 3px; }
-  100% { border-width: 3px 3px 3px 3px; }
-}
-@keyframes border-back {
-  0% { border-width: 3px 3px 3px 3px; }
-  2.25% { border-width: 3px 3px 3px 3px; }
-  5.75% { border-width: 3px 3px 5px 5px; }
-  100% { border-width: 3px 3px 5px 5px; }
-}
-@keyframes border-top {
-  0% { border-width: 5px 5px 3px 3px; }
-  2.25% { border-width: 5px 5px 3px 3px; }
-  5.75% { border-width: 3px 5px 5px 3px; }
-  100% { border-width: 3px 5px 5px 3px; }
-}
-@keyframes border-left {
-  0% { border-width: 3px 3px 5px 5px; }
-  2.25% { border-width: 3px 3px 5px 5px; }
-  5.75% { border-width: 3px 5px 5px 3px; }
-  100% { border-width: 3px 5px 5px 3px; }
+/* Menu */
+.menu-wrapper {
+  background: transparent;
+  .menu {
+    position: relative;
+    background: transparent;
+    color: #fff;
+    font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    width: 92%;
+    text-align: right;
+    list-style: none;
+    margin-top: 1.5em;
+    z-index: 999999;
+    .menu-item {
+      display: inline-block;
+      font-size: 1.2em;
+      padding: 0 15px;
+      z-index: 999999;
+      a {
+        color: rgba(#fff, 0.8);
+        border: none;
+        &:hover {
+          color: rgba(#2AAE4A, 0.95);
+        }
+      }
+      &.active a {
+        color: rgba(#2AAE4A, 0.8);
+      }
+    }
+  }
 }
 
+.hero {
+  top: 0;
+}
 
+.header {
+  height: 40vh !important;
+}
+
+.light-bg {
+  background: rgba(#fff, 0.9);
+}
+
+
+/* Title Cubes */
 .cube-wrap {
   position: relative;
   width: 58px;
@@ -60,7 +71,7 @@
       backface-visibility: hidden;
       .cube-side {
         position: absolute;
-        background: rgba(#000, 0.2);
+        background: rgba(#000, 0.1);
         line-height: 100px;
         width: 100%;
         height: 100%;
@@ -130,4 +141,42 @@
       }
     }
   }
+}
+
+/* Keyframes */
+@keyframes flipY {
+    0% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(0deg) rotatez(0deg); }
+    20.25% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(90deg) rotatez(0deg); }
+    100% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(90deg) rotatez(0deg); }
+}
+@keyframes hoverY {
+    0% { transform: translatey(0px); }
+    100% { transform: translatey(-10px); }
+}
+@keyframes border-front {
+  0% { border-width: 3px 5px 5px 3px; }
+  2.25% { border-width: 3px 5px 5px 3px; }
+  5.75% { border-width: 3px 3px 3px 3px; }
+  100% { border-width: 3px 3px 3px 3px; }
+}
+@keyframes border-back {
+  0% { border-width: 3px 3px 3px 3px; }
+  2.25% { border-width: 3px 3px 3px 3px; }
+  5.75% { border-width: 3px 3px 5px 5px; }
+  100% { border-width: 3px 3px 5px 5px; }
+}
+@keyframes border-top {
+  0% { border-width: 5px 5px 3px 3px; }
+  2.25% { border-width: 5px 5px 3px 3px; }
+  5.75% { border-width: 3px 5px 5px 3px; }
+  100% { border-width: 3px 5px 5px 3px; }
+}
+@keyframes border-left {
+  0% { border-width: 3px 3px 5px 5px; }
+  2.25% { border-width: 3px 3px 5px 5px; }
+  5.75% { border-width: 3px 5px 5px 3px; }
+  100% { border-width: 3px 5px 5px 3px; }
+}
+@keyframes line {
+  0% { background-position-x: 390px; }
 }

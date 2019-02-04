@@ -7,6 +7,7 @@ import { Parallax } from 'react-spring/addons.cjs'
 // Components
 import Layout from '../components/Layout'
 import ProjectCard from '../components/ProjectCard'
+import Menu from '../components/Menu'
 import SVG from '../components/SVG'
 import Cube from '../components/Cube'
 
@@ -29,9 +30,6 @@ import { faGithub, faDeviantart, faTwitter, faDribbble, faLinkedinIn } from '@fo
 
 import avatar from '../images/me.png'
 import '../styles/main.scss'
-
-library.add(faCircle);
-library.add(faGithub);
 
 const ProjectsWrapper = styled.div`
   ${tw`flex flex-wrap justify-between mt-8`};
@@ -120,6 +118,7 @@ const Index = () => (
   <>
     <Layout />
     <Parallax pages={5}>
+      <Menu items={['Home','Blog','Contact']}/>
       <Hero offset={0}>
         <BigTitle>
           Hi, I'm <br/> Brett <br/> Stevenson
