@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Menu = ({ active, items }) => (
+const Nav = ({ active, items }) => (
   <nav className='menu-wrapper'>
     <ul className='menu'>
     {items.map(function(page, i) {
       if(page.toLowerCase() === active) {
-        return <li className='menu-item active' key={i}><a href={`./${page}`}>{page}</a></li>
+        return <li className='menu-item active' key={i}><a href={`./${page.toLowerCase()}`}>{page}</a></li>
       } else {
         return <li className='menu-item' key={i}><a href={`./${page}`}>{page}</a></li>
       }
@@ -15,13 +15,13 @@ const Menu = ({ active, items }) => (
   </nav>
 )
 
-export default Menu
+export default Nav
 
-Menu.defaultProps = {
+Nav.defaultProps = {
   active: 'home',
 }
 
-Menu.propTypes = {
+Nav.propTypes = {
   active: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.string).isRequired
 }
