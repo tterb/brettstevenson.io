@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import Image from 'gatsby-image'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
@@ -56,7 +56,7 @@ class BlogCard extends React.Component {
   render() {
     return (
       <div className='blog-card' style={{ position: `relative` }} onClick={this.handleClick}>
-        <Img alt="" 
+        <Image alt="" 
           css={{ top: 0, left: 0, right: 0, bottom: 0 }} 
           style={{ position: `absolute` }} 
           fluid={this.props.post.heroImage.fluid}/>
