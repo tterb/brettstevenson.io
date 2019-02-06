@@ -17,7 +17,6 @@ import { Title, BigTitle, Subtitle } from '../elements/Titles'
 import { Divider } from '../elements/Dividers'
 import Content from '../elements/Content'
 import { UpDown, UpDownWide, waveAnimation } from '../styles/animations'
-// import { colors } from '../../tailwind'
 
 // Views
 import Header from '../components/Header'
@@ -35,7 +34,6 @@ import '../styles/main.scss'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import ArticlePreview from '../components/article-preview'
 
 
 const FooterWrapper = styled.footer`
