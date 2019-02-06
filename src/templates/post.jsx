@@ -2,13 +2,16 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
-import Img from 'gatsby-image'
+import Image from 'gatsby-image'
 import PostLayout from '../components/PostLayout'
+import PostBody from '../components/PostBody'
 import heroStyles from '../styles/hero.scss'
 import postStyles from '../styles/post.scss'
+import syntaxStyles from '../styles/syntax.scss'
 
 class BlogPostTemplate extends React.Component {
   render() {
+
     const post = get(this.props, 'data.contentfulBlogPost')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
 
@@ -17,7 +20,7 @@ class BlogPostTemplate extends React.Component {
         <div style={{ background: '#fff' }}>
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <div className={heroStyles.hero}>
-            <Img className={heroStyles.heroImage} alt={post.title} fluid={post.heroImage.fluid} />
+            <Image className={heroStyles.heroImage} alt={post.title} fluid={post.heroImage.fluid} />
           </div>
           <div className='wrapper' style={postStyles}>
             <div className='post-header'>
@@ -26,11 +29,7 @@ class BlogPostTemplate extends React.Component {
                 {post.publishDate}
               </p>
             </div>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.body.childMarkdownRemark.html,
-              }}
-            />
+            <PostBody body={post.body} style={syntaxStyles} />
           </div>
         </div>
       </PostLayout>
@@ -44,10 +43,10 @@ export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      publishDate(formatString: "MMMM Do, YYYY")
+      publishDate(formatString: "DD MMM YYYY")
       heroImage {
         fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid
         }
       }
       body {
