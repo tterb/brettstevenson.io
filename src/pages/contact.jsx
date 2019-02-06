@@ -7,7 +7,7 @@ import { Parallax } from 'react-spring/addons.cjs'
 // Components
 import Layout from '../components/Layout'
 import ProjectCard from '../components/ProjectCard'
-import Menu from '../components/Menu'
+import Nav from '../components/Nav'
 import SVG from '../components/SVG'
 import Cube from '../components/Cube'
 
@@ -79,7 +79,7 @@ const Contact = () => (
   <>
   <Layout />
   <Parallax pages={2}>
-    <Menu active={'contact'} items={['Home','Blog','Contact']}/>
+    <Nav active={'contact'} items={['Home','Blog','Contact']}/>
     <Cube/>
     <Title>Get in touch</Title>
     <Footer offset={1}>
