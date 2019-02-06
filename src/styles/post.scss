@@ -1,17 +1,16 @@
 .wrapper {
   color: rgba(#000, 0.85);
-  font-family: -apple-system, BlinkMacSystemFont,
-  'Segoe UI', 'Open Sans', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 17.5px;
   letter-spacing: 0.01em;
-  line-height: 1.425;
+  line-height: 1.45;
   width: 75vw;
   max-width: 900px;
   margin: 2vh auto;
   padding: 2em;
   .post-header {
     letter-spacing: 0;
-    margin-bottom: 10vh;
+    margin-bottom: 8vh;
     .post-title {
       position: relative;
       color: rgba(#000, 0.75);
@@ -38,7 +37,7 @@
     &::after {
       display: block;
       position: relative;
-      background: #1cb4a5;
+      background: #1cadb5;
       content: "";
       height: 6px;
       width: 25%;
@@ -48,17 +47,30 @@
   }
 }
 
+.gatsby-image-wrapper > div {
+  padding-bottom: 30% !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
+  color: rgba(#000, 0.8);
+  font-family: 'Poppins', 'Open Sans', -apple-system, BlinkMacSystemFont,
   'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  margin-top: 1em;
 }
 
-h2 {
-  font-size: 2em;
-  line-height: 1.1;
-  margin-bottom: 0.5em;
-}
+.post-body {
+  h2 {
+    font-size: 2em;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+  }
 
-a {
-  text-decoration: none;
+  p {
+    color: rgba(#000, 0.8);
+    letter-spacing: .015em;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }

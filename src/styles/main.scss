@@ -23,6 +23,7 @@ body {
       z-index: 999999;
       a {
         color: rgba(#fff, 0.8);
+        text-decoration: none;
         border: none;
         &:hover {
           color: rgba(#2AAE4A, 0.95);
@@ -47,6 +48,7 @@ body {
   background: rgba(#fff, 0.9);
   height: auto !important;
   padding-top: 4rem; 
+  padding-bottom: 10rem;
   z-index: 1 !important;
   // width: 100vw !important;
   // margin: auto;
@@ -153,6 +155,8 @@ body {
   }
 }
 
+$card-height: 53vh;
+
 .blog-list {
   list-style: none;
   margin-top: -1vh;
@@ -168,7 +172,7 @@ body {
     'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
     width: 100%;
     max-width: 70vw;
-    height: 53vh;
+    height: $card-height;
     box-shadow: 4px 7px 28px rgba(0,0,0,.1), 1px 3px 8px rgba(0,0,0,0.075);
     transition: all 300ms ease-in-out;
     margin: 7vh auto;
@@ -181,6 +185,17 @@ body {
   		box-shadow: 0 0 1px rgba(39,44,49,.2), 0 3px 16px rgba(39,44,49,.25);
   		transform: translate3D(0,-.5px,0);
   	}
+    .gatsby-image-wrapper {
+      min-width: 100%;
+      height: $card-height !important;
+      picture img {
+        min-width: 100%;
+        min-height: 100%;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%,-50%) !important;
+      }
+    }
     .content-mask {
       position: relative;
       display: inline-block;
@@ -194,10 +209,12 @@ body {
       z-index: 5;
       h2 {
         color: rgba(#000, 0.9);
+        font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
+        'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
         font-size: 2.6em;
         font-weight: 800;
         line-height: 1.2;
-        text-transform: capitalize;
+        text-transform: uppercase;
         border-bottom: 2px solid rgba(#bbb, 0.75);
       	margin-top: 0 !important;
       	margin-bottom: 0.35em;
