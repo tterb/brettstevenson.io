@@ -7,7 +7,7 @@ if (process.env.ENVIRONMENT !== "production") {
   dotenv.config();
 }
 
-const { spaceId, accessToken } = process.env;
+// const { spaceId, accessToken } = process.env;
 
 let contentfulConfig
 
@@ -17,12 +17,12 @@ try {
 } catch (_) {}
 
 // Overwrite the Contentful config with environment variables if they exist
-// contentfulConfig = {
-//   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
-//   accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
-// }
-// 
-// const { spaceId, accessToken } = contentfulConfig
+contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
+  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
+}
+
+const { spaceId, accessToken } = contentfulConfig
 
 if (!spaceId || !accessToken) {
   throw new Error(
