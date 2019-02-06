@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Nav = ({ active, items }) => (
+const Nav = ({ active }) => (
   <nav className='menu-wrapper'>
     <ul className='menu'>
-    {items.map(function(page, i) {
-      if(page.toLowerCase() === active) {
-        return <li className='menu-item active' key={i}><a href={`./${page.toLowerCase()}`}>{page}</a></li>
+    {['home','blog','contact'].map(function(page, i) {
+      let capitalized = page.charAt(0).toUpperCase()+page.substr(1)
+      if(active.includes(page)) {
+        return <li className='menu-item active' key={i}><a href={`./${page}`}>{capitalized}</a></li>
       } else {
-        return <li className='menu-item' key={i}><a href={`./${page}`}>{page}</a></li>
+        return <li className='menu-item' key={i}><a href={`./${page}`}>{capitalized}</a></li>
       }
     })}
     </ul>
@@ -23,5 +24,5 @@ Nav.defaultProps = {
 
 Nav.propTypes = {
   active: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.string).isRequired
+  // items: PropTypes.arrayOf(PropTypes.string).isRequired
 }
