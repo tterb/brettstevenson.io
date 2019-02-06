@@ -59,7 +59,7 @@ class BlogCard extends React.Component {
         <Image alt="" 
           css={{ top: 0, left: 0, right: 0, bottom: 0 }} 
           style={{ position: `absolute` }} 
-          fluid={this.props.post.heroImage.fluid}/>
+          fixed={this.props.post.heroImage.fixed}/>
         <div className='content-mask'>
           <span className={`card-category ${this.props.post.category}`}>{this.props.post.category}</span>
           <h2>
