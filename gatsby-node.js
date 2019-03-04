@@ -8,8 +8,7 @@ exports.createPages = ({ graphql, actions }) => {
     const blogPost = path.resolve('./src/templates/post.jsx')
     resolve(
       graphql(
-        `
-          {
+        `{
             allContentfulBlogPost {
               edges {
                 node {
@@ -18,14 +17,25 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-          }
-          `
+            allContentfulProject {
+              edges {
+                node {
+                  title
+                  link
+                  lang
+                  image
+                  description
+                }
+              }
+            }
+          }`
       ).then(result => {
         if (result.errors) {
           console.log(result.errors)
           reject(result.errors)
         }
 
+        const projects = result.data.allContentfulProject.edges
         const posts = result.data.allContentfulBlogPost.edges
         posts.forEach((post, index) => {
           createPage({
