@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Image from 'gatsby-image'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
+import PropTypes from 'prop-types'
+// FontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons'
@@ -17,17 +18,14 @@ const Wrapper = styled.a`
     transform: translateY(-5px);
   }
 `
-
-const Text = styled.div`
-  ${tw`opacity-75 font-sans text-sm md:text-base`};
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-`
-
 const Title = styled.div`
   ${tw`text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-wide font-sans pt-8`};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 `
-
+const Text = styled.div`
+  ${tw`opacity-75 font-sans text-sm md:text-base`};
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+`
 const BgImage = styled(Image)`
   position: absolute;
   top: 0;
@@ -75,7 +73,7 @@ class BlogCard extends React.Component {
             {this.props.post.publishDate}
           </span>
         </div>
-        <div class="horizontal"></div>
+        <div className="horizontal"></div>
       </div>
     )
   }
