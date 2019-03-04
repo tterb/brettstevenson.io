@@ -1,28 +1,45 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { StaticQuery, graphql } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
-const Nav = ({ active }) => (
-  <nav className='menu-wrapper'>
-    <ul className='menu'>
-    {['home','blog','contact'].map(function(page, i) {
-      let capitalized = page.charAt(0).toUpperCase()+page.substr(1)
-      if(active.includes(page)) {
-        return <li className='menu-item active' key={i}><a href={`./${page}`}>{capitalized}</a></li>
-      } else {
-        return <li className='menu-item' key={i}><a href={`./${page}`}>{capitalized}</a></li>
+// import PropTypes from 'prop-types'
+// import { Link, animateScroll as scroll } from 'react-scroll'
+
+// let pages = ['home','blog','contact']
+    
+const Nav = () => (
+  <StaticQuery
+    query={graphql`
+      query LinkQuery {
+        site {
+          siteMetadata {
+            menuLinks {
+              name
+              link
+            }
+          }
+        }
       }
-    })}
-    </ul>
-  </nav>
+    `}
+    render={data => (
+      <nav className='menu-wrapper'>
+        <ul className='menu'>
+          {data.site.siteMetadata.menuLinks.map(item => {
+            return (
+              <li className='menu-item' key={item.name}>
+                <AniLink fade duration={1} to={item.link} >{item.name}</AniLink>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+    )}
+  />
 )
 
 export default Nav
 
-Nav.defaultProps = {
-  active: 'home',
-}
-
-Nav.propTypes = {
-  active: PropTypes.string,
+// Nav.propTypes = {
+  // active: PropTypes.string,
   // items: PropTypes.arrayOf(PropTypes.string).isRequired
-}
+// }
