@@ -235,6 +235,7 @@ module.exports = {
 
   fonts: {
     sans: [
+      'Titillium',
       'Open Sans',
       'Nunito',
       '-apple-system',
@@ -250,6 +251,7 @@ module.exports = {
       'sans-serif',
     ],
     title: [
+      'Product Sans',
       'Nunito',
       'Open Sans',
       '-apple-system',
@@ -261,7 +263,6 @@ module.exports = {
       'sans-serif',
     ],
     serif: [
-      'Cantata One',
       'Constantia',
       'Lucida Bright',
       'Lucidabright',
@@ -305,8 +306,8 @@ module.exports = {
     '3xl': '1.875rem', // 30px
     '4xl': '2.25rem', // 36px
     '5xl': '3rem', // 48px
-    '6xl': '5rem',
-    '7xl': '8rem',
+    '6xl': '5.5rem',
+    '7xl': '6.5rem',
   },
 
   /*

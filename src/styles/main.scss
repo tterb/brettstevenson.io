@@ -1,5 +1,38 @@
+
+$accent: #F65750;
+$card-height: 53vh;
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('../fonts/ProductSans-Regular.otf') format('otf'),
+    url('../fonts/ProductSans-Regular.ttf') format('ttf'),
+    url('../fonts/ProductSans-Regular.eot') format('eot'),
+    url('../fonts/ProductSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('../fonts/ProductSans-Bold.otf') format('otf'),
+    url('../fonts/ProductSans-Bold.ttf') format('ttf'),
+    url('../fonts/ProductSans-Bold.eot') format('eot'),
+    url('../fonts/ProductSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
+  font-family: 'Product Sans', 'Titillium', 'Open Sans', sans-serif !important;
   margin: 0;
+}
+
+.hero {
+  top: 0;
+}
+
+.accent-text {
+  color: $accent;
 }
 
 /* Menu */
@@ -9,35 +42,32 @@ body {
     position: relative;
     background: transparent;
     color: #fff;
-    font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    width: 92%;
+    font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    width: 93%;
     text-align: right;
     list-style: none;
     margin-top: 1.5em;
+    margin-bottom: 0;
     z-index: 999999;
     .menu-item {
       display: inline-block;
       font-size: 1.2em;
       padding: 0 15px;
+      cursor: pointer;
       z-index: 999999;
       a {
         color: rgba(#fff, 0.8);
         text-decoration: none;
         border: none;
         &:hover {
-          color: rgba(#2AAE4A, 0.95);
+          color: rgba($accent, 0.95);
         }
       }
       &.active a {
-        color: rgba(#2AAE4A, 0.8);
+        color: rgba($accent, 0.8);
       }
     }
   }
-}
-
-.hero {
-  top: 0;
 }
 
 .header {
@@ -155,8 +185,6 @@ body {
   }
 }
 
-$card-height: 53vh;
-
 .blog-list {
   list-style: none;
   margin-top: -1vh;
@@ -260,12 +288,40 @@ $card-height: 53vh;
     .horizontal {
       display: inline-block;
       position: relative;
-      background: linear-gradient(to bottom right, rgba(#fff, 0.8) 50%, transparent 0);
+      background: linear-gradient(to top right, rgba(#fff, 0.8) 50%, transparent 0);
       height: 100%;
       width: 20%;
       top: 0;
       right: 0;
       overflow: hidden;
+    }
+  }
+}
+
+.project-card {
+  max-height: 250px;
+  .gatsby-image-wrapper {
+    min-width: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    border-radius: 8px;
+  }
+  .mask {
+    // .title, .desc {
+    //   transition: all 350ms ease-in-out;
+    //   opacity: 0;
+    // }
+    // .title {
+    //   transform: translateY(-100px);
+    // }
+    // .desc {
+    //   transform: translateY(100px);
+    // }
+  }
+  &:hover .mask {
+    .title, .desc {
+      transform: translateY(0px);
+      opacity: 1;
     }
   }
 }

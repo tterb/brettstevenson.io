@@ -21,14 +21,14 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   a {
-    color: #2AAE4A;
+    color: #F65750;
     text-decoration: none;
     transition: all 350ms ease-in-out;
     border: none;
-    border-bottom: 2px dotted transparent;
+    // border-bottom: 2px dotted transparent;
     &:hover {
-      color: #7BEF96;
-      border-bottom-color: #2AAE4AB3;
+      color: #FA7770;
+      // border-bottom-color: #2AAE4AB3;
     }
   }
 `
