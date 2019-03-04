@@ -1,11 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
-
-// import PropTypes from 'prop-types'
-// import { Link, animateScroll as scroll } from 'react-scroll'
-
-// let pages = ['home','blog','contact']
     
 const Nav = () => (
   <StaticQuery
@@ -27,7 +22,7 @@ const Nav = () => (
           {data.site.siteMetadata.menuLinks.map(item => {
             return (
               <li className='menu-item' key={item.name}>
-                <AniLink fade duration={1} to={item.link} >{item.name}</AniLink>
+                <AniLink cover bg="#23262b" duration={1} to={item.link} >{item.name}</AniLink>
               </li>
             )
           })}
