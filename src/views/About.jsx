@@ -1,44 +1,57 @@
 import React from 'react'
+import styled from 'styled-components'
+import tw from 'tailwind.macro'
+import { colors } from '../../tailwind'
 import PropTypes from 'prop-types'
+// Elements
 import { Divider } from '../elements/Dividers'
 import Content from '../elements/Content'
 import Inner from '../elements/Inner'
-import { UpDown, UpDownWide } from '../styles/animations'
-import { colors } from '../../tailwind'
-import SVG from '../components/SVG'
+import { Title } from '../elements/Titles'
+// Components
+import Cube from '../components/Cube'
 
-const About = ({ children, offset }) => (
+import avatar from '../images/me.png'
+
+
+const AboutHero = styled.div`
+  ${tw`flex flex-col lg:flex-row items-center mt-4`};
+`
+const Avatar = styled.img`
+  ${tw`rounded-full w-48 xl:w-64 shadow-lg h-auto`};
+`
+const AboutSub = styled.span`
+  ${tw`text-white pt-12 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl`};
+`
+const AboutDesc = styled.p`
+  ${tw`text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-4 md:pt-8`};
+`
+
+const About = ({ offset }) => (
   <>
-    <Divider bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.1} offset={offset} factor={1.25} />
-    <Divider speed={0.1} offset={`${offset-1}.8`}>
-      <UpDown>
-        <SVG icon="box" hiddenMobile width={6} fill={colors.blue} left="50%" top="75%" />
-        <SVG icon="cross" hiddenMobile width={8} fill={colors['grey-darkest']} left="70%" top="20%" />
-        <SVG icon="triangle" width={8} stroke={colors['grey-darkest']} left="25%" top="5%" />
-        <SVG icon="cross" width={8} fill={colors['grey-darkest']} left="55%" top="10%" />
-        <SVG icon="cross" hiddenMobile width={24} fill={colors.orange} left="80%" top="80%" />
-      </UpDown>
-      <UpDownWide>
-        <SVG icon="arrowUp" hiddenMobile width={16} fill={colors.purple} left="5%" top="80%" />
-        <SVG icon="box" width={12} fill={colors.yellow} left="90%" top="50%" />
-        <SVG icon="cross" hiddenMobile width={8} fill={colors['grey-darkest']} left="45%" top="10%" />
-      </UpDownWide>
-      <SVG icon="circle" width={6} fill={colors.grey} left="42%" top="20%" />
-      <SVG icon="circle" width={12} fill={colors['grey-darkest']} left="55%" top="55%" />
-      <SVG icon="hexa" width={12} stroke={colors.green} left="75%" top="20%" />
-      <SVG icon="box" width={6} fill={colors.red} left="10%" top="0%" />
-      <SVG icon="box" width={12} fill={colors['grey-darkest']} left="20%" top="30%" />
-      <SVG icon="hexa" width={8} stroke={colors['grey-darkest']} left="80%" top="70%" />
-    </Divider>
-    <Content speed={0.2} offset={`${offset}.1`}>
-      <Inner>{children}</Inner>
+    <Content speed={0.2} offset={`${offset}`} id='about'>
+      <Inner>
+        <Cube color='blue' />
+        <Title>About</Title>
+        <AboutHero>
+          <Avatar src={avatar} alt='Brett Stevenson' />
+          <AboutSub>
+            The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating
+            Emoji into my speech to better express myself. 😜
+          </AboutSub>
+        </AboutHero>
+        <AboutDesc>
+           As a developer, I have experience working in both front and back-end development and enjoy experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy.  
+        </AboutDesc>
+      </Inner>
     </Content>
+    <Divider bg='#23262b' clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' speed={0.1} offset={`${offset-0.001}`} factor={1.25} />
   </>
 )
 
 export default About
 
 About.propTypes = {
-  children: PropTypes.node.isRequired,
+  // children: PropTypes.node.isRequired,
   offset: PropTypes.number.isRequired,
 }

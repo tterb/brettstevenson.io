@@ -1,58 +1,80 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
-import { Divider } from '../elements/Dividers'
+import PropTypes from 'prop-types'
+import Typed from 'react-typed';
+// Elements
 import Content from '../elements/Content'
-import { UpDown, UpDownWide } from '../styles/animations'
+import { BigTitle, Subtitle } from '../elements/Titles'
+// Components
 import SVG from '../components/SVG'
 
+
 const Wrapper = styled.div`
-  ${tw`w-full xl:w-2/3`};
+  ${tw`w-full mt-2 xl:w-full mt-4`};
   position: relative;
   top: -2em;
+  .accent {
+    color: #F05750;
+    font-size: 1.1em;
+    line-height: 0.7;
+  }
+  p svg {
+    position: relative;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.05em;
+    width: 0.75em !important;
+    top: -0.5em;
+  }
 `
 
-const Hero = ({ children, offset }) => (
+const iconStyle = {
+  position: 'absolute',
+  color: '#fff',
+  fill: 'rgba(255,255,255,0.1)',
+  width: '30vw',
+  height: '30vh',
+  top: '18vh',
+  left: '45vw',
+  margin: '0 0 0 0.5em',
+  transform: 'rotate(10deg)',
+};
+
+const typedStyle = {
+  color: 'rgba(255,255,255,0.75)',
+};
+
+const Code = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 168" style={iconStyle}><path d="M50.9,124.77,11,85.59a3.93,3.93,0,0,1-.54-5.44,2.31,2.31,0,0,1,.54-.54L50.79,39.88a4.53,4.53,0,0,1,6.41-.12h0l.12.12,7.94,7.94a4.53,4.53,0,0,1,.12,6.41h0l-.12.12L38.05,80.91a2.1,2.1,0,0,0,0,3l0,0,27.1,26.34c1.85,1.74,2.72,3.81.11,6.53l-7.84,7.94A4.63,4.63,0,0,1,50.9,124.77Z"/><path d="M158.09,124.77,199,84.61c1.85-1.85,2-3.7,0-5.55L158.53,38.69a4.53,4.53,0,0,0-6.41-.12h0l-.12.12L144,47.29a4.53,4.53,0,0,0-.12,6.41h0l.12.12,26.88,26.87a2.1,2.1,0,0,1,0,3l0,0-27,26.45a4.62,4.62,0,0,0-.11,6.53l7.84,7.94a4.46,4.46,0,0,0,6.28.4Z"/><path d="M92.53,157.64l-11.86-3.16a4.58,4.58,0,0,1-3.28-5.58h0v-.07l37-136.47A4.58,4.58,0,0,1,120,9.06h.1l11.86,3.16a4.58,4.58,0,0,1,3.28,5.58h0v.07l-37,136.47a4.68,4.68,0,0,1-5.66,3.26Z"/></svg>
+)
+
+const Hero = ({ offset }) => (
   <>
-    <Divider className='hero' speed={0.2} offset={`${offset}`}>
-      <UpDown>
-        <SVG icon="triangle" hiddenMobile width={48} stroke={colors.red} left="10%" top="20%" />
-        <SVG icon="hexa" width={32} stroke={colors.indigo} left="65%" top="70%" />
-        <SVG icon="box" width={6} fill={colors['grey-darker']} left="60%" top="15%" />
-        <SVG icon="circle" width={16} fill={colors['grey-darker']} left="20%" top="85%" />
-        <SVG icon="cross" hiddenMobile width={8} fill={colors['grey-darkest']} left="45%" top="10%" />
-      </UpDown>
-      <UpDownWide>
-        <SVG icon="arrowUp" hiddenMobile width={16} fill={colors['blue-dark']} left="80%" top="10%" />
-        <SVG icon="triangle" width={12} stroke={colors['grey-darkest']} left="91%" top="50%" />
-        <SVG icon="triangle" width={16} stroke={colors['grey-darkest']} left="35%" top="65%" />
-        <SVG icon="circle" width={6} fill={colors['grey-darkest']} left="80%" top="10%" />
-        <SVG icon="cross" hiddenMobile width={8} fill={colors['grey-darkest']} left="45%" top="10%" />
-      </UpDownWide>
-      <SVG icon="circle" hiddenMobile width={24} fill={colors['grey-darker']} left="5%" top="70%" />
-      <SVG icon="circle" width={6} fill={colors['grey-darkest']} left="4%" top="20%" />
-      <SVG icon="circle" width={12} fill={colors['grey-darkest']} left="50%" top="60%" />
-      <SVG icon="cross" width={8} fill={colors['grey-dark']} left="90%" top="90%" />
-      <SVG icon="cross" hiddenMobile width={24} fill={colors['grey-darker']} left="40%" top="80%" />
-      <SVG icon="triangle" width={8} stroke={colors['grey-darker']} left="25%" top="5%" />
-      <SVG icon="circle" width={64} fill={colors.green} left="95%" top="8%" />
-      <SVG icon="box" hiddenMobile width={64} fill={colors.purple} left="5%" top="90%" />
-      <SVG icon="box" width={6} fill={colors.yellow} left="10%" top="10%" />
-      <SVG icon="box" width={12} fill={colors['grey-darkest']} left="40%" top="25%" />
-      <SVG icon="hexa" width={16} stroke={colors['grey-darker']} left="5%" top="57%" />
-      <SVG icon="circle" width={4} fill={colors['grey-light']} left="70%" top="44%" />
-    </Divider>
-    <Content className='hero' speed={0.4} offset={offset}>
-      <Wrapper>{children}</Wrapper>
-    </Content>
+  <Content className='hero' speed={0.4} offset={offset}>
+    <Wrapper>
+      <BigTitle>Hello,<br/>I'm Brett<br/>Stevenson<span className='accent'>.</span></BigTitle>
+      <Subtitle>
+        <Typed style={typedStyle} strings={[
+            'I am a Software Engineer',
+            'I am a UI/UX Designer',
+            'I am a Code Monkey',
+            'I am a Full-Stack Developer',
+            '. . . ^1000',
+            'I like to build stuff<span class="accent-text">.</span>',
+            ]}
+            typeSpeed={40} backSpeed={30}
+            smartBackspace>
+        </Typed>
+      </Subtitle>
+      <Code />
+    </Wrapper>
+  </Content>
   </>
 )
 
 export default Hero
 
 Hero.propTypes = {
-  children: PropTypes.node.isRequired,
   offset: PropTypes.number.isRequired,
 }

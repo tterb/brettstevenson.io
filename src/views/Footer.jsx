@@ -77,7 +77,7 @@ const GatsbyIcon = () => (
 
 const Footer = ({ children, offset }) => (
   <>
-    <Divider fill="#23262b" speed={0.2} offset={offset} style={{ zIndex: `9999` }}>
+    <Divider fill="#23262b" speed={0.2} offset={offset} style={{ zIndex: `999` }} factor={0.35}>
       <WaveWrapper>
         <InnerWave>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 338.05" preserveAspectRatio="none">
@@ -93,7 +93,7 @@ const Footer = ({ children, offset }) => (
         </InnerWave>
       </WaveWrapper>
     </Divider>
-    <Content speed={0.4} offset={`${offset+0.1}`} style={{ zIndex: `99999` }}>
+    <Content speed={0.2} offset={offset} factor={0.375} style={{ zIndex: `99999` }}>
       <FooterWrapper>
         <SocialList>
           <li><a href='https://github.com/tterb'><FontAwesomeIcon icon={faGithub}/></a></li>
@@ -113,6 +113,5 @@ const Footer = ({ children, offset }) => (
 export default Footer
 
 Footer.propTypes = {
-  children: PropTypes.node.isRequired,
   offset: PropTypes.number.isRequired,
 }
