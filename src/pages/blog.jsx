@@ -36,9 +36,9 @@ class Blog extends React.Component {
     
     return (
       <>
-      <Parallax pages={4.5}>
-        <Layout />
-          <Nav className={this.props.location.pathname} active={this.props.location.pathname} />
+      <Layout />
+        <Parallax pages={4.5}>
+          <Nav />
           <Header offset={0} factor={0.4}>
             <BigTitle>Blog</BigTitle>
           </Header>
@@ -53,7 +53,7 @@ class Blog extends React.Component {
               })}
             </ul>
           </Content>
-          <Footer offset={3.5} factor={1/2} />
+          <Footer offset={4} factor={0.5} />
         </Parallax>
       </>
     )
