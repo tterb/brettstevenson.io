@@ -5,10 +5,10 @@ import { ParallaxLayer } from 'react-spring/addons.cjs'
 export const Divider = styled(ParallaxLayer)`
   ${tw`absolute w-full h-full`};
   background: ${props => props.bg};
+  clip-path: ${props => props.clipPath};
   svg {
     fill: ${props => props.fill};
   }
-  clip-path: ${props => props.clipPath};
 `
 
 export const DividerMiddle = styled(Divider)`
