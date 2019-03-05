@@ -9,33 +9,21 @@ exports.createPages = ({ graphql, actions }) => {
     resolve(
       graphql(
         `{
-            allContentfulBlogPost {
-              edges {
-                node {
-                  title
-                  slug
-                }
+          allContentfulBlogPost {
+            edges {
+              node {
+                title
+                slug
               }
             }
-            allContentfulProject {
-              edges {
-                node {
-                  title
-                  link
-                  lang
-                  image
-                  description
-                }
-              }
-            }
-          }`
+          }
+        }`
       ).then(result => {
         if (result.errors) {
           console.log(result.errors)
           reject(result.errors)
         }
 
-        const projects = result.data.allContentfulProject.edges
         const posts = result.data.allContentfulBlogPost.edges
         posts.forEach((post, index) => {
           createPage({
