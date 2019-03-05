@@ -77,7 +77,7 @@ const GatsbyIcon = () => (
 
 const Footer = ({ children, offset }) => (
   <>
-    <Divider fill="#23262b" speed={0.2} offset={offset} style={{ zIndex: `999` }} factor={0.35}>
+    <Divider fill="#23262b" speed={0.25} offset={offset} style={{ zIndex: `999` }} factor={0.4}>
       <WaveWrapper>
         <InnerWave>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 338.05" preserveAspectRatio="none">

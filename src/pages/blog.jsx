@@ -37,12 +37,12 @@ class Blog extends React.Component {
     return (
       <>
       <Layout />
-        <Parallax pages={4.5}>
+        <Parallax pages={4.55}>
           <Nav />
           <Header offset={0} factor={0.4}>
             <BigTitle>Blog</BigTitle>
           </Header>
-          <Content className="light-bg" offset={0.4} factor={4}>
+          <Content className="light-bg" offset={0.4} factor={4} style={`padding: 14rem !important`}>
             <ul className="blog-list">
               {posts.map(({ node }) => {
                 return (
