@@ -1,25 +1,16 @@
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
-import { rotateAnimation } from '../styles/animations'
-import triangle from '../images/triangle.svg'
 
 export const Title = styled.h1`
-  ${tw`text-5xl lg:text-5xl font-title text-white my-6 ml-4 tracking-wide relative inline-block`};
+  ${tw`text-5xl lg:text-5xl font-title text-white my-6 ml-4 tracking-normal relative inline-block sm: ml-0`};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  /* &:before {
-    content: '';
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    background-size: 40px;
-    ${rotateAnimation('4s')};
-    left: -60px;
-    top: 5px;
-  } */
+  @media (min-width: 600px) {
+    margin-left: 2.5rem;
+  }
 `
 
 export const BigTitle = styled.h1`
-  ${tw`text-6xl lg:text-7xl font-title text-white mt-4 mb-6 tracking-wide`};
+  ${tw`sm:text-5xl md:text-6xl lg:text-7xl font-title text-white mt-4 mb-6 tracking-wide`};
   font-weight: 800;
   letter-spacing: 0.025em;
   line-height: 1.1;
