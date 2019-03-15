@@ -1,7 +1,13 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
-    
+
+const navStyle = {
+  position: 'absolute',
+  top: '-0.5rem',
+  right: '8vw',
+}
+
 const Nav = () => (
   <StaticQuery
     query={graphql`
@@ -17,7 +23,7 @@ const Nav = () => (
       }
     `}
     render={data => (
-      <nav className='menu-wrapper'>
+      <nav className='menu-wrapper' style={navStyle}>
         <ul className='menu'>
           {data.site.siteMetadata.menuLinks.map(item => {
             return (
