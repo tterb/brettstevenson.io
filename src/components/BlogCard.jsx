@@ -59,7 +59,7 @@ class BlogCard extends React.Component {
           style={{ position: `absolute` }} 
           fixed={this.props.post.heroImage.fixed}/>
         <div className='content-mask'>
-          <span className={`card-category ${this.props.post.category}`}>{this.props.post.category}</span>
+          <span className={`card-category ${this.props.post.category.toString().toLowerCase()}`}>{this.props.post.category}</span>
           <h2>
             <Link to={`/blog/${this.props.post.slug}`}>{this.props.post.title}</Link>
           </h2>
