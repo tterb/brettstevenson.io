@@ -28,16 +28,14 @@ const Mask = styled.div`
   transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   opacity: 0;
   &:hover {
-    /* transform: translateY(-5px); */
     opacity: 1;
   }
 `
 
 const Title = styled.div`
-  ${tw`text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-wide font-sans pb-4`};
+  ${tw`text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-normal font-sans pb-4`};
   font-weight: 600;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  /* transform: translateY(-100px); */
   transition: all 350ms ease-in-out;
   opacity: 0;
   &:hover {
@@ -48,7 +46,6 @@ const Title = styled.div`
 const Text = styled.div`
   ${tw`opacity-75 font-sans text-sm md:text-base pb-8`};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  /* transform: translateY(100px); */
   transition: all 400ms ease-in-out;
   opacity: 0;
   &:hover {

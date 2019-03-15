@@ -11,7 +11,7 @@ import { Title } from '../elements/Titles'
 import Content from '../elements/Content'
 import Inner from '../elements/Inner'
 // Components
-import ProjectCard from '../components/ProjectCard'
+import ProjectCardAlt from '../components/ProjectCardAlt'
 import Cube from '../components/Cube'
 
 import { UpDown, UpDownWide } from '../styles/animations'
@@ -25,7 +25,7 @@ const ProjectsWrapper = styled.div`
   @media (max-width: 1200px) {
     grid-gap: 3rem;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 600px) {
     grid-template-columns: 1fr;
     grid-gap: 2rem;
   }
@@ -33,22 +33,23 @@ const ProjectsWrapper = styled.div`
 
 class Projects extends React.Component {
   render() {
+    const colors = ['linear-gradient(to right, #7f7fd5, #86a8ef)', 'linear-gradient(to right, #83a0e8, #76bef6)']
     return (
       <>
         <DividerMiddle
           bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)"
-          speed={0.15}
+          speed={0.35}
           offset={`${this.props.offset-0.5}`}
           factor={2.3}
         />
-        <Content speed={0.25} offset={`${this.props.offset-0.25}`} factor={1.75}>
+        <Content speed={0.5} offset={`${this.props.offset-0.3}`} factor={1.75}>
           <Inner>
             <Cube/>
             <Title>Projects</Title>
             <ProjectsWrapper>
               {this.props.projects.map(({ node }, i) => {
                 return (
-                  <ProjectCard key={i} project={node} />
+                  <ProjectCardAlt key={i} project={node} bg={colors[i%colors.length]}/>
                 )
               })}
             </ProjectsWrapper>

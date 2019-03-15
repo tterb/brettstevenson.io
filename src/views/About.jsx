@@ -18,7 +18,8 @@ const AboutHero = styled.div`
   ${tw`flex flex-col lg:flex-row items-center mt-4`};
 `
 const Avatar = styled.img`
-  ${tw`rounded-full w-48 xl:w-64 shadow-lg h-auto`};
+  ${tw`rounded-full w-48 xl:w-64 h-auto`};
+  box-shadow: 0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25);
 `
 const AboutSub = styled.span`
   ${tw`text-white pt-12 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl`};
@@ -29,7 +30,7 @@ const AboutDesc = styled.p`
 
 const About = ({ offset }) => (
   <>
-    <Content speed={0.2} offset={`${offset}`} id='about'>
+    <Content speed={0.25} offset={`${offset}`} id='about'>
       <Inner>
         <Cube color='blue' />
         <Title>About</Title>
@@ -45,13 +46,12 @@ const About = ({ offset }) => (
         </AboutDesc>
       </Inner>
     </Content>
-    <Divider bg='#23262b' clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' speed={0.1} offset={`${offset-0.001}`} factor={1.25} />
+    <Divider bg='#23262b' clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' speed={0.075} offset={`${offset-0.001}`} factor={1.25} />
   </>
 )
 
 export default About
 
 About.propTypes = {
-  // children: PropTypes.node.isRequired,
   offset: PropTypes.number.isRequired,
 }

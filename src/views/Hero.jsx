@@ -12,14 +12,9 @@ import SVG from '../components/SVG'
 
 
 const Wrapper = styled.div`
-  ${tw`w-full mt-2 xl:w-full mt-4`};
+  ${tw`w-full mt-0 xl:w-full mt-4`};
   position: relative;
-  top: -2em;
-  .accent {
-    color: #F05750;
-    font-size: 1.1em;
-    line-height: 0.7;
-  }
+  top: -1.5em;
   p svg {
     position: relative;
     color: rgba(255,255,255,0.6);
@@ -36,7 +31,7 @@ const iconStyle = {
   width: '30vw',
   height: '30vh',
   top: '18vh',
-  left: '45vw',
+  right: '5vw',
   margin: '0 0 0 0.5em',
   transform: 'rotate(10deg)',
 };
@@ -60,7 +55,7 @@ const Hero = ({ offset }) => (
             'I am a UI/UX Designer',
             'I am a Code Monkey',
             'I am a Full-Stack Developer',
-            '. . . ^1000',
+            '. . .^1000',
             'I like to build stuff<span class="accent-text">.</span>',
             ]}
             typeSpeed={40} backSpeed={30}

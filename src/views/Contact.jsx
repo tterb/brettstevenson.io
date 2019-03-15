@@ -14,14 +14,20 @@ import { waveAnimation } from '../styles/animations'
 
 
 const ContactText = styled.p`
-  ${tw`text-grey-light font-sans text-xl mt-3 md:text-2xl lg:text-3xl`};
+  ${tw`text-grey font-sans text-xl mt-3 md:text-2xl lg:text-3xl`};
   margin-block-start: 0;
   margin-block-end: 110px;
+  a {
+    color: #fff;
+    &:hover {
+      color: #FD5750;
+    }
+  }
 `
 
 const Contact = ({ offset }) => (
   <>
-    <Content speed={0.4} offset={`${offset}`} factor={0.25}>
+    <Content speed={0.65} offset={offset} factor={0.35}>
       <Inner>
         <Cube color='purple' />
         <Title>Get in touch</Title>
