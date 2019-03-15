@@ -32,7 +32,6 @@ import '../styles/main.scss'
 class Blog extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     
     return (
       <>
@@ -43,15 +42,7 @@ class Blog extends React.Component {
             <BigTitle>Blog</BigTitle>
           </Header>
           <Content className="light-bg" offset={0.4} factor={4}>
-            <ul className="blog-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <BlogCard post={node} />
-                  </li>
-                )
-              })}
-            </ul>
+            <ul className="blog-list"></ul>
           </Content>
           <Footer offset={4} factor={0.5} />
         </Parallax>
@@ -61,30 +52,3 @@ class Blog extends React.Component {
 }
 
 export default Blog
-
-export const pageQuery = graphql`
-  query BlogQuery {
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
-      edges {
-        node {
-          title
-          slug
-          publishDate(formatString: "DD MMMM, YYYY")
-          category
-          tags
-          heroImage {
-            fixed(resizingBehavior: SCALE) {
-              ...GatsbyContentfulFixed
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 120)
-            }
-          }
-        }
-      }
-    }
-  }
-`

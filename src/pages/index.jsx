@@ -22,7 +22,6 @@ import '../styles/main.scss'
 
 class Index extends React.Component {
   render() {
-    const projects = get(this, 'props.data.allContentfulProject.edges')
     return (
       <>
         <Layout />
@@ -30,7 +29,7 @@ class Index extends React.Component {
           <Nav />
           <Hero offset={0} />
           <About offset={1} id='about' />
-          <Projects projects={projects} offset={2.75} id='projects'/>
+          <Projects offset={2.75} id='projects'/>
           <Contact offset={4.25} />
           <Footer offset={4.65} factor={0.5} />
         </Parallax>
@@ -38,30 +37,5 @@ class Index extends React.Component {
     )
   }
 }
-
-export const projectQuery = graphql`
-  query ProjectsQuery {
-    allContentfulProject(sort: { fields: [key], order: ASC }) {
-      edges {
-        node {
-          title
-          link
-          lang
-          image {
-            fixed(resizingBehavior: SCALE) {
-              ...GatsbyContentfulFixed
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 175)
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 export default Index

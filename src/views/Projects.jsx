@@ -41,19 +41,7 @@ class Projects extends React.Component {
           offset={`${this.props.offset-0.5}`}
           factor={2.3}
         />
-        <Content speed={0.25} offset={`${this.props.offset-0.25}`} factor={1.75}>
-          <Inner>
-            <Cube/>
-            <Title>Projects</Title>
-            <ProjectsWrapper>
-              {this.props.projects.map(({ node }, i) => {
-                return (
-                  <ProjectCard key={i} project={node} />
-                )
-              })}
-            </ProjectsWrapper>
-          </Inner>
-        </Content>
+        <Content speed={0.25} offset={`${this.props.offset-0.25}`} factor={1.75}></Content>
       </>
     )
   }
