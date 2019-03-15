@@ -17,6 +17,7 @@ import Contact from '../views/Contact'
 import Footer from '../views/Footer'
 
 // import banner from '../images/banner.jpg'
+import '../styles/normalize.scss'
 import '../styles/main.scss'
 
 
@@ -26,13 +27,13 @@ class Index extends React.Component {
     return (
       <>
         <Layout />
-        <Parallax pages={5.075}>
+        <Parallax pages={4.35}>
           <Nav />
           <Hero offset={0} />
           <About offset={1} id='about' />
-          <Projects projects={projects} offset={2.75} id='projects'/>
-          <Contact offset={4.25} />
-          <Footer offset={4.65} factor={0.5} />
+          <Projects projects={projects} offset={2.5} id='projects'/>
+          <Contact offset={3.825} />
+          <Footer offset={4.1} />
         </Parallax>
       </>
     )
