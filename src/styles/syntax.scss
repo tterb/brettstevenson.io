@@ -33,6 +33,7 @@ pre[class*='language-'] {
 	text-shadow: 0 1px rgba(#000, 0.3);
 	font-weight: 400;
 	text-align: left;
+	text-shadow: none;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
@@ -51,12 +52,12 @@ pre[class*='language-'] {
 /* Inline code */
 :not(pre) > code[class*='language-'] {
 	display: inline;
-	background: lighten($base, 3%);
-	color: $text;
+	background: rgba($base, 0.1);
+	color: rgba(#000, 0.85);
 	font-size: 0.85em;
 	border-radius: 4px;
-	margin: 0 0.1em;
-	padding: 0.15em 0.3em;
+	margin: 0;
+	padding: 0.15em 0.4em;
 	white-space: normal;
 }
 

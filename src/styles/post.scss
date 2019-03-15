@@ -55,12 +55,12 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(#000, 0.8);
   font-family: 'Poppins', 'Open Sans', -apple-system, BlinkMacSystemFont,
   'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  margin-top: 1em;
+  margin-top: 1.25em;
 }
 
 .post-body {
   h2 {
-    font-size: 2em;
+    font-size: 1.85em;
     line-height: 1.1;
     margin-bottom: 0.5em;
   }
@@ -71,6 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   a {
+    color: #0366d6;
     text-decoration: none;
   }
 }

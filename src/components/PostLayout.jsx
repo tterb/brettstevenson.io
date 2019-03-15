@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Container from './Container'
+import PostMeta from './PostMeta'
 import Nav from './Nav'
 
 
@@ -14,10 +14,16 @@ class Template extends React.Component {
     }
 
     return (
-      <Container>
+      <div>
+        <PostMeta 
+          title={`${post.title} | ${siteTitle}`}
+          description={post.description}
+          thumbnail={post.heroImage.fluid}
+          url={`/blog/${post.slug}`}
+        />
         <Nav active={this.props.location.pathname} />
         {children}
-      </Container>
+      </div>
     )
   }
 }
