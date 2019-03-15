@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import get from 'lodash/get'
 import PostMeta from './PostMeta'
 import Nav from './Nav'
 
@@ -7,6 +8,7 @@ import Nav from './Nav'
 class Template extends React.Component {
   render() {
     const { location, children } = this.props
+    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     let header
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
@@ -16,10 +18,10 @@ class Template extends React.Component {
     return (
       <div>
         <PostMeta 
-          title={`${post.title} | ${siteTitle}`}
-          description={post.description}
-          thumbnail={post.heroImage.fluid}
-          url={`/blog/${post.slug}`}
+          title={`${this.props.post.title} | ${siteTitle}`}
+          description={this.props.post.description}
+          thumbnail={this.props.post.heroImage.fluid}
+          url={`/blog/${this.props.post.slug}`}
         />
         <Nav active={this.props.location.pathname} />
         {children}
