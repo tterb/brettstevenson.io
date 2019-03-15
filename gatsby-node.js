@@ -23,7 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors)
           reject(result.errors)
         }
-
+        
         const posts = result.data.allContentfulBlogPost.edges
         posts.forEach((post, index) => {
           createPage({
@@ -31,6 +31,22 @@ exports.createPages = ({ graphql, actions }) => {
             component: blogPost,
             context: {
               slug: post.node.slug
+            },
+          })
+        })
+        
+        // Create blog-list pages
+        const postsPerPage = 4
+        const numPages = Math.ceil(posts.length / postsPerPage)
+        Array.from({ length: numPages }).forEach((_, i) => {
+          createPage({
+            path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+            component: path.resolve("./src/templates/blog.jsx"),
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              numPages,     
+              currentPage: i + 1
             },
           })
         })
