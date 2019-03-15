@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import tw from 'tailwind.macro'
-import styled from 'styled-components'
-import { Divider } from '../elements/Dividers'
-import Content from '../elements/Content'
-import { waveAnimation } from '../styles/animations'
 import { colors } from '../../tailwind'
+import styled from 'styled-components'
+// Elements
+import { Divider, DividerStatic } from '../elements/Dividers'
+import Content from '../elements/Content'
+// Styles
+import { waveAnimation } from '../styles/animations'
 // FontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -30,7 +32,8 @@ const InnerWave = styled.div`
 
 const FooterWrapper = styled.footer`
   ${tw`text-center text-grey absolute pin-b p-6 font-sans text-md lg:text-lg`};
-  z-index: -99;
+  /* bottom: 1rem; */
+  z-index: 9999;
   .separator {
     position: relative;
     font-size: 5px;
@@ -77,24 +80,24 @@ const GatsbyIcon = () => (
 
 const Footer = ({ children, offset }) => (
   <>
-    <Divider fill="#23262b" speed={0.25} offset={offset} style={{ zIndex: `999` }} factor={0.4}>
-      <WaveWrapper>
-        <InnerWave>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 338.05" preserveAspectRatio="none">
-            <path>
-              <animate
-                attributeName="d"
-                values="M 0 100 Q 250 50 400 200 Q 550 350 800 300 L 800 0 L 0 0 L 0 100 Z;M 0 100 Q 200 150 400 200 Q 600 250 800 300 L 800 0 L 0 0 L 0 100 Z;M 0 100 Q 150 350 400 200 Q 650 50 800 300 L 800 0 L 0 0 L 0 100 Z"
-                repeatCount="indefinite"
-                dur="30s"
-              />
-            </path>
-          </svg>
-        </InnerWave>
-      </WaveWrapper>
-    </Divider>
-    <Content speed={0.2} offset={offset} factor={0.375} style={{ zIndex: `99999` }}>
-      <FooterWrapper>
+    <Content offset={`${offset}`} speed={0} factor={0.2}>
+      <DividerStatic fill="#23262b" speed={0.35} offset={`${offset}`} style={{ zIndex: `999` }} factor={0.2}>
+        <WaveWrapper style={{ height: `100%`, top: `2rem`, left: `0` }}>
+          <InnerWave>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 338.05" preserveAspectRatio="none">
+              <path>
+                <animate
+                  attributeName="d"
+                  values="M 0 100 Q 250 50 400 200 Q 550 350 800 300 L 800 0 L 0 0 L 0 100 Z;M 0 100 Q 200 150 400 200 Q 600 250 800 300 L 800 0 L 0 0 L 0 100 Z;M 0 100 Q 150 350 400 200 Q 650 50 800 300 L 800 0 L 0 0 L 0 100 Z"
+                  repeatCount="indefinite"
+                  dur="30s"
+                />
+              </path>
+            </svg>
+          </InnerWave>
+        </WaveWrapper>
+      </DividerStatic>
+      <FooterWrapper style={{ top: `5rem` }}>
         <SocialList>
           <li><a href='https://github.com/tterb'><FontAwesomeIcon icon={faGithub}/></a></li>
           <li><a href='https://deviantart.com/bstevenson'><FontAwesomeIcon icon={faDeviantart}/></a></li>
