@@ -1,0 +1,218 @@
+
+$accent: #FD5750;
+$card-height: 53vh;
+
+.blog-content {
+  padding: 4rem 6vw 18rem;
+  .blog-container {
+    width: 100%;
+    max-width: 950px;
+    margin: auto;
+    .pagination {
+      text-align: center;
+      padding-top: 2rem;
+      a {
+        color: rgba(#000, 0.65);
+        font-size: 3rem;
+        filter: drop-shadow(0 2px 6px rgba(#000, 0.15));
+        padding: 0 2rem;
+        &:hover, &:active {
+          color: $accent;
+        }
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.blog-list {
+  display: inline-block;
+  list-style: none;
+  width: 73%;
+  margin-top: -1vh;
+  padding: 0;
+  .blog-card {
+    display: block;
+  	position: relative;
+    background: #444;
+  	background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    // max-width: 65vw;
+    height: $card-height;
+    box-shadow: 4px 7px 28px rgba(0,0,0,.1), 1px 3px 8px rgba(0,0,0,0.075);
+    transition: all 300ms ease-in-out;
+    float: left;
+    margin: 7vh auto;
+    cursor: pointer;
+    &:first-child {
+      margin-top: 2vh;
+    }
+  	&:hover {
+  		box-shadow: 0 0 1px rgba(39,44,49,.2), 0 3px 16px rgba(39,44,49,.25);
+  		transform: translate3D(0,-.5px,0);
+  	}
+    .gatsby-image-wrapper {
+      min-width: 100%;
+      height: $card-height !important;
+      picture img {
+        min-width: 100%;
+        min-height: 100%;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%,-50%) !important;
+      }
+    }
+    .content-mask {
+      position: relative;
+      display: inline-block;
+      background: rgba(#fff, 0.8);
+      top: 0px;
+      width: 65%;
+      height: 100%;
+      padding: 0.75em 0 0.75em 2.5em;
+      overflow: hidden;
+      cursor: pointer;
+      z-index: 5;
+      h2 {
+        color: rgba(#000, 0.9);
+        font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
+        'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 2.6em;
+        font-weight: 800;
+        line-height: 1.2;
+        text-transform: uppercase;
+        border-bottom: 2px solid rgba(#bbb, 0.75);
+      	margin-top: 0 !important;
+      	margin-bottom: 0.35em;
+      	padding-bottom: 5px;
+        a {
+          color: rgba(#000, 0.85);
+          border-bottom: none;
+        }
+      }
+      p {
+        color: rgba(#000, 0.65);
+      	font-size: 1.05em;
+      	line-height: 1.4;
+      	width: 100%;
+      	margin-top: 0.3em; 
+        margin-bottom: 2em;
+      	padding-left: 2px;
+        cursor: pointer;
+      	z-index: 9;
+      }
+      .card-category {
+      	display: inline-block;
+      	color: rgba(#fff, 0.95);
+      	font-weight: 500;
+      	letter-spacing: 1px;
+      	text-align: center;
+      	min-width: 45px;
+      	border-radius: 5px;
+        text-shadow: 0 1px 0.25px rgba(#000, 0.5);
+        box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#ac1c38, 8%), 0.175);
+        transition: all 400ms ease-in-out;
+      	margin: 1rem 0 1.5rem;
+      	padding: 6px 8px;
+      	cursor: pointer;
+      	z-index: 9;
+      }
+      .card-date {
+        color: rgba(#000, 0.55);
+        font-size: 0.9em;
+      }
+    }
+    .horizontal {
+      display: inline-block;
+      position: relative;
+      background: linear-gradient(to top right, rgba(#fff, 0.8) 50%, transparent 0);
+      height: 100%;
+      width: 20%;
+      top: 0;
+      right: 0;
+      overflow: hidden;
+    }
+  }
+}
+
+.card-category {
+  &.ruby,
+  &.jekyll {
+    background: #d83737;
+    box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#d83737, 8%), 0.175);
+  }
+  &.discuss {
+    background: #eda800;
+    box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#eda800, 8%), 0.175);
+  }
+  &.lua {
+    background: #fbc02d;
+    box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#fbc02d, 8%), 0.175);
+  }
+  &.python {
+    background: #2aa05a;
+    box-shadow: 0 0 1px rgba(#000,0.1), 0 2px 6px rgba(darken(#2aa05a, 8%), 0.175);
+  }
+  &.atom, 
+  &.tools,
+  &.open-source,
+  &.spotlight {
+    background: #00897b;
+    box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#00897b, 8%), 0.175);
+  }
+  &.design, 
+  &.ui {
+    background: #00b8d4;
+    box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#00b8d4, 8%), 0.175);
+  }
+  &.c {
+    background: #039be5;
+    box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#039be5, 8%), 0.175);
+  }
+  &.tutorial {
+    background: #7d77b3;
+    box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#7d77b3, 8%), 0.175);
+  }
+  &.web,
+  &.javascript {
+    background: #e23f7e;
+  }
+}
+
+.sidebar {
+  .sidebar-icons {
+    font-size: 2rem;
+    width: 80%;
+    list-style: none;
+    text-align: center;
+    margin: 1.5rem auto;
+    padding: 0;
+    li {
+      display: inline-block;
+      margin-right: 1.25rem;
+      a {
+        color: rgba(#000, 0.7);
+        transition: all 350ms ease-in-out;
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+  }
+  hr {
+    width: 80%;
+    height: 0;
+    border: 0;
+    border-bottom: 2px solid rgba(#000, 0.095);
+    margin: 1rem auto 0.5rem;
+  }
+}

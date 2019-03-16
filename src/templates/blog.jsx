@@ -28,7 +28,7 @@ import { faSearch, faTags, faArchive, faArrowAltCircleLeft, faArrowAltCircleRigh
 // Images
 import avatar from '../images/me.png'
 // Styles
-import '../styles/main.scss'
+import '../styles/blog.scss'
 
 const Sidebar = styled.div`
   ${tw`relative inline-block w-1/4 float-right pt-2`}
