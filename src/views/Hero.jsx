@@ -25,19 +25,19 @@ const Wrapper = styled.div`
 `
 
 const iconStyle = {
-  position: 'absolute',
-  color: '#fff',
-  fill: 'rgba(255,255,255,0.1)',
-  width: '30vw',
-  height: '30vh',
-  top: '18vh',
-  right: '5vw',
-  margin: '0 0 0 0.5em',
-  transform: 'rotate(10deg)',
+  position: `absolute`,
+  color: `#fff`,
+  fill: `rgba(255,255,255,0.1)`,
+  width: `17rem`,
+  height: `17rem`,
+  top: `7rem`,
+  left: `31rem`,
+  margin: `0 0 0 0.5em`,
+  transform: `rotate(10deg)`,
 };
 
 const typedStyle = {
-  color: 'rgba(255,255,255,0.75)',
+  color: `rgba(255,255,255,0.75)`,
 };
 
 const Code = () => (

@@ -10,7 +10,7 @@ import Inner from '../elements/Inner'
 import { Title } from '../elements/Titles'
 // Components
 import Cube from '../components/Cube'
-
+// Images
 import avatar from '../images/me.png'
 
 
@@ -18,14 +18,15 @@ const AboutHero = styled.div`
   ${tw`flex flex-col lg:flex-row items-center mt-4`};
 `
 const Avatar = styled.img`
-  ${tw`rounded-full w-48 xl:w-64 h-auto`};
+  ${tw`rounded-full w-48 xl:h-auto`};
   box-shadow: 0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25);
 `
 const AboutSub = styled.span`
   ${tw`text-white pt-12 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl`};
 `
 const AboutDesc = styled.p`
-  ${tw`text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-4 md:pt-8`};
+  ${tw`text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-4 md:pt-6`};
+  line-height: 1.45;
 `
 
 const About = ({ offset }) => (
@@ -42,7 +43,7 @@ const About = ({ offset }) => (
           </AboutSub>
         </AboutHero>
         <AboutDesc>
-           As a developer, I have experience working in both front and back-end development and enjoy experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy.  
+           I'm a full-stack developer with a passion for experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy. I have experience working in a variety of languages, though I'm particularly found of Python, Java, and Javascript.
         </AboutDesc>
       </Inner>
     </Content>
@@ -55,3 +56,5 @@ export default About
 About.propTypes = {
   offset: PropTypes.number.isRequired,
 }
+
+//As a developer, I have experience working in both front and back-end development and enjoy experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy.  
