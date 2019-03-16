@@ -11,7 +11,7 @@ import { Title } from '../elements/Titles'
 import Content from '../elements/Content'
 import Inner from '../elements/Inner'
 // Components
-import ProjectCardAlt from '../components/ProjectCardAlt'
+import ProjectCard from '../components/ProjectCard'
 import Cube from '../components/Cube'
 
 import { UpDown, UpDownWide } from '../styles/animations'
