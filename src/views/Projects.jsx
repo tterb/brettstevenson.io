@@ -49,7 +49,7 @@ class Projects extends React.Component {
             <ProjectsWrapper>
               {this.props.projects.map(({ node }, i) => {
                 return (
-                  <ProjectCardAlt key={i} project={node} bg={colors[i%colors.length]}/>
+                  <ProjectCard key={i} project={node} bg={colors[i%colors.length]}/>
                 )
               })}
             </ProjectsWrapper>
