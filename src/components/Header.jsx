@@ -6,7 +6,7 @@ import { colors } from '../../tailwind'
 import { Divider } from '../elements/Dividers'
 import Content from '../elements/Content'
 import { UpDown, UpDownWide } from '../styles/animations'
-import { ParallaxLayer } from 'react-spring/addons.cjs'
+import { ParallaxLayer } from 'react-spring/renderprops-addons'
 import SVG from './SVG'
 
 const HeaderContent = styled(ParallaxLayer)`

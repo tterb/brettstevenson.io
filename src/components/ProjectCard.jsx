@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
-import { animated, useSpring } from 'react-spring/hooks.js'
+import { animated, useSpring } from 'react-spring'
 import tw from 'tailwind.macro'
 import PropTypes from 'prop-types'
 

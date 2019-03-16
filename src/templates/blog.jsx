@@ -5,7 +5,7 @@ import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
-import { Parallax } from 'react-spring/addons.cjs'
+import { Parallax } from 'react-spring/renderprops-addons'
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 // Components
 import Layout from '../components/Layout'
