@@ -1,5 +1,5 @@
 
-$accent: #FA5750;
+$accent: #FD5750;
 $card-height: 53vh;
 
 @font-face {
@@ -31,6 +31,12 @@ body {
   top: 0;
 }
 
+.accent {
+  color: #F05750;
+  font-size: 1.1em;
+  line-height: 0.7;
+}
+
 .accent-text {
   color: $accent;
 }
@@ -43,7 +49,8 @@ body {
     background: transparent;
     color: #fff;
     font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    width: 93%;
+    font-size: 1.1rem;
+    width: 100%;
     text-align: right;
     list-style: none;
     margin-top: 1.5em;
@@ -52,7 +59,8 @@ body {
     .menu-item {
       display: inline-block;
       font-size: 1.2em;
-      padding: 0 15px;
+      transition: all 300ms ease-in-out;
+      padding: 0 0.85rem;
       cursor: pointer;
       z-index: 999999;
       a {
@@ -60,11 +68,14 @@ body {
         text-decoration: none;
         border: none;
         &:hover {
-          color: rgba($accent, 0.95);
+          color: $accent;
         }
       }
       &.active a {
-        color: rgba($accent, 0.8);
+        color: $accent;
+      }
+      &:last-child {
+        padding-right: 0;
       }
     }
   }
@@ -164,125 +175,22 @@ body {
   }
 }
 
-.blog-list {
-  list-style: none;
-  margin-top: -1vh;
-  padding: 0;
-  .blog-card {
-    display: block;
-  	position: relative;
-    background: #444;
-  	background-size: cover;
-    background-position: center;
-    background-repeat:no-repeat;
-    font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    width: 100%;
-    max-width: 70vw;
-    height: $card-height;
-    box-shadow: 4px 7px 28px rgba(0,0,0,.1), 1px 3px 8px rgba(0,0,0,0.075);
-    transition: all 300ms ease-in-out;
-    margin: 7vh auto;
-    cursor: pointer;
-    &:first-child {
-      margin-top: 2vh;
-    }
-  	&:hover {
-  		box-shadow: 0 0 1px rgba(39,44,49,.2), 0 3px 16px rgba(39,44,49,.25);
-  		transform: translate3D(0,-.5px,0);
-  	}
-    .gatsby-image-wrapper {
-      min-width: 100%;
-      height: $card-height !important;
-      picture img {
-        min-width: 100%;
-        min-height: 100%;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%,-50%) !important;
-      }
-    }
-    .content-mask {
-      position: relative;
-      display: inline-block;
-      background: rgba(#fff, 0.8);
-      top: 0px;
-      width: 65%;
-      height: 100%;
-      padding: 0.75em 0 0.75em 2.5em;
-      overflow: hidden;
-      cursor: default;
-      z-index: 5;
-      h2 {
-        color: rgba(#000, 0.9);
-        font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
-        'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
-        font-size: 2.6em;
-        font-weight: 800;
-        line-height: 1.2;
-        text-transform: uppercase;
-        border-bottom: 2px solid rgba(#bbb, 0.75);
-      	margin-top: 0 !important;
-      	margin-bottom: 0.35em;
-      	padding-bottom: 5px;
-        a {
-          color: rgba(#000, 0.85);
-          border-bottom: none;
-        }
-      }
-      p {
-        color: rgba(#000, 0.65);
-      	font-size: 1.05em;
-      	line-height: 1.4;
-      	width: 100%;
-      	margin-top: 0.3em; 
-        margin-bottom: 2em;
-      	padding-left: 2px;
-        cursor: pointer;
-      	z-index: 9;
-      }
-      .card-category {
-      	display: inline-block;
-      	background: #2aa05a;
-      	color: rgba(#fff, 0.95);
-      	font-weight: 500;
-      	letter-spacing: 1px;
-      	text-align: center;
-      	min-width: 45px;
-      	border-radius: 5px;
-        text-shadow: 0 1px 0.25px rgba(#000, 0.5);
-        box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#ac1c38, 8%), 0.175);
-        transition: all 400ms ease-in-out;
-      	margin: 3vh 0;
-      	padding: 6px 8px;
-      	cursor: pointer;
-      	z-index: 9;
-      }
-      .card-date {
-        color: rgba(#000, 0.55);
-        font-size: 0.85em;
-      }
-    }
-    .horizontal {
-      display: inline-block;
-      position: relative;
-      background: linear-gradient(to top right, rgba(#fff, 0.8) 50%, transparent 0);
-      height: 100%;
-      width: 20%;
-      top: 0;
-      right: 0;
-      overflow: hidden;
-    }
-  }
-}
-
 .project-card {
+  min-height: 11rem;
   max-height: 250px;
   .gatsby-image-wrapper {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
     min-width: 100% !important;
     min-height: 100% !important;
     max-height: 100% !important;
     border-radius: 8px;
+  }
+  &:hover {
+    .desc {
+      color: rgba(#fff, 0.95);
+    }
   }
   &:hover .mask {
     .title, .desc {
