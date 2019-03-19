@@ -27,6 +27,14 @@ body {
   margin: 0;
 }
 
+code {
+  background: rgba(#000, 0.075);
+  color: rgba(#fff, 0.95);
+  font-size: 80%;
+  border-radius: 5px;
+  padding: 0 6px 4px;
+}
+
 .hero {
   top: 0;
 }
@@ -48,7 +56,7 @@ body {
     position: relative;
     background: transparent;
     color: #fff;
-    font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Titillium', 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.1rem;
     width: 100%;
     text-align: right;
@@ -81,8 +89,29 @@ body {
   }
 }
 
-.header {
-  height: 40vh !important;
+.code-svg {
+  width: 7rem;
+  height: 7rem;
+  top: 4rem;
+  left: 13rem;
+  @media screen and (min-width: 500px) {
+    width: 17rem;
+    height: 17rem;
+    top: 7rem;
+    left: 31rem;
+  }
+  @media screen and (min-width: 750px) {
+    width: 17rem;
+    height: 17rem;
+    top: 5rem;
+    left: 26rem;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 17rem;
+    height: 17rem;
+    top: 7rem;
+    left: 31rem;
+  }
 }
 
 .light-bg {
