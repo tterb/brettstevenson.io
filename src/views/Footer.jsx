@@ -21,18 +21,24 @@ const WaveWrapper = styled.div`
 
 const InnerWave = styled.div`
   ${tw`relative h-full`};
+  top: -3rem;
   svg {
     width: 100%;
-    height: 40vh;
+    height: 30vw;
+    min-height: 16rem;
   }
   path {
     ${waveAnimation('20s')};
+  }
+  @media screen and (min-width: 500px) {
+    top: 0rem;
   }
 `
 
 const FooterWrapper = styled.footer`
   ${tw`text-center text-grey absolute pin-b p-6 font-sans text-md lg:text-lg`};
   /* bottom: 1rem; */
+  font-size: 0.6rem;
   z-index: 9999;
   .separator {
     position: relative;
@@ -81,7 +87,7 @@ const GatsbyIcon = () => (
 const Footer = ({ children, offset }) => (
   <>
     <Content offset={`${offset}`} speed={0} factor={0.2}>
-      <DividerStatic fill="#23262b" speed={0.35} offset={`${offset}`} style={{ zIndex: `999` }} factor={0.2}>
+      <DividerStatic className="footer-bg" fill="#23262b" speed={0.35} offset={`${offset}`} style={{ zIndex: `999` }} factor={0.2}>
         <WaveWrapper style={{ height: `100%`, top: `2rem`, left: `0` }}>
           <InnerWave>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 338.05" preserveAspectRatio="none">
