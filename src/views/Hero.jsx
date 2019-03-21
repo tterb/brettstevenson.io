@@ -9,8 +9,6 @@ import Content from '../elements/Content'
 import { BigTitle, Subtitle } from '../elements/Titles'
 // Components
 import SVG from '../components/SVG'
-// Images
-import pattern from '../images/pattern-white.svg'
 
 
 const Wrapper = styled.div`
@@ -73,7 +71,7 @@ const CodeSVG = styled(Code)`
 
 const Hero = ({ offset }) => (
   <>
-  <Content className='hero' speed={0.4} offset={offset} bg={pattern}>
+  <Content className='hero' speed={0.4} offset={offset}>
     <Wrapper>
       <BigTitle>Hello,<br/>I'm Brett<br/>Stevenson<span className='accent'>.</span></BigTitle>
       <Subtitle>
