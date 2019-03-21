@@ -67,7 +67,6 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-prismjs`,
-          `gatsby-remark-emoji`,
           {
             resolve: `gatsby-remark-emojis`,
             options: {
