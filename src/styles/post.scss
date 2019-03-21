@@ -1,3 +1,5 @@
+$accent: #FD5750;
+
 .wrapper {
   color: rgba(#000, 0.85);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -26,7 +28,7 @@
     .post-date {
       display: block;
       position: relative;
-      color: rgba(#000, 0.65);
+      color: rgba(#000, 0.75);
       font-size: 18px;
       line-height: 1.6;
       text-align: right;
@@ -42,7 +44,7 @@
       height: 6px;
       width: 25%;
       top: -10px;
-      left: -2vw;
+      left: -2rem;
     }
   }
 }
@@ -60,18 +62,192 @@ h1, h2, h3, h4, h5, h6 {
 
 .post-body {
   h2 {
-    font-size: 1.85em;
+    font-size: 2rem;
     line-height: 1.1;
-    margin-bottom: 0.5em;
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    font-size: 1.6rem;
+    line-height: 1.75;
+    margin: 1rem 0 0.5rem;
   }
 
   p {
     color: rgba(#000, 0.8);
     letter-spacing: .015em;
+    margin: 1rem 0;
   }
 
   a {
     color: #0366d6;
     text-decoration: none;
+    transition: all 300ms ease-in-out;
+    &:hover {
+      color: lighten(#0366d6, 20%);
+    }
+  }
+  
+  img {
+    max-width: 100%;
+    margin: auto;
+    &.inline {
+      position: relative;
+      bottom: -3px;
+      margin-left: 1px;
+    }
+  }
+  
+  hr {
+    width: 98%;
+    border: none;
+    border-bottom: 2px solid rgba(#000, 0.095);
+    margin: 1.75em auto;
+  }
+  
+  pre code {
+    padding: 1.15em 1.4em 1.65em;
+  }
+  
+  .gatsby-highlight pre {
+    margin: 1.5em 0;
+  }
+  
+  blockquote {
+    background: transparent;
+    quotes: "“""”""‘""’  ";
+    width: 90%;
+    border: 0;
+    border-radius: 4px;
+    margin: 2.5em auto !important;
+    padding: 0;
+    &::before, &::after {
+      display: block;
+      position: relative;
+      color: #878787;
+      font-family: sans-serif !important;
+      font-size: 6.25em;
+      line-height: 0.075em;
+      text-shadow: none;
+    }
+    &::before {
+      content: open-quote;
+      top: 0.25em;
+      left: 0;
+      float: left;
+      margin: 0 0.075em 0 0;
+    }
+    &::after {
+      content: close-quote;
+      top: 0.25em;
+      right: 0;
+      float: right;
+      vertical-align: -0.6em;
+      margin-left: 0.175em !important;
+    }
+    p {
+      display: flex;
+      background: rgba(#686B6D, 0.05);
+      color: rgba(#000, 0.75);
+      font-size: 0.95em;
+      line-height: 1.3em;
+      width: 90%;
+      border-radius: 4px;
+      box-shadow: 0 1px 5px rgba(#000, 0.25);
+      margin: 0 auto;
+      padding: 0.85em 1.2em 1em 1.4em;
+    }
+  }
+  
+  .badges {
+    text-align: right;
+  }
+}
+
+.author-info {
+  width: 80%;
+  margin: 3.5rem auto 4.5rem;
+  .author-img {
+    width: 135px !important;
+    height: 135px !important;
+    border-radius: 100%;
+  }
+  .author-text {
+    display: inline-block;
+    max-width: 60%;
+    vertical-align: super;
+    margin-left: 1rem;
+    .author-name {
+      color: rgba(#000, 0.8);
+      font-size: 1.4rem;
+      margin: 0.75rem auto 0.5rem;
+    }
+    .author-bio, p {
+      color: rgba(#000, 0.7);
+      line-height: 1.25;
+      margin: 0.25rem auto;
+      padding-left: 2px;
+    }
+  }
+  .author-links {
+    list-style: none;
+    padding-left: 6px;
+    li {
+      display: inline-block;
+      margin-right: 8px;
+      cursor: pointer;
+      a {
+        color: rgba(#000, 0.7);
+        transition: all 300ms ease-in-out;
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+  }
+}
+
+.prev-next {
+  width: 75%;
+  height: 3.5rem;
+  margin: 0 auto 7rem;
+  .prev, .next {
+    position: absolute;
+    max-width: 25%;
+    border: 3px solid rgba(#000, 0.7);
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(#000, 0.3);
+    padding: 1rem 1.5rem;
+    a {
+      color: rgba(#000, 0.8);
+      text-decoration: none;
+    }
+    svg {
+      font-size: 1.25rem;
+      vertical-align: text-top;
+      transition: all 350ms ease-in-out;
+      margin: 0;
+    }
+    &:hover {
+      color: rgba(#000, 0.8);
+      cursor: pointer;
+      svg {
+        color: $accent;
+        // font-size: 1.5rem;
+        // vertical-align: middle;
+      }
+    }
+  }
+  .prev {
+    left: 12.5%;
+    svg {
+      margin-right: 0.55rem;
+    }
+  }
+  .next {
+    right: 12.5%;
+    svg {
+      margin-left: 0.55rem;
+    }
   }
 }
