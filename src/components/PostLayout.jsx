@@ -24,7 +24,9 @@ class Template extends React.Component {
           url={`/blog/${this.props.post.slug}`}
         />
         <Nav active={this.props.location.pathname} />
-        {children}
+        <div style={{ background: '#fff' }}>
+          {children}
+        </div>
       </div>
     )
   }
