@@ -7,6 +7,10 @@ if (process.env.ENVIRONMENT !== "production") {
   dotenv.config();
 }
 
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 // const { spaceId, accessToken } = process.env;
 
 let contentfulConfig
@@ -23,6 +27,7 @@ contentfulConfig = {
 }
 
 const { spaceId, accessToken } = contentfulConfig
+const githubToken = process.env.GITHUB_TOKEN
 
 if (!spaceId || !accessToken) {
   throw new Error(
@@ -61,12 +66,25 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-prismjs`,  
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-emoji`,
+          {
+            resolve: `gatsby-remark-emojis`,
+            options: {
+              class: `emoji`,
+              size: 32,
+            },
+          }
         ],
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        stripMetadata: true,
+      },
+    },
     {
       resolve: `gatsby-source-contentful`,
       options: contentfulConfig,
@@ -76,5 +94,16 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-transition-link`,
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `GitHub`,
+        fieldName: `github`,
+        url: `https://api.github.com/graphql`,
+        headers: {
+          Authorization: `bearer ${githubToken}`,
+        }
+      },
+    },
   ],
 }
