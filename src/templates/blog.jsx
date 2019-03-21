@@ -1,16 +1,17 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import { Parallax } from 'react-spring/renderprops-addons'
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import BlogCard from '../components/BlogCard'
+import PostTags from '../components/PostTags'
 import Nav from '../components/Nav'
 import SVG from '../components/SVG'
 // Elements
@@ -50,23 +51,21 @@ class Blog extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const { currentPage, numPages } = this.props.pageContext
-    console.log(currentPage)
-    console.log(numPages)
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
-    const prevPage = currentPage - 1 === 1 ? "/" : (currentPage - 1).toString()
+    const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString()
     const nextPage = (currentPage + 1).toString()
     return (
       <>
       <Layout />
-        <Parallax pages={3.5}>
+        <Parallax pages={3.55}>
           <Nav style={navStyle} />
           <Header offset={0} factor={0.4}>
             <BigTitle>Blog<span className='accent'>.</span></BigTitle>
           </Header>
-          <Content className="light-bg blog-content" offset={0.4} factor={3} style={`padding: 14rem 5rem !important`}>
-            <div className="blog-container">
-              <ul className="blog-list">
+          <Content className='light-bg blog-content' offset={0.4} factor={3} style={`padding: 14rem 5rem !important`}>
+            <div className='blog-container'>
+              <ul className='blog-list'>
                 {posts.map(({ node }) => {
                   return (
                     <li key={node.slug}>
@@ -75,25 +74,26 @@ class Blog extends React.Component {
                   )
                 })}
               </ul>
-              <Sidebar className="sidebar">
-                <ul className="sidebar-icons">
-                  <li><a href=''><FontAwesomeIcon icon={faSearch}/></a></li>
-                  <li><a href=''><FontAwesomeIcon icon={faTags}/></a></li>
-                  <li><a href=''><FontAwesomeIcon icon={faArchive}/></a></li>
+              <Sidebar className='sidebar'>
+                <ul className='sidebar-icons'>
+                  <li><AniLink cover bg='#23262b' duration={1} direction='down' to=''><FontAwesomeIcon icon={faSearch}/></AniLink></li>
+                  <li><AniLink cover bg='#23262b' duration={1} direction='down' to='../tags'><FontAwesomeIcon icon={faTags}/></AniLink></li>
+                  <li><AniLink cover bg='#23262b' duration={1} direction='left' to=''><FontAwesomeIcon icon={faArchive}/></AniLink></li>
                 </ul>
                 <hr/>
+                <PostTags className='sidebar-tags' limit={20} />
               </Sidebar>
-              <Pagination className="pagination">
+              <Pagination className='pagination'>
                 {!isFirst && (
-                  <AniLink cover bg="#23262b" duration={1} to={`blog/${prevPage}`} rel="prev"><FontAwesomeIcon icon={faArrowAltCircleLeft}/></AniLink>
+                  <AniLink cover bg='#23262b' duration={1} to={`blog/${prevPage}`} rel='prev'><FontAwesomeIcon icon={faArrowAltCircleLeft}/></AniLink>
                 )}
                 {!isLast && (
-                  <AniLink cover bg="#23262b" duration={1} to={`blog/${nextPage}`} rel="next"><FontAwesomeIcon icon={faArrowAltCircleRight}/></AniLink>
+                  <AniLink cover bg='#23262b' duration={1} to={`blog/${nextPage}`} rel='next'><FontAwesomeIcon icon={faArrowAltCircleRight}/></AniLink>
                 )}
               </Pagination>
             </div>
           </Content>
-          <Footer offset={3.2} factor={0.5} />
+          <Footer offset={3.25} factor={0.5} />
         </Parallax>
       </>
     )
