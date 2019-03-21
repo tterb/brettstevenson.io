@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Image from 'gatsby-image'
-import styled from 'styled-components'
 import tw from 'tailwind.macro'
+import styled from 'styled-components'
+import kebabCase from "lodash/kebabCase"
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import PropTypes from 'prop-types'
 // FontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -59,19 +60,18 @@ class BlogCard extends React.Component {
           style={{ position: `absolute` }} 
           fixed={this.props.post.heroImage.fixed}/>
         <div className='content-mask'>
-          <span className={`card-category ${this.props.post.category.toString().toLowerCase()}`}>{this.props.post.category}</span>
-          <h2>
-            <Link to={`/blog/${this.props.post.slug}`}>{this.props.post.title}</Link>
-          </h2>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: this.props.post.description.childMarkdownRemark.html,
-            }}
-          />
-          <span className='card-date'>
-            <FontAwesomeIcon icon={faCalendarAlt} style={{ margin: `0 6px` }}/>
-            {this.props.post.publishDate}
-          </span>
+          <span className={`card-category ${kebabCase(this.props.post.category.toString().toLowerCase())}`}>{this.props.post.category}</span>
+          <div className='text-container'>
+            <h2>
+              <AniLink cover bg="#23262b" duration={1} direction='left' to={`/blog/${this.props.post.slug}`}>{this.props.post.title}</AniLink>
+            </h2>
+            <p dangerouslySetInnerHTML={{ __html: this.props.post.description.childMarkdownRemark.html }}
+            />
+            <span className='card-date'>
+              <FontAwesomeIcon icon={faCalendarAlt} style={{ margin: `0 6px` }}/>
+              {this.props.post.publishDate}
+            </span>
+          </div>
         </div>
         <div className="horizontal"></div>
       </div>
