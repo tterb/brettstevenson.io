@@ -2,6 +2,17 @@
 $accent: #FD5750;
 $card-height: 53vh;
 
+$red: #d83737;
+$orange: #ed5820;
+$yellow: #f9bd2d;
+$green: #2aa05a;
+$teal: #00897b;
+$light-blue: #00b8d4;
+$blue: #039be5;
+$purple: #7d77b3;
+$pink: #e23f7e;
+
+
 .blog-content {
   padding: 4rem 6vw 18rem;
   .blog-container {
@@ -30,6 +41,32 @@ $card-height: 53vh;
   }
 }
 
+.sidebar {
+  .tags-list {
+    text-align: left;
+    padding: 0 0 0 1.25rem;
+    li {
+      background: rgba(#eee, 0.9);
+      font-size: 0.9rem;
+      text-align: left;
+      border: none;
+      box-shadow: 0 1.5px 4px -2px rgba(#000, 0.4);
+      transition: all 350ms ease-in-out;
+      padding: 4px 6px;
+      a {
+        color: rgba(#000, 0.4);
+        // text-shadow: 0 0.5px 0.25px rgba(#000, 0.6);
+      }
+      &:hover {
+        box-shadow: 0 2px 4.5px -2px rgba(#000, 0.7);
+        a {
+          color: rgba(#000, 0.6);
+        }
+      }
+    }
+  }
+}
+
 .blog-list {
   display: inline-block;
   list-style: none;
@@ -43,8 +80,7 @@ $card-height: 53vh;
   	background-size: cover;
     background-position: center;
     background-repeat:no-repeat;
-    font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    // font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
     width: 100%;
     // max-width: 65vw;
     height: $card-height;
@@ -82,12 +118,15 @@ $card-height: 53vh;
       overflow: hidden;
       cursor: pointer;
       z-index: 5;
+      .text-container {
+        position: absolute;
+        top: 5.5rem;
+      }
       h2 {
         color: rgba(#000, 0.9);
-        font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont,
-        'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        // font-family: 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
         font-size: 2.6em;
-        font-weight: 800;
+        font-weight: 700;
         line-height: 1.2;
         text-transform: uppercase;
         border-bottom: 2px solid rgba(#bbb, 0.75);
@@ -102,6 +141,7 @@ $card-height: 53vh;
       p {
         color: rgba(#000, 0.65);
       	font-size: 1.05em;
+        letter-spacing: 0.5px;
       	line-height: 1.4;
       	width: 100%;
       	margin-top: 0.3em; 
@@ -147,44 +187,44 @@ $card-height: 53vh;
 .card-category {
   &.ruby,
   &.jekyll {
-    background: #d83737;
+    background: $red;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#d83737, 8%), 0.175);
   }
   &.discuss {
-    background: #eda800;
+    background: $orange;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#eda800, 8%), 0.175);
   }
   &.lua {
-    background: #fbc02d;
+    background: $yellow;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#fbc02d, 8%), 0.175);
   }
   &.python {
-    background: #2aa05a;
+    background: $green;
     box-shadow: 0 0 1px rgba(#000,0.1), 0 2px 6px rgba(darken(#2aa05a, 8%), 0.175);
   }
   &.atom, 
   &.tools,
   &.open-source,
   &.spotlight {
-    background: #00897b;
+    background: $teal;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#00897b, 8%), 0.175);
   }
   &.design, 
   &.ui {
-    background: #00b8d4;
+    background: $light-blue;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#00b8d4, 8%), 0.175);
   }
   &.c {
-    background: #039be5;
+    background: $blue;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#039be5, 8%), 0.175);
   }
   &.tutorial {
-    background: #7d77b3;
+    background: $purple;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#7d77b3, 8%), 0.175);
   }
   &.web,
   &.javascript {
-    background: #e23f7e;
+    background: $pink;
   }
 }
 
@@ -205,6 +245,9 @@ $card-height: 53vh;
         &:hover {
           color: $accent;
         }
+      }
+      &:last-child {
+        margin-right: 0;
       }
     }
   }
