@@ -1,0 +1,42 @@
+.tag-list {
+  margin-bottom: 3rem;
+  li {
+    margin-bottom: 6px;
+    a {
+      color: rgba(#fff, 0.8);
+      .date {
+        color: rgba(#fff, 0.7);
+        width: max-content;
+        border: none;
+        border-right: 1px solid rgba(#fff, 0.35);
+        margin-right: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-right: 0.75rem;
+      }
+      &:hover {
+        color: rgba(#fff, 0.9);
+        .date {
+          color: rgba(#fff, 0.7);
+        }
+      }
+    }
+  }
+}
+.all-tags-container {
+  margin-top: 4rem;
+  .all-tags {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.25rem;
+    border: 2px solid rgba(255,255,255,0.8);
+    border-radius: 80px;
+    padding: 0.5rem 1.25rem;
+    &:hover {
+      background: rgba(255,255,255,0.8);
+      color: SlateBlue;
+    }
+  }
+}
