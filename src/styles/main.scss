@@ -29,7 +29,7 @@ body {
 
 code {
   background: rgba(#000, 0.075);
-  color: rgba(#fff, 0.95);
+  color: rgba(#000, 0.75);
   font-size: 80%;
   border-radius: 5px;
   padding: 0 6px 4px;
@@ -40,7 +40,7 @@ code {
 }
 
 .accent {
-  color: #F05750;
+  color:  $accent;
   font-size: 1.1em;
   line-height: 0.7;
 }
@@ -215,6 +215,30 @@ code {
     min-height: 100% !important;
     max-height: 100% !important;
     border-radius: 8px;
+  }
+  .project-links {
+    list-style: none;
+    padding: 0;
+    li {
+      display: inline-block;
+      font-size: 1.5rem;
+      padding: 0 0.5rem;
+      &.hidden {
+        display: none;
+      }
+      a {
+        color: rgba(#fff, 0.75);
+        svg {
+          filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.6));
+        }
+        &:hover {
+          color: #fff;
+          svg {
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.6));
+          }
+        }
+      }
+    }
   }
   &:hover {
     .desc {
