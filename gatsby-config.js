@@ -93,16 +93,6 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-transition-link`,
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
-        typeName: `GitHub`,
-        fieldName: `github`,
-        url: `https://api.github.com/graphql`,
-        headers: {
-          Authorization: `bearer ${githubToken}`,
-        }
-      },
-    },
+
   ],
 }
