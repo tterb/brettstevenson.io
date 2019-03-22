@@ -30,7 +30,6 @@
     "gatsby-remark-prismjs": "^3.2.4",
     "gatsby-source-contentful": "^2.0.41",
     "gatsby-source-filesystem": "^2.0.27",
-    "gatsby-source-graphql": "^2.0.15",
     "gatsby-transformer-remark": "^2.3.4",
     "gatsby-transformer-sharp": "^2.1.17",
     "gsap": "^2.1.2",
