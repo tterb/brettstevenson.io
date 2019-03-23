@@ -49,6 +49,10 @@ module.exports = {
         name: `Blog`,
         link: `/blog`
       },
+      {
+        name: `Contact`,
+        link: `/contact`
+      },
     ]
   },
   /* Plugins */
@@ -93,6 +97,5 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-transition-link`,
-
   ],
 }

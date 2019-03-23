@@ -1,0 +1,102 @@
+$accent: #FD5048;
+
+.contact-input {
+  position: relative;
+  margin-bottom: 1.5rem;
+  input, textarea {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    -webkit-text-fill-color: rgba(255,255,255,0.8);
+    text-align: left;
+    line-height: 1.2;
+    width: 80%;
+    border: none;
+    transition: all 350ms ease-in-out;
+    padding: 0.5rem 1rem 0.5rem 0.25rem;
+    outline: none;
+    &::placeholder, &::-webkit-input-placeholder {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    + .focus-input::after {
+      top: 10px;
+      left: 1px !important;
+    }
+    &:focus {
+      + .focus-input::before {
+        background: $accent;
+      }
+      + .focus-input::after {
+        color: #888;
+        top: -15px;
+        left: 1px;
+      }
+    }
+  }
+  &.has-input {
+    input + .focus-input::after,
+    textarea + .focus-input::after {
+      color: #888;
+      top: -15px;
+      left: 1px;
+    }
+  }
+  .focus-input {
+    display: block;
+    font-size: 1.2rem;
+    width: 80%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+    &::before {
+      display: block;
+      background: rgba(255,255,255,0.3);
+      content: "";
+      width: 100%;
+      height: 2px;
+      left: 0;
+      bottom: -2px;
+      transition: all 400ms;
+    }
+    &::after {
+      display: block;
+      position: absolute;
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.2;
+      content: attr(data-placeholder);
+      width: 100%;
+      top: 0px;
+      transition: all 400ms;
+    }
+  }
+  textarea {
+    min-height: 8rem;
+  }
+  &.has-input textarea, textarea:focus {
+    min-height: 12rem;
+    margin-top: 0.25rem;
+  }
+}
+
+input, textarea {
+  &:active, &:focus, &:visited,
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover, 
+  &:-webkit-autofill:focus, 
+  &:-webkit-autofill:active,
+  &:-internal-autofill-selected {
+    background-color: #161719 !important;
+    color: rgba(255,255,255,0.8) !important;
+    border: none !important;
+    box-shadow: 0 0 0 30px #161719 inset !important;
+    outline-offset: -2px;
+  }
+}
+
+::-webkit-input-placeholder,
+::-ms-input-placeholder,
+::-moz-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255,255,255,0.4) !important;
+}
