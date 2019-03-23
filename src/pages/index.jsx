@@ -14,8 +14,7 @@ import Projects from '../views/Projects'
 import About from '../views/About'
 import Contact from '../views/Contact'
 import Footer from '../views/Footer'
-
-// import banner from '../images/banner.jpg'
+// Styles
 import '../styles/normalize.scss'
 import '../styles/main.scss'
 
@@ -32,7 +31,7 @@ class Index extends React.Component {
           <About offset={1} id='about' />
           <Projects projects={projects} offset={2.5} id='projects'/>
           <Contact offset={3.825} />
-          <Footer offset={4.1} />
+          <Footer offset={4.05} />
         </Parallax>
       </>
     )
@@ -46,6 +45,8 @@ export const projectQuery = graphql`
         node {
           title
           link
+          github
+          site
           lang
           image {
             fixed(resizingBehavior: SCALE) {
