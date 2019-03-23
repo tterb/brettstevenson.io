@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-import PropTypes from "prop-types"
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
-import upperFirst from 'lodash/upperFirst'
+import _ from 'lodash'
+import PropTypes from "prop-types"
 import { Parallax } from 'react-spring/renderprops-addons'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
@@ -52,7 +52,7 @@ class Tags extends React.Component {
         />
         <Content speed={0.25} offset={0.2} factor={1} style={`padding-top: 0 !important`} className='tags-content'>
           <Inner>
-            <TagTitle>{upperFirst(tag)}</TagTitle>
+            <TagTitle>{_.upperFirst(tag)}</TagTitle>
             <TagList className='tag-list'>
               {edges.map(({ node }) => {
                 return (
