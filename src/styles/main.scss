@@ -1,5 +1,5 @@
 
-$accent: #FD5750;
+$accent: #FD5048;
 $card-height: 53vh;
 
 @font-face {
@@ -95,18 +95,24 @@ code {
   top: 4rem;
   left: 13rem;
   @media screen and (min-width: 500px) {
-    width: 17rem;
-    height: 17rem;
-    top: 7rem;
-    left: 31rem;
+    width: 10rem;
+    height: 10rem;
+    top: 4rem;
+    left: 18rem;
   }
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 600px) {
+    width: 15rem;
+    height: 15rem;
+    top: 5.5rem;
+    left: 21.5rem;
+  }
+  @media screen and (min-width: 700px) {
     width: 17rem;
     height: 17rem;
     top: 5rem;
     left: 26rem;
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 900px) {
     width: 17rem;
     height: 17rem;
     top: 7rem;

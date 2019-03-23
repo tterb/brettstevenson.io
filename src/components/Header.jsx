@@ -10,8 +10,13 @@ import { ParallaxLayer } from 'react-spring/renderprops-addons'
 import SVG from './SVG'
 
 const HeaderContent = styled(ParallaxLayer)`
-  ${tw`p-4 px-6 md:p-12 lg:p-16 px-24 justify-center items-center flex z-50`};
-  height: 40vh !important;
+  ${tw`p-2 px-8 md:p-12 lg:p-16 justify-center items-center flex z-50`};
+  @media (min-width: 400px) {
+    height: 35vh !important;
+  }
+  @media (min-width: 600px) {
+    height: 40vh !important;
+  }
 `
 
 const Wrapper = styled.div`
@@ -19,9 +24,9 @@ const Wrapper = styled.div`
   position: relative;
 `
 
-const Header = ({ children, offset }) => (
+const Header = ({ children, offset, speed }) => (
   <>
-    <HeaderContent className='header' speed={0.4} offset={offset}>
+    <HeaderContent className='header' speed={speed} offset={offset}>
       <Wrapper>{children}</Wrapper>
     </HeaderContent>
   </>
