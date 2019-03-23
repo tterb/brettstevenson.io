@@ -76,12 +76,12 @@ class Blog extends React.Component {
               </ul>
               <Sidebar className='sidebar'>
                 <ul className='sidebar-icons'>
-                  <li><AniLink cover bg='#23262b' duration={1} direction='down' to=''><FontAwesomeIcon icon={faSearch}/></AniLink></li>
-                  <li><AniLink cover bg='#23262b' duration={1} direction='down' to='../tags'><FontAwesomeIcon icon={faTags}/></AniLink></li>
-                  <li><AniLink cover bg='#23262b' duration={1} direction='left' to=''><FontAwesomeIcon icon={faArchive}/></AniLink></li>
+                  <li><AniLink cover bg='#23262b' duration={1} direction='left' to=''><FontAwesomeIcon icon={faSearch}/></AniLink></li>
+                  <li><AniLink cover bg='#23262b' duration={1} direction='left' to='../tags'><FontAwesomeIcon icon={faTags}/></AniLink></li>
+                  <li><AniLink cover bg='#23262b' duration={1} direction='left' to='../archive'><FontAwesomeIcon icon={faArchive}/></AniLink></li>
                 </ul>
                 <hr/>
-                <PostTags className='sidebar-tags' limit={20} />
+                <PostTags className='sidebar-tags' limit={12} />
               </Sidebar>
               <Pagination className='pagination'>
                 {!isFirst && (
