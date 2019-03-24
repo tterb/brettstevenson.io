@@ -2,14 +2,11 @@ import React from 'react';
 import Helmet from 'react-helmet'
 
 // Meta-tags for blog posts
-
 function Metatags(props) {
-
   const { title, description, url, pathname, thumbnail } = props
-
   return (
     <Helmet>
-      <html lang="en" />
+      <html lang='en' />
       <title>{title}</title>
       <meta name='title' content={title} />
       <meta name='description' content={description} />
@@ -31,4 +28,5 @@ function Metatags(props) {
     </Helmet>
   )
 }
+
 export default Metatags;
