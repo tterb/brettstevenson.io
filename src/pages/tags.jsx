@@ -5,11 +5,11 @@ import { colors } from '../../tailwind'
 import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
 import { Parallax } from 'react-spring/renderprops-addons'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
+import PageLink from '../components/PageLink'
 // Elements
 import Content from '../elements/Content'
 import Inner from '../elements/Inner'
@@ -76,9 +76,9 @@ const TagsPage = ({
         <TagList className='tags-list'>
           {group.map(tag => (
             <li key={tag.fieldValue}>
-              <AniLink cover bg={colors['blue-black']} duration={1} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+              <PageLink to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                 {tag.fieldValue} ({tag.totalCount})
-              </AniLink>
+              </PageLink>
             </li>
           ))}
         </TagList>

@@ -1,11 +1,12 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 import tw from 'tailwind.macro'
+import { colors } from '../../tailwind'
 import styled from 'styled-components'
 import _ from 'lodash'
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types'
 import { Parallax } from 'react-spring/renderprops-addons'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import PageLink from '../components/PageLink'
 // Components
 import Layout from '../components/Layout'
 import Nav from '../components/Nav'
@@ -34,7 +35,6 @@ class Tags extends React.Component {
   render() {
     const { tag } = this.props.pageContext
     const edges = _.get(this, 'props.data.allContentfulBlogPost.edges')
-  
     return (
       <>
       <Layout />
@@ -44,7 +44,7 @@ class Tags extends React.Component {
           <BigTitle>Tags<span className='accent'>.</span></BigTitle>
         </Header>
         <Divider
-          bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)"
+          bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
           clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)'
           speed={0.2}
           offset={0.2}
@@ -60,8 +60,8 @@ class Tags extends React.Component {
                 )
               })}
             </TagList>
-            <div className="all-tags-btn">
-              <AniLink cover bg="#23262b" duration={1} direction="right" to="/tags" className="all-tags btn">All tags</AniLink>
+            <div className='all-tags-btn'>
+              <PageLink direction='right' to='/tags' className='all-tags btn'>All tags</PageLink>
             </div>
           </Inner>
         </Content>

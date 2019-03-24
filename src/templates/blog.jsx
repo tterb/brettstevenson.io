@@ -5,13 +5,13 @@ import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
 import { Parallax } from 'react-spring/renderprops-addons'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
 import Layout from '../components/Layout'
 import Header from '../components/Header'
+import Nav from '../components/Nav'
 import BlogCard from '../components/BlogCard'
 import PostTags from '../components/PostTags'
-import Nav from '../components/Nav'
+import PageLink from '../components/PageLink'
 // Elements
 import { BigTitle } from '../elements/Titles'
 import Content from '../elements/Content'
@@ -50,7 +50,7 @@ class Blog extends React.Component {
     return (
       <>
       <Layout />
-        <Parallax pages={3.55}>
+        <Parallax pages={3.525}>
           <Nav style={navStyle} />
           <Header offset={0} factor={0.4}>
             <BigTitle>Blog<span className='accent'>.</span></BigTitle>
@@ -68,24 +68,24 @@ class Blog extends React.Component {
               </ul>
               <Sidebar className='sidebar'>
                 <ul className='sidebar-icons'>
-                  <li><AniLink cover bg={colors['blue-black']} duration={1} direction='left' to=''><FontAwesomeIcon icon={faSearch}/></AniLink></li>
-                  <li><AniLink cover bg={colors['blue-black']} duration={1} direction='left' to='../tags'><FontAwesomeIcon icon={faTags}/></AniLink></li>
-                  <li><AniLink cover bg={colors['blue-black']} duration={1} direction='left' to='../archive'><FontAwesomeIcon icon={faArchive}/></AniLink></li>
+                  <li><PageLink to=''><FontAwesomeIcon icon={faSearch}/></PageLink></li>
+                  <li><PageLink to='../tags'><FontAwesomeIcon icon={faTags}/></PageLink></li>
+                  <li><PageLink to='../archive'><FontAwesomeIcon icon={faArchive}/></PageLink></li>
                 </ul>
                 <hr/>
                 <PostTags className='sidebar-tags' limit={12} />
               </Sidebar>
               <Pagination className='pagination'>
                 {!isFirst && (
-                  <AniLink cover bg={colors['blue-black']} duration={1} to={`blog/${prevPage}`} rel='prev'><FontAwesomeIcon icon={faArrowAltCircleLeft}/></AniLink>
+                  <PageLink to={`blog/${prevPage}`} rel='prev'><FontAwesomeIcon icon={faArrowAltCircleLeft}/></PageLink>
                 )}
                 {!isLast && (
-                  <AniLink cover bg={colors['blue-black']} duration={1} to={`blog/${nextPage}`} rel='next'><FontAwesomeIcon icon={faArrowAltCircleRight}/></AniLink>
+                  <PageLink to={`blog/${nextPage}`} rel='next'><FontAwesomeIcon icon={faArrowAltCircleRight}/></PageLink>
                 )}
               </Pagination>
             </div>
           </Content>
-          <Footer offset={3.25} factor={0.5} />
+          <Footer offset={3.225} factor={0.5} />
         </Parallax>
       </>
     )

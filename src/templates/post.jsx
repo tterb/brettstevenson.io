@@ -3,11 +3,13 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import get from 'lodash/get'
 import { colors } from '../../tailwind'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
 import PostLayout from '../components/PostLayout'
 import PostBody from '../components/PostBody'
 import PostAuthor from '../components/PostAuthor'
+import PageLink from '../components/PageLink'
+// Fonts
+import 'typeface-source-code-pro'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
@@ -38,17 +40,17 @@ class BlogPostTemplate extends React.Component {
         <div className='prev-next'>
           {
             prev && <span className='prev'>
-            <AniLink cover bg={colors['blue-black']} duration={1} direction='right' to={`blog/${prev.node.slug}`} rel='prev'>
+            <PageLink direction='right' to={`blog/${prev.node.slug}`} rel='prev'>
               <FontAwesomeIcon icon={faArrowAltCircleLeft} />
               <span className='prev-title'>{prev.node.title}</span>
-            </AniLink></span>
+            </PageLink></span>
           }
           {
             next && <span className='next'>
-            <AniLink cover bg={colors['blue-black']} duration={1} direction='left' to={`blog/${next.node.slug}`} rel='next'>
+            <PageLink to={`blog/${next.node.slug}`} rel='next'>
               <span className='next-title'>{next.node.title}</span>
               <FontAwesomeIcon icon={faArrowAltCircleRight} />
-            </AniLink></span>
+            </PageLink></span>
           }
         </div>
       </PostLayout>

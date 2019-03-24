@@ -4,7 +4,7 @@ import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
 import _ from 'lodash'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import PageLink from './PageLink'
 
 const TagList = styled.ul`
   ${tw `list-reset text-center text-lg`}
@@ -46,11 +46,11 @@ export default () => (
     `}
     render={data => (
       <TagList className='tags-list'>
-        {_.shuffle(data.allContentfulBlogPost.group).map(tag => (
+        {data.allContentfulBlogPost.group.map(tag => (
           <li key={tag.fieldValue}>
-            <AniLink cover bg={colors['blue-black']} duration={1} to={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
+            <PageLink to={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
               {tag.fieldValue} ({tag.totalCount})
-            </AniLink>
+            </PageLink>
           </li>
         ))}
       </TagList>

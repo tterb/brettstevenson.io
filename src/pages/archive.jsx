@@ -5,12 +5,12 @@ import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
 import { Parallax } from 'react-spring/renderprops-addons'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
 import Layout from '../components/Layout'
 import Nav from '../components/Nav'
 import Header from '../components/Header'
 import InlinePost from '../components/InlinePost'
+import PageLink from '../components/PageLink'
 // Elements
 import Content from '../elements/Content'
 import Inner from '../elements/Inner'
@@ -59,7 +59,7 @@ class ArchivePage extends React.Component {
               })}
             </ArchiveList>
             <div className='back-blog-btn'>
-              <AniLink cover bg={colors['blue-black']} duration={1} direction='right' to='/tags' className='back-blog btn'>Back to Blog</AniLink>
+              <PageLink direction='right' to='/tags' className='back-blog btn'>Back to Blog</PageLink>
             </div>
           </Inner>
         </Content>

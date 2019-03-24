@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import tw from 'tailwind.macro'
 import { colors, accent } from '../../tailwind'
 import PropTypes from 'prop-types'
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
 // Elements
 import { Divider } from '../elements/Dividers'
 import Content from '../elements/Content'
 import Inner from '../elements/Inner'
 import { Title } from '../elements/Titles'
 // Components
+import PageLink from '../components/PageLink';
 import Cube from '../components/Cube'
 
 
@@ -32,7 +32,7 @@ const Contact = ({ offset }) => (
         <Cube color='purple' />
         <Title>Get in touch</Title>
         <ContactText>
-          Say <AniLink cover bg={colors['blue-black']} duration={0.75} direction='left' to={'./Contact'}>Hi</AniLink> or find me on other platforms:{' '}
+          Say <PageLink to='./Contact'>Hi</PageLink> or find me on other platforms:{' '}
           <a href='https://github.com/tterb' aria-label='GitHub'>GitHub</a> &{' '}
           <a href='https://www.dribbble.com/tterb/' aria-label='Dribbble'>Dribbble</a>
         </ContactText>

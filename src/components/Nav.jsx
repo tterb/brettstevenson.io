@@ -1,6 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { colors } from '../../tailwind'
+import PageLink from './PageLink';
 
 const navStyle = {
   position: 'absolute',
@@ -28,7 +29,7 @@ const Nav = () => (
           {data.site.siteMetadata.menuLinks.map(item => {
             return (
               <li className='menu-item' key={item.name}>
-                <AniLink cover bg="#23262b" duration={1} to={item.link} >{item.name}</AniLink>
+                <PageLink duration={1} direction='down' to={item.link}>{item.name}</PageLink>
               </li>
             )
           })}
@@ -39,8 +40,3 @@ const Nav = () => (
 )
 
 export default Nav
-
-// Nav.propTypes = {
-  // active: PropTypes.string,
-  // items: PropTypes.arrayOf(PropTypes.string).isRequired
-// }

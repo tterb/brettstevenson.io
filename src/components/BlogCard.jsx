@@ -4,7 +4,7 @@ import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import PageLink from './PageLink';
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons'
@@ -62,7 +62,7 @@ class BlogCard extends React.Component {
           <span className={`card-category ${kebabCase(this.props.post.category.toString().toLowerCase())}`}>{this.props.post.category}</span>
           <div className='text-container'>
             <h2>
-              <AniLink cover bg={colors['blue-black']} duration={1} direction='left' to={`/blog/${this.props.post.slug}`}>{this.props.post.title}</AniLink>
+              <PageLink to={`/blog/${this.props.post.slug}`}>{this.props.post.title}</PageLink>
             </h2>
             <p dangerouslySetInnerHTML={{ __html: this.props.post.description.childMarkdownRemark.html }}
             />
