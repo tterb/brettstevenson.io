@@ -45,7 +45,7 @@ const defaultConfig = require('tailwindcss/defaultConfig')();
 
 const colors = {
   transparent: 'transparent',
-
+  
   'blue-black': '#161719',
   'blue-grey': '#23262b',
 
@@ -172,6 +172,8 @@ const colors = {
   'pink-lightest': '#FFBCCD',
 }
 
+const accent = '#FD5048'
+
 module.exports = {
   /*
   |-----------------------------------------------------------------------------
@@ -187,7 +189,7 @@ module.exports = {
   */
 
   colors,
-
+  accent,
   /*
   |-----------------------------------------------------------------------------
   | Screens                      https://tailwindcss.com/docs/responsive-design
@@ -236,8 +238,7 @@ module.exports = {
   fonts: {
     sans: [
       'Titillium',
-      'Open Sans',
-      'Nunito',
+      'Product Sans',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
@@ -252,8 +253,7 @@ module.exports = {
     ],
     title: [
       'Product Sans',
-      'Nunito',
-      'Open Sans',
+      'Titillium',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
@@ -274,7 +274,7 @@ module.exports = {
       'Georgia',
       'serif',
     ],
-    mono: ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+    mono: ['Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
   },
 
   /*
@@ -305,7 +305,7 @@ module.exports = {
     '2xl': '1.5rem', // 24px
     '3xl': '1.875rem', // 30px
     '4xl': '2.25rem', // 36px
-    '5xl': '3rem', // 48px
+    '5xl': '4rem',
     '6xl': '5.5rem',
     '7xl': '6.5rem',
   },
