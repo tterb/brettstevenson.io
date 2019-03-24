@@ -13,7 +13,6 @@ import Header from '../components/Header'
 import BlogCard from '../components/BlogCard'
 import PostTags from '../components/PostTags'
 import Nav from '../components/Nav'
-import SVG from '../components/SVG'
 // Elements
 import { Title, BigTitle, Subtitle } from '../elements/Titles'
 import { Divider } from '../elements/Dividers'
