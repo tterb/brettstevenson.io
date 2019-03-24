@@ -1,4 +1,4 @@
-$accent: #FD5048;
+@import 'libs/vars';
 
 .wrapper {
   color: rgba(#000, 0.85);
@@ -233,8 +233,6 @@ h1, h2, h3, h4, h5, h6 {
       cursor: pointer;
       svg {
         color: $accent;
-        // font-size: 1.5rem;
-        // vertical-align: middle;
       }
     }
   }

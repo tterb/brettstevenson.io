@@ -1,12 +1,12 @@
-$accent: #FD5048;
+@import 'libs/vars';
 
 .contact-input {
   position: relative;
   margin-bottom: 1.5rem;
   input, textarea {
     background: transparent;
-    color: rgba(255,255,255,0.8);
-    -webkit-text-fill-color: rgba(255,255,255,0.8);
+    color: $text-color;
+    -webkit-text-fill-color: $text-color;
     text-align: left;
     line-height: 1.2;
     width: 80%;
@@ -15,7 +15,7 @@ $accent: #FD5048;
     padding: 0.5rem 1rem 0.5rem 0.25rem;
     outline: none;
     &::placeholder, &::-webkit-input-placeholder {
-      color: rgba(255,255,255,0.4) !important;
+      color: rgba(#fff, 0.4) !important;
     }
     + .focus-input::after {
       top: 10px;
@@ -51,7 +51,7 @@ $accent: #FD5048;
     overflow: hidden;
     &::before {
       display: block;
-      background: rgba(255,255,255,0.3);
+      background: rgba(#fff ,0.3);
       content: "";
       width: 100%;
       height: 2px;
@@ -87,8 +87,8 @@ input, textarea {
   &:-webkit-autofill:focus, 
   &:-webkit-autofill:active,
   &:-internal-autofill-selected {
-    background-color: #161719 !important;
-    color: rgba(255,255,255,0.8) !important;
+    background-color: $bg-color !important;
+    color: $text-color !important;
     border: none !important;
     box-shadow: 0 0 0 30px #161719 inset !important;
     outline-offset: -2px;
@@ -98,5 +98,5 @@ input, textarea {
 ::-webkit-input-placeholder,
 ::-ms-input-placeholder,
 ::-moz-placeholder { /* Chrome/Opera/Safari */
-  color: rgba(255,255,255,0.4) !important;
+  color: rgba(#fff, 0.4) !important;
 }

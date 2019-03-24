@@ -1,17 +1,4 @@
-
-$accent: #FD5048;
-$card-height: 53vh;
-
-$red: #d83737;
-$orange: #ed5820;
-$yellow: #f9bd2d;
-$green: #2aa05a;
-$teal: #00897b;
-$light-blue: #00b8d4;
-$blue: #039be5;
-$purple: #7d77b3;
-$pink: #e23f7e;
-
+@import 'libs/vars';
 
 .blog-content {
   padding: 4rem 6vw 18rem;
@@ -187,44 +174,44 @@ $pink: #e23f7e;
 .card-category {
   &.ruby,
   &.jekyll {
-    background: $red;
+    background: $cat-red;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#d83737, 8%), 0.175);
   }
   &.discuss {
-    background: $orange;
+    background: $cat-orange;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#eda800, 8%), 0.175);
   }
   &.lua {
-    background: $yellow;
+    background: $cat-yellow;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#fbc02d, 8%), 0.175);
   }
   &.python {
-    background: $green;
+    background: $cat-green;
     box-shadow: 0 0 1px rgba(#000,0.1), 0 2px 6px rgba(darken(#2aa05a, 8%), 0.175);
   }
   &.atom, 
   &.tools,
   &.open-source,
   &.spotlight {
-    background: $teal;
+    background: $cat-teal;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#00897b, 8%), 0.175);
   }
   &.design, 
   &.ui {
-    background: $light-blue;
+    background: $cat-light-blue;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#00b8d4, 8%), 0.175);
   }
   &.c {
-    background: $blue;
+    background: $cat-blue;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#039be5, 8%), 0.175);
   }
   &.tutorial {
-    background: $purple;
+    background: $cat-purple;
     box-shadow: 0 0 1px rgba(#000, 0.1), 0 2px 6px rgba(darken(#7d77b3, 8%), 0.175);
   }
   &.web,
   &.javascript {
-    background: $pink;
+    background: $cat-pink;
   }
 }
 
