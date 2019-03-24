@@ -1,10 +1,10 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
 import tw from 'tailwind.macro'
+import { colors } from '../../tailwind'
 import styled from 'styled-components'
+import _ from 'lodash'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-// Utilities
-import kebabCase from "lodash/kebabCase"
 
 const TagList = styled.ul`
   ${tw `list-reset text-center text-lg`}
@@ -45,10 +45,10 @@ export default () => (
       }
     `}
     render={data => (
-      <TagList className="tags-list">
-        {data.allContentfulBlogPost.group.map(tag => (
+      <TagList className='tags-list'>
+        {_.shuffle(data.allContentfulBlogPost.group).map(tag => (
           <li key={tag.fieldValue}>
-            <AniLink cover bg="#23262b" duration={1} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+            <AniLink cover bg={colors['blue-black']} duration={1} to={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
               {tag.fieldValue} ({tag.totalCount})
             </AniLink>
           </li>
