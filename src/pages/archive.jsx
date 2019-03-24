@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-import PropTypes from "prop-types"
+import _ from 'lodash'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
-import upperFirst from 'lodash/upperFirst'
+import PropTypes from "prop-types"
 import { Parallax } from 'react-spring/renderprops-addons'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
