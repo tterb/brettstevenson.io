@@ -51,7 +51,7 @@ const FooterWrapper = styled.footer`
   .gatsby-icon {
     border-bottom: none;
     &:hover svg path {
-      fill: #6E49A4;
+      fill: #734EA9;
       transition: all 300ms ease-in-out;
     }
   }
@@ -67,7 +67,7 @@ const SocialList = styled.ul`
       border-bottom: none;
       transition: all 350ms ease-in-out;
       &:hover {
-        color: #9FAFB8;
+        color: #A4B4BC;
         border-bottom: none;
       }
     }
@@ -88,8 +88,8 @@ const GatsbyIcon = () => (
 
 const Footer = ({ offset }) => (
   <>
-    <Content offset={`${offset}`} speed={0} factor={0.2}>
-      <DividerStatic className='footer-bg' fill={colors['blue-black']} speed={0.35} offset={`${offset}`} style={{ zIndex: `999` }} factor={0.2}>
+    <Content offset={`${offset+0.025}`} speed={0} factor={0.2}>
+      <DividerStatic className='footer-bg' fill={colors['blue-grey']} speed={0.35} offset={`${offset}`} style={{ zIndex: `999` }} factor={0.2}>
         <WaveWrapper style={{ height: `100%`, top: `2rem`, left: `0` }}>
           <InnerWave>
             <svg xmlns='https://www.w3.org/2000/svg' viewBox='0 0 800 338.05' preserveAspectRatio='none'>
@@ -100,7 +100,7 @@ const Footer = ({ offset }) => (
           </InnerWave>
         </WaveWrapper>
       </DividerStatic>
-      <FooterWrapper style={{ top: `5rem` }}>
+      <FooterWrapper style={{ top: `4.5rem` }}>
         <SocialList>
           <li><a href='https://github.com/tterb' aria-label='GitHub'><FontAwesomeIcon icon={faGithub}/></a></li>
           <li><a href='https://deviantart.com/bstevenson' aria-label='DeviantArt'><FontAwesomeIcon icon={faDeviantart}/></a></li>
