@@ -67,7 +67,7 @@ export const pageQuery = graphql`
       publishDate(formatString: "DD MMM YYYY")
       heroImage {
         fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       body {
@@ -84,7 +84,7 @@ export const pageQuery = graphql`
         }
         image {
           fixed(width: 250, height: 250) {
-            ...GatsbyContentfulFixed
+            ...GatsbyContentfulFixed_withWebp
           }
         }
         email

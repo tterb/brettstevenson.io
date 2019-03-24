@@ -50,7 +50,7 @@ export const projectQuery = graphql`
           lang
           image {
             fixed(resizingBehavior: SCALE) {
-              ...GatsbyContentfulFixed
+              ...GatsbyContentfulFixed_withWebp
             }
           }
           description {
