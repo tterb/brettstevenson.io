@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
-import { colors } from '../../tailwind'
+import { colors, accent } from '../../tailwind'
 import PropTypes from 'prop-types'
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 // Elements
 import { Divider } from '../elements/Dividers'
 import Content from '../elements/Content'
@@ -10,7 +11,6 @@ import Inner from '../elements/Inner'
 import { Title } from '../elements/Titles'
 // Components
 import Cube from '../components/Cube'
-import { waveAnimation } from '../styles/animations'
 
 
 const ContactText = styled.p`
@@ -20,21 +20,21 @@ const ContactText = styled.p`
   a {
     color: #fff;
     &:hover {
-      color: #FD5750;
+      color: ${accent};
     }
   }
 `
 
 const Contact = ({ offset }) => (
   <>
-    <Content speed={0.65} offset={offset} factor={0.35}>
+    <Content offset={offset} factor={0.35} speed={0.65}>
       <Inner>
         <Cube color='purple' />
         <Title>Get in touch</Title>
         <ContactText>
-          Say <a href='mailto:bstevensondev@gmail.com'>Hi</a> or find me on other platforms:{' '}
-          <a href='https://github.com/tterb'>GitHub</a> &{' '}
-          <a href='https://www.dribbble.com/tterb/'>Dribbble</a>
+          Say <AniLink cover bg={colors['blue-black']} duration={0.75} direction='left' to={'./Contact'}>Hi</AniLink> or find me on other platforms:{' '}
+          <a href='https://github.com/tterb' aria-label='GitHub'>GitHub</a> &{' '}
+          <a href='https://www.dribbble.com/tterb/' aria-label='Dribbble'>Dribbble</a>
         </ContactText>
       </Inner>
     </Content>
