@@ -1,7 +1,8 @@
 import React from 'react'
-import _ from 'lodash'
 import tw from 'tailwind.macro'
+import { accent } from '../../tailwind'
 import styled from 'styled-components'
+import upperFirst from 'lodash/upperFirst'
 import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'
@@ -9,7 +10,6 @@ import Nav from '../components/Nav'
 import Header from '../components/Header'
 // Elements
 import Content from '../elements/Content'
-import Inner from '../elements/Inner'
 import { BigTitle } from '../elements/Titles'
 // Views
 import Footer from '../views/Footer'
@@ -45,7 +45,7 @@ const ContactInput = (props) => (
            name={props.name}
            value={props.value}
            onChange={props.onChange} />
-    <span class="focus-input" data-placeholder={_.upperFirst(props.name)}></span>
+    <span class='focus-input' data-placeholder={upperFirst(props.name)}></span>
   </div>
 )
 
@@ -54,13 +54,13 @@ const ContactMessage = (props) => (
     <textarea name={props.name}
            value={props.value}
            onChange={props.onChange} />
-    <span class="focus-input" data-placeholder={_.upperFirst(props.name)}></span>
+    <span class='focus-input' data-placeholder={_.upperFirst(props.name)}></span>
   </div>
 )
 
 const SubmitBtn = styled.button`
   ${tw`block h-auto font-semibold text-center border-none outline-none cursor-pointer mt-6 ml-1 mb-5 px-5 py-3 sm:w-1/3 md:w-1/4`}
-  background: #FD5048;
+  background: ${accent};
   color: rgba(255,255,255,0.9);
   max-width: 175px;
   border-radius: 4px;
@@ -121,7 +121,7 @@ class ContactPage extends React.Component {
                 placeholder='Message'
                 value={this.state.message}
                 onChange={this.handleInputChange} />
-              <SubmitBtn type="submit">Submit</SubmitBtn>
+              <SubmitBtn type='submit'>Submit</SubmitBtn>
             </ContactForm>
           </Content>
           <Footer offset={1.05} factor={0.5} />

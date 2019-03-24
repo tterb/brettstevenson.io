@@ -1,9 +1,9 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 import _ from 'lodash'
 import tw from 'tailwind.macro'
+import { colors } from '../../tailwind'
 import styled from 'styled-components'
-import PropTypes from "prop-types"
 import { Parallax } from 'react-spring/renderprops-addons'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
@@ -34,7 +34,6 @@ class ArchivePage extends React.Component {
   render() {
     const { tag } = this.props.pageContext
     const edges = _.get(this, 'props.data.allContentfulBlogPost.edges')
-  
     return (
       <>
       <Layout />
@@ -44,7 +43,7 @@ class ArchivePage extends React.Component {
           <BigTitle>Archive<span className='accent'>.</span></BigTitle>
         </Header>
         <Divider
-          bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)"
+          bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
           clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)'
           speed={0.2}
           offset={0.2}
@@ -59,8 +58,8 @@ class ArchivePage extends React.Component {
                 )
               })}
             </ArchiveList>
-            <div className="back-blog-btn">
-              <AniLink cover bg="#23262b" duration={1} direction="right" to="/tags" className="back-blog btn">Back to Blog</AniLink>
+            <div className='back-blog-btn'>
+              <AniLink cover bg={colors['blue-black']} duration={1} direction='right' to='/tags' className='back-blog btn'>Back to Blog</AniLink>
             </div>
           </Inner>
         </Content>

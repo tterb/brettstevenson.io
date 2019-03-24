@@ -1,15 +1,14 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 import tw from 'tailwind.macro'
+import { colors } from '../../tailwind'
 import styled from 'styled-components'
+import kebabCase from 'lodash/kebabCase'
 import { Parallax } from 'react-spring/renderprops-addons'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-// Utilities
-import kebabCase from "lodash/kebabCase"
 // Components
 import Layout from '../components/Layout'
 import Header from '../components/Header'
-import BlogCard from '../components/BlogCard'
 import Nav from '../components/Nav'
 // Elements
 import Content from '../elements/Content'
@@ -29,6 +28,7 @@ const TagList = styled.ul`
     color: rgba(255,255,255,0.75);
     border: 2px solid rgba(255,255,255,0.75);
     border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     transition: color 300ms ease-in-out, background 350ms ease-in-out;
     margin: 0 0.5rem 0.5rem 0;
     padding: 4px 8px;
@@ -41,6 +41,7 @@ const TagList = styled.ul`
     &:hover {
       background: rgba(255,255,255,0.85);
       border: 2px solid rgba(255,255,255,0.85);
+      box-shadow: 0 1px 5px rgba(0,0,0,0.4);
       a {
         color: SlateBlue;
       }
@@ -58,24 +59,24 @@ const TagsPage = ({
 }) => (
   <>
   <Layout />
-  <Parallax pages={1.5}>
+  <Parallax pages={1.3}>
     <Nav />
     <Header offset={0} factor={0.4}>
       <BigTitle>Tags<span className='accent'>.</span></BigTitle>
     </Header>
     <Divider
-      bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)"
+      bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
       clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)'
       speed={0.2}
       offset={0.2}
-      factor={1.5}
+      factor={1.3}
     />
-    <Content speed={0.25} offset={0.2} factor={1} style={`padding-top: 0 !important`} className='tags-content'>
+    <Content speed={0.25} offset={0.2} factor={0.8} style={`padding-top: 0 !important`} className='tags-content'>
       <Inner>
-        <TagList className="tags-list">
+        <TagList className='tags-list'>
           {group.map(tag => (
             <li key={tag.fieldValue}>
-              <AniLink cover bg="#23262b" duration={1} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+              <AniLink cover bg={colors['blue-black']} duration={1} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                 {tag.fieldValue} ({tag.totalCount})
               </AniLink>
             </li>
@@ -83,7 +84,7 @@ const TagsPage = ({
         </TagList>
       </Inner>
     </Content>
-    <Footer offset={1.2} factor={0.5} />
+    <Footer offset={1} factor={0.5} />
   </Parallax>
   </>
 )

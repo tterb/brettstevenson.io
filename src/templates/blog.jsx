@@ -4,7 +4,6 @@ import get from 'lodash/get'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
-import Helmet from 'react-helmet'
 import { Parallax } from 'react-spring/renderprops-addons'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
@@ -14,19 +13,13 @@ import BlogCard from '../components/BlogCard'
 import PostTags from '../components/PostTags'
 import Nav from '../components/Nav'
 // Elements
-import { Title, BigTitle, Subtitle } from '../elements/Titles'
-import { Divider } from '../elements/Dividers'
+import { BigTitle } from '../elements/Titles'
 import Content from '../elements/Content'
-import Inner from '../elements/Inner'
-import { UpDown, UpDownWide, waveAnimation } from '../styles/animations'
 // Views
 import Footer from '../views/Footer'
 // FontAwesome
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faTags, faArchive, faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
-// Images
-import avatar from '../images/me.png'
 // Styles
 import '../styles/blog.scss'
 
@@ -75,19 +68,19 @@ class Blog extends React.Component {
               </ul>
               <Sidebar className='sidebar'>
                 <ul className='sidebar-icons'>
-                  <li><AniLink cover bg='#23262b' duration={1} direction='left' to=''><FontAwesomeIcon icon={faSearch}/></AniLink></li>
-                  <li><AniLink cover bg='#23262b' duration={1} direction='left' to='../tags'><FontAwesomeIcon icon={faTags}/></AniLink></li>
-                  <li><AniLink cover bg='#23262b' duration={1} direction='left' to='../archive'><FontAwesomeIcon icon={faArchive}/></AniLink></li>
+                  <li><AniLink cover bg={colors['blue-black']} duration={1} direction='left' to=''><FontAwesomeIcon icon={faSearch}/></AniLink></li>
+                  <li><AniLink cover bg={colors['blue-black']} duration={1} direction='left' to='../tags'><FontAwesomeIcon icon={faTags}/></AniLink></li>
+                  <li><AniLink cover bg={colors['blue-black']} duration={1} direction='left' to='../archive'><FontAwesomeIcon icon={faArchive}/></AniLink></li>
                 </ul>
                 <hr/>
                 <PostTags className='sidebar-tags' limit={12} />
               </Sidebar>
               <Pagination className='pagination'>
                 {!isFirst && (
-                  <AniLink cover bg='#23262b' duration={1} to={`blog/${prevPage}`} rel='prev'><FontAwesomeIcon icon={faArrowAltCircleLeft}/></AniLink>
+                  <AniLink cover bg={colors['blue-black']} duration={1} to={`blog/${prevPage}`} rel='prev'><FontAwesomeIcon icon={faArrowAltCircleLeft}/></AniLink>
                 )}
                 {!isLast && (
-                  <AniLink cover bg='#23262b' duration={1} to={`blog/${nextPage}`} rel='next'><FontAwesomeIcon icon={faArrowAltCircleRight}/></AniLink>
+                  <AniLink cover bg={colors['blue-black']} duration={1} to={`blog/${nextPage}`} rel='next'><FontAwesomeIcon icon={faArrowAltCircleRight}/></AniLink>
                 )}
               </Pagination>
             </div>

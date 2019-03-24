@@ -2,17 +2,15 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
+import { colors } from '../../tailwind'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // Components
 import PostLayout from '../components/PostLayout'
 import PostBody from '../components/PostBody'
 import PostAuthor from '../components/PostAuthor'
 // FontAwesome
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircle, faEnvelope, faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faTwitter, faDribbble, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 // Styles
 import heroStyles from '../styles/hero.scss'
 import postStyles from '../styles/post.scss'
@@ -40,14 +38,14 @@ class BlogPostTemplate extends React.Component {
         <div className='prev-next'>
           {
             prev && <span className='prev'>
-            <AniLink cover bg='#23262b' duration={1} direction='right' to={`blog/${prev.node.slug}`} rel='prev'>
+            <AniLink cover bg={colors['blue-black']} duration={1} direction='right' to={`blog/${prev.node.slug}`} rel='prev'>
               <FontAwesomeIcon icon={faArrowAltCircleLeft} />
               <span className='prev-title'>{prev.node.title}</span>
             </AniLink></span>
           }
           {
             next && <span className='next'>
-            <AniLink cover bg='#23262b' duration={1} direction='left' to={`blog/${next.node.slug}`} rel='next'>
+            <AniLink cover bg={colors['blue-black']} duration={1} direction='left' to={`blog/${next.node.slug}`} rel='next'>
               <span className='next-title'>{next.node.title}</span>
               <FontAwesomeIcon icon={faArrowAltCircleRight} />
             </AniLink></span>

@@ -1,12 +1,11 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import tw from 'tailwind.macro'
+import { colors } from '../../tailwind'
 import styled from 'styled-components'
-import kebabCase from "lodash/kebabCase"
+import kebabCase from 'lodash/kebabCase'
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
-import PropTypes from 'prop-types'
 // FontAwesome
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons'
 
@@ -55,7 +54,7 @@ class BlogCard extends React.Component {
   render() {
     return (
       <div className='blog-card' style={{ position: `relative` }} onClick={this.handleClick}>
-        <Image alt="" 
+        <Image alt={this.props.post.title}
           css={{ top: 0, left: 0, right: 0, bottom: 0 }} 
           style={{ position: `absolute` }} 
           fixed={this.props.post.heroImage.fixed}/>
@@ -63,7 +62,7 @@ class BlogCard extends React.Component {
           <span className={`card-category ${kebabCase(this.props.post.category.toString().toLowerCase())}`}>{this.props.post.category}</span>
           <div className='text-container'>
             <h2>
-              <AniLink cover bg="#23262b" duration={1} direction='left' to={`/blog/${this.props.post.slug}`}>{this.props.post.title}</AniLink>
+              <AniLink cover bg={colors['blue-black']} duration={1} direction='left' to={`/blog/${this.props.post.slug}`}>{this.props.post.title}</AniLink>
             </h2>
             <p dangerouslySetInnerHTML={{ __html: this.props.post.description.childMarkdownRemark.html }}
             />
@@ -73,7 +72,7 @@ class BlogCard extends React.Component {
             </span>
           </div>
         </div>
-        <div className="horizontal"></div>
+        <div className='horizontal'></div>
       </div>
     )
   }
