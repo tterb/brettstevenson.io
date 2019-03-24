@@ -47,7 +47,7 @@ const About = ({ offset }) => (
         </AboutDesc>
       </Inner>
     </Content>
-    <Divider bg={colors['blue-black']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset-0.001}`} factor={1.25} speed={0.075} />
+    <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset-0.001}`} factor={1.25} speed={0.075} />
   </>
 )
 
@@ -56,5 +56,3 @@ export default About
 About.propTypes = {
   offset: PropTypes.number.isRequired,
 }
-
-//As a developer, I have experience working in both front and back-end development and enjoy experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy.  
