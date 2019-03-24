@@ -15,16 +15,14 @@ const Wrapper = styled(animated.a)`
 `
 
 const Title = styled.div`
-  ${tw`text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-normal font-sans pb-4`};
+  ${tw`text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-normal font-sans pt-1 pb-4`};
   font-weight: 600;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  /* transform: translateY(-100px); */
   transition: all 350ms ease-in-out;
 `
 const Text = styled.div`
   ${tw`font-sans text-sm md:text-base pb-8`};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  /* transform: translateY(100px); */
   transition: all 400ms ease-in-out;
 `
 
@@ -33,19 +31,21 @@ const trans = (x, y, s) => `perspective(1200px) rotateX(${x}deg) rotateY(${y}deg
 
 function ProjectsCard(props) {
     const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 200, friction: 40 } }))
+    const hasSite = props.project.site ? true : false;
+    const hasRepo = props.project.github ? true : false;
     
     function handleClick(e) {
       location.href = props.project.link
     }
     
     return (
-      <Wrapper className='card-wrapper' target="_blank" rel="noopener noreferrer" bg={props.bg} onClick={handleClick}
+      <Wrapper className='card-wrapper' target='_blank' rel='noopener noreferrer' bg={props.bg} onClick={handleClick}
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{ transform: prop.xys.interpolate(trans) }} >
-        <div className="project-card">
-          <Title className="title">{props.project.title}</Title>
-          <Text className="desc">{props.project.description.childMarkdownRemark.excerpt}</Text>
+        <div className='project-card'>
+          <Title className='title'>{props.project.title}</Title>
+          <Text className='desc'>{props.project.description.childMarkdownRemark.excerpt}</Text>
         </div>
       </Wrapper>
     )
