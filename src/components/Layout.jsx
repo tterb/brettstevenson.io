@@ -1,7 +1,8 @@
 import React from 'react'
-import GlobalStyle from '../styles/global'
 import SEO from './SEO'
-import 'typeface-nunito'
+// Styles
+import GlobalStyle from '../styles/global'
+import '../styles/fonts.scss'
 import 'typeface-titillium-web'
 
 const Layout = () => (

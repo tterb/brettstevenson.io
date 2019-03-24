@@ -1,29 +1,8 @@
-
 $accent: #FD5048;
 $card-height: 53vh;
 
-@font-face {
-  font-family: 'Product Sans';
-  src: url('../fonts/ProductSans-Regular.otf') format('otf'),
-    url('../fonts/ProductSans-Regular.ttf') format('ttf'),
-    url('../fonts/ProductSans-Regular.eot') format('eot'),
-    url('../fonts/ProductSans-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Product Sans';
-  src: url('../fonts/ProductSans-Bold.otf') format('otf'),
-    url('../fonts/ProductSans-Bold.ttf') format('ttf'),
-    url('../fonts/ProductSans-Bold.eot') format('eot'),
-    url('../fonts/ProductSans-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-}
-
 body {
-  font-family: 'Product Sans', 'Titillium', 'Open Sans', sans-serif !important;
+  font-family: 'Product Sans', 'Titillium', sans-serif;
   margin: 0;
 }
 
