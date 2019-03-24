@@ -237,7 +237,7 @@ module.exports = {
 
   fonts: {
     sans: [
-      'Titillium',
+      'Titillium Web',
       'Product Sans',
       '-apple-system',
       'BlinkMacSystemFont',
@@ -253,7 +253,7 @@ module.exports = {
     ],
     title: [
       'Product Sans',
-      'Titillium',
+      'Titillium Web',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
