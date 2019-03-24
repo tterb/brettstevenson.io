@@ -14,8 +14,6 @@ import Inner from '../elements/Inner'
 import ProjectCard from '../components/ProjectCard'
 import Cube from '../components/Cube'
 
-import { UpDown, UpDownWide } from '../styles/animations'
-
 
 const ProjectsWrapper = styled.div`
   ${tw`flex flex-wrap justify-between mt-8`};
@@ -37,7 +35,7 @@ class Projects extends React.Component {
     return (
       <>
         <DividerMiddle
-          bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)"
+          bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
           speed={0.35}
           offset={`${this.props.offset-0.5}`}
           factor={2.3}

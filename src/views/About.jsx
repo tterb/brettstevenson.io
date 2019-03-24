@@ -31,7 +31,7 @@ const AboutDesc = styled.p`
 
 const About = ({ offset }) => (
   <>
-    <Content speed={0.25} offset={`${offset}`} id='about'>
+    <Content id='about' offset={`${offset}`} speed={0.25}>
       <Inner>
         <Cube color='blue' />
         <Title>About</Title>
@@ -47,7 +47,7 @@ const About = ({ offset }) => (
         </AboutDesc>
       </Inner>
     </Content>
-    <Divider bg='#23262b' clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' speed={0.075} offset={`${offset-0.001}`} factor={1.25} />
+    <Divider bg={colors['blue-black']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset-0.001}`} factor={1.25} speed={0.075} />
   </>
 )
 
