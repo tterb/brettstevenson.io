@@ -27,7 +27,6 @@ contentfulConfig = {
 }
 
 const { spaceId, accessToken } = contentfulConfig
-const githubToken = process.env.GITHUB_TOKEN
 
 if (!spaceId || !accessToken) {
   throw new Error(
@@ -38,9 +37,9 @@ if (!spaceId || !accessToken) {
 module.exports = {
   /* General Information */
   siteMetadata: {
-    siteUrl: config.siteUrl + pathPrefix,
     title: `Brett Stevenson`,
-    disqusShortname: `brettstevenson`,
+    siteUrl: config.siteUrl + pathPrefix,
+    disqusShortname: `https-tterb-gatsby-netlify-com`,
     menuLinks: [
       {
         name: `Home`,

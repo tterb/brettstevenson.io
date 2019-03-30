@@ -29,10 +29,9 @@ class PostLayout extends React.Component {
         <div style={{ background: `#fff` }}>
           {children}
         </div>
-        <Disqus 
+        <Disqus
           postId={post.id}
           postTitle={post.title}
-          disqusShortname={disqusShortname}
         />
       </div>
     )
