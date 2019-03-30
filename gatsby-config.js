@@ -40,6 +40,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
     title: `Brett Stevenson`,
+    disqusShortname: `brettstevenson`,
     menuLinks: [
       {
         name: `Home`,
