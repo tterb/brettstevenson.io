@@ -11,7 +11,6 @@ class PostLayout extends React.Component {
   render() {
     const { post, location, children } = this.props
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const siteUrl = get(this.props, 'data.site.siteMetadata.siteUrl')
     const disqusShortname = get(this.props, 'data.site.siteMetadata.disqusShortname')
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
@@ -31,11 +30,8 @@ class PostLayout extends React.Component {
           {children}
         </div>
         <Disqus 
-          siteTitle={siteTitle}
           postId={post.id}
-          postUrl={siteUrl+location.pathname}
           postTitle={post.title}
-          postId={post.id}
           disqusShortname={disqusShortname}
         />
       </div>
