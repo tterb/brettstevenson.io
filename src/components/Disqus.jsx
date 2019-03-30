@@ -15,6 +15,7 @@ const Disqus = ({siteTitle, postUrl, postId, postTitle, disqusShortname}) => {
   };
   return (
     <Wrapper>
+    <span>{postUrl}</span>
       <DiscussionEmbed 
         shortname={disqusShortname}
         config={disqusConfig} 
