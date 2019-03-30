@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import get from 'lodash/get'
-import PostMeta from './PostMeta'
+// Components
 import Nav from './Nav'
+import PostMeta from './PostMeta'
+import Disqus from './Disqus';
 
 
-class Template extends React.Component {
+class PostLayout extends React.Component {
   render() {
-    const { location, children } = this.props
+    const { post, location, children } = this.props
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    let header
+    const disqusShortname = get(this.props, 'data.site.siteMetadata.disqusShortname')
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
       rootPath = __PATH_PREFIX__ + `/`
@@ -18,18 +20,26 @@ class Template extends React.Component {
     return (
       <div>
         <PostMeta 
-          title={`${this.props.post.title} | ${siteTitle}`}
-          description={this.props.post.description}
-          thumbnail={this.props.post.heroImage.fluid}
-          url={`/blog/${this.props.post.slug}`}
+          title={`${post.title} | ${siteTitle}`}
+          description={post.description}
+          thumbnail={post.heroImage.fluid}
+          url={`/blog/${post.slug}`}
         />
-        <Nav active={this.props.location.pathname} />
-        <div style={{ background: '#fff' }}>
+        <Nav active={location.pathname} />
+        <div style={{ background: `#fff` }}>
           {children}
         </div>
+        <Disqus 
+          siteTitle={siteTitle}
+          postId={post.id}
+          postUrl={post.url}
+          postTitle={post.title}
+          postId={post.id}
+          disqusShortname={disqusShortname}
+        />
       </div>
     )
   }
 }
 
-export default Template
+export default PostLayout
