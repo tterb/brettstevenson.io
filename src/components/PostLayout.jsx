@@ -30,7 +30,8 @@ class PostLayout extends React.Component {
           {children}
         </div>
         <Disqus
-          postId={post.id}
+          postUrl={location.pathname}
+          postId={post.slug}
           postTitle={post.title}
         />
       </div>

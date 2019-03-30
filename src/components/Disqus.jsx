@@ -5,11 +5,12 @@ import styled from 'styled-components'
 import { DiscussionEmbed } from "disqus-react";
 
 const Wrapper = styled.div`
-  ${tw`w-4/5 mx-auto`}
+  ${tw`w-4/5 mx-auto mb-2`}
 `
 
-const Disqus = ({ postId, postTitle }) => {
+const Disqus = ({ postUrl, postId, postTitle }) => {
   const disqusConfig = {
+    url: {postUrl},
     identifier: {postId},
     title: {postTitle},
   }

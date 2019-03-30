@@ -39,7 +39,7 @@ module.exports = {
   siteMetadata: {
     title: `Brett Stevenson`,
     siteUrl: config.siteUrl + pathPrefix,
-    disqusShortname: `https-tterb-gatsby-netlify-com`,
+    disqusShortname: `tterb-gatsby`,
     menuLinks: [
       {
         name: `Home`,
