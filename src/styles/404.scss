@@ -1,0 +1,135 @@
+@import 'libs/vars';
+
+.terminal {
+  position: relative;
+  background: rgba(#262626, 0.85);
+  width: 65vw;
+  height: 50vh;
+  max-width: 750px;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(#000, 0.5);
+  margin: 5vh auto;
+  .window-title {
+    background: linear-gradient(to bottom, #ccc 10%, #999);
+    height: 7%;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 1px 8px;
+    .win-buttons {
+      position: relative;
+      width: 10%;
+      left: -1.5%;
+      float: left;
+      margin: 0;
+      margin-left: 0.5em;
+    }
+    .term-button {
+      display: inline-block;
+      text-align: center;
+      width: 12px;
+      height: 12px;
+      border: 0.5px solid;
+      border-radius: 100px;
+      vertical-align: middle;
+      margin: 0.45vw 0.55vw;
+      margin-left: 0;
+    }
+    #close {
+      background: #e25544;
+      border-color: #d84b3a;
+    }
+    #min {
+      background: #f5b640;
+      border-color: #e0a12b;
+    }
+    #max {
+      background: #7cb058;
+      border-color: #6fa44b;
+    }
+  }
+  .title {
+    position: relative;
+    display: inline-block;
+    color: rgba(#000, 0.65);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-align: center;
+    vertical-align: middle;
+    top: 0.5px;
+    left: -45px;
+  }
+  .prompt {
+    font-size: 98%;
+  }
+  .user {
+    color: #ea7e7d;
+    letter-spacing: 0.002em;
+    padding-right: 3px;
+  }
+  .at {
+    color: #ebdb84;
+    padding-right: 2px;
+  }
+  .path {
+    color: #7ecdcb;
+    letter-spacing: 0.002em;
+    padding-right: 2px;
+  }
+  .caret {
+    color: #50cd70;
+  }
+}
+
+.message {
+  position: relative;
+  color: rgba(#fff, 0.9);
+  font-family: Monaco, Consolas, 'Ubuntu Mono', monospace;
+  font-size: 1.1em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  width: 94%;
+  margin: auto;
+  padding: 2vh 0 0;
+  z-index: 999;
+  span {
+    font-size: 90%;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    margin-bottom: 1em;
+    a {
+      font-family: Monaco, Consolas, 'Ubuntu Mono', monospace;
+      border-bottom: 1px dotted rgba(#fff, 0.75);
+    }
+  }
+  form {
+    background: transparent;
+    font-family: Monaco, Consolas, 'Ubuntu Mono', monospace !important;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    #term-input {
+      display: inline-block;
+      background: transparent;
+      font-family: Monaco, Consolas, 'Ubuntu Mono', monospace;
+      color: $text-color;
+      height: 1em;
+      width: 80%;
+      border: none;
+      border-radius: 0;
+      box-shadow: none !important;
+      outline: none !important;
+      caret-color: #50cd70;
+      padding: 0 0.5rem;
+      &:focus {
+        background: transparent !important;
+        color: rgba(#fff, 0.8);
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
+  .typed-cursor {
+    color: rgba(#fff, 0.9);
+  }
+}
