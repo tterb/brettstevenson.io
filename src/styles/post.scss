@@ -13,33 +13,10 @@
   .post-header {
     letter-spacing: 0;
     margin-bottom: 8vh;
-    .post-title {
-      position: relative;
-      color: rgba(#000, 0.75);
-      font-size: 6.35vw;
-      font-weight: 800;
-      line-height: 1.2;
-      text-align: left;
-      text-shadow: none;
-      width: 81%;
-      vertical-align: middle;
-      margin: 0 auto 0 -3vw;
-    }
-    .post-date {
-      display: block;
-      position: relative;
-      color: rgba(#000, 0.75);
-      font-size: 18px;
-      line-height: 1.6;
-      text-align: right;
-      top: -3px;
-      right: 8px;
-      margin: 0.25em 0;
-    }
     &::after {
       display: block;
       position: relative;
-      background: #1cadb5;
+      background: linear-gradient(to top left, SlateBlue 25%, DeepSkyBlue 75%);
       content: "";
       height: 6px;
       width: 25%;
@@ -50,7 +27,7 @@
 }
 
 .gatsby-image-wrapper > div {
-  padding-bottom: 30% !important;
+  padding-bottom: 28% !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -158,94 +135,64 @@ h1, h2, h3, h4, h5, h6 {
       padding: 0.85em 1.2em 1em 1.4em;
     }
   }
-  
   .badges {
     text-align: right;
   }
 }
 
-.author-info {
-  width: 80%;
-  margin: 3.5rem auto 4.5rem;
-  .author-img {
-    width: 135px !important;
-    height: 135px !important;
-    border-radius: 100%;
-  }
-  .author-text {
-    display: inline-block;
-    max-width: 60%;
-    vertical-align: super;
-    margin-left: 1rem;
-    .author-name {
-      color: rgba(#000, 0.8);
-      font-size: 1.4rem;
-      margin: 0.75rem auto 0.5rem;
-    }
-    .author-bio, p {
-      color: rgba(#000, 0.7);
-      line-height: 1.25;
-      margin: 0.25rem auto;
-      padding-left: 2px;
-    }
-  }
-  .author-links {
-    list-style: none;
-    padding-left: 6px;
-    li {
-      display: inline-block;
-      margin-right: 8px;
-      cursor: pointer;
-      a {
-        color: rgba(#000, 0.7);
-        transition: all 300ms ease-in-out;
-        &:hover {
-          color: $accent;
-        }
-      }
-    }
-  }
-}
-
 .prev-next {
-  width: 75%;
+  width: 80%;
   height: 3.5rem;
   margin: 0 auto 7rem;
   .prev, .next {
-    position: absolute;
-    max-width: 25%;
+    position: relative;
+    max-width: 30%;
     border: 3px solid rgba(#000, 0.7);
     border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(#000, 0.3);
+    box-shadow: 0 2px 4px rgba(#000, 0.3);
+    transition: all 350ms ease-in-out;
     padding: 1rem 1.5rem;
+    cursor: pointer;
     a {
       color: rgba(#000, 0.8);
       text-decoration: none;
+      vertical-align: middle;
     }
     svg {
       font-size: 1.25rem;
-      vertical-align: text-top;
+      vertical-align: middle;
       transition: all 350ms ease-in-out;
       margin: 0;
     }
     &:hover {
       color: rgba(#000, 0.8);
-      cursor: pointer;
+      letter-spacing: 0.5px;
+      padding: 1rem 0.5rem 1rem 1.5rem;
       svg {
         color: $accent;
+        font-size: 1.5rem;
       }
     }
   }
   .prev {
-    left: 12.5%;
+    float: left;
     svg {
       margin-right: 0.55rem;
     }
+    &:hover {
+      padding: 1rem 1.5rem 1rem 0.5rem;
+      svg {
+        margin-left: 1rem;
+      }
+    }
   }
   .next {
-    right: 12.5%;
+    float: right;
     svg {
       margin-left: 0.55rem;
+    }
+    &:hover svg {
+      margin-right: 1rem;
     }
   }
 }

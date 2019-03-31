@@ -3,31 +3,37 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import _ from 'lodash'
 import tw from 'tailwind.macro'
-import { colors } from '../../tailwind'
 import styled from 'styled-components'
 // Components
 import PostLayout from '../components/PostLayout'
-import PostBody from '../components/PostBody'
-import PostAuthor from '../components/PostAuthor'
 import PageLink from '../components/PageLink'
 // Fonts
 import 'typeface-source-code-pro'
-// FontAwesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 // Styles
-import heroStyles from '../styles/hero.scss'
 import postStyles from '../styles/post.scss'
 import syntaxStyles from '../styles/syntax.scss'
 
 
+const PostTitle = styled.h1`
+  ${tw`relative w-4/5 font-extrabold leading-tight m-0 mx-auto`}
+  color: rgba(0,0,0,0.75);
+  font-size: 6.35vw;
+  margin-left: -3vw;
+`
+
+const PostDate = styled.p`
+  ${tw`block relative text-base text-right leading-normal my-1 mx-0`}
+  color: rgba(0,0,0,0.75);
+  right: 8px;
+`
+
 const Separator = styled.hr`
-  ${tw`w-4/5 border-none my-4 mt-8`};
+  ${tw`w-4/5 border-none my-4 mt-8`}
   border-bottom: 2px solid rgba(0,0,0,0.095);
 `
 
 const TagList = styled.ul`
-  ${tw`w-4/5 list-reset my-4 mx-auto`};
+  ${tw`w-4/5 list-reset my-4 mx-auto`}
   li {
     display: inline-block;
     background: #f0f0f0;
@@ -48,47 +54,37 @@ const TagList = styled.ul`
   }
 `
 
-
-class BlogPostTemplate extends React.Component {
+class PostTemplate extends React.Component {
   render() {
     const post = _.get(this.props, 'data.contentfulBlogPost')
-    const { prev, next } = this.props.pageContext;
     return (
-      <PostLayout location={this.props.location} post={post}>
-        <div className={heroStyles.hero}>
-          <Image className={heroStyles.heroImage} alt={post.title} fluid={post.heroImage.fluid} />
-        </div>
+      <>
+      <PostLayout 
+        post={post}
+        location={this.props.location} 
+        context={this.props.pageContext}>
         <div className='wrapper' style={postStyles}>
           <div className='post-header'>
-            <h1 className='post-title'>{post.title}</h1>
-            <p className='post-date' style={{ display: 'block' }}>
-              {post.publishDate}
-            </p>
+            <PostTitle>{post.title}</PostTitle>
+            <PostDate>{post.publishDate}</PostDate>
           </div>
-          <PostBody body={post.body} style={syntaxStyles} />
-        </div>
-        <Separator />
-        <PostAuthor author={post.author} />
-        <div className='prev-next'>
-          { prev && <span className='prev'>
-            <PageLink direction='right' to={`blog/${prev.node.slug}`} rel='prev'>
-              <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-              <span className='prev-title'>{prev.node.title}</span>
-            </PageLink></span> }
-          { next && <span className='next'>
-            <PageLink to={`blog/${next.node.slug}`} rel='next'>
-              <span className='next-title'>{next.node.title}</span>
-              <FontAwesomeIcon icon={faArrowAltCircleRight} />
-            </PageLink></span> }
+          <div className='post-body' dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
         </div>
       </PostLayout>
+      </>
     )
   }
 }
 
-export default BlogPostTemplate
+// <TagList className='tags-list'>
+//   {post.tags.map(tag => (
+//     <li><PageLink to={`../tags/${_.kebabCase(tag.fieldValue)}/`}>{ tag }</PageLink></li>
+//   ))}
+// </TagList>
 
-export const pageQuery = graphql`
+export default PostTemplate
+
+export const postQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
