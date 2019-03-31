@@ -6,13 +6,13 @@ module.exports = {
   siteTitle: 'Brett Stevenson', // Navigation and Site Title
   siteTitleAlt: 'Brett', // Alternative Site title for SEO
   siteTitleShort: 'Brett', // short_name for manifest
-  siteHeadline: 'Developer, Designer, Student', // Headline for schema.org JSONLD
+  siteHeadline: 'Full-Stack Software Developer, Designer, Student', // Headline for schema.org JSONLD
   siteUrl: 'https://tterb-gatsby.netlify.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteLogo: '/logo.png', // Used for SEO and manifest
   siteDescription: 'Developer, Designer, Student',
   author: 'Brett Stevenson', // Author for schema.org JSONLD
-
+  disqusShortname: `tterb-gatsby`,
   // siteFBAppID: '123456789', // Facebook App ID - Optional
   userTwitter: '@bstevensondev', // Twitter Username
   // ogSiteName: 'cara', // Facebook Site Name
