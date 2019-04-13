@@ -30,10 +30,10 @@ const InnerWave = styled.div`
     ${waveAnimation('20s')};
   }
   @media screen and (min-width: 600px) {
-    top: -2rem;
+    top: -3rem;
   }
   @media screen and (min-width: 900px) {
-    top: 1rem;
+    top: 0rem;
   }
 `
 
@@ -51,7 +51,7 @@ const FooterWrapper = styled.footer`
   .gatsby-icon {
     border-bottom: none;
     &:hover svg path {
-      fill: #734EA9;
+      fill: #7643A9;
       transition: all 300ms ease-in-out;
     }
   }
@@ -88,7 +88,7 @@ const GatsbyIcon = () => (
 
 const Footer = ({ offset }) => (
   <>
-    <Content offset={`${offset+0.025}`} speed={0} factor={0.2}>
+    <Content offset={`${offset+0.025}`} speed={0} factor={0.2} style={{ zIndex: `-99999` }}>
       <DividerStatic className='footer-bg' fill={colors['blue-grey']} speed={0.35} offset={`${offset}`} style={{ zIndex: `999` }} factor={0.2}>
         <WaveWrapper style={{ height: `100%`, top: `2rem`, left: `0` }}>
           <InnerWave>
@@ -100,7 +100,7 @@ const Footer = ({ offset }) => (
           </InnerWave>
         </WaveWrapper>
       </DividerStatic>
-      <FooterWrapper style={{ top: `4.5rem` }}>
+      <FooterWrapper style={{ top: `3.75rem` }}>
         <SocialList>
           <li><a href='https://github.com/tterb' aria-label='GitHub'><FontAwesomeIcon icon={faGithub}/></a></li>
           <li><a href='https://deviantart.com/bstevenson' aria-label='DeviantArt'><FontAwesomeIcon icon={faDeviantart}/></a></li>

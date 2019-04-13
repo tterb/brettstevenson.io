@@ -1,5 +1,4 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
@@ -21,48 +20,20 @@ import '../styles/main.scss'
 
 class Index extends React.Component {
   render() {
-    const projects = get(this, 'props.data.allContentfulProject.edges')
     return (
       <>
         <Layout />
-        <Parallax pages={4.35}>
-          <Nav />
-          <Hero offset={0} />
-          <About offset={1} id='about' />
-          <Projects projects={projects} offset={2.5} id='projects'/>
-          <Contact offset={3.825} />
-          <Footer offset={4.05} />
+        <Parallax ref='parallax' pages={4.35}>
+          <Nav logo={false} />
+          <Hero offset={0} parallax={this.refs.parallax} />
+          <About offset={1} factor={1.25} id='about' />
+          <Projects offset={2.5} factor={2.2} id='projects'/>
+          <Contact offset={3.825} factor={0.35}/>
+          <Footer offset={4.025} />
         </Parallax>
       </>
     )
   }
 }
-
-export const projectQuery = graphql`
-  query ProjectsQuery {
-    allContentfulProject(sort: { fields: [key], order: ASC }) {
-      edges {
-        node {
-          title
-          link
-          github
-          site
-          lang
-          image {
-            fixed(resizingBehavior: SCALE) {
-              ...GatsbyContentfulFixed_withWebp
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 175)
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 export default Index

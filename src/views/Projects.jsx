@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import get from 'lodash/get'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
@@ -33,27 +33,30 @@ class Projects extends React.Component {
   render() {
     const colors = ['linear-gradient(to right, #7f7fd5, #86a8ef)', 'linear-gradient(to right, #83a0e8, #76bef6)']
     return (
-      <>
-        <DividerMiddle
-          bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
-          speed={0.35}
-          offset={`${this.props.offset-0.5}`}
-          factor={2.3}
-        />
-        <Content speed={0.5} offset={`${this.props.offset-0.3}`} factor={1.75}>
-          <Inner>
-            <Cube/>
-            <Title>Projects</Title>
-            <ProjectsWrapper>
-              {this.props.projects.map(({ node }, i) => {
-                return (
-                  <ProjectCard key={i} project={node} bg={colors[i%colors.length]}/>
-                )
-              })}
-            </ProjectsWrapper>
-          </Inner>
-        </Content>
-      </>
+      <StaticQuery query={projectsQuery} 
+        render={({ allContentfulProject }) => (
+          <>
+          <DividerMiddle
+            bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
+            speed={0.35}
+            offset={`${this.props.offset-0.5}`}
+            factor={this.props.offset}
+          />
+          <Content speed={0.45} offset={`${this.props.offset-0.3}`} factor={1.75}>
+            <Inner>
+              <Cube/>
+              <Title>Projects</Title>
+              <ProjectsWrapper>
+                {allContentfulProject.edges.map(({ node }, i) => {
+                  return (
+                    <ProjectCard key={i} project={node} bg={colors[i%colors.length]} />
+                  )
+                })}
+              </ProjectsWrapper>
+            </Inner>
+          </Content>
+        </>
+      )} />
     )
   }
 }
@@ -63,3 +66,30 @@ Projects.propTypes = {
 }
 
 export default Projects
+
+export const projectsQuery = graphql`
+  query ProjectQuery {
+    allContentfulProject(sort: { fields: [key], order: ASC }) {
+      edges {
+        node {
+          title
+          link
+          github
+          site
+          lang
+          image {
+            fixed(resizingBehavior: SCALE) {
+              ...GatsbyContentfulFixed_withWebp
+            }
+          }
+          description {
+            childMarkdownRemark {
+              html
+              excerpt(pruneLength: 175)
+            }
+          }
+        }
+      }
+    }
+  }
+`
