@@ -39,7 +39,7 @@ export default class Logo extends React.Component {
     let props = this.props
     return (
       <Wrapper className={this.props.className}>
-        <PageLink to={this.props.link}>
+        <PageLink direction='down' to={this.props.link}>
           <svg className='logo' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 121.92 188.66">
           	<title>Logo</title>
           	<path ref={(ref) => { this.sPath = ref }} id="sPath" className="sPath" d="M223.33,182.25c-1.92-.11-37.61-3.83-37.61,29,0,26.66,28.14,28.76,35.69,28.84,12.74.14,42.29,1.45,42.29,30.09,0,31.05-41.4,35.71-64.21,25.12" transform="translate(-178.22 -146.28)"/>
