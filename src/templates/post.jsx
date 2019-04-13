@@ -15,16 +15,24 @@ import syntaxStyles from '../styles/syntax.scss'
 
 
 const PostTitle = styled.h1`
-  ${tw`relative w-4/5 font-extrabold leading-tight m-0 mx-auto`}
+  ${tw`relative w-4/5 font-extrabold leading-tight m-0 mx-auto xs:w-9/10`}
   color: rgba(0,0,0,0.75);
   font-size: 6.35vw;
-  margin-left: -3vw;
+  margin-left: -1vw;
+  @media (max-width: 500px) {
+    font-size: 2.35rem;
+  }
 `
 
 const PostDate = styled.p`
-  ${tw`block relative text-base text-right leading-normal my-1 mx-0`}
-  color: rgba(0,0,0,0.75);
+  ${tw`block relative text-right leading-normal my-1 mx-0 xs:text-base md:text-lg`}
+  color: rgba(0,0,0,0.85);
+  top: 6px;
   right: 8px;
+  margin-right: -1vw;
+  strong {
+    padding: 0 0.35rem;
+  }
 `
 
 const Separator = styled.hr`
@@ -66,7 +74,11 @@ class PostTemplate extends React.Component {
         <div className='wrapper' style={postStyles}>
           <div className='post-header'>
             <PostTitle>{post.title}</PostTitle>
-            <PostDate>{post.publishDate}</PostDate>
+            <PostDate>
+              { post.publishDate.split(' ').map((item, i) => {
+                  return (i != 1) ? <strong>{item}</strong> : item
+              })}
+            </PostDate>
           </div>
           <div className='post-body' dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
         </div>
@@ -76,12 +88,6 @@ class PostTemplate extends React.Component {
   }
 }
 
-// <TagList className='tags-list'>
-//   {post.tags.map(tag => (
-//     <li><PageLink to={`../tags/${_.kebabCase(tag.fieldValue)}/`}>{ tag }</PageLink></li>
-//   ))}
-// </TagList>
-
 export default PostTemplate
 
 export const postQuery = graphql`
@@ -90,7 +96,7 @@ export const postQuery = graphql`
       title
       slug
       id
-      publishDate(formatString: "DD MMM YYYY")
+      publishDate(formatString: "DD MMMM YYYY")
       tags
       heroImage {
         fluid(maxWidth: 1180, background: "rgb:000000") {
