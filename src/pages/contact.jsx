@@ -1,8 +1,8 @@
 import React from 'react'
+import _ from 'lodash'
 import tw from 'tailwind.macro'
 import { accent } from '../../tailwind'
 import styled from 'styled-components'
-import upperFirst from 'lodash/upperFirst'
 import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'
@@ -15,19 +15,6 @@ import { BigTitle } from '../elements/Titles'
 import Footer from '../views/Footer'
 // Styles
 import '../styles/contact.scss'
-
-const Wrapper = styled.div`
-  ${tw`w-full my-0 xl:w-full mt-4`};
-  position: relative;
-  top: -2em;
-  p svg {
-    position: relative;
-    color: rgba(255,255,255,0.6);
-    font-size: 0.05em;
-    width: 0.75em !important;
-    top: -0.5em;
-  }
-`
 
 const ContactForm = styled.form`
   ${tw`text-left mx-auto ml-4 xl:w-5/6 ml-auto`}
@@ -45,7 +32,7 @@ const ContactInput = (props) => (
            name={props.name}
            value={props.value}
            onChange={props.onChange} />
-    <span class='focus-input' data-placeholder={upperFirst(props.name)}></span>
+    <span className='focus-input' data-placeholder={_.upperFirst(props.name)}></span>
   </div>
 )
 
@@ -54,19 +41,22 @@ const ContactMessage = (props) => (
     <textarea name={props.name}
            value={props.value}
            onChange={props.onChange} />
-    <span class='focus-input' data-placeholder={_.upperFirst(props.name)}></span>
+    <span className='focus-input' data-placeholder={_.upperFirst(props.name)}></span>
   </div>
 )
 
 const SubmitBtn = styled.button`
-  ${tw`block h-auto font-semibold text-center border-none outline-none cursor-pointer mt-6 ml-1 mb-5 px-5 py-3 sm:w-1/3 md:w-1/4`}
+  ${tw`block h-auto font-semibold text-center border-none outline-none cursor-pointer mt-10 ml-1 mb-5 px-5 py-3 sm:w-1/3 md:w-1/4`}
   background: ${accent};
   color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.4);
   max-width: 175px;
   border-radius: 4px;
+  transition: all 350ms ease-in-out, text-shadow 400ms ease-in-out;
   outline: none;
   &:hover, &:active, &:focus, &:visited {
-    background: #FF6058;
+    background: #FE625A;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
   }
 `
 
@@ -93,10 +83,10 @@ class ContactPage extends React.Component {
         <Layout />
         <Parallax pages={1.35}>
           <Nav />
-          <Header offset={0.015} factor={0.4} speed={0.7}>
+          <Header offset={0.05} factor={0.4} speed={0.7}>
             <BigTitle>Say<br/>Hello<span className='accent'>.</span></BigTitle>
           </Header>
-          <Content offset={0.455} factor={0.5} speed={0.6} style={`padding: 14rem !important`}>
+          <Content offset={0.5} factor={0.5} speed={0.6} style={`padding: 14rem !important`}>
             <ContactForm accept-charset='UTF-8' action='https://usebasin.com/f/9d19a5ddd1f8' method='POST'>
               <ContactInput
                 type={'text'}
@@ -124,7 +114,7 @@ class ContactPage extends React.Component {
               <SubmitBtn type='submit'>Submit</SubmitBtn>
             </ContactForm>
           </Content>
-          <Footer offset={1.05} factor={0.5} />
+          <Footer offset={1.025} factor={0.5} />
         </Parallax>
       </>
     )
