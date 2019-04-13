@@ -4,7 +4,7 @@ const _ = require("lodash")
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-
+  
   return new Promise((resolve, reject) => {
     const postTemplate = path.resolve('./src/templates/post.jsx')
     const tagTemplate = path.resolve("src/templates/tags.jsx")
@@ -15,8 +15,9 @@ exports.createPages = ({ graphql, actions }) => {
             edges {
               node {
                 title
-                publishDate(formatString: "DD MMMM, YYYY")
+                id
                 slug
+                publishDate(formatString: "DD MMMM, YYYY")
                 tags
                 description {
                   childMarkdownRemark {
@@ -49,41 +50,51 @@ exports.createPages = ({ graphql, actions }) => {
         
         // Create blog pagination
         const postsPerPage = 4
-        const numPages = Math.ceil(posts.length / postsPerPage)
-        Array.from({ length: numPages }).forEach((_, i) => {
+        const numPages = Math.ceil(posts.length/postsPerPage)
+        Array.from({ length: numPages }).forEach((x, i) => {
           createPage({
             path: i === 0 ? `/blog` : `/blog/${i + 1}`,
             component: path.resolve("./src/templates/blog.jsx"),
             context: {
               limit: postsPerPage,
               skip: i * postsPerPage,
-              numPages,     
+              numPages,
               currentPage: i + 1
             },
           })
         })
         
-        // Tag pages:
-        let tags = []
-        // Iterate through each post adding tags into `tags`
+        // Iterate through posts gathering tags
+        let tags = {}
         _.each(posts, edge => {
           if (_.get(edge, "node.tags")) {
-            tags = tags.concat(edge.node.tags)
+            // tags = tags.concat(edge.node.tags)
+            edge.node.tags.forEach((tag) => {
+              if (tag in tags)
+              tags[tag]++
+              else
+              tags[tag] = 1
+            })
           }
         })
-        // Eliminate duplicate tags
-        tags = _.uniq(tags)
-
-        // Make tag pages
-        tags.forEach(tag => {
-          createPage({
-            path: `/tags/${_.kebabCase(tag)}/`,
-            component: tagTemplate,
-            context: { 
-              tag: tag,
-            },
+        
+        for(var tag in tags) {
+          const tagPageCount = Math.ceil(tags[tag]/postsPerPage)
+          Array.from({ length: tagPageCount }).forEach((x, i) => {
+            createPage({
+              path: i === 0 ? `blog/tags/${_.kebabCase(tag)}/` : `blog/tags/${_.kebabCase(tag)}/${i + 1}`,
+              component: path.resolve("./src/templates/tags.jsx"),
+              context: {
+                limit: postsPerPage,
+                skip: i * postsPerPage,
+                currentPage: i + 1,
+                count: tags[tag],
+                numPages: tagPageCount,
+                tag
+              }
+            })
           })
-        })
+        }
       })
     )
   })

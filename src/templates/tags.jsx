@@ -1,102 +1,141 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import _ from 'lodash'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
-import _ from 'lodash'
-import PropTypes from 'prop-types'
+import Bounce from 'react-reveal/Bounce';
 import { Parallax } from 'react-spring/renderprops-addons'
-import PageLink from '../components/PageLink'
 // Components
 import Layout from '../components/Layout'
-import Nav from '../components/Nav'
 import Header from '../components/Header'
-import InlinePost from '../components/InlinePost'
+import Nav from '../components/Nav'
+import BlogCard from '../components/BlogCard'
+import BlogSidebar from '../components/BlogSidebar'
+import PostTags from '../components/PostTags'
+import PageLink from '../components/PageLink'
 // Elements
+import { BigTitle } from '../elements/Titles'
 import Content from '../elements/Content'
-import Inner from '../elements/Inner'
-import { Divider } from '../elements/Dividers'
-import { BigTitle, Title } from '../elements/Titles'
 // Views
 import Footer from '../views/Footer'
+// FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faTags, faArchive, faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 // Styles
-import '../styles/tags.scss'
+import '../styles/blog.scss'
 
-const TagTitle = styled(Title)`
-  ${tw`ml-0`}
-  margin-left: 0 !important;
+const CardList = styled.ul`
+  ${tw`inline-block list-reset`}
+  width: 72%;
+  margin-top: -1vh;
+  margin-right: 3%;
 `
 
-const TagList = styled.ul`
-  ${tw`list-reset`}
+const Sidebar = styled.div`
+  ${tw`relative inline-block w-1/4 float-right pt-0`}
 `
+
+const Pagination = styled.div`
+  ${tw`block w-full text-center m-auto pt-8`}
+`
+
+const navStyle = {
+  position: 'absolute',
+  top: '-0.5rem',
+  right: '8vw',
+}
+
 
 class Tags extends React.Component {
   render() {
-    const { tag } = this.props.pageContext
-    const edges = _.get(this, 'props.data.allContentfulBlogPost.edges')
+    const siteTitle = _.get(this, 'props.data.site.siteMetadata.title')
+    const posts = _.get(this, 'props.data.allContentfulBlogPost.edges')
+    const { tag, currentPage, numPages, count } = this.props.pageContext
+    let postCount
+    if(count < 4) {
+      postCount = count
+    } else if(currentPage <= Math.floor(count/4)) {
+      postCount = 4
+    } else {
+      postCount = count%4
+    }
+    const pageHeight = 1.1+(postCount*0.39)
+    const isFirst = currentPage === 1
+    const isLast = currentPage === numPages
+    const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString()
+    const nextPage = (currentPage + 1).toString()
     return (
       <>
       <Layout />
-      <Parallax pages={1.5}>
-        <Nav />
-        <Header offset={0} factor={0.4}>
-          <BigTitle>Tags<span className='accent'>.</span></BigTitle>
-        </Header>
-        <Divider
-          bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
-          clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)'
-          speed={0.2}
-          offset={0.2}
-          factor={1.5}
-        />
-        <Content speed={0.25} offset={0.2} factor={1} style={`padding-top: 0 !important`} className='tags-content'>
-          <Inner>
-            <TagTitle>{_.upperFirst(tag)}</TagTitle>
-            <TagList className='tag-list'>
-              {edges.map(({ node }) => {
-                return (
-                  <InlinePost node={node} />
-                )
-              })}
-            </TagList>
-            <div className='all-tags-btn'>
-              <PageLink direction='right' to='/tags' className='all-tags btn'>All tags</PageLink>
+        <Parallax pages={pageHeight}>
+          <Nav style={navStyle} />
+          <Header offset={0} factor={0.45} speed={0.4}>
+            <BigTitle>{ _.upperFirst(tag) }<span className='accent'>.</span></BigTitle>
+          </Header>
+          <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={`padding: 14rem 5rem !important`}>
+            <div className='blog-container'>
+              <CardList className='blog-list'>
+                {posts.map(({ node, i }) => {
+                  return (
+                    <Bounce bottom delay={100*(i+1)} duration={1000}>
+                      <BlogCard key={node.slug} post={node} />
+                    </Bounce>
+                  )
+                })}
+              </CardList>
+              <Sidebar className='sidebar'>
+                <ul className='sidebar-icons'>
+                  <li><PageLink to='../search'><FontAwesomeIcon icon={faSearch} /></PageLink></li>
+                  <li><PageLink to='../tags'><FontAwesomeIcon icon={faTags} /></PageLink></li>
+                  <li><PageLink to='../archive'><FontAwesomeIcon icon={faArchive} /></PageLink></li>
+                </ul>
+                <hr />
+                <PostTags className='sidebar-tags' limit={8} />
+              </Sidebar>
+              <Pagination className='pagination'>
+                {!isFirst && (
+                  <PageLink to={`blog/tags/${tag}/${prevPage}`} rel='prev'><FontAwesomeIcon icon={faArrowAltCircleLeft}/></PageLink>
+                )}
+                {!isLast && (
+                  <PageLink to={`blog/tags/${tag}/${nextPage}`} rel='next'><FontAwesomeIcon icon={faArrowAltCircleRight}/></PageLink>
+                )}
+              </Pagination>
             </div>
-          </Inner>
-        </Content>
-        <Footer offset={1.2} factor={0.5} />
-      </Parallax>
+          </Content>
+          <Footer offset={pageHeight-0.325} factor={0.5} />
+        </Parallax>
       </>
     )
   }
 }
 
-Tags.propTypes = {
-  pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
-  }),
-}
-
 export default Tags
 
 export const tagQuery = graphql`
-  query TagQuery($tag: String) {
+  query TagQuery($skip: Int!, $limit: Int!, $tag: String!) {
     allContentfulBlogPost(
-      limit: 100
       sort: { fields: [publishDate], order: DESC }
       filter: { tags: { in: [$tag] } }
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {
           title
           slug
-          publishDate(formatString: "DD MMM, YYYY")
+          publishDate(formatString: "DD MMMM, YYYY")
+          category
           tags
+          heroImage {
+            fixed(resizingBehavior: SCALE) {
+              ...GatsbyContentfulFixed_withWebp
+            }
+          }
           description {
             childMarkdownRemark {
               html
-              excerpt(pruneLength: 60, truncate: true)
+              excerpt(pruneLength: 120)
             }
           }
         }
