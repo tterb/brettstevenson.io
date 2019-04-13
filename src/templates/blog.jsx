@@ -23,12 +23,19 @@ import { faSearch, faTags, faArchive, faArrowAltCircleLeft, faArrowAltCircleRigh
 // Styles
 import '../styles/blog.scss'
 
+const CardList = styled.ul`
+  ${tw`inline-block list-reset`}
+  width: 72%;
+  margin-top: -1vh;
+  margin-right: 3%;
+`
+
 const Sidebar = styled.div`
-  ${tw`relative inline-block w-1/4 float-right pt-2`}
+  ${tw`relative inline-block w-1/4 float-right pt-0`}
 `
 
 const Pagination = styled.div`
-  ${tw`block w-full m-auto`}
+  ${tw`block w-full text-center m-auto pt-8`}
 `
 
 const navStyle = {
@@ -50,14 +57,14 @@ class Blog extends React.Component {
     return (
       <>
       <Layout />
-        <Parallax pages={3.525}>
+        <Parallax pages={2.625}>
           <Nav style={navStyle} />
-          <Header offset={0} factor={0.4}>
+          <Header offset={0} factor={0.45} speed={0.4}>
             <BigTitle>Blog<span className='accent'>.</span></BigTitle>
           </Header>
-          <Content className='light-bg blog-content' offset={0.4} factor={3} style={`padding: 14rem 5rem !important`}>
+          <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={`padding: 14rem 5rem !important`}>
             <div className='blog-container'>
-              <ul className='blog-list'>
+              <CardList className='blog-list'>
                 {posts.map(({ node }) => {
                   return (
                     <li key={node.slug}>
@@ -65,15 +72,15 @@ class Blog extends React.Component {
                     </li>
                   )
                 })}
-              </ul>
+              </CardList>
               <Sidebar className='sidebar'>
                 <ul className='sidebar-icons'>
-                  <li><PageLink to=''><FontAwesomeIcon icon={faSearch}/></PageLink></li>
-                  <li><PageLink to='../tags'><FontAwesomeIcon icon={faTags}/></PageLink></li>
-                  <li><PageLink to='../archive'><FontAwesomeIcon icon={faArchive}/></PageLink></li>
+                  <li><PageLink to='../search'><FontAwesomeIcon icon={faSearch} /></PageLink></li>
+                  <li><PageLink to='../tags'><FontAwesomeIcon icon={faTags} /></PageLink></li>
+                  <li><PageLink to='../archive'><FontAwesomeIcon icon={faArchive} /></PageLink></li>
                 </ul>
-                <hr/>
-                <PostTags className='sidebar-tags' limit={12} />
+                <hr />
+                <PostTags className='sidebar-tags' limit={8} />
               </Sidebar>
               <Pagination className='pagination'>
                 {!isFirst && (
@@ -85,7 +92,7 @@ class Blog extends React.Component {
               </Pagination>
             </div>
           </Content>
-          <Footer offset={3.225} factor={0.5} />
+          <Footer offset={2.3} factor={0.5} />
         </Parallax>
       </>
     )
