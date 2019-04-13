@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 // https://blog.jetboystudio.com/articles/gatsby/
 
 const Wrapper = styled.div`
-  ${tw`w-4/5 mx-auto mb-6`}
+  ${tw`mx-auto mb-6 xs:w-9/10 md:w-4/5`}
 `
 
 export default class Disqus extends React.Component {
