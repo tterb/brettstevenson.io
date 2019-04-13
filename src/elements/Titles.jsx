@@ -1,22 +1,24 @@
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
 
-export const Title = styled.h1`
-  ${tw`text-5xl lg:text-5xl font-title text-white my-6 ml-4 tracking-normal relative inline-block sm: ml-0`};
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  @media (min-width: 600px) {
-    margin-left: 2.5rem;
-  }
-`
-
 export const BigTitle = styled.h1`
-  ${tw`sm:text-5xl ml-1 md:text-6xl lg:text-7xl font-title text-white mt-4 mb-6 tracking-wide`};
+  ${tw`sm:text-5xl ml-0 md:text-6xl lg:text-7xl font-title mt-4 mb-6 tracking-wide`};
+  color: rgba(255,255,255,0.95);
   font-size: 3em;
   font-weight: 800;
   letter-spacing: 0.025em;
   line-height: 1.1;
   text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
   width: 100%;
+`
+
+export const Title = styled.h1`
+  ${tw`text-5xl lg:text-5xl font-title my-6 ml-3 tracking-normal relative inline-block sm: ml-0`};
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  @media (min-width: 600px) {
+    margin-left: 2.5rem;
+  }
 `
 
 export const Subtitle = styled.p`
