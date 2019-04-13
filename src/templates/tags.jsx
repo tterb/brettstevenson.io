@@ -11,7 +11,6 @@ import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
 import BlogCard from '../components/BlogCard'
-import BlogSidebar from '../components/BlogSidebar'
 import PostTags from '../components/PostTags'
 import PageLink from '../components/PageLink'
 // Elements
