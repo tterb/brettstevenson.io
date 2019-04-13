@@ -1,8 +1,21 @@
 @import 'libs/vars';
 
 body {
-  font-family: 'Product Sans', 'Titillium', sans-serif;
+  font-family: 'Product Sans', 'Titillium Web', sans-serif;
   margin: 0;
+}
+
+#___gatsby {
+  height: 100% !important;
+  > div {
+    height: 100% !important;
+  }
+  .tl-edges {
+    height: 100% !important;
+    .tl-wrapper {
+      height: 100% !important;
+    }
+  }
 }
 
 code {
@@ -27,44 +40,78 @@ code {
   color: $accent;
 }
 
+.list-reset {
+  list-style: none;
+  padding: 0;
+  li {
+    &:first-child {
+      margin-left: 0;
+      padding-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+
 /* Menu */
 .menu-wrapper {
   background: transparent;
-  .menu {
-    position: relative;
-    background: transparent;
-    color: #fff;
-    font-family: 'Titillium', 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.1rem;
-    width: 100%;
-    text-align: right;
-    list-style: none;
-    margin-top: 1.5em;
-    margin-bottom: 0;
-    z-index: 999999;
-    .menu-item {
-      display: inline-block;
-      font-size: 1.2em;
-      transition: all 300ms ease-in-out;
-      padding: 0 0.85rem;
-      cursor: pointer;
-      z-index: 999999;
-      a {
-        color: $text-color;
-        text-decoration: none;
-        border: none;
-        &:hover {
-          color: $accent;
-        }
-      }
-      &.active a {
+  .menu .menu-item {
+    a {
+      color: $text-color;
+      text-decoration: none;
+      border: none;
+      transition: all 350ms ease-in-out;
+      &:hover {
         color: $accent;
-      }
-      &:last-child {
-        padding-right: 0;
+        letter-spacing: 0.5px;
       }
     }
+    &.active a {
+      color: $accent;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
   }
+}
+
+.nav-wrapper .react-reveal {
+  height: 4rem;
+}
+
+svg.logo {
+  position: absolute;
+  width: 1.35rem;
+  height: auto;
+  top: 1rem;
+  overflow: visible !important;
+  path {
+    fill: none;
+    stroke: rgba(#fff, 0.95);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 15px;
+    box-shadow: -5px -5px 5px #000;
+    filter: url(#dropshadow);
+    overflow: visible;
+    animation-iteration-count: 20;
+  }
+  .sPath {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation-delay: 1500ms;
+    animation: dash 4s linear forwards 500ms;
+  }
+}
+
+.typed-cursor {
+  font-size: 1.65rem;
+  vertical-align: top;
+  margin-left: 1px;
 }
 
 .code-svg {
@@ -103,7 +150,10 @@ code {
   height: auto !important;
   padding-top: 4rem; 
   padding-bottom: 14rem;
-  z-index: 1 !important;
+  z-index: -99999 !important;
+  div {
+    z-index: 9999999;
+  }
 }
 
 
@@ -228,6 +278,11 @@ code {
     .desc {
       color: rgba(#fff, 0.95);
     }
+    span svg {
+      transform: rotate(-45deg);
+      filter: drop-shadow(0 1px 1.5px rgba(#000, 0.6));
+      transition: all 400ms ease-in-out;
+    }
   }
   &:hover .mask {
     .title, .desc {
@@ -273,4 +328,7 @@ code {
 }
 @keyframes line {
   0% { background-position-x: 390px; }
+}
+@keyframes dash {
+  to { stroke-dashoffset: 20; }
 }

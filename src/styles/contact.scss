@@ -23,7 +23,7 @@
     }
     &:focus {
       + .focus-input::before {
-        background: $accent;
+        background: linear-gradient(to bottom right, SlateBlue 35%, DeepSkyBlue 65%);
       }
       + .focus-input::after {
         color: #888;
@@ -51,24 +51,24 @@
     overflow: hidden;
     &::before {
       display: block;
-      background: rgba(#fff ,0.3);
       content: "";
+      background: rgba(#fff ,0.3);
       width: 100%;
       height: 2px;
       left: 0;
       bottom: -2px;
-      transition: all 400ms;
+      transition: all 400ms ease-in-out;
     }
     &::after {
       display: block;
       position: absolute;
+      content: attr(data-placeholder);
       color: #666;
       font-size: 1rem;
       line-height: 1.2;
-      content: attr(data-placeholder);
       width: 100%;
       top: 0px;
-      transition: all 400ms;
+      transition: all 400ms ease-in-out;
     }
   }
   textarea {
