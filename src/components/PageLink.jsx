@@ -1,23 +1,23 @@
 import React from 'react'
-import { colors } from '../../tailwind'
 import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
-const PageLink = ({direction, duration, to, className, children}) => (
+const PageLink = ({ direction, duration, to, className, children }) => (
   <>
-    <AniLink cover bg={colors['blue-grey']} duration={duration} direction={direction} to={to} className={className}>{ children }</AniLink>
+    <AniLink cover hex='#23262b' className={className}
+    to={to} direction={direction} duration={duration}>{ children }</AniLink>
   </>
 )
 
 PageLink.defaultProps = {
   direction: 'left',
-  duration: 1,
+  duration: 1.15,
 }
 PageLink.propTypes = {
-  direction: PropTypes.string,
   duration: PropTypes.number,
-  to: PropTypes.string.isRequired,
+  direction: PropTypes.string,
   className: PropTypes.string,
+  to: PropTypes.string.isRequired,
 }
 
 export default PageLink
