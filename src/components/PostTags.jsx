@@ -48,7 +48,7 @@ export default () => (
       <TagList className='tags-list'>
         {data.allContentfulBlogPost.group.map(tag => (
           <li key={tag.fieldValue}>
-            <PageLink to={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
+            <PageLink to={`blog/tags/${_.kebabCase(tag.fieldValue)}/`}>
               {tag.fieldValue} ({tag.totalCount})
             </PageLink>
           </li>
