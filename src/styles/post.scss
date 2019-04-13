@@ -1,5 +1,13 @@
 @import 'libs/vars';
 
+.post-heroImage {
+  width: 100.5%;
+  height: 60vw;
+  max-height: 45vh;
+  top: -1px;
+  left: -1px;
+}
+
 .wrapper {
   color: rgba(#000, 0.85);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -9,7 +17,7 @@
   width: 75vw;
   max-width: 900px;
   margin: 2vh auto;
-  padding: 2em;
+  padding: 2.25rem;
   .post-header {
     letter-spacing: 0;
     margin-bottom: 8vh;
@@ -21,7 +29,17 @@
       height: 6px;
       width: 25%;
       top: -10px;
-      left: -2rem;
+      left: -0.5rem;
+    }
+  }
+  @media (max-width: 500px) {
+    width: 80vw;
+    padding-top: 1rem;
+    .post-header {
+      margin-bottom: 5vh;
+      &::after {
+        left: -0.3rem;
+      }
     }
   }
 }
@@ -40,6 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 .post-body {
   h2 {
     font-size: 2rem;
+    letter-spacing: -0.5px;
     line-height: 1.1;
     margin-bottom: 1rem;
   }
@@ -134,6 +153,15 @@ h1, h2, h3, h4, h5, h6 {
       margin: 0 auto;
       padding: 0.85em 1.2em 1em 1.4em;
     }
+    @media (max-width: 500px) {
+      margin-left: 0 !important;
+      &::before {
+        left: -1rem;
+      }
+      &::after {
+        right: -2rem;
+      }
+    }
   }
   .badges {
     text-align: right;
@@ -146,15 +174,19 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto 7rem;
   .prev, .next {
     position: relative;
-    max-width: 30%;
-    border: 3px solid rgba(#000, 0.7);
+    // max-width: 30%;
+    border: 1px solid rgba(#000, 0.05);
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(#000, 0.3);
+    // box-shadow: 0 2px 4px rgba(#000, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(#000, 0.12), 0 2px 4px 0 rgba(#000, 0.08);
     transition: all 350ms ease-in-out;
     padding: 1rem 1.5rem;
     cursor: pointer;
+    @media (max-width: 500px) {
+      margin: 0.5rem 0;
+    }
     a {
-      color: rgba(#000, 0.8);
+      color: rgba(#000, 0.7);
       text-decoration: none;
       vertical-align: middle;
     }
@@ -167,6 +199,7 @@ h1, h2, h3, h4, h5, h6 {
     &:hover {
       color: rgba(#000, 0.8);
       letter-spacing: 0.5px;
+      box-shadow: 0 15px 30px 0 rgba(#000, 0.11), 0 5px 15px 0 rgba(#000, 0.08);
       padding: 1rem 0.5rem 1rem 1.5rem;
       svg {
         color: $accent;
@@ -195,4 +228,102 @@ h1, h2, h3, h4, h5, h6 {
       margin-right: 1rem;
     }
   }
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  &.fixed {
+    position: fixed;
+    background-color: lighten(saturate($bg-color, 5%), 5%);
+    color: rgba(#000, 0.85);
+    width: calc(100% - 60px);
+    height: 50px;
+    top: 0;
+    left: 0;
+    transition: all 400ms ease-in-out, color 300ms ease-in-out;
+    animation: fromTop 1s 1;
+    padding: 0 30px;
+    z-index: 1;
+    .logo {
+      font-size: 1.35rem;
+      top: 0.5rem;
+    }
+    .logo-title {
+      top: 0.75rem;
+    }
+    .menu-wrapper {
+      top: 1.25rem;
+      right: 4rem;
+      .menu {
+        top: -0.5rem;
+        right: 0;
+        .menu-item a {
+          // color: rgba(#000, 0.75);
+        }
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    .logo {
+      left: 2rem !important;
+    }
+    .menu-wrapper {
+      right: 2rem !important;
+    }
+  }
+  .header-logo {
+    .logo-container {
+      .logo {
+        left: 3rem;
+        z-index: 999;
+      }
+      .logo-title {
+        transition: all 350ms ease-in-out;
+        opacity: 0;
+      }
+      &:hover {
+        .logo-title {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.logo-title {
+  position: absolute;
+  color: rgba(#fff, 0.85);
+  font-size: 1.4rem;
+  top: 1.3rem;
+  left: 5.25rem;
+  z-index: 9;
+  &:hover {
+    color: rgba(#fff, 0.95);
+  }
+}
+
+.menu-wrapper {
+  position: absolute;
+  top: 1.5rem;
+  right: 4rem;
+}
+
+.sensor {
+  display: block;
+  position: absolute;
+  height: 1px;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+
+@keyframes fromTop {
+    0% { height: 0; }
+    100% { height: 50px; }
 }

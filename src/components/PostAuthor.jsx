@@ -9,7 +9,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faTwitter, faDribbble, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 
 const Wrapper = styled.div`
-  ${tw`w-4/5 m-auto mt-14 mb-18`}
+  ${tw`w-4/5 m-auto mt-14 mb-18 xs:text-center xs:mb-12 md:text-left `}
 `
 
 const Avatar = styled.span`
@@ -21,7 +21,7 @@ const Avatar = styled.span`
 `
 
 const AuthorText = styled.span`
-  ${tw`inline-block max-w-3/5 ml-4`}
+  ${tw`inline-block xs:max-w-4/5 xs:ml-0 md:max-w-3/5 md:ml-4`}
   vertical-align: super;
   .author-bio, p {
     color: rgba(#000, 0.7);
@@ -37,18 +37,24 @@ const AuthorTitle = styled.h4`
   font-size: 1.4rem;
 `
 
-const Links = styled.ul`
-  ${tw`list-reset	text-lg pl-2`}
+const AuthorLinks = styled.ul`
+  ${tw`list-reset	pl-2 my-3 xs:text-2xl pl-0 md:text-xl`}
   li {
     display: inline-block;
     margin-right: 8px;
     cursor: pointer;
+    @media (max-width: 500px) {
+      margin-right: 0.75rem;
+    }
     a {
       color: rgba(0,0,0,0.75);
       transition: all 300ms ease-in-out;
       &:hover {
         color: ${accent};
       }
+    }
+    &:last-child {
+      margin-right: 0;
     }
   }
 `
@@ -61,13 +67,13 @@ const PostAuthor = ({ author }) => (
     <AuthorText>
       <AuthorTitle>{author.name}</AuthorTitle>
       <p className='author-bio' dangerouslySetInnerHTML={{ __html: author.shortBio.childMarkdownRemark.html }} />
-      <Links>
+      <AuthorLinks>
         <li><a href={author.github}><FontAwesomeIcon icon={faGithub}/></a></li>
         <li><a href={author.twitter}><FontAwesomeIcon icon={faTwitter}/></a></li>
         <li><a href={author.dribbble}><FontAwesomeIcon icon={faDribbble}/></a></li>
         <li><a href={author.linkedIn}><FontAwesomeIcon icon={faLinkedinIn}/></a></li>
         <li><a href='https://brettstevenson.io' target='_blank'><FontAwesomeIcon icon={faEnvelope}/></a></li>
-      </Links>
+      </AuthorLinks>
     </AuthorText>
   </Wrapper>
 )
