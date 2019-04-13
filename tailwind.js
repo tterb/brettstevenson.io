@@ -172,7 +172,26 @@ const colors = {
   'pink-lightest': '#FFBCCD',
 }
 
-const accent = '#FD5048'
+const accent = '#F2433B'
+
+const accents = {
+  'red-darkest': '#5F2623',
+  'red-darker': '#8D2D28',
+  'red-dark': '#BD362F',
+  red: '#F2433B',
+  'red-light': '#FE625A',
+  'red-lighter': '#FE8079',
+  'red-lightest': '#FFA49F',
+  
+  'teal-darkest': '#164239',
+  'teal-darker': '#206F5F',
+  'teal-dark': '#289C85',
+  teal: '#30C3A6',
+  'teal-light': '#46E1C2',
+  'teal-lighter': '#7AFFE2',
+  'teal-lightest': '#A2FFE9',
+}
+
 
 module.exports = {
   /*
@@ -190,6 +209,7 @@ module.exports = {
 
   colors,
   accent,
+  accents,
   /*
   |-----------------------------------------------------------------------------
   | Screens                      https://tailwindcss.com/docs/responsive-design
@@ -210,6 +230,7 @@ module.exports = {
   */
 
   screens: {
+    xs: '250px',
     sm: '400px',
     md: '600px',
     lg: '900px',
@@ -517,6 +538,7 @@ module.exports = {
     '2/5': '40%',
     '3/5': '60%',
     '4/5': '80%',
+    '9/10': '90%',
     '1/6': '16.66667%',
     '5/6': '83.33333%',
     full: '100%',
@@ -671,6 +693,7 @@ module.exports = {
     '4': '1rem',
     '6': '1.5rem',
     '8': '2rem',
+    '10': '2.5rem',
     '12': '3rem',
     '16': '4rem',
     '24': '6rem',
