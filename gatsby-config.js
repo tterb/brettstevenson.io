@@ -43,21 +43,34 @@ module.exports = {
     menuLinks: [
       {
         name: `Home`,
-        link: `/`
+        link: `/`,
       },
       {
         name: `Blog`,
-        link: `/blog`
+        link: `/blog`,
       },
       {
         name: `Contact`,
-        link: `/contact`
+        link: `/contact`,
       },
-    ]
+    ],
+    algolia: {
+      appId: process.env.ALGOLIA_APP_ID ? process.env.ALGOLIA_APP_ID : ``,
+      searchOnlyApiKey: process.env.ALGOLIA_SEARCH_ONLY_API_KEY
+        ? process.env.ALGOLIA_SEARCH_ONLY_API_KEY
+        : ``,
+      indexName: process.env.ALGOLIA_INDEX_NAME ? process.env.ALGOLIA_INDEX_NAME : ``
+    },
   },
   /* Plugins */
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-lodash`,
+      options: {
+        disabledFeatures: [`shorthands`, `cloning`],
+      },
+    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -92,10 +105,16 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: contentfulConfig,
     },
-    /* Must be placed at the end */
-    `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: config.googleAnalyticsID
+      },
+    },
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-transition-link`,
+    /* Must be placed at the end */
+    `gatsby-plugin-offline`,
   ],
 }
