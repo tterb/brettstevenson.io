@@ -83,6 +83,16 @@ code {
   height: 4rem;
 }
 
+.logo-container {
+  .logo-title {
+    left: 4.55rem;
+    opacity: 0;
+  }
+  &:hover .logo-title {
+    opacity: 1;
+  }
+}
+
 svg.logo {
   position: absolute;
   width: 1.35rem;
