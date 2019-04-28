@@ -63,26 +63,26 @@ class FourOhFour extends React.Component {
           </Header>
           </Content>
           <Content offset={0.325} factor={0.5} speed={0.5} style={`padding: 14rem !important`}>
-            <div class='terminal'>
-              <div class='window-title'>
-                <div class='win-buttons'>
-                  <a id='close' class='term-button' href='../'></a>
-                  <a id='min' class='term-button' href=''></a>
-                  <a id='max' class='term-button' href=''></a>
+            <div className='terminal'>
+              <div className='window-title'>
+                <div className='win-buttons'>
+                  <a id='close' className='term-button' href='../'></a>
+                  <a id='min' className='term-button' href=''></a>
+                  <a id='max' className='term-button' href=''></a>
                 </div>
-                <span class='title'>404</span>
+                <span className='title'>404</span>
               </div>
-              <div class='message'>
-                <span class='prompt'><span class='user'>root</span><span class='at'>@</span><span class='path'>~/404</span>><span class='caret'>$</span> </span>
+              <div className='message'>
+                <span className='prompt'><span className='user'>root</span><span className='at'>@</span><span className='path'>~/404</span>><span className='caret'>$</span> </span>
                   <Typed style={typedStyle} strings={[
-                      "Oops! <br/>" + "><span class='caret'>$</span> You might have mis-typed the URL, <br/> ^1" + "><span class='caret'>$</span> or maybe the page has been moved. <br/> ^500" + "><span class='caret'>$</span> Anyways, there is nothing to see here... <br/> ^500" + "><span class='caret'>$</span> Would you like to return to the <a href='../'>homepage</a> (Y/N)?"
+                      "Oops! <br/>" + "><span className='caret'>$</span> You might have mis-typed the URL, <br/> ^1" + "><span className='caret'>$</span> or maybe the page has been moved. <br/> ^500" + "><span className='caret'>$</span> Anyways, there is nothing to see here... <br/> ^500" + "><span className='caret'>$</span> Would you like to return to the <a href='../'>homepage</a> (Y/N)?"
                       ]}
                       cursorChar={'█'} showCursor={false}
                       autoInsertCss={true} loop={false}
                       typeSpeed={10} backSpeed={30}
                       smartBackspace>
                   </Typed>
-                  <form>&gt;<span class='caret'>$</span>
+                  <form>&gt;<span className='caret'>$</span>
                   <input id='term-input' type='text' 
                   value={this.state.value} onKeyDown={this.keyPress}
                   onChange={this.handleChange} autoFocus />
