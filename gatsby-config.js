@@ -38,12 +38,21 @@ module.exports = {
   /* General Information */
   siteMetadata: {
     title: `Brett Stevenson`,
+    description: `Full-Stack Software Developer, Designer, and Student`,
     siteUrl: config.siteUrl + pathPrefix,
+    author: `Brett Stevenson`,
+    keywords: [
+      `brett stevenson`, `full-stack`, `software`, `developer`, `design`, `portfolio`, `blog`, `python`, `javascript`, `react`, `gatsby`, `website optimization`
+    ],
     disqusShortname: `tterb-gatsby`,
     menuLinks: [
       {
         name: `Home`,
         link: `/`,
+      },
+      {
+        name: `Portfolio`,
+        link: `/portfolio`,
       },
       {
         name: `Blog`,
@@ -64,14 +73,19 @@ module.exports = {
   },
   /* Plugins */
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-plugin-lodash`,
       options: {
         disabledFeatures: [`shorthands`, `cloning`],
       },
     },
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -84,6 +98,7 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-prismjs`,
+          `gatsby-remark-smartypants`,
           {
             resolve: `gatsby-remark-emojis`,
             options: {
@@ -94,7 +109,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
@@ -111,9 +125,12 @@ module.exports = {
         trackingId: config.googleAnalyticsID
       },
     },
-    `gatsby-plugin-netlify`,
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-transition-link`,
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `tterb-gatsby`,
+      },
+    },
     /* Must be placed at the end */
     `gatsby-plugin-offline`,
   ],
