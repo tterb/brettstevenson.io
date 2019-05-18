@@ -9,32 +9,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons'
 
 const Wrapper = styled.div`
-  ${tw`relative inline-block h-full py-3 px-0 pl-10 cursor-pointer overflow-hidden`}
+  ${tw`relative inline-block h-full pin-t pin-l py-3 px-0 pl-10 cursor-pointer overflow-hidden z-5`}
   background: rgba(255,255,255,0.8);
-  top: 0px;
+  /* top: 0px; */
   width: 65%;
   border-top-left-radius: 9px;
   border-bottom-left-radius: 9px;
-  z-index: 5;
 `
 
 const Card = styled.div`
-  ${tw`block relative bg-center bg-no-repeat w-full float-left cursor-pointer`}
-  background-size: cover;
+  ${tw`block relative bg-center bg-cover bg-no-repeat w-full float-left cursor-pointer`}
   border-radius: 9px;
 `
 
 const Angle = styled.div`
-  ${tw`relative inline-block w-1/5 h-full overflow-hidden`}
+  ${tw`relative inline-block w-1/5 h-full pin-t pin-r overflow-hidden`}
   background: linear-gradient(to top right, rgba(255,255,255,0.8) 50%, transparent 0);
-  top: 0;
-  right: 0;
 `
 
 const BgImage = styled(Image)`
-  ${tw`absolute min-w-full`}
-  top: 0;
-  left: 0;
+  ${tw`absolute min-w-full pin-t pin-l`}
+  position: absolute !important;
   height: 53vh; // or whatever
   z-index: -1;
   // Adjust image positioning (if image covers area with defined height) and add font-family for polyfill
@@ -68,10 +63,7 @@ class BlogCard extends React.Component {
   render() {
     return (
       <Card className='blog-card' onClick={this.handleClick}>
-        <Image alt={this.props.post.title}
-          css={{ top: 0, left: 0, right: 0, bottom: 0 }} 
-          style={{ position: `absolute` }} 
-          fixed={this.props.post.heroImage.fixed}/>
+        <BgImage alt={this.props.post.title} fixed={this.props.post.heroImage.fixed} />
         <Wrapper className='content-mask'>
           <span className={`card-category ${_.kebabCase(this.props.post.category.toString().toLowerCase())}`}>{this.props.post.category}</span>
           <div className='text-container'>
