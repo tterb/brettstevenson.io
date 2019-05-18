@@ -26,17 +26,20 @@ const WrapperInner = styled.div`
   backface-visibility: hidden;
 `
 
+const Side = styled.div`
+  ${tw`absolute w-full h-full`}
+`
 
 const Cube = ({ offset, color }) => (
     <Wrapper>
       <WrapperInner>
         <div className={`cube cube-${color}`}>
-          <div className='cube-side cube-side-top'></div>
-          <div className='cube-side cube-side-bottom'></div>
-          <div className='cube-side cube-side-left'></div>
-          <div className='cube-side cube-side-right'></div>
-          <div className='cube-side cube-side-front'></div>
-          <div className='cube-side cube-side-back'></div>
+          <Side className='cube-side cube-side-top'></Side>
+          <Side className='cube-side cube-side-bottom'></Side>
+          <Side className='cube-side cube-side-left'></Side>
+          <Side className='cube-side cube-side-right'></Side>
+          <Side className='cube-side cube-side-front'></Side>
+          <Side className='cube-side cube-side-back'></Side>
         </div>
       </WrapperInner>
     </Wrapper>
