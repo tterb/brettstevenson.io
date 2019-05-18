@@ -48,87 +48,12 @@
       border-color: #6fa44b;
     }
   }
-  .title {
-    position: relative;
-    display: inline-block;
-    color: rgba(#000, 0.65);
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    text-align: center;
-    vertical-align: middle;
-    top: 0.5px;
-    left: -45px;
-  }
-  .prompt {
-    font-size: 98%;
-  }
-  .user {
-    color: #ea7e7d;
-    letter-spacing: 0.002em;
-    padding-right: 3px;
-  }
-  .at {
-    color: #ebdb84;
-    padding-right: 2px;
-  }
-  .path {
-    color: #7ecdcb;
-    letter-spacing: 0.002em;
-    padding-right: 2px;
-  }
   .caret {
     color: #50cd70;
   }
 }
 
 .message {
-  position: relative;
-  color: rgba(#fff, 0.9);
-  font-family: Monaco, Consolas, 'Ubuntu Mono', monospace;
-  font-size: 1.1em;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  width: 94%;
-  margin: auto;
-  padding: 2vh 0 0;
-  z-index: 999;
-  span {
-    font-size: 90%;
-    font-weight: 300;
-    line-height: 1.2;
-    letter-spacing: 0.03em;
-    margin-bottom: 1em;
-    a {
-      font-family: Monaco, Consolas, 'Ubuntu Mono', monospace;
-      border-bottom: 1px dotted rgba(#fff, 0.75);
-    }
-  }
-  form {
-    background: transparent;
-    font-family: Monaco, Consolas, 'Ubuntu Mono', monospace !important;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-    #term-input {
-      display: inline-block;
-      background: transparent;
-      font-family: Monaco, Consolas, 'Ubuntu Mono', monospace;
-      color: $text-color;
-      height: 1em;
-      width: 80%;
-      border: none;
-      border-radius: 0;
-      box-shadow: none !important;
-      outline: none !important;
-      caret-color: #50cd70;
-      padding: 0 0.5rem;
-      &:focus {
-        background: transparent !important;
-        color: rgba(#fff, 0.8);
-        border: none;
-        box-shadow: none;
-      }
-    }
-  }
   .typed-cursor {
     color: rgba(#fff, 0.9);
   }
