@@ -62,7 +62,7 @@ class Blog extends React.Component {
           <Header offset={0} factor={0.45} speed={0.4}>
             <BigTitle>Blog<span className='accent'>.</span></BigTitle>
           </Header>
-          <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={`padding: 14rem 5rem !important`}>
+          <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={{padding: `14rem 5rem !important`}}>
             <div className='blog-container'>
               <CardList className='blog-list'>
                 {posts.map(({ node }) => {
