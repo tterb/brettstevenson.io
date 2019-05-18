@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
-import kebabCase from 'lodash/kebabCase'
+import _ from 'lodash'
 import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'
@@ -71,12 +71,12 @@ const TagsPage = ({
       offset={0.2}
       factor={1.3}
     />
-    <Content speed={0.25} offset={0.2} factor={0.8} style={`padding-top: 0 !important`} className='tags-content'>
+    <Content speed={0.25} offset={0.2} factor={0.8} className='tags-content pt-0'>
       <Inner>
         <TagList className='tags-list'>
           {group.map(tag => (
             <li key={tag.fieldValue}>
-              <PageLink to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+              <PageLink to={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
                 {tag.fieldValue} ({tag.totalCount})
               </PageLink>
             </li>

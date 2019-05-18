@@ -49,7 +49,7 @@ class ArchivePage extends React.Component {
           offset={0.2}
           factor={1.25}
         />
-        <Content offset={0.3} factor={1.05} speed={0.25} style={`padding-top: 0 !important`} className='tags-content'>
+        <Content offset={0.3} factor={1.05} speed={0.25} className='tags-content pt-0'>
           <Inner>
             <ArchiveList className='archive-list'>
               {edges.map(({ node }) => {

@@ -86,7 +86,7 @@ class ContactPage extends React.Component {
           <Header offset={0.05} factor={0.4} speed={0.7}>
             <BigTitle>Say<br/>Hello<span className='accent'>.</span></BigTitle>
           </Header>
-          <Content offset={0.5} factor={0.5} speed={0.6} style={`padding: 14rem !important`}>
+          <Content offset={0.5} factor={0.5} speed={0.6} style={{padding: `14rem !important`}}>
             <ContactForm accept-charset='UTF-8' action='https://usebasin.com/f/9d19a5ddd1f8' method='POST'>
               <ContactInput
                 type={'text'}
