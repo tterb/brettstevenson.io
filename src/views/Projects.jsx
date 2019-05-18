@@ -38,7 +38,7 @@ class Projects extends React.Component {
           <>
           <DividerMiddle
             bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
-            speed={0.35}
+            speed={0.375}
             offset={`${this.props.offset-0.5}`}
             factor={this.props.offset}
           />

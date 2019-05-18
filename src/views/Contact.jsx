@@ -33,8 +33,8 @@ const Contact = ({ offset, factor }) => (
       <Title>Get in touch</Title>
       <ContactText>
         Say <PageLink to='./contact'>Hi</PageLink> or find me on other platforms:{' '}
-        <a href='https://github.com/tterb' aria-label='GitHub'>GitHub</a> &{' '}
-        <a href='https://www.dribbble.com/tterb/' aria-label='Dribbble'>Dribbble</a>
+        <a href='https://github.com/tterb' aria-label='GitHub' target='_blank'>GitHub</a> &{' '}
+        <a href='https://www.dribbble.com/tterb/' aria-label='Dribbble' target='_blank'>Dribbble</a>
       </ContactText>
     </Inner>
   </Content>

@@ -29,9 +29,9 @@ const AboutDesc = styled.p`
   line-height: 1.45;
 `
 
-const About = ({ offset }) => (
+const About = ({ offset, factor }) => (
   <>
-    <Content id='about' offset={`${offset}`} speed={0.25}>
+    <Content id='about' offset={offset} speed={0.25}>
       <Inner>
         <Cube color='blue' />
         <Title>About</Title>
@@ -43,16 +43,16 @@ const About = ({ offset }) => (
           </AboutSub>
         </AboutHero>
         <AboutDesc>
-           I'm a full-stack developer with a passion for experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy. I have experience working in a variety of languages, though I'm particularly found of Python, Java, and Javascript.
+           I'm a full-stack developer with a passion for experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy. I have experience working in a variety of languages, though I'm particularly found of Python, Javascript, and Java.
         </AboutDesc>
       </Inner>
     </Content>
-    <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset-0.001}`} factor={1.25} speed={0.075} />
+    <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset-0.001}`} factor={factor} speed={0.075} />
   </>
 )
-
-export default About
 
 About.propTypes = {
   offset: PropTypes.number.isRequired,
 }
+
+export default About
