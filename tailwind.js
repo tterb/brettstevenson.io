@@ -49,7 +49,7 @@ const colors = {
   'blue-black': '#161719',
   'blue-grey': '#23262b',
 
-  black: '#222b2f',
+  black: '#000000',
   'grey-darkest': '#273238',
   'grey-darker': '#364349',
   'grey-dark': '#70818A',
@@ -66,14 +66,6 @@ const colors = {
   'red-light': '#E0513E',
   'red-lighter': '#FF8878',
   'red-lightest': '#FFAA9F',
-
-  // 'orange-darkest': '#542605',
-  // 'orange-darker': '#7f4012',
-  // 'orange-dark': '#c1611f',
-  // orange: '#e07628',
-  // 'orange-light': '#ffa31b',
-  // 'orange-lighter': '#fcd9b6',
-  // 'orange-lightest': '#fff5eb',
   
   'orange-darkest': '#462A05',
   'orange-darker': '#A45E03',
@@ -106,14 +98,6 @@ const colors = {
   'teal-light': '#65E1D5',
   'teal-lighter': '#8CFFF4',
   'teal-lightest': '#B3FFF7',
-
-  // 'blue-darkest': '#0a224e',
-  // 'blue-darker': '#103d60',
-  // 'blue-dark': '#2779bd',
-  // blue: '#a0d8f1',
-  // 'blue-light': '#6cb2eb',
-  // 'blue-lighter': '#bcdefa',
-  // 'blue-lightest': '#eff8ff',
   
   'blue-darkest': '#0B2C41',
   'blue-darker': '#104060',
@@ -123,14 +107,6 @@ const colors = {
   'blue-lighter': '#91CFF7',
   'blue-lightest': '#C8E9FF',
 
-  // 'indigo-darkest': '#191e38',
-  // 'indigo-darker': '#2f365f',
-  // 'indigo-dark': '#5661b3',
-  // indigo: '#6574cd',
-  // 'indigo-light': '#7886d7',
-  // 'indigo-lighter': '#b2b7ff',
-  // 'indigo-lightest': '#e6e8ff',
-
   'indigo-darkest': '#0B0B37',
   'indigo-darker': '#161666',
   'indigo-dark': '#282C9C',
@@ -138,14 +114,6 @@ const colors = {
   'indigo-light': '#5D69E9',
   'indigo-lighter': '#808AFF',
   'indigo-lightest': '#ABB2FF',
-
-  // 'purple-darkest': '#1f133f',
-  // 'purple-darker': '#352465',
-  // 'purple-dark': '#794acf',
-  // purple: '#9561e2',
-  // 'purple-light': '#a779e9',
-  // 'purple-lighter': '#d6bbfc',
-  // 'purple-lightest': '#f3ebff',
   
   'purple-darkest': '#48277A',
   'purple-darker': '#6233A8',
@@ -154,14 +122,6 @@ const colors = {
   'purple-light': '#A56EF7',
   'purple-lighter': '#B584FF',
   'purple-lightest': '#C59EFF',
-
-  // 'pink-darkest': '#45051e',
-  // 'pink-darker': '#72173a',
-  // 'pink-dark': '#eb5286',
-  // pink: '#f66d9b',
-  // 'pink-light': '#fa7ea8',
-  // 'pink-lighter': '#ffbbca',
-  // 'pink-lightest': '#ffebef',
   
   'pink-darkest': '#330816',
   'pink-darker': '#661429',
@@ -797,12 +757,14 @@ module.exports = {
 
   zIndex: {
     auto: 'auto',
-    '0': 0,
-    '10': 10,
-    '20': 20,
-    '30': 30,
-    '40': 40,
-    '50': 50,
+    '0':     0,
+    '5':     5,
+    '10':   10,
+    '20':   20,
+    '30':   30,
+    '40':   40,
+    '50':   50,
+    '999': 999,
   },
 
   /*
