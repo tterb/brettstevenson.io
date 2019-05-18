@@ -18,6 +18,10 @@ body {
   }
 }
 
+a {
+  cursor: pointer;
+}
+
 code {
   background: rgba(#000, 0.075);
   color: rgba(#000, 0.75);
@@ -40,6 +44,10 @@ code {
   color: $accent;
 }
 
+.accent-blue {
+  color: #30C3B6;
+}
+
 .list-reset {
   list-style: none;
   padding: 0;
@@ -57,39 +65,33 @@ code {
 
 
 /* Menu */
-.menu-wrapper {
-  background: transparent;
-  .menu .menu-item {
-    a {
-      color: $text-color;
-      text-decoration: none;
-      border: none;
-      transition: all 350ms ease-in-out;
-      &:hover {
-        color: $accent;
-        letter-spacing: 0.5px;
-      }
-    }
-    &.active a {
+.menu .menu-item {
+  a {
+    color: $text-color;
+    transition: all 350ms ease-in-out;
+    &:hover {
       color: $accent;
+      letter-spacing: 0.5px !important;
     }
-    &:last-child {
-      padding-right: 0;
-    }
+  }
+  &.active a {
+    color: $accent;
   }
 }
 
-.nav-wrapper .react-reveal {
-  height: 4rem;
-}
-
-.logo-container {
-  .logo-title {
-    left: 4.55rem;
-    opacity: 0;
+.nav-wrapper {
+  .react-reveal {
+    height: 4rem;
   }
-  &:hover .logo-title {
-    opacity: 1;
+  .logo-container {
+    .logo-title {
+      left: 4.55rem;
+      transition: opacity 350ms ease-in-out;
+      opacity: 0;
+    }
+    &:hover .logo-title {
+      opacity: 1;
+    }
   }
 }
 
@@ -179,10 +181,7 @@ svg.logo {
   animation: flipY 5.2s infinite;
   backface-visibility: hidden;
   .cube-side {
-    position: absolute;
     background: rgba(#000, 0.1);
-    width: 100%;
-    height: 100%;
     transform: rotatex(90deg) translate3d(0, 0, 15px);
     transform-style: preserve-3D;
     border-image: linear-gradient(to top, $cube-red, $cube-orange) 1 3%;
