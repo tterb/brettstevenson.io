@@ -42,7 +42,7 @@ module.exports = {
     siteUrl: config.siteUrl + pathPrefix,
     author: `Brett Stevenson`,
     keywords: [
-      `brett stevenson`, `full-stack`, `software`, `developer`, `design`, `portfolio`, `blog`, `python`, `javascript`, `react`, `gatsby`, `website optimization`
+      `brett stevenson`, `full-stack`, `software`, `developer`, `design`, `portfolio`, `blog`, `python`, `javascript`, `react`,`gatsby`, `website optimization`
     ],
     disqusShortname: `tterb-gatsby`,
     menuLinks: [
