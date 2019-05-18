@@ -7,11 +7,11 @@ import styled from 'styled-components'
 // Components
 import PostLayout from '../components/PostLayout'
 import PageLink from '../components/PageLink'
-// Fonts
-import 'typeface-source-code-pro'
 // Styles
 import postStyles from '../styles/post.scss'
 import syntaxStyles from '../styles/syntax.scss'
+// Fonts
+import 'typeface-source-code-pro'
 
 
 const PostTitle = styled.h1`
@@ -29,37 +29,14 @@ const PostDate = styled.p`
   color: rgba(0,0,0,0.85);
   top: 6px;
   right: 8px;
-  margin-right: -1vw;
   strong {
-    padding: 0 0.35rem;
+    ${tw`py-0 px-1`}
   }
 `
 
 const Separator = styled.hr`
   ${tw`w-4/5 border-none my-4 mt-8`}
   border-bottom: 2px solid rgba(0,0,0,0.095);
-`
-
-const TagList = styled.ul`
-  ${tw`w-4/5 list-reset my-4 mx-auto`}
-  li {
-    display: inline-block;
-    background: #f0f0f0;
-    border: 2px solid #eee;
-    border-radius: 6px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.25);
-    transition: all 300ms ease-in-out;
-    margin: 0 0.5rem 0.5rem 0;
-    padding: 4px 8px;
-    a {
-      color: rgba(0,0,0,0.5);
-      text-decoration: none;
-    }
-    &:hover {
-      background: #eaeaea;
-      box-shadow: 0 1px 1.5px rgba(0,0,0,0.45);
-    }
-  }
 `
 
 class PostTemplate extends React.Component {
@@ -76,7 +53,7 @@ class PostTemplate extends React.Component {
             <PostTitle>{post.title}</PostTitle>
             <PostDate>
               { post.publishDate.split(' ').map((item, i) => {
-                  return (i != 1) ? <strong>{item}</strong> : item
+                  return (i != 1) ? <strong>{item}</strong>:item
               })}
             </PostDate>
           </div>

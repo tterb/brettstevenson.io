@@ -24,9 +24,7 @@ const Separator = styled.hr`
 `
 
 const BackToTop = styled.span`
-  ${tw`fixed rounded-full text-center p-4 shadow-md hover:shadow-lg cursor-pointer`}
-  width: 1rem;
-  height: 1rem;
+  ${tw`fixed rounded-full text-center w-4 h-4 p-4 shadow-md hover:shadow-lg cursor-pointer`}
   right: 4vw;
   bottom: 10vh;
   transition: all 450ms ease-in-out;

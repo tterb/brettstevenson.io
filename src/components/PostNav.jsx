@@ -9,21 +9,13 @@ import PageLink from './PageLink'
 import Logo from './Logo'
 
 const Wrapper = styled.div`
-  ${tw`relative block`}
-  height: 1rem;
-  top: 0;
-  left: 0;
-  right: 0;
+  ${tw`relative block h-4 pin-t pin-l pin-r z-999`}
   transform: translate3D(0, 0, 0);
-  z-index: 999;
 `
 
 const MenuContainer = styled.div`
-  ${tw`flex absolute w-full items-center p-4`}
-  height: 4rem;
+  ${tw`flex absolute w-full h-16 flex-wrap items-center justify-between p-4`}
   top: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: space-between;
   box-sizing: border-box;
 `
 
@@ -36,6 +28,9 @@ const Menu = styled.ul`
 const MenuItem = styled.li`
   ${tw`inline-block text-xl cursor-pointer py-0 px-3`}
   z-index: 999999;
+  a {
+    ${tw`no-underline border-none`}
+  }
 `
 
 class PostNav extends React.Component {

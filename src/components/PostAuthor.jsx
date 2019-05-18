@@ -24,37 +24,30 @@ const AuthorText = styled.span`
   ${tw`inline-block xs:max-w-4/5 xs:ml-0 md:max-w-3/5 md:ml-4`}
   vertical-align: super;
   .author-bio, p {
-    color: rgba(#000, 0.7);
-    line-height: 1.25;
-    margin: 0.25rem auto;
+    ${tw`leading-tight mx-auto my-1`}
+    color: rgba(0,0,0,0.7);
     padding-left: 2px;
   }
 `
 
 const AuthorTitle = styled.h4`
-  ${tw`m-auto mt-3 mb-2`}
-  color: rgba(0,0,0,0.8);
-  font-size: 1.4rem;
+  ${tw`text-2xl m-auto mt-3 mb-2`}
+  color: rgba(0,0,0,0.75);
 `
 
 const AuthorLinks = styled.ul`
-  ${tw`list-reset	pl-2 my-3 xs:text-2xl pl-0 md:text-xl`}
+  ${tw`list-reset	my-3 ml-2 xs:text-2xl pl-0 md:text-xl`}
   li {
-    display: inline-block;
-    margin-right: 8px;
-    cursor: pointer;
+    ${tw`inline-block mr-2 cursor-pointer`}
     @media (max-width: 500px) {
       margin-right: 0.75rem;
     }
     a {
-      color: rgba(0,0,0,0.75);
+      color: rgba(0,0,0,0.7);
       transition: all 300ms ease-in-out;
       &:hover {
         color: ${accent};
       }
-    }
-    &:last-child {
-      margin-right: 0;
     }
   }
 `
