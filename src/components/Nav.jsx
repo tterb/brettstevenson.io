@@ -1,8 +1,9 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import tw from 'tailwind.macro'
 import Fade from 'react-reveal/Fade';
 import Bounce from 'react-reveal/Bounce';
+import tw from 'tailwind.macro'
+import { accent } from '../../tailwind'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 // Components
@@ -10,21 +11,13 @@ import PageLink from './PageLink'
 import Logo from './Logo'
 
 const Wrapper = styled.div`
-  ${tw`relative block`}
-  height: 1rem;
-  top: 0;
-  left: 0;
-  right: 0;
+  ${tw`relative block h-4 pin-t pin-x z-999`}
   transform: translate3D(0, 0, 0);
-  z-index: 999;
 `
 
 const MenuContainer = styled.div`
-  ${tw`flex absolute w-full items-center p-4`}
-  height: 4rem;
+  ${tw`flex absolute w-full h-16 flex-wrap items-center justify-between p-4`}
   top: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: space-between;
   box-sizing: border-box;
 `
 
@@ -37,36 +30,41 @@ const Menu = styled.ul`
 const MenuItem = styled.li`
   ${tw`inline-block text-xl cursor-pointer py-0 px-3`}
   z-index: 999999;
+  a {
+    ${tw`no-underline border-none`}
+  }
+  &:last-child {
+    ${tw`pr-0`}
+  }
 `
 
-const navStyle = {
-  position: 'absolute',
-  // top: '-0.5rem',
-  right: '2.5rem',
-}
+const Navbar = styled.div`
+  ${tw`absolute`}
+  right: 2.5rem;
+`
 
 const Nav = ({ logo }) => (
   <StaticQuery query={menuQuery} 
     render={data => (
       <>
       <Wrapper className='nav-wrapper'>
-      <Bounce top delay={500}>
-      <MenuContainer>
-        {logo ? <Logo link={data.site.siteMetadata.menuLinks[0].link} /> : ''}
-        <div className='menu-wrapper' style={navStyle}>
-          <Menu className='menu'>
-            {data.site.siteMetadata.menuLinks.map((item, i) => {
-              if(logo && i == 0) return
-              return (
-                <MenuItem className='menu-item' key={item.name}>
-                  <PageLink to={item.link}>{item.name}</PageLink>
-                </MenuItem>
-              )
-            })}
-          </Menu>
-        </div>
-      </MenuContainer>
-      </Bounce>
+        <Bounce top delay={500}>
+          <MenuContainer>
+            {logo ? <Logo className='logo-container' link={data.site.siteMetadata.menuLinks[0].link} /> : ''}
+            <Navbar>
+              <Menu className='menu'>
+                {data.site.siteMetadata.menuLinks.map((item, i) => {
+                  if(logo && i == 0) return
+                  return (
+                    <MenuItem className='menu-item' key={item.name}>
+                      <PageLink to={item.link}>{item.name}</PageLink>
+                    </MenuItem>
+                  )
+                })}
+              </Menu>
+            </Navbar>
+          </MenuContainer>
+        </Bounce>
       </Wrapper>
       </>
     )}
