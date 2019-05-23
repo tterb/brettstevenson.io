@@ -18,7 +18,8 @@ const Wrapper = styled.div`
 `
 
 const Card = styled.div`
-  ${tw`block relative bg-center bg-cover bg-no-repeat w-full float-left cursor-pointer`}
+  ${tw`block relative bg-center bg-no-repeat w-full float-left cursor-pointer`}
+  background-size: cover;
   border-radius: 9px;
 `
 
@@ -30,9 +31,8 @@ const Angle = styled.div`
 const BgImage = styled(Image)`
   ${tw`absolute min-w-full pin-t pin-l`}
   position: absolute !important;
-  height: 53vh; // or whatever
+  height: 53vh;
   z-index: -1;
-  // Adjust image positioning (if image covers area with defined height) and add font-family for polyfill
   & > img {
     object-fit: cover !important; 
     object-position: 0% 0% !important;
