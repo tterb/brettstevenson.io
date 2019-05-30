@@ -88,7 +88,7 @@ const GatsbyIcon = () => (
 
 const Footer = ({ offset }) => (
   <>
-    <Content offset={`${offset+0.025}`} speed={0} factor={0.2} style={{ zIndex: `-99999` }}>
+    <Content offset={`${offset+0.025}`} speed={0} factor={0.2} style={{ zIndex: `99999` }}>
       <DividerStatic className='footer-bg' fill={colors['blue-grey']} speed={0.35} offset={`${offset}`} style={{ zIndex: `999` }} factor={0.2}>
         <WaveWrapper style={{ height: `100%`, top: `2rem`, left: `0` }}>
           <InnerWave>

@@ -4,6 +4,8 @@ import tw from 'tailwind.macro'
 import PropTypes from 'prop-types'
 import Typed from 'react-typed';
 import { Transition } from 'react-spring'
+import { Parallax } from 'react-spring/renderprops-addons'
+import Fade from 'react-reveal/Fade'
 // Elements
 import Content from '../elements/Content'
 import { BigTitle, Subtitle } from '../elements/Titles'
@@ -13,8 +15,8 @@ import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons'
 
 
 const Wrapper = styled.div`
-  ${tw`relative w-full mt-0 xl:w-full mt-4`};
-  top: -1.5em;
+  ${tw`relative w-full mt-0 xl:w-full`};
+  top: -2.5em;
 `
 
 const iconStyle = {
@@ -30,15 +32,15 @@ const typedStyle = {
   // color: 'rgba(155, 171, 180, 0.9)',
 };
 
-const ScrollContainer = styled.div`
+const ScrollContainer = styled(Parallax.Layer)`
   ${tw`relative text-center w-1/2 mx-auto my-2`}
-  top: 5rem;
+  /* top: 5rem; */
 `
 
 const ScrollArrow = styled.span`
   ${tw`relative text-4xl text-center mx-auto my-2 cursor-pointer`}
   color: rgba(255,255,255,0.2);
-  transition: color 250ms ease-in-out;
+  transition: color 300ms ease-in-out;
   &:hover {
     color: rgba(255,255,255,0.4);
   }
@@ -50,7 +52,7 @@ const Code = () => (
 
 const Hero = ({ offset, parallax }) => (
   <>
-  <Content className='hero' speed={0.4} offset={offset}>
+  <Content className='hero' speed={0.7} offset={offset}>
     <Wrapper>
       <BigTitle>Hello,<br/>I'm Brett<br/>Stevenson<span className='accent'>.</span></BigTitle>
       <Subtitle className='text-grey'>
@@ -67,8 +69,10 @@ const Hero = ({ offset, parallax }) => (
         </Typed>
       </Subtitle>
       <Code />
-      <ScrollContainer>
-        <ScrollArrow><FontAwesomeIcon icon={faAngleDoubleDown} onClick={() => parallax.scrollTo(1.1)} /></ScrollArrow>
+      <ScrollContainer offset={0.1} speed={-0.2}>
+      <Fade bottom delay={500}>
+        <ScrollArrow><FontAwesomeIcon icon={faAngleDoubleDown} onClick={() => parallax.scrollTo(0.815)} /></ScrollArrow>
+      </Fade>
       </ScrollContainer>
     </Wrapper>
   </Content>

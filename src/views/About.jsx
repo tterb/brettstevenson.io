@@ -15,7 +15,7 @@ import avatar from '../images/me.png'
 
 
 const AboutHero = styled.div`
-  ${tw`flex flex-col mt-0 md:mt-4 lg:flex-row items-center`};
+  ${tw`flex flex-col mt-0 md:mt-4 lg:flex-row items-center px-2`};
 `
 const Avatar = styled.img`
   ${tw`rounded-full w-32 md:w-48 xl:h-auto`};
@@ -43,11 +43,11 @@ const About = ({ offset, factor }) => (
           </AboutSub>
         </AboutHero>
         <AboutDesc>
-           I'm a full-stack developer with a passion for experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy. I have experience working in a variety of languages, though I'm particularly found of Python, Javascript, and Java.
+           I'm a full-stack developer with a passion for experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy. I have experience working in a variety of languages, though I'm particularly found of <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=python'>Python</a>, <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=javascript'>Javascript</a>, and <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=java'>Java</a>.
         </AboutDesc>
       </Inner>
     </Content>
-    <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset-0.001}`} factor={factor} speed={0.075} />
+    <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset+0.0225}`} factor={factor} speed={0.35} />
   </>
 )
 

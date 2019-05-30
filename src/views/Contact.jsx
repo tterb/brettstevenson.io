@@ -27,12 +27,12 @@ const ContactText = styled.p`
 `
 
 const Contact = ({ offset, factor }) => (
-  <Content offset={offset} factor={factor} speed={0.65}>
+  <Content offset={offset} factor={factor} speed={0.55}>
     <Inner>
       <Cube color='purple' />
       <Title>Get in touch</Title>
       <ContactText>
-        Say <PageLink to='./contact'>Hi</PageLink> or find me on other platforms:{' '}
+        Say <PageLink to='./contact'>Hello</PageLink> or find me on other platforms:{' '}
         <a href='https://github.com/tterb' aria-label='GitHub' target='_blank'>GitHub</a> &{' '}
         <a href='https://www.dribbble.com/tterb/' aria-label='Dribbble' target='_blank'>Dribbble</a>
       </ContactText>
