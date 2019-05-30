@@ -23,13 +23,13 @@ class Index extends React.Component {
     return (
       <>
         <Layout />
-        <Parallax ref='parallax' pages={4.35}>
+        <Parallax ref='parallax' pages={3.85}>
           <Nav logo={false} />
           <Hero offset={0} parallax={this.refs.parallax} />
-          <About offset={1} factor={1.25} id='about' />
-          <Projects offset={2.5} factor={2.2} id='projects'/>
-          <Contact offset={3.825} factor={0.35}/>
-          <Footer offset={4.025} />
+          <About offset={0.9} factor={1.25} id='about' />
+          <Projects offset={2} factor={2.2} id='projects'/>
+          <Contact offset={3} factor={0.35}/>
+          <Footer offset={3.5} />
         </Parallax>
       </>
     )
