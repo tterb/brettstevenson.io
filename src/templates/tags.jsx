@@ -24,6 +24,11 @@ import { faSearch, faTags, faArchive, faArrowAltCircleLeft, faArrowAltCircleRigh
 // Styles
 import '../styles/blog.scss'
 
+
+const PageTitle = styled(BigTitle)`
+  margin-top: 0;
+`
+
 const CardList = styled.ul`
   ${tw`inline-block list-reset`}
   width: 72%;
@@ -51,15 +56,8 @@ class Tags extends React.Component {
     const siteTitle = _.get(this, 'props.data.site.siteMetadata.title')
     const posts = _.get(this, 'props.data.allContentfulBlogPost.edges')
     const { tag, currentPage, numPages, count } = this.props.pageContext
-    let postCount
-    if(count < 4) {
-      postCount = count
-    } else if(currentPage <= Math.floor(count/4)) {
-      postCount = 4
-    } else {
-      postCount = count%4
-    }
-    const pageHeight = 1.1+(postCount*0.39)
+    const postCount = (currentPage <= Math.floor(count/4) ? 4 : count)
+    const pageHeight = 1.025+(postCount*0.39)
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
     const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString()
@@ -70,7 +68,7 @@ class Tags extends React.Component {
         <Parallax pages={pageHeight}>
           <Nav style={navStyle} />
           <Header offset={0} factor={0.45} speed={0.4}>
-            <BigTitle>{ _.upperFirst(tag) }<span className='accent'>.</span></BigTitle>
+            <PageTitle>{ _.upperFirst(tag) }<span className='accent'>.</span></PageTitle>
           </Header>
           <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={{padding: `14rem 5rem !important`}}>
             <div className='blog-container'>
@@ -102,7 +100,7 @@ class Tags extends React.Component {
               </Pagination>
             </div>
           </Content>
-          <Footer offset={pageHeight-0.325} factor={0.5} />
+          <Footer offset={pageHeight-0.325} speed={0.15} />
         </Parallax>
       </>
     )
