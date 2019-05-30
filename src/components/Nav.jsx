@@ -1,7 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Fade from 'react-reveal/Fade';
-import Bounce from 'react-reveal/Bounce';
+import Fade from 'react-reveal/Fade'
 import tw from 'tailwind.macro'
 import { accent } from '../../tailwind'
 import styled from 'styled-components'
@@ -48,7 +47,7 @@ const Nav = ({ logo }) => (
     render={data => (
       <>
       <Wrapper className='nav-wrapper'>
-        <Bounce top delay={500}>
+        <Fade top delay={250}>
           <MenuContainer>
             {logo ? <Logo className='logo-container' link={data.site.siteMetadata.menuLinks[0].link} /> : ''}
             <Navbar>
@@ -64,7 +63,7 @@ const Nav = ({ logo }) => (
               </Menu>
             </Navbar>
           </MenuContainer>
-        </Bounce>
+        </Fade>
       </Wrapper>
       </>
     )}
