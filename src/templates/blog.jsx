@@ -23,6 +23,14 @@ import { faSearch, faTags, faArchive, faArrowAltCircleLeft, faArrowAltCircleRigh
 // Styles
 import '../styles/blog.scss'
 
+const PageTitle = styled(BigTitle)`
+  margin-top: 0;
+`
+
+const BlogContent = styled(Content)`
+  top: -1.5rem;
+`
+
 const CardList = styled.ul`
   ${tw`inline-block list-reset`}
   width: 72%;
@@ -50,6 +58,9 @@ class Blog extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const { currentPage, numPages } = this.props.pageContext
+    
+    const postCount = (currentPage <= Math.floor(posts.length/4) ? 4 : posts.length)
+    const pageHeight = 1.025+(postCount*0.39)
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
     const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString()
@@ -57,12 +68,12 @@ class Blog extends React.Component {
     return (
       <>
       <Layout />
-        <Parallax pages={2.625}>
+        <Parallax pages={pageHeight}>
           <Nav style={navStyle} />
-          <Header offset={0} factor={0.45} speed={0.4}>
-            <BigTitle>Blog<span className='accent'>.</span></BigTitle>
+          <Header offset={0} factor={0.5} speed={0.4}>
+            <PageTitle>Blog<span className='accent'>.</span></PageTitle>
           </Header>
-          <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={{padding: `14rem 5rem !important`}}>
+          <BlogContent className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={{padding: `14rem 5rem !important`}}>
             <div className='blog-container'>
               <CardList className='blog-list'>
                 {posts.map(({ node }) => {
@@ -91,8 +102,8 @@ class Blog extends React.Component {
                 )}
               </Pagination>
             </div>
-          </Content>
-          <Footer offset={2.3} factor={0.5} />
+          </BlogContent>
+          <Footer offset={pageHeight-0.325} />
         </Parallax>
       </>
     )
