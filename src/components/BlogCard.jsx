@@ -19,7 +19,18 @@ const Wrapper = styled.div`
 const Card = styled.div`
   ${tw`block relative bg-center bg-no-repeat w-full float-left cursor-pointer`}
   background-size: cover;
+  height: 53vh;
   border-radius: 9px;
+  box-shadow: 2px 5px 30px 15px rgba(0,0,0,0.05);
+  transition: all 300ms ease-in-out;
+  margin: 7vh auto;
+  &:first-child {
+    margin-top: 2vh;
+  }
+  &:hover {
+    box-shadow: 2px 10px 20px -5px rgba(0,0,0,0.2);
+    transform: translate3D(0,-0.35rem,0);
+  }
 `
 
 const Angle = styled.div`
@@ -53,15 +64,15 @@ const Category = styled.span`
 `
 
 const CardTitle = styled.h2`
-  ${tw`font-title font-bold leading-tight mt-0 pb-1`}
-  color: rgba(0,0,0,0.8);
-  font-size: 2.7rem;
+  ${tw`font-title font-bold mt-0 pb-2`}
+  font-size: 2.8rem;
+  line-height: 1.15;
   /* border-bottom: 2px solid rgba(0,0,0,0.125); */
   border-bottom: 2px solid rgba(255,255,255,0.5);
   margin-bottom: 0.35em;
   a {
     ${tw`no-underline`}
-    color: rgba(0,0,0,0.85);
+    color: rgba(0,0,0,0.8);
   }
 `
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import _ from 'lodash'
 import tw from 'tailwind.macro'
-import { colors } from '../../tailwind'
+import { accent } from '../../tailwind'
 import styled from 'styled-components'
 import Bounce from 'react-reveal/Bounce';
 import { Parallax } from 'react-spring/renderprops-addons'
@@ -26,7 +26,7 @@ import '../styles/blog.scss'
 
 
 const PageTitle = styled(BigTitle)`
-  margin-top: 0;
+  ${tw`mt-0`}
 `
 
 const CardList = styled.ul`
@@ -38,6 +38,25 @@ const CardList = styled.ul`
 
 const Sidebar = styled.div`
   ${tw`relative inline-block w-1/4 float-right pt-0`}
+`
+
+const SidebarIcons = styled.ul`
+  ${tw`text-left list-reset w-4/5 mx-auto my-6 p-0 pl-2`}
+  font-size: 2rem;
+  li {
+    ${tw`inline-block mr-5`}
+    margin-right: 1.05rem;
+    a svg {
+      color: rgba(0,0,0,0.7);
+      transition: all 350ms ease-in-out;
+      &:hover {
+        color: ${accent};
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `
 
 const Pagination = styled.div`
@@ -82,11 +101,11 @@ class Tags extends React.Component {
                 })}
               </CardList>
               <Sidebar className='sidebar'>
-                <ul className='sidebar-icons'>
+                <SidebarIcons>
                   <li><PageLink to='../search'><FontAwesomeIcon icon={faSearch} /></PageLink></li>
                   <li><PageLink to='../tags'><FontAwesomeIcon icon={faTags} /></PageLink></li>
                   <li><PageLink to='../archive'><FontAwesomeIcon icon={faArchive} /></PageLink></li>
-                </ul>
+                </SidebarIcons>
                 <hr />
                 <PostTags className='sidebar-tags' limit={8} />
               </Sidebar>
