@@ -1,32 +1,45 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import _ from 'lodash'
+import styled from 'styled-components'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
-import styled from 'styled-components'
-import _ from 'lodash'
+import { accent } from '../../tailwind'
 import PageLink from './PageLink'
 
 const TagList = styled.ul`
   ${tw `list-reset text-center text-lg`}
   li {
-    display: inline-block;
-    color: rgba(255,255,255,0.75);
-    border: 2px solid rgba(255,255,255,0.75);
-    border-radius: 6px;
-    transition: color 300ms ease-in-out, background 350ms ease-in-out;
-    margin: 0 0.5rem 0.5rem 0;
-    padding: 4px 8px;
+    ${tw `inline-block`}
     a {
-      color: rgba(255,255,255,0.75);
-      &:hover {
-        color: rgba(255,255,255,0.9);
+      ${tw `mb-2`}
+      display: grid;
+      span {
+        ${tw `inline-block text-left m-0 mr-2 mb-1 opacity-100 z-999`}
+        background: #efefef;
+        color: rgba(0,0,0,0.5);
+        font-size: 0.9rem;
+        grid-area: 1 / 1;
+        border-radius: 6px;
+        box-shadow: 0 1.5px 4px -2px rgba(0,0,0,0.1);
+        transition: all 350ms ease-in-out;
+        padding: 6px 8px;
       }
-    }
-    &:hover {
-      background: rgba(255,255,255,0.85);
-      border: 2px solid rgba(255,255,255,0.85);
-      a {
-        color: SlateBlue;
+      .active {
+        ${tw `opacity-0 z-0`}
+        transition: color 350ms ease-in-out, opacity 450ms ease-in-out;
+      }
+      &:hover {
+        box-shadow: none !important;
+        span {
+          ${tw `opacity-0`}
+        }
+        .active {
+          background: linear-gradient(-25deg, SlateBlue, DeepSkyBlue);
+          color: white;
+          box-shadow: 0 2px 4.5px -2px rgba(0,0,0,0.7);
+          opacity: 1 !important;
+        }
       }
     }
   }
@@ -34,26 +47,34 @@ const TagList = styled.ul`
 
 export default () => (
   <StaticQuery
-    query={graphql`
-      query Tags($limit: Int) {
-        allContentfulBlogPost(limit: $limit) {
-          group(field: tags) {
-            fieldValue
-            totalCount
-          }
-        }
-      }
-    `}
-    render={data => (
-      <TagList className='tags-list'>
-        {data.allContentfulBlogPost.group.map(tag => (
-          <li key={tag.fieldValue}>
-            <PageLink to={`blog/tags/${_.kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
-            </PageLink>
-          </li>
-        ))}
-      </TagList>
-    )}
+    query={tagsQuery}
+    render={data => {
+      const tags = data.allContentfulBlogPost.group
+      let topTags = _.orderBy(tags, ['totalCount'], ['desc'])
+      topTags = _.take(topTags, 10)
+      return (
+        <TagList className='tags-list'>
+          {topTags.map(tag => (
+            <li key={tag.fieldValue}>
+              <PageLink to={`blog/tags/${_.kebabCase(tag.fieldValue)}/`}>
+                <span>{tag.fieldValue} ({tag.totalCount})</span>
+                <span className='active'>{tag.fieldValue} ({tag.totalCount})</span>
+              </PageLink>
+            </li>
+          ))}
+        </TagList>
+      )
+    }}
   />
 )
+
+const tagsQuery = graphql`
+  query Tags($limit: Int) {
+    allContentfulBlogPost(limit: $limit) {
+      group(field: tags) {
+        fieldValue
+        totalCount
+      }
+    }
+  }
+`
