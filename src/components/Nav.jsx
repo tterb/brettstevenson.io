@@ -52,14 +52,11 @@ const Nav = ({ logo }) => (
             {logo ? <Logo className='logo-container' link={data.site.siteMetadata.menuLinks[0].link} /> : ''}
             <Navbar>
               <Menu className='menu'>
-                {data.site.siteMetadata.menuLinks.map((item, i) => {
-                  if(logo && i == 0) return
-                  return (
-                    <MenuItem className='menu-item' key={item.name}>
-                      <PageLink to={item.link}>{item.name}</PageLink>
-                    </MenuItem>
-                  )
-                })}
+                {data.site.siteMetadata.menuLinks.map((item, i) => (
+                  <MenuItem className='menu-item' key={item.name}>
+                    <PageLink to={item.link}>{item.name}</PageLink>
+                  </MenuItem>
+                ))}
               </Menu>
             </Navbar>
           </MenuContainer>
