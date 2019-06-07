@@ -9,37 +9,38 @@ import PageLink from './PageLink'
 
 const TagList = styled.ul`
   ${tw `list-reset text-center text-lg`}
-  li {
-    ${tw `inline-block`}
-    a {
-      ${tw `mb-2`}
-      display: grid;
+`
+
+const Tag = styled.li`
+  ${tw `inline-block`}
+  a {
+    ${tw `mb-2`}
+    display: grid;
+    span {
+      ${tw `inline-block text-left m-0 mr-2 mb-1 opacity-100 z-999`}
+      background: #efefef;
+      color: rgba(0,0,0,0.5);
+      font-size: 0.9rem;
+      grid-area: 1 / 1;
+      border-radius: 6px;
+      box-shadow: 0 1.5px 4px -2px rgba(0,0,0,0.1);
+      transition: all 350ms ease-in-out;
+      padding: 6px 8px;
+    }
+    .active {
+      ${tw `opacity-0 z-0`}
+      transition: color 350ms ease-in-out, opacity 450ms ease-in-out;
+    }
+    &:hover {
+      box-shadow: none !important;
       span {
-        ${tw `inline-block text-left m-0 mr-2 mb-1 opacity-100 z-999`}
-        background: #efefef;
-        color: rgba(0,0,0,0.5);
-        font-size: 0.9rem;
-        grid-area: 1 / 1;
-        border-radius: 6px;
-        box-shadow: 0 1.5px 4px -2px rgba(0,0,0,0.1);
-        transition: all 350ms ease-in-out;
-        padding: 6px 8px;
+        ${tw `opacity-0`}
       }
       .active {
-        ${tw `opacity-0 z-0`}
-        transition: color 350ms ease-in-out, opacity 450ms ease-in-out;
-      }
-      &:hover {
-        box-shadow: none !important;
-        span {
-          ${tw `opacity-0`}
-        }
-        .active {
-          background: linear-gradient(-25deg, SlateBlue, DeepSkyBlue);
-          color: white;
-          box-shadow: 0 2px 4.5px -2px rgba(0,0,0,0.7);
-          opacity: 1 !important;
-        }
+        background: linear-gradient(-25deg, SlateBlue, DeepSkyBlue);
+        color: white;
+        box-shadow: 0 2px 4.5px -2px rgba(0,0,0,0.7);
+        opacity: 1 !important;
       }
     }
   }
@@ -51,16 +52,16 @@ export default () => (
     render={data => {
       const tags = data.allContentfulBlogPost.group
       let topTags = _.orderBy(tags, ['totalCount'], ['desc'])
-      topTags = _.take(topTags, 10)
+      topTags = _.take(topTags, 12)
       return (
         <TagList className='tags-list'>
           {topTags.map(tag => (
-            <li key={tag.fieldValue}>
+            <Tag key={tag.fieldValue}>
               <PageLink to={`blog/tags/${_.kebabCase(tag.fieldValue)}/`}>
                 <span>{tag.fieldValue} ({tag.totalCount})</span>
                 <span className='active'>{tag.fieldValue} ({tag.totalCount})</span>
               </PageLink>
-            </li>
+            </Tag>
           ))}
         </TagList>
       )
