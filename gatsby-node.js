@@ -59,7 +59,8 @@ exports.createPages = ({ graphql, actions }) => {
               limit: postsPerPage,
               skip: i * postsPerPage,
               numPages,
-              currentPage: i + 1
+              currentPage: i + 1,
+              count: posts.length
             },
           })
         })
@@ -71,9 +72,9 @@ exports.createPages = ({ graphql, actions }) => {
             // tags = tags.concat(edge.node.tags)
             edge.node.tags.forEach((tag) => {
               if (tag in tags)
-              tags[tag]++
+                tags[tag]++
               else
-              tags[tag] = 1
+                tags[tag] = 1
             })
           }
         })
