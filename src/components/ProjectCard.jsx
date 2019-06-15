@@ -24,7 +24,6 @@ const Title = styled.div`
   ${tw`text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-normal font-title font-semibold pt-1 pb-4`};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: all 350ms ease-in-out;
-  overflow: none;
 `
 const Text = styled.div`
   ${tw`font-sans leading-tight text-sm md:text-base xl:text-lg pb-8`};
@@ -57,7 +56,9 @@ const calc = (x, y) => [-(y - window.innerHeight/2)/40, (x - window.innerWidth/2
 const trans = (x, y, s) => `perspective(1200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
 function ProjectsCard(props) {
-  const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 200, friction: 40 } }))
+  const [prop, set] = useSpring(() => ({ 
+    xys: [0, 0, 1], config: { mass: 5, tension: 200, friction: 40 } 
+  }))
   const project = props.project
   // const hasSite = project.site ? true : false
   const hasRepo = project.github ? true : false
