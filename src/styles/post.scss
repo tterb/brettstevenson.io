@@ -19,12 +19,12 @@
   margin: 2vh auto;
   padding: 2.25rem;
   .post-header {
-    letter-spacing: 0;
+    letter-spacing: -1px;
     margin-bottom: 8vh;
     &::after {
       display: block;
       position: relative;
-      background: linear-gradient(to top left, SlateBlue 25%, DeepSkyBlue 75%);
+      background: linear-gradient(to top left, SlateBlue 30%, DeepSkyBlue 75%);
       content: "";
       height: 6px;
       width: 25%;
@@ -50,8 +50,7 @@
 
 h1, h2, h3, h4, h5, h6 {
   color: rgba(#000, 0.8);
-  font-family: 'Poppins', 'Open Sans', -apple-system, BlinkMacSystemFont,
-  'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  // font-family: 'Poppins', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
   margin-top: 1.25em;
 }
 
@@ -256,7 +255,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     .menu-wrapper {
       top: 1.25rem;
-      right: 4rem;
+      right: 2.75rem;
       .menu {
         top: -0.5rem;
         right: 0;
@@ -308,7 +307,7 @@ h1, h2, h3, h4, h5, h6 {
 .menu-wrapper {
   position: absolute;
   top: 1.5rem;
-  right: 4rem;
+  right: 2.75rem;
 }
 
 .sensor {

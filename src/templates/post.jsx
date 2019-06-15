@@ -17,7 +17,7 @@ import 'typeface-source-code-pro'
 const PostTitle = styled.h1`
   ${tw`relative w-4/5 font-extrabold leading-tight m-0 mx-auto xs:w-9/10`}
   color: rgba(0,0,0,0.75);
-  font-size: 6.35vw;
+  font-size: 6.75vw;
   margin-left: -1vw;
   @media (max-width: 500px) {
     font-size: 2.35rem;
@@ -26,9 +26,9 @@ const PostTitle = styled.h1`
 
 const PostDate = styled.p`
   ${tw`block relative text-right leading-normal my-1 mx-0 xs:text-base md:text-lg`}
-  color: rgba(0,0,0,0.85);
-  top: 6px;
-  right: 8px;
+  color: rgba(0,0,0,0.75);
+  top: 5px;
+  right: 5px;
   strong {
     ${tw`py-0 px-1`}
   }
