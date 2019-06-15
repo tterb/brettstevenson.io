@@ -105,20 +105,22 @@ class BlogCard extends React.Component {
   }
   
   render() {
+    const post = this.props.post
+    let preview = this.props.post.heroImage
     return (
       <Card className='blog-card' onClick={this.handleClick}>
-        <BgImage alt={this.props.post.title} fixed={this.props.post.heroImage.fixed} />
+          <BgImage alt={post.title} fixed={preview.fixed} />
         <Wrapper className='content-mask'>
-          <Category className={`card-category ${_.kebabCase(this.props.post.category.toString().toLowerCase())}`}>{this.props.post.category}</Category>
+          <Category className={`card-category ${_.kebabCase(post.category.toString().toLowerCase())}`}>{post.category}</Category>
           <CardContent>
             <CardTitle>
-              <PageLink to={`/blog/${this.props.post.slug}`}>{this.props.post.title}</PageLink>
+              <PageLink to={`/blog/${post.slug}`}>{post.title}</PageLink>
             </CardTitle>
-            <Text dangerouslySetInnerHTML={{ __html: this.props.post.description.childMarkdownRemark.html }}
+            <Text dangerouslySetInnerHTML={{ __html: post.description.childMarkdownRemark.html }}
             />
             <Date>
               <FontAwesomeIcon icon={faCalendarAlt} />
-              {this.props.post.publishDate}
+              {post.publishDate}
             </Date>
           </CardContent>
         </Wrapper>
