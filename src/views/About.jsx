@@ -47,7 +47,7 @@ const About = ({ offset, factor }) => (
         </AboutDesc>
       </Inner>
     </Content>
-    <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset+0.0225}`} factor={factor} speed={0.35} />
+    <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset+0.019}`} factor={factor} speed={0.35} />
   </>
 )
 
@@ -56,3 +56,9 @@ About.propTypes = {
 }
 
 export default About
+
+// I enjoy using technology to provide unique and memorable experiences.
+
+// As a designer. I'm passionate about bridging the gap between intent and realization, while making for an enjoyable ride
+
+//As a developer, I have experience working in both front and back-end development and enjoy experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy.  
