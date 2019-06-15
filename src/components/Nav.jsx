@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Fade from 'react-reveal/Fade'
 import tw from 'tailwind.macro'
-import { accent } from '../../tailwind'
+import { colors, accent } from '../../tailwind'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 // Components
@@ -35,6 +35,20 @@ const MenuItem = styled.li`
   &:last-child {
     ${tw`pr-0`}
   }
+  &.external {
+    &::after {
+      content: '*';
+      color: #63666b;
+      padding-right: 0.2rem;
+      opacity: 0;
+      transition: opacity 300ms ease-in-out;
+    }
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
 `
 
 const Navbar = styled.div`
@@ -52,11 +66,21 @@ const Nav = ({ logo }) => (
             {logo ? <Logo className='logo-container' link={data.site.siteMetadata.menuLinks[0].link} /> : ''}
             <Navbar>
               <Menu className='menu'>
-                {data.site.siteMetadata.menuLinks.map((item, i) => (
-                  <MenuItem className='menu-item' key={item.name}>
-                    <PageLink to={item.link}>{item.name}</PageLink>
-                  </MenuItem>
-                ))}
+                {data.site.siteMetadata.menuLinks.map((item, i) => {
+                  if(item.external) {
+                    return (
+                      <MenuItem className='menu-item external' key={item.name}>
+                        <a href={item.link} target='_blank'>{item.name}</a>
+                      </MenuItem>
+                    )
+                  } else {
+                    return (
+                      <MenuItem className='menu-item' key={item.name}>
+                        <PageLink to={item.link}>{item.name}</PageLink>
+                      </MenuItem>
+                    )
+                  }
+                })}
               </Menu>
             </Navbar>
           </MenuContainer>
@@ -81,6 +105,7 @@ const menuQuery = graphql`
         menuLinks {
           name
           link
+          external
         }
       }
     }

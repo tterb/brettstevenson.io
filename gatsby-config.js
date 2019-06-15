@@ -49,18 +49,27 @@ module.exports = {
       {
         name: `Home`,
         link: `/`,
+        external: false,
       },
       {
         name: `Portfolio`,
         link: `/portfolio`,
+        external: false,
+      },
+      {
+        name: `Design`,
+        link: `https://brettstevenson.design/`,
+        external: true,
       },
       {
         name: `Blog`,
         link: `/blog`,
+        external: false,
       },
       {
         name: `Contact`,
         link: `/contact`,
+        external: false,
       },
     ],
     algolia: {
