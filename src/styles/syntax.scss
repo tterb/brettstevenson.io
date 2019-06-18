@@ -2,28 +2,30 @@
 * Syntax highlighting styles
 */
 
-$syntax-hue:          270;
-$syntax-saturation:    4%;
+$syntax-hue:          275;
+$syntax-saturation:    5%;
 $syntax-brightness:   19%;
 
 $base:       hsl($syntax-hue, $syntax-saturation, $syntax-brightness);
-$text:       hsl($syntax-hue, 9%, 90%);
+$text:       hsl($syntax-hue, 9%, 88%);
+$light-text: hsl($syntax-hue,  9%, 60%);
 $subtle:     darken($text, 35%);
+// $subtle:     hsl($syntax-hue, 8%, 43%);
 $highlight:  hsl($syntax-hue, 9%, 95%);
 $red:        hsl(  2, 60%, 51%);
-// $orange:     hsl( 21, 86%, 70%);
+// $orange:     hsl( 23, 90%, 68%);
 $orange:    hsl( 20, 96%, 69%);
 // $yellow:     hsl( 40, 98%, 78%);
 $yellow:     hsl( 43, 92%, 74%);
-// $green:      hsl( 98, 64%, 68%);
-$green:      hsl(100, 68%, 65%);
+// $green:      hsl(100, 68%, 65%);
+$green:      hsl(120, 65%, 66%);
 // $blue:       hsl(195, 83%, 73%);
-$blue:       hsl(188, 78%, 63%);
+$blue:       hsl(190, 89%, 60%);
 // $purple:     hsl(246, 80%, 80%);
-$purple:     hsl(246, 70%, 80%);
-// $magenta:    hsl(350, 100%, 70%);
-$magenta:    hsl(348, 100%, 70%);
-$err:        $red;
+$purple:     hsl(246, 70%, 75%);
+// $magenta:    hsl(350, 93%, 70%);
+$magenta:    hsl(350, 99%, 69%);
+$error:        $red;
 
 code[class*='language-'],
 pre[class*='language-'] {
@@ -31,7 +33,7 @@ pre[class*='language-'] {
 	color: $text;
 	background: none;
 	font-weight: 400;
-	line-height: 1.5;
+	line-height: 1.475;
 	// text-shadow: 0 1px rgba(#000, 0.3);
 	text-align: left;
 	text-shadow: none;
@@ -67,6 +69,8 @@ pre[class*='language-'] {
 
 pre code[class*='language-'] {
 	display: block;
+	// white-space: pre;
+  // white-space: pre-wrap;
 }
 
 code[class*='language-'] {
@@ -75,7 +79,7 @@ code[class*='language-'] {
   color: $text;
 	font-size: 0.85em;
   letter-spacing: normal;
-	line-height: 1.5;
+	line-height: 1.475;
 	font-variant-ligatures: normal;
   font-feature-settings: 'calt' 1;
   font-smoothing: antialiased;
@@ -83,20 +87,25 @@ code[class*='language-'] {
   text-transform: none;
 	width: 90%;
 	border-radius: 8px;
-	white-space: pre-wrap;
+	white-space: pre;
 	margin: 0 auto 0 0.75%;
   padding: 1em 1.15em 1.15em 1.15em;
-  overflow: hidden;
+	overflow: hidden;
+  overflow-x: auto;
 	.token {
+		&.entity,
+		&.url,
+		&.variable,
+		&.punctuation {
+			color: $text;
+		}
+		
+		&.cdata,
 		&.comment,
 		&.prolog,
 		&.doctype,
-		&.cdata {
-			color: $subtle;
-		}
-
-		&.punctuation {
-			color: $text;
+		&.plain-text {
+			color: $subtle !important;
 		}
 		
 		&.property,
@@ -108,7 +117,9 @@ code[class*='language-'] {
 		}
 
 		&.boolean,
-		&.number {
+		&.number,
+		&.decorator,
+		&.interpolation, {
 			color: $purple;
 		}
 
@@ -118,12 +129,6 @@ code[class*='language-'] {
 		&.char,
 		&.inserted {
 			color: $yellow;
-		}
-
-		&.entity,
-		&.url,
-		&.variable {
-			color: $text;
 		}
 
 		&.atrule,
@@ -173,10 +178,7 @@ code[class*='language-'] {
 
 .language-bash {
 	.token.function {
-		color: $magenta;
-		// .nb {
-		// 	color: $blue;
-		// }
+		color: $blue !important;
 	}
 	.nt {
 		color: $orange;

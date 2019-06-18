@@ -55,17 +55,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post-body {
+  h1 {
+    font-size: 3rem;
+  }
+  
   h2 {
-    font-size: 2rem;
+    font-size: 2.25rem;
     letter-spacing: -0.5px;
     line-height: 1.1;
     margin-bottom: 1rem;
   }
   
   h3 {
-    font-size: 1.6rem;
-    line-height: 1.75;
-    margin: 1rem 0 0.5rem;
+    font-size: 1.75rem;
+    margin-bottom: 0.35rem;
+  }
+  
+  h4 {
+    font-size: 1.35rem;
+  }
+  
+  h5 {
+    color: #777;
+    font-size: 1.2rem;
+  }
+  
+  h4, h5, h6 {
+    line-height: 1;
+    margin-bottom: 0;
   }
 
   p {
@@ -321,6 +338,11 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
 }
 
+
+#disqus_thread {
+  width: 85%;
+  margin-bottom: 3rem;
+}
 
 @keyframes fromTop {
     0% { height: 0; }
