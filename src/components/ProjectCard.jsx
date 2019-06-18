@@ -65,7 +65,7 @@ function ProjectsCard(props) {
   const link = hasRepo ? project.github : project.site
   
   function handleClick(e) {
-    location.href = props.project.link
+    window.open(props.project.link, '_target')
   }
   
   return (
