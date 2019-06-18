@@ -59,7 +59,7 @@ class ArchivePage extends React.Component {
               })}
             </ArchiveList>
             <div className='back-blog-btn'>
-              <PageLink direction='right' to='/tags' className='back-blog btn'>Back to Blog</PageLink>
+              <PageLink direction='right' to='/blog' className='back-blog btn'>Back to Blog</PageLink>
             </div>
           </Inner>
         </Content>
