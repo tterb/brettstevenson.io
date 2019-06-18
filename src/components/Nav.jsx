@@ -36,10 +36,10 @@ const MenuItem = styled.li`
     ${tw`pr-0`}
   }
   &.external {
+    padding-right: 0.2rem;
     &::after {
       content: '*';
       color: #63666b;
-      padding-right: 0.2rem;
       opacity: 0;
       transition: opacity 300ms ease-in-out;
     }
