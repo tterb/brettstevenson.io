@@ -63,14 +63,11 @@ class PostNav extends React.Component {
             </div>
             <div className='menu-wrapper'>
               <Menu className='menu'>
-                {data.site.siteMetadata.menuLinks.map((item, i) => {
-                  if(i == 0) return
-                  return (
-                    <MenuItem className='menu-item' key={item.name}>
-                      <PageLink to={item.link}>{item.name}</PageLink>
-                    </MenuItem>
-                  )
-                })}
+                {data.site.siteMetadata.menuLinks.map((item, i) => (
+                  <MenuItem className='menu-item' key={item.name}>
+                    <PageLink to={item.link}>{item.name}</PageLink>
+                  </MenuItem>
+                ))}
               </Menu>
             </div>
           </div>
