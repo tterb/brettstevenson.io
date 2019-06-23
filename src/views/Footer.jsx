@@ -41,6 +41,7 @@ const FooterWrapper = styled.footer`
   ${tw`text-center text-grey absolute pin-b p-6 font-sans text-md md:text-base text-lg lg:text-lg`};
   /* bottom: 1rem; */
   font-size: 0.6rem;
+  top: 4rem;
   z-index: 9999;
   .separator {
     position: relative;
@@ -100,7 +101,7 @@ const Footer = ({ offset, speed }) => (
           </InnerWave>
         </WaveWrapper>
       </DividerStatic>
-      <FooterWrapper style={{ top: `3.75rem` }}>
+      <FooterWrapper>
         <SocialList>
           <li><a href='https://github.com/tterb' aria-label='GitHub'><FontAwesomeIcon icon={faGithub}/></a></li>
           <li><a href='https://deviantart.com/bstevenson' aria-label='DeviantArt'><FontAwesomeIcon icon={faDeviantart}/></a></li>
