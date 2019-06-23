@@ -42,7 +42,7 @@ module.exports = {
     siteUrl: config.siteUrl + pathPrefix,
     author: `Brett Stevenson`,
     keywords: [
-      `brett stevenson`, `full-stack`, `software`, `developer`, `design`, `portfolio`, `blog`, `python`, `javascript`, `react`,`gatsby`, `website optimization`
+      `brett stevenson`, `full-stack`, `software`, `developer`, `design`, `portfolio`, `blog`, `python`, `javascript`, `react`, `gatsby`, `website optimization`
     ],
     disqusShortname: `tterb-gatsby`,
     menuLinks: [
@@ -106,8 +106,13 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-prismjs`,
           `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              aliases: { sh: `bash` },
+            },
+          },
           {
             resolve: `gatsby-remark-emojis`,
             options: {
