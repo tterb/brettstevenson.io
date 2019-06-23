@@ -65,7 +65,7 @@ const Category = styled.span`
 
 const CardTitle = styled.h2`
   ${tw`font-title font-bold mt-0 pb-2`}
-  font-size: 2.8rem;
+  font-size: 2.9rem;
   line-height: 1.15;
   /* border-bottom: 2px solid rgba(0,0,0,0.125); */
   border-bottom: 2px solid rgba(255,255,255,0.5);
