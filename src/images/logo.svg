@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="43.0135mm" height="66.5585mm" viewBox="0 0 121.9279 188.6697"><defs><style>.a{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:15px;}</style></defs><title>logo</title><path class="a" d="M45.11,35.97c-1.92-.11-37.61-3.83-37.61,29,0,26.66,28.14,28.76,35.69,28.84,12.74.14,42.29,1.45,42.29,30.09,0,31.05-41.4,35.71-64.21,25.12" transform="translate(0 -0.0038)"/><path class="a" d="M12.19,169.79v9.73c48.69,6.2,107.65-3,101.84-62.91C109.5,69.97,59.73,62.33,37.57,66.5c-.22-3,42.57,5.39,38.72-36.31-4.41-29-46.35-21.64-64.1-22.33V18.01" transform="translate(0 -0.0038)"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="43.014mm" height="66.558mm" viewBox="0 0 121.9279 188.6697" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>.a{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:15px;}</style>
+</defs>
+<title>logo</title>
+<path class="a" transform="translate(0 -.0038)" d="M45.11,35.97c-1.92-.11-37.61-3.83-37.61,29,0,26.66,28.14,28.76,35.69,28.84,12.74.14,42.29,1.45,42.29,30.09,0,31.05-41.4,35.71-64.21,25.12"/>
+<path class="a" transform="translate(0 -.0038)" d="m12.19 169.79v9.73c48.69 6.2 107.65-3 101.84-62.91-4.53-46.64-54.3-54.28-76.46-50.11-0.22-3 42.57 5.39 38.72-36.31-4.41-29-46.35-21.64-64.1-22.33v10.15"/>
+</svg>
