@@ -4,13 +4,10 @@ import styled from 'styled-components'
 import PageLink from './PageLink'
 
 const Wrapper = styled.span`
-  margin-left: 1.5rem;
-  z-index: 9;
+  ${tw`ml-6 z-10`}
   svg {
-    max-width: 100%;
-    height: auto;
+    ${tw`max-w-full h-auto m-0`}
     box-sizing: border-box;
-    margin: 0;
   }
 `
 
