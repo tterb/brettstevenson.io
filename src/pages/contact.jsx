@@ -46,7 +46,7 @@ const ContactMessage = (props) => (
 )
 
 const SubmitBtn = styled.button`
-  ${tw`block h-auto font-semibold text-center border-none outline-none cursor-pointer mt-10 ml-1 mb-5 px-5 py-3 sm:w-1/3 md:w-1/4`}
+  ${tw`block h-auto font-semibold text-center border-none outline-none cursor-pointer mt-12 ml-1 mb-5 px-5 py-3 sm:w-1/3 md:w-1/4`}
   background: ${accent};
   color: rgba(255,255,255,0.9);
   text-shadow: 0 1px 1px rgba(0,0,0,0.4);
