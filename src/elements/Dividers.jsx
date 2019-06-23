@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
-import { ParallaxLayer } from 'react-spring/renderprops-addons'
+import { Parallax } from 'react-spring/renderprops-addons'
 
-export const Divider = styled(ParallaxLayer)`
+export const Divider = styled(Parallax.Layer)`
   ${tw`absolute w-full h-full`};
   background: ${props => props.bg};
   clip-path: ${props => props.clipPath};
