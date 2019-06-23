@@ -6,7 +6,7 @@ import BlogLayout from '../components/BlogLayout'
 class Blog extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = _.get(this, 'props.data.allContentfulBlogPost.edges')
+    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const { currentPage, numPages, count } = this.props.pageContext
     return (
       <>
