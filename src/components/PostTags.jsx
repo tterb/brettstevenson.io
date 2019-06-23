@@ -1,10 +1,8 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import _ from 'lodash'
-import styled from 'styled-components'
 import tw from 'tailwind.macro'
-import { colors } from '../../tailwind'
-import { accent } from '../../tailwind'
+import styled from 'styled-components'
 import PageLink from './PageLink'
 
 const TagList = styled.ul`
