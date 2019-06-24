@@ -50,7 +50,7 @@ export default () => (
     query={tagsQuery}
     render={data => {
       const tags = data.allContentfulBlogPost.group
-      let topTags = _.orderBy(tags, ['totalCount'], ['desc'])
+      let topTags = _.orderBy(tags, [(tag) => tag.totalCount], ['desc'])
       topTags = _.take(topTags, 12)
       return (
         <TagList>
