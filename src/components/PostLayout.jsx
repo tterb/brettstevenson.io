@@ -5,14 +5,13 @@ import scrollTo from 'gsap/ScrollToPlugin';
 import tw from 'tailwind.macro'
 import { accent } from '../../tailwind'
 import styled from 'styled-components'
-import Disqus from 'gatsby-plugin-disqus'
+import { Disqus } from 'gatsby-plugin-disqus'
 // Components
 import PostNav from './PostNav'
 import PostMeta from './PostMeta'
 import PostHero from './PostHero'
 import PostAuthor from './PostAuthor'
 import PageLink from './PageLink'
-// import Disqus from './Disqus'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowUp } from '@fortawesome/free-solid-svg-icons'
