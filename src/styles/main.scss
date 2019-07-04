@@ -1,4 +1,4 @@
-@import 'libs/vars';
+@import 'variables';
 
 body {
   font-family: 'Product Sans', 'Titillium Web', sans-serif;
@@ -162,7 +162,7 @@ svg.logo {
   height: auto !important;
   padding-top: 4rem; 
   padding-bottom: 14rem;
-  z-index: -99999 !important;
+  z-index: 9 !important;
   div {
     z-index: 9999999;
   }
@@ -179,7 +179,6 @@ svg.logo {
   top: 10px;
   transform-style: preserve-3D;
   animation: flipY 5.2s infinite;
-  backface-visibility: hidden;
   .cube-side {
     background: rgba(#000, 0.1);
     transform: rotatex(90deg) translate3d(0, 0, 15px);
