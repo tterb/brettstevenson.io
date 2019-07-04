@@ -39,13 +39,13 @@ export const pageQuery = graphql`
           category
           tags
           heroImage {
-            fixed(resizingBehavior: SCALE) {
-              ...GatsbyContentfulFixed_withWebp
+            fluid(maxWidth: 900) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           previewImage {
-            fixed(resizingBehavior: SCALE) {
-              ...GatsbyContentfulFixed_withWebp
+            fluid(maxWidth: 900) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           description {

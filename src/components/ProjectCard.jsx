@@ -21,18 +21,18 @@ const Wrapper = styled(animated.div)`
 `
 
 const Title = styled.div`
-  ${tw`text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-normal font-title font-semibold pt-1 pb-4`};
+  ${tw`text-white uppercase xs:text-3xl xl:text-4xl tracking-normal font-title font-semibold pt-1 pb-4`};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: all 350ms ease-in-out;
 `
 const Text = styled.div`
-  ${tw`font-sans leading-tight text-sm md:text-base xl:text-lg pb-8`};
+  ${tw`font-sans leading-tight text-sm xs:text-base xl:text-lg pb-8`};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: all 400ms ease-in-out;
 `
 
 const Corner = styled.span`
-  ${tw`absolute text-xl md:text-2xl px-12 py-2 pt-6`};
+  ${tw`absolute xs:text-2xl md:text-2xl px-12 py-2 pt-6`};
   background: rgba(0,0,0,0.05);
   top: -0.75rem;
   right: -2.65rem;

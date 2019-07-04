@@ -54,6 +54,9 @@ const MenuItem = styled.li`
 const Navbar = styled.div`
   ${tw`absolute`}
   right: 2.5rem;
+  @media (max-width: 420px) {
+    right: 0;
+  }
 `
 
 const Nav = ({ logo }) => (

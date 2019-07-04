@@ -9,11 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons'
 
 const Wrapper = styled.div`
-  ${tw`relative inline-block h-full pin-t pin-l py-3 px-0 pl-10 cursor-pointer overflow-hidden z-5`}
+  ${tw`relative inline-block h-full pin-t pin-l py-3 px-0 xs:pl-7 md:pl-10 cursor-pointer overflow-hidden z-5`}
   background: rgba(255,255,255,0.8);
   width: 65%;
   border-top-left-radius: 9px;
   border-bottom-left-radius: 9px;
+  @media (max-width: 420px) {
+    width: 70%;
+  }
 `
 
 const Card = styled.div`
@@ -54,13 +57,16 @@ const CardContent = styled.div`
 `
 
 const Category = styled.span`
-  ${tw`inline-block text-center tracking-wide mt-4 mb-6 mx-0 cursor-pointer z-10`}
+  ${tw`inline-block text-center tracking-wide mt-4 mx-0 xs:mb-3 md:mb-6 cursor-pointer z-10`}
   color: rgba(255,255,255,0.9);
   text-shadow: 0 1px 0.25px rgba(0,0,0,0.5);
   min-width: 45px;
   border-radius: 5px;
   transition: all 400ms ease-in-out;
   padding: 6px 8px;
+  a:hover {
+    color: white;
+  }
 `
 
 const CardTitle = styled.h2`
@@ -70,6 +76,9 @@ const CardTitle = styled.h2`
   /* border-bottom: 2px solid rgba(0,0,0,0.125); */
   border-bottom: 2px solid rgba(255,255,255,0.5);
   margin-bottom: 0.35em;
+  @media (max-width: 420px) {
+    font-size: 2.4rem;
+  }
   a {
     ${tw`no-underline`}
     color: rgba(0,0,0,0.8);
@@ -104,14 +113,21 @@ class BlogCard extends React.Component {
     location.href='/blog/'+this.props.post.slug
   }
   
+  // handleCategoryClick(e) {
+  //   e.stopPropagation()
+  //   location.href='/blog/tag/'+_.kebabCase(this.props.post.category.toLowerCase())
+  // }
+  
   render() {
     const post = this.props.post
     let preview = this.props.post.heroImage
     return (
       <Card className='blog-card' onClick={this.handleClick}>
-          <BgImage alt={post.title} fixed={preview.fixed} />
+          <BgImage alt={post.title} fluid={preview.fluid} />
         <Wrapper className='content-mask'>
-          <Category className={`card-category ${_.kebabCase(post.category.toString().toLowerCase())}`}>{post.category}</Category>
+          <Category className={`card-category ${_.kebabCase(post.category.toString().toLowerCase())}`}>
+            {post.category}
+          </Category>
           <CardContent>
             <CardTitle>
               <PageLink to={`/blog/${post.slug}`}>{post.title}</PageLink>

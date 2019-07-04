@@ -22,10 +22,11 @@ import '../styles/blog.scss'
 
 const PageTitle = styled(BigTitle)`
   ${tw`mt-0`}
+  z-index: -99;
 `
 
 const Wrapper = styled.div`
-  ${tw`m-auto pt-16`}
+  ${tw`m-auto xs:pt-8 md:pt-16`}
   width: 95%;
   max-width: 1200px;
   padding-left: 4vw;
@@ -33,9 +34,8 @@ const Wrapper = styled.div`
   padding-bottom: 18rem;
 `
 
-const CardList = styled.ul`
-  ${tw`inline-block list-reset`}
-  width: 72%;
+const CardList = styled.div`
+  ${tw`inline-block w-7/10 xs:inline xs:w-9/10 xs:mx-auto lg:inline-block lg:w-7/10`}
   margin-top: -1vh;
   margin-right: 3%;
 `
@@ -63,7 +63,7 @@ class BlogLayout extends React.Component {
         <Layout />
         <Parallax pages={pageHeight}>
           <Nav style={navStyle} />
-          <Header offset={0} factor={0.45} speed={0.4}>
+          <Header offset={0} factor={0.45}>
             <PageTitle>{ _.upperFirst(title) }<span className='accent'>.</span></PageTitle>
           </Header>
           <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={{padding: `14rem 5rem !important`}}>

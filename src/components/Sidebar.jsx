@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faTags, faArchive } from '@fortawesome/free-solid-svg-icons'
 
 const Wrapper = styled.div`
-  ${tw`relative inline-block w-1/4 float-right pt-0`}
+  ${tw`relative inline-block w-1/4 float-right pt-0 xs:hidden lg:inline-block`}
 `
 
 const SidebarIcons = styled.ul`

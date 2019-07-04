@@ -20,7 +20,13 @@ const WaveWrapper = styled.div`
 
 const InnerWave = styled.div`
   ${tw`relative h-full`};
-  top: -3rem;
+  top: 0;
+  @media screen and (max-width: 900px) {
+    top: -3rem;
+  }
+  @media screen and (max-width: 420px) {
+    top: 3rem;
+  }
   svg {
     width: 100%;
     height: 30vw;
@@ -29,20 +35,17 @@ const InnerWave = styled.div`
   path {
     ${waveAnimation('20s')};
   }
-  @media screen and (min-width: 600px) {
-    top: -3rem;
-  }
-  @media screen and (min-width: 900px) {
-    top: 0rem;
-  }
 `
 
 const FooterWrapper = styled.footer`
-  ${tw`text-center text-grey absolute pin-b p-6 font-sans text-md md:text-base text-lg lg:text-lg`};
+  ${tw`text-center text-grey absolute pin-b p-6 font-sans xs:text-sm lg:text-lg`};
   /* bottom: 1rem; */
   font-size: 0.6rem;
   top: 4rem;
   z-index: 9999;
+  @media screen and (max-width: 420px) {
+    top: -1rem;
+  }
   .separator {
     position: relative;
     font-size: 5px;
@@ -59,7 +62,7 @@ const FooterWrapper = styled.footer`
 `
 
 const SocialList = styled.ul`
-  ${tw`list-reset text-3xl lg:text-4xl mt-4 mb-4`};
+  ${tw`list-reset text-3xl xs:text-4xl lg:text-4xl mt-4 mb-4`};
   li {
     display: inline;
     margin-right: 0.5em;

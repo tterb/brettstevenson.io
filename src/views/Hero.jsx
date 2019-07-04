@@ -15,8 +15,12 @@ import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons'
 
 
 const Wrapper = styled.div`
-  ${tw`relative w-full mt-0 xl:w-full`};
+  ${tw`relative w-full mt-0 xl:w-full`}
   top: -2.5em;
+`
+
+const Title = styled(BigTitle)`
+  ${tw`xs:text-5xl md:text-6xl`}
 `
 
 const iconStyle = {
@@ -54,7 +58,7 @@ const Hero = ({ offset, parallax }) => (
   <>
   <Content className='hero' speed={0.7} offset={offset}>
     <Wrapper>
-      <BigTitle>Hello,<br/>I'm Brett<br/>Stevenson<span className='accent'>.</span></BigTitle>
+      <Title>Hello,<br/>I'm Brett<br/>Stevenson<span className='accent'>.</span></Title>
       <Subtitle className='text-grey'>
         <Typed style={typedStyle} strings={[
             'I am a Software Engineer',
