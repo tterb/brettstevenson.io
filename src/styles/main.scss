@@ -1,5 +1,9 @@
 @import 'variables';
 
+body {
+  font-family: 'Product Sans', 'Titillium Web', sans-serif;
+}
+
 #___gatsby {
   height: 100% !important;
   > div {
@@ -33,8 +37,13 @@
 
 /* Menu */
 .menu .menu-item {
-  a:hover {
+  a {
+    color: $text-color;
+    transition: all 450ms ease-in-out;
+    &:hover {
+      color: $accent;
       letter-spacing: 0.5px !important;
+    }
   }
 }
 

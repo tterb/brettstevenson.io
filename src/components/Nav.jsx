@@ -10,7 +10,7 @@ import PageLink from './PageLink'
 import Logo from './Logo'
 
 const Wrapper = styled.div`
-  ${tw`relative block h-4 pin-t pin-x z-999`}
+  ${tw`relative block font-title h-4 pin-t pin-x z-999`}
   transform: translate3D(0, 0, 0);
 `
 
