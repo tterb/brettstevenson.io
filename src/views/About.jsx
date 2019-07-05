@@ -15,17 +15,17 @@ import avatar from '../images/me.png'
 
 
 const AboutHero = styled.div`
-  ${tw`flex flex-col mt-0 md:mt-4 lg:flex-row items-center px-2`};
+  ${tw`flex flex-col lg:flex-row items-center mt-0 md:mt-4 px-2`}
 `
 const Avatar = styled.img`
-  ${tw`rounded-full w-32 md:w-48 xl:h-auto`};
+  ${tw`rounded-full w-1/2 md:w-48 xl:h-auto`}
   box-shadow: 0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25);
 `
 const AboutSub = styled.span`
-  ${tw`text-white pt-8 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl`};
+  ${tw`text-white pt-8 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl xs:hidden md:block`}
 `
 const AboutDesc = styled.p`
-  ${tw`text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-4 md:pt-6`};
+  ${tw`text-grey-light xs:text-xl lg:text-2xl font-sans pt-4 md:pt-6`}
   line-height: 1.45;
 `
 
@@ -38,8 +38,8 @@ const About = ({ offset, factor }) => (
         <AboutHero>
           <Avatar src={avatar} alt='Brett Stevenson' />
           <AboutSub>
-            The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating
-            Emoji into my speech to better express myself. 😜
+            The English language can not fully capture the depth and complexity of my thoughts. So I choose to incorporate
+            Emojis into my speech to better express myself. 😜
           </AboutSub>
         </AboutHero>
         <AboutDesc>

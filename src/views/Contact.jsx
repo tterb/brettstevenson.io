@@ -14,7 +14,7 @@ import Cube from '../components/Cube'
 
 
 const ContactText = styled.p`
-  ${tw`text-grey font-sans text-xl mt-3 ml-2 md:text-2xl lg:text-3xl`};
+  ${tw`text-grey font-sans text-xl mt-3 ml-2 md:text-2xl lg:text-3xl`}
   margin-block-start: 0;
   margin-block-end: 110px;
   a {

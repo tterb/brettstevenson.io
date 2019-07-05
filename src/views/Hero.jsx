@@ -17,6 +17,9 @@ import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons'
 const Wrapper = styled.div`
   ${tw`relative w-full mt-0 xl:w-full`}
   top: -2.5em;
+  @media screen and (max-width: 420px) {
+    top: -3.5em;
+  }
 `
 
 const Title = styled(BigTitle)`

@@ -1,10 +1,5 @@
 @import 'variables';
 
-body {
-  font-family: 'Product Sans', 'Titillium Web', sans-serif;
-  margin: 0;
-}
-
 #___gatsby {
   height: 100% !important;
   > div {
@@ -16,18 +11,6 @@ body {
       height: 100% !important;
     }
   }
-}
-
-a {
-  cursor: pointer;
-}
-
-code {
-  background: rgba(#000, 0.075);
-  color: rgba(#000, 0.75);
-  font-size: 80%;
-  border-radius: 5px;
-  padding: 0 6px 4px;
 }
 
 .hero {
@@ -45,37 +28,13 @@ code {
 }
 
 .accent-blue {
-  color: #30C3B6;
+  color: $secondary-accent;
 }
-
-.list-reset {
-  list-style: none;
-  padding: 0;
-  li {
-    &:first-child {
-      margin-left: 0;
-      padding-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
-      padding-right: 0;
-    }
-  }
-}
-
 
 /* Menu */
 .menu .menu-item {
-  a {
-    color: $text-color;
-    transition: all 350ms ease-in-out;
-    &:hover {
-      color: $accent;
+  a:hover {
       letter-spacing: 0.5px !important;
-    }
-  }
-  &.active a {
-    color: $accent;
   }
 }
 
@@ -127,16 +86,10 @@ svg.logo {
 }
 
 .code-svg {
-  width: 7rem;
-  height: 7rem;
+  width: 8rem;
+  height: 8rem;
   top: 4rem;
-  left: 13rem;
-  @media screen and (min-width: 500px) {
-    width: 10rem;
-    height: 10rem;
-    top: 4rem;
-    left: 18rem;
-  }
+  right: 0rem;
   @media screen and (min-width: 600px) {
     width: 15rem;
     height: 15rem;
@@ -242,60 +195,6 @@ svg.logo {
     &.cube-side-bottom {
       border-image: none;
       border-color: $cube-purple;
-    }
-  }
-}
-
-.project-card {
-  min-height: 11rem;
-  max-height: 250px;
-  .gatsby-image-wrapper {
-    display: block !important;
-    width: auto !important;
-    height: auto !important;
-    min-width: 100% !important;
-    min-height: 100% !important;
-    max-height: 100% !important;
-    border-radius: 8px;
-  }
-  .project-links {
-    list-style: none;
-    padding: 0;
-    li {
-      display: inline-block;
-      font-size: 1.5rem;
-      padding: 0 0.5rem;
-      &.hidden {
-        display: none;
-      }
-      a {
-        color: rgba(#fff, 0.75);
-        svg {
-          filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.6));
-        }
-        &:hover {
-          color: #fff;
-          svg {
-            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.6));
-          }
-        }
-      }
-    }
-  }
-  &:hover {
-    .desc {
-      color: rgba(#fff, 0.95);
-    }
-    span svg {
-      transform: rotate(-45deg);
-      filter: drop-shadow(0 1px 1.5px rgba(#000, 0.6));
-      transition: all 400ms ease-in-out;
-    }
-  }
-  &:hover .mask {
-    .title, .desc {
-      transform: translateY(0px);
-      opacity: 1;
     }
   }
 }

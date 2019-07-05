@@ -14,18 +14,18 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faDeviantart, faTwitter, faDribbble, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 
 const WaveWrapper = styled.div`
-  ${tw`absolute pin-b w-full`};
+  ${tw`absolute pin-b w-full`}
   transform: matrix(1, 0, 0, -1, 0, 0);
 `
 
 const InnerWave = styled.div`
-  ${tw`relative h-full`};
+  ${tw`relative h-full`}
   top: 0;
   @media screen and (max-width: 900px) {
     top: -3rem;
   }
   @media screen and (max-width: 420px) {
-    top: 3rem;
+    top: 2rem;
   }
   svg {
     width: 100%;
@@ -38,13 +38,13 @@ const InnerWave = styled.div`
 `
 
 const FooterWrapper = styled.footer`
-  ${tw`text-center text-grey absolute pin-b p-6 font-sans xs:text-sm lg:text-lg`};
+  ${tw`text-center text-grey absolute pin-b p-6 font-sans xs:text-sm lg:text-lg`}
   /* bottom: 1rem; */
   font-size: 0.6rem;
   top: 4rem;
   z-index: 9999;
   @media screen and (max-width: 420px) {
-    top: -1rem;
+    ${tw`pin-t`}
   }
   .separator {
     position: relative;
@@ -62,7 +62,7 @@ const FooterWrapper = styled.footer`
 `
 
 const SocialList = styled.ul`
-  ${tw`list-reset text-3xl xs:text-4xl lg:text-4xl mt-4 mb-4`};
+  ${tw`list-reset text-3xl xs:text-4xl lg:text-4xl mt-4 mb-4`}
   li {
     display: inline;
     margin-right: 0.5em;

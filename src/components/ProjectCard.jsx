@@ -12,7 +12,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 
 const Wrapper = styled(animated.div)`
-  ${tw`relative block w-full h-full rounded-lg text-white border-none no-underline cursor-pointer shadow-lg px-6 py-4 overflow-hidden`};
+  ${tw`relative block w-full h-full rounded-lg text-white border-none no-underline cursor-pointer shadow-lg px-6 py-4 overflow-hidden`}
   background: ${props => props.bg};
   transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &:hover {
@@ -20,19 +20,38 @@ const Wrapper = styled(animated.div)`
   }
 `
 
+const Card = styled.div`
+  min-height: 11rem;
+  max-height: 250px;
+  &:hover {
+    .desc {
+      color: rgba(255,255,255,0.95);
+    }
+    span svg {
+      transform: rotate(-45deg);
+      filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.6));
+      transition: all 400ms ease-in-out;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    min-height: 9rem;
+    max-height: 200px;
+  }
+`
+
 const Title = styled.div`
-  ${tw`text-white uppercase xs:text-3xl xl:text-4xl tracking-normal font-title font-semibold pt-1 pb-4`};
+  ${tw`font-title font-semibold text-white uppercase xs:text-3xl xl:text-4xl tracking-normal pt-1 pb-4`}
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: all 350ms ease-in-out;
 `
 const Text = styled.div`
-  ${tw`font-sans leading-tight text-sm xs:text-base xl:text-lg pb-8`};
+  ${tw`font-sans leading-tight text-base xl:text-lg pb-4 md:pb-8`}
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: all 400ms ease-in-out;
 `
 
 const Corner = styled.span`
-  ${tw`absolute xs:text-2xl md:text-2xl px-12 py-2 pt-6`};
+  ${tw`absolute text-2xl md:text-2xl px-12 py-2 pt-6`}
   background: rgba(0,0,0,0.05);
   top: -0.75rem;
   right: -2.65rem;
@@ -60,7 +79,6 @@ function ProjectsCard(props) {
     xys: [0, 0, 1], config: { mass: 5, tension: 200, friction: 40 } 
   }))
   const project = props.project
-  // const hasSite = project.site ? true : false
   const hasRepo = project.github ? true : false
   const link = hasRepo ? project.github : project.site
   
@@ -75,7 +93,7 @@ function ProjectsCard(props) {
       onMouseMove={({clientX: x, clientY: y}) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{ transform: prop.xys.interpolate(trans) }}>
-      <div className='project-card'>
+      <Card>
         <Corner>
           <a href={link} target='_blank'>
             { project.github ? <FontAwesomeIcon icon={faGithub}/> : <FontAwesomeIcon icon={faGlobe}/> }
@@ -83,7 +101,7 @@ function ProjectsCard(props) {
         </Corner>
         <Title className='title'>{project.title}</Title>
         <Text className='desc'>{project.description.childMarkdownRemark.excerpt}</Text>
-      </div>
+      </Card>
     </Wrapper>
   )
 }

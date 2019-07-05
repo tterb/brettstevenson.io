@@ -17,7 +17,7 @@ import Cube from '../components/Cube'
 
 
 const ProjectsWrapper = styled.div`
-  ${tw`flex flex-wrap justify-between mt-8`};
+  ${tw`flex flex-wrap justify-between mt-8`}
   display: grid;
   grid-gap: 4rem;
   grid-template-columns: repeat(2, 1fr);
