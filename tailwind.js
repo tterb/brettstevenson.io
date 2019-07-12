@@ -243,6 +243,19 @@ module.exports = {
       'Helvetica Neue',
       'sans-serif',
     ],
+    default: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'Segoe UI',
+      'Roboto',
+      'Helvetica',
+      'Arial',
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      'Droid Sans',
+      'sans-serif',
+    ],
     serif: [
       'Constantia',
       'Lucida Bright',
@@ -278,20 +291,20 @@ module.exports = {
   */
 
   textSizes: {
-    xs: '.75rem', // 12px
-    sm: '.875rem', // 14px
-    base: '1rem', // 16px
-    lg: '1.125rem', // 18px
-    xl: '1.25rem', // 20px
-    '2xl': '1.5rem', // 24px
-    '3xl': '1.875rem', // 30px
-    '4xl': '2.25rem', // 36px
-    '5xl': '4rem',
-    '6xl': '5.5rem',
-    '7xl': '6.5rem',
-    '8xl': '8rem',
-    '9xl': '9rem',
-    '10xl': '10rem',
+    xs:      '.75rem',  // 12px
+    sm:     '.875rem',  // 14px
+    base:      '1rem',  // 16px
+    lg:    '1.125rem',  // 18px
+    xl:     '1.25rem',  // 20px
+    '2xl':   '1.5rem',  // 24px
+    '3xl': '1.875rem',  // 30px
+    '4xl':  '2.25rem',  // 36px
+    '5xl':     '4rem',
+    '6xl':   '5.5rem',
+    '7xl':   '6.5rem',
+    '8xl':     '7.5rem',
+    '9xl':     '9rem',
+    '10xl':   '10rem',
   },
 
   /*
@@ -334,8 +347,9 @@ module.exports = {
 
   leading: {
     none: 1,
+    tighter: 1.1,
     tight: 1.25,
-    normal: 1.5,
+    normal: 1.45,
     loose: 2,
   },
 
@@ -655,6 +669,7 @@ module.exports = {
     '6':  '1.5rem',
     '7': '1.75rem',
     '8':    '2rem',
+    '9': '2.25rem',
     '10': '2.5rem',
     '12':   '3rem',
     '14': '3.5rem',
@@ -764,14 +779,16 @@ module.exports = {
 
   zIndex: {
     auto: 'auto',
-    '0':     0,
-    '5':     5,
-    '10':   10,
-    '20':   20,
-    '30':   30,
-    '40':   40,
-    '50':   50,
-    '999': 999,
+    '0':       0,
+    '1':       1,
+    '5':       5,
+    '10':     10,
+    '20':     20,
+    '30':     30,
+    '40':     40,
+    '50':     50,
+    '999':   999,
+    '9999': 9999,
   },
 
   /*
