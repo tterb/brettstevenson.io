@@ -1,18 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
-import PropTypes from 'prop-types'
 import Typed from 'react-typed';
 import { Transition } from 'react-spring'
 import { Parallax } from 'react-spring/renderprops-addons'
 import Fade from 'react-reveal/Fade'
 // Elements
 import Content from '../elements/Content'
-import { BigTitle, Subtitle } from '../elements/Titles'
+import { Subtitle } from '../elements/Titles'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons'
 
+
+const Container = styled(Content)`
+  ${tw`lg:p-20`}
+`
 
 const Wrapper = styled.div`
   ${tw`relative w-full mt-0 xl:w-full`}
@@ -22,8 +26,12 @@ const Wrapper = styled.div`
   }
 `
 
-const Title = styled(BigTitle)`
-  ${tw`xs:text-5xl md:text-6xl`}
+const Title = styled.h1`
+  ${tw`font-title leading-tighter w-full xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-4 mb-6 ml-0`}
+  color: rgba(255,255,255,0.95);
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
 `
 
 const iconStyle = {
@@ -36,12 +44,10 @@ const iconStyle = {
 
 const typedStyle = {
   color: `rgba(255,255,255,0.6)`,
-  // color: 'rgba(155, 171, 180, 0.9)',
 };
 
 const ScrollContainer = styled(Parallax.Layer)`
-  ${tw`relative text-center w-1/2 mx-auto my-2`}
-  /* top: 5rem; */
+  ${tw`relative text-center w-1/2 mx-auto my-2 mt-18 md:mt-6 xl:mt-2`}
 `
 
 const ScrollArrow = styled.span`
@@ -59,7 +65,7 @@ const Code = () => (
 
 const Hero = ({ offset, parallax }) => (
   <>
-  <Content className='hero' speed={0.7} offset={offset}>
+  <Container className='hero' speed={0.7} offset={offset}>
     <Wrapper>
       <Title>Hello,<br/>I'm Brett<br/>Stevenson<span className='accent'>.</span></Title>
       <Subtitle className='text-grey'>
@@ -82,7 +88,7 @@ const Hero = ({ offset, parallax }) => (
       </Fade>
       </ScrollContainer>
     </Wrapper>
-  </Content>
+  </Container>
   </>
 )
 

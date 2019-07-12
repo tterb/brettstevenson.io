@@ -97,17 +97,23 @@ svg.logo {
 .code-svg {
   width: 8rem;
   height: 8rem;
-  top: 4rem;
+  top: 4.5rem;
   right: 0rem;
+  @media screen and (min-width: 500px) {
+    width: 10rem;
+    height: 10rem;
+    top: 5.5rem;
+    right: 2.5vw;
+  }
   @media screen and (min-width: 600px) {
-    width: 15rem;
-    height: 15rem;
+    width: 15.5rem;
+    height: 15.5rem;
     top: 5.5rem;
     left: 21.5rem;
   }
   @media screen and (min-width: 700px) {
-    width: 17rem;
-    height: 17rem;
+    width: 16rem;
+    height: 16rem;
     top: 5rem;
     left: 26rem;
   }

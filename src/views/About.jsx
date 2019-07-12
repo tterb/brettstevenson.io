@@ -15,14 +15,15 @@ import avatar from '../images/me.png'
 
 
 const AboutHero = styled.div`
-  ${tw`flex flex-col lg:flex-row items-center mt-0 md:mt-4 px-2`}
+  ${tw`flex flex-col md:flex-row items-center mt-0 md:mt-4 px-2`}
 `
 const Avatar = styled.img`
-  ${tw`rounded-full w-1/2 md:w-48 xl:h-auto`}
+  ${tw`rounded-full md:w-48 xl:h-auto`}
+  width: 14rem;
   box-shadow: 0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25);
 `
 const AboutSub = styled.span`
-  ${tw`text-white pt-8 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl xs:hidden md:block`}
+  ${tw`text-white pt-8 xs:hidden md:block md:pt-0 md:pl-10 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl`}
 `
 const AboutDesc = styled.p`
   ${tw`text-grey-light xs:text-xl lg:text-2xl font-sans pt-4 md:pt-6`}
