@@ -22,7 +22,7 @@ const Avatar = styled.span`
 
 const AuthorText = styled.span`
   ${tw`inline-block xs:max-w-4/5 xs:ml-0 md:max-w-3/5 md:ml-4`}
-  vertical-align: super;
+  vertical-align: top;
   .author-bio, p {
     ${tw`leading-tight mx-auto my-1`}
     color: rgba(0,0,0,0.7);
@@ -39,8 +39,12 @@ const AuthorLinks = styled.ul`
   ${tw`list-reset	my-3 ml-2 xs:text-2xl pl-0 md:text-xl`}
   li {
     ${tw`inline-block mr-2 cursor-pointer`}
+    &:first-child {
+      font-size: 105%;
+    }
     @media (max-width: 500px) {
-      margin-right: 0.75rem;
+      ${tw`mt-2 mr-3`}
+      /* margin-right: 0.75rem; */
     }
     a {
       color: rgba(0,0,0,0.7);

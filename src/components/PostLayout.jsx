@@ -8,8 +8,7 @@ import styled from 'styled-components'
 import { Disqus } from 'gatsby-plugin-disqus'
 // Components
 import PostNav from './PostNav'
-import PostMeta from './PostMeta'
-import PostHero from './PostHero'
+import PostHeader from './PostHeader'
 import PostAuthor from './PostAuthor'
 import PageLink from './PageLink'
 // FontAwesome
@@ -17,8 +16,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 
+const Wrapper = styled.div`
+  ${tw`font-default leading-normal xs:w-9/10 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-9 pt-0`}
+  color: rgba(0,0,0,0.85);
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  max-width: 900px;
+  margin-bottom: 2vh;
+`
+
 const Separator = styled.hr`
-  ${tw`w-4/5 border-none my-4 mt-8`};
+  ${tw`w-4/5 border-none my-4 mt-8`}
   border-bottom: 2px solid rgba(0,0,0,0.095);
 `
 
@@ -28,9 +36,13 @@ const BackToTop = styled.span`
   right: 4vw;
   bottom: 10vh;
   transition: all 450ms ease-in-out;
-  svg path {
-    fill: rgba(0,0,0,0.5);
-    transition: fill 450ms ease-in-out;
+  svg {
+    ${tw`relative`}
+    vertical-align: top;
+    path {
+      fill: rgba(0,0,0,0.5);
+      transition: fill 450ms ease-in-out;
+    }
   }
   &:hover {
     svg path {
@@ -61,22 +73,16 @@ class PostLayout extends React.Component {
 
     return (
       <>
-        <div>
-          <PostMeta
-            title={`${post.title} | ${config.siteTitle}`}
-            description={post.description}
-            thumbnail={post.heroImage.fluid}
-            url={`/blog/${post.slug}`}
-          />
-          <PostNav active={location.pathname} />
-          <PostHero id='postHero' post={post} />
+        <PostNav active={location.pathname} />
+        <PostHeader id='postHero' post={post} />
+        <Wrapper className='wrapper'>
           <div style={{ background: `#fff` }}>
             {children}
             <BackToTop onClick={this.scrollToTop}>
               <FontAwesomeIcon icon={faArrowUp} />
             </BackToTop>
           </div>
-        </div>
+        </Wrapper>
         <Separator />
         <PostAuthor author={post.author} />
         <div className='prev-next'>
