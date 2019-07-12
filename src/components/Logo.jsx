@@ -6,9 +6,25 @@ import PageLink from './PageLink'
 const Wrapper = styled.span`
   ${tw`ml-6 z-10`}
   svg {
-    ${tw`max-w-full h-auto m-0`}
+    ${tw`max-w-full h-auto m-0 z-999`}
+    left: 2.5rem;
     box-sizing: border-box;
+    @media (max-width: 500px) {
+      left: 1.5rem;
+    }
   }
+  &:hover .logo-title {
+    ${tw`opacity-100`}
+  }
+`
+
+const Title = styled.span`
+  ${tw`absolute cursor-default opacity-0 z-10`}
+  color: rgba(255,255,255,0.9);
+  font-size: 1.4rem;
+  top: 1.3rem;
+  left: 5.25rem;
+  transition: all 350ms ease-in-out;
 `
 
 export default class Logo extends React.Component {
@@ -53,7 +69,7 @@ export default class Logo extends React.Component {
             </filter>
         	</svg>{props.children}
         </PageLink>
-        <span className='logo-title'>Brett Stevenson</span>
+        <Title className='logo-title'>Brett Stevenson</Title>
       </Wrapper>
     )
   }
