@@ -7,7 +7,10 @@ import config from '../../config/website'
 const Head = props => {
   const {
     data: {
-      site: { buildTime },
+      site: { 
+        siteMetadata,
+        buildTime 
+      },
     },
   } = props
 
@@ -121,6 +124,12 @@ export default SEO
 const querySEO = graphql`
   query SEO {
     site {
+      siteMetadata {
+        author
+        description
+        siteUrl
+        keywords
+      }
       buildTime(formatString: "YYYY-MM-DD")
     }
   }
