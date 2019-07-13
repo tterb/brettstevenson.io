@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
-import VisibilitySensor from 'react-visibility-sensor';
+// import VisibilitySensor from 'react-visibility-sensor';
 // Components
 import Logo from './Logo'
 import PageLink from './PageLink'
@@ -64,11 +64,11 @@ const MenuItem = styled.li`
   }
 `
 
-const Sensor = styled.div`
-  ${tw`block absolute pin-l pin-r pin-b z-1`}
-  height: 1px;
-  top: 60px;
-`
+// const Sensor = styled.div`
+//   ${tw`block absolute pin-l pin-r pin-b z-1`}
+//   height: 1px;
+//   top: 60px;
+// `
 
 class PostNav extends React.Component {
   
@@ -90,7 +90,7 @@ class PostNav extends React.Component {
   
   render() {
     const { fixed } = this.state;
-    const sensor = (typeof window !== 'undefined') ? false : true
+    // const sensor = (typeof window !== 'undefined') ? false : true
     return (
       <StaticQuery query={postMenuQuery}
         render={data => (
@@ -109,17 +109,18 @@ class PostNav extends React.Component {
               </Menu>
             </MenuWrapper>
           </Header>
-          { sensor ?  
-            <VisibilitySensor onChange={this.visibilitySensorChange}>
-              <Sensor className='sensor' />
-            </VisibilitySensor> 
-          : null }
           </>
         )}
       />
     )
   }
 }
+
+// { sensor ?  
+//   <VisibilitySensor onChange={this.visibilitySensorChange}>
+//     <Sensor className='sensor' />
+//   </VisibilitySensor> 
+// : null }
 
 const postMenuQuery = graphql`
   query postMenuQuery {
