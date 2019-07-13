@@ -90,6 +90,7 @@ class PostNav extends React.Component {
   
   render() {
     const { fixed } = this.state;
+    const sensor = (typeof window !== 'undefined') ? false : true
     return (
       <StaticQuery query={postMenuQuery}
         render={data => (
@@ -108,9 +109,11 @@ class PostNav extends React.Component {
               </Menu>
             </MenuWrapper>
           </Header>
-          <VisibilitySensor onChange={this.visibilitySensorChange}>
-            <Sensor className='sensor' />
-          </VisibilitySensor>
+          { sensor ?  
+            <VisibilitySensor onChange={this.visibilitySensorChange}>
+              <Sensor className='sensor' />
+            </VisibilitySensor> 
+          : null }
           </>
         )}
       />
