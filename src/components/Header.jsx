@@ -7,7 +7,6 @@ import { ParallaxLayer } from 'react-spring/renderprops-addons'
 
 const HeaderContent = styled(ParallaxLayer)`
   ${tw`p-2 px-8 md:p-12 md:px-20 lg:py-16 lg:px-22 justify-center items-center flex`}
-  transition: all 350ms ease-in-out;
   z-index: -9;
   @media (min-width: 400px) {
     height: 40vh !important;
