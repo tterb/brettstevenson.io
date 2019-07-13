@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby'
 import get from 'lodash/get'
 import { useTrail } from 'react-spring'
@@ -14,6 +15,8 @@ import Inner from '../elements/Inner'
 // Components
 import ProjectCard from '../components/ProjectCard'
 import Cube from '../components/Cube'
+// Hooks
+import useWindowDimensions from '../hooks/WindowDimensions'
 
 
 const ProjectsWrapper = styled.div`
@@ -31,6 +34,12 @@ const ProjectsWrapper = styled.div`
 `
 
 const Projects = ({ offset, factor }) => {
+  const { height, width } = useWindowDimensions()
+  var divOffset = offset
+  if(width <= 600) {
+    factor = factor*1.25
+    divOffset = offset-(offset*0.175)
+  }
   const colors = ['linear-gradient(to right, #7f7fd5, #86a8ef)', 'linear-gradient(to right, #83a0e8, #76bef6)']
   const data = useStaticQuery(projectsQuery)
   const projects = data.allContentfulProject.edges
@@ -43,7 +52,7 @@ const Projects = ({ offset, factor }) => {
       <DividerMiddle
         bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
         speed={0.35}
-        offset={offset-0.2}
+        offset={divOffset-0.2}
         factor={factor}
       />
       <Content speed={0.45} offset={offset-0.005} factor={1.75}>

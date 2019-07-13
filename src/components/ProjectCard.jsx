@@ -12,7 +12,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 
 const Wrapper = styled(animated.div)`
-  ${tw`relative block w-full h-full rounded-lg text-white border-none no-underline cursor-pointer shadow-lg px-6 py-4 overflow-hidden`}
+  ${tw`relative block xs:w-9/10 md:w-full h-full rounded-lg text-white border-none no-underline cursor-pointer shadow-lg xs:mx-auto px-6 py-4 overflow-hidden`}
   background: ${props => props.bg};
   transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &:hover {
@@ -33,19 +33,27 @@ const Card = styled.div`
       transition: all 400ms ease-in-out;
     }
   }
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 700px) {
     min-height: 9rem;
+    max-height: 200px;
+  }
+  @media screen and (max-width: 600px) {
+    min-height: 9rem;
+    max-height: 200px;
+  }
+  @media screen and (max-width: 400px) {
+    min-height: 2rem;
     max-height: 200px;
   }
 `
 
 const Title = styled.div`
-  ${tw`font-title font-semibold text-white uppercase xs:text-3xl xl:text-4xl tracking-normal pt-1 pb-4`}
+  ${tw`font-title font-semibold text-white uppercase xs:text-3xl xl:text-4xl tracking-normal py-1 sm:pb-4`}
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: all 350ms ease-in-out;
 `
 const Text = styled.div`
-  ${tw`font-sans leading-tight text-base xl:text-lg pb-4 md:pb-8`}
+  ${tw`font-sans leading-tight text-base xl:text-lg pb-4 md:pb-8 xs:hidden sm:block`}
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: all 400ms ease-in-out;
 `

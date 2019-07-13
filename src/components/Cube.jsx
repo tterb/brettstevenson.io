@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
-  ${tw`relative sm:invisible md:visible ml-8`};
+  ${tw`relative sm:invisible md:visible ml-8`}
   width: 58px;
   height: 58px;
   top: 82px;

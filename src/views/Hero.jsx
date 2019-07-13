@@ -27,8 +27,9 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h1`
-  ${tw`font-title leading-tighter w-full xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-4 mb-6 ml-0`}
+  ${tw`font-title leading-tighter w-full sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-4 mb-6 ml-0`}
   color: rgba(255,255,255,0.95);
+  font-size: 3.5rem;
   font-weight: 800;
   letter-spacing: 0.025em;
   text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);

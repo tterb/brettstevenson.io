@@ -18,15 +18,20 @@ const AboutHero = styled.div`
   ${tw`flex flex-col md:flex-row items-center mt-0 md:mt-4 px-2`}
 `
 const Avatar = styled.img`
-  ${tw`rounded-full md:w-48 xl:h-auto`}
-  width: 14rem;
+  ${tw`rounded-full md:w-48 xl:h-auto xs:hidden sm:block`}
+  width: 11rem;
   box-shadow: 0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25);
 `
+
+const AboutTitle = styled(Title)`
+  ${tw`xs:mb-2 sm:mb-6`}
+`
+
 const AboutSub = styled.span`
   ${tw`text-white pt-8 xs:hidden md:block md:pt-0 md:pl-10 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl`}
 `
 const AboutDesc = styled.p`
-  ${tw`text-grey-light xs:text-xl lg:text-2xl font-sans pt-4 md:pt-6`}
+  ${tw`text-grey-light xs:text-xl lg:text-2xl font-sans xs:pt-0 sm:pt-4  md:pt-6`}
   line-height: 1.45;
 `
 
@@ -35,7 +40,7 @@ const About = ({ offset, factor }) => (
     <Content id='about' offset={offset} speed={0.25}>
       <Inner>
         <Cube color='blue' />
-        <Title>About</Title>
+        <AboutTitle>About</AboutTitle>
         <AboutHero>
           <Avatar src={avatar} alt='Brett Stevenson' />
           <AboutSub>

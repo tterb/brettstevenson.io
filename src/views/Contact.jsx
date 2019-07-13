@@ -11,10 +11,16 @@ import { Title } from '../elements/Titles'
 // Components
 import PageLink from '../components/PageLink';
 import Cube from '../components/Cube'
+// Hooks
+import useWindowDimensions from '../hooks/WindowDimensions'
+
+const ContactTitle = styled(Title)`
+  ${tw`leading-tighter`}
+`
 
 
 const ContactText = styled.p`
-  ${tw`text-grey font-sans text-xl mt-3 ml-2 md:text-2xl lg:text-3xl`}
+  ${tw`text-grey font-sans text-xl mt-3 ml-2 sm:text-2xl md:text-2xl lg:text-3xl sm:leading-tight`}
   margin-block-start: 0;
   margin-block-end: 110px;
   a {
@@ -26,19 +32,25 @@ const ContactText = styled.p`
   }
 `
 
-const Contact = ({ offset, factor }) => (
-  <Content offset={offset} factor={factor} speed={0.55}>
-    <Inner>
-      <Cube color='purple' />
-      <Title>Get in touch</Title>
-      <ContactText>
-        Say <PageLink to='./contact'>Hello</PageLink> or find me on other platforms:{' '}
-        <a href='https://github.com/tterb' aria-label='GitHub' target='_blank'>GitHub</a> &{' '}
-        <a href='https://www.dribbble.com/tterb/' aria-label='Dribbble' target='_blank'>Dribbble</a>
-      </ContactText>
-    </Inner>
-  </Content>
-)
+const Contact = ({ offset, factor }) => {
+  const { height, width } = useWindowDimensions()
+  if(width <= 500) {
+    offset = offset+(offset*0.04)
+  }
+  return (
+    <Content offset={offset} factor={factor} speed={0.55}>
+      <Inner>
+        <Cube color='purple' />
+        <ContactTitle>Get in touch</ContactTitle>
+        <ContactText>
+          Say <PageLink to='./contact'>Hello</PageLink> or find me on other platforms:{' '}
+          <a href='https://github.com/tterb' aria-label='GitHub' target='_blank'>GitHub</a> &{' '}
+          <a href='https://www.dribbble.com/tterb/' aria-label='Dribbble' target='_blank'>Dribbble</a>
+        </ContactText>
+      </Inner>
+    </Content>
+  )
+}
 
 Contact.propTypes = {
   offset: PropTypes.number.isRequired,
