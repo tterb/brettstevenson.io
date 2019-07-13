@@ -51,7 +51,7 @@ export default ({ post }) => (
       <PostTitle>{post.title}</PostTitle>
       <PostDate>
         { post.publishDate.split(' ').map((item, i) => {
-            return (i != 1) ? <strong>{item}</strong>:item
+            return (i != 1) ? <strong key={i}>{item}</strong>:item
         })}
       </PostDate>
     </Wrapper>
