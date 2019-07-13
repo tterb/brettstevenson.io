@@ -34,11 +34,13 @@ const ProjectsWrapper = styled.div`
 `
 
 const Projects = ({ offset, factor }) => {
-  const { height, width } = useWindowDimensions()
   var divOffset = offset
-  if(width <= 600) {
-    factor = factor*1.25
-    divOffset = offset-(offset*0.175)
+  if(typeof window !== 'undefined') {
+    const { height, width } = useWindowDimensions()
+    if(width <= 600) {
+      factor = factor*1.25
+      divOffset = offset-(offset*0.175)
+    }
   }
   const colors = ['linear-gradient(to right, #7f7fd5, #86a8ef)', 'linear-gradient(to right, #83a0e8, #76bef6)']
   const data = useStaticQuery(projectsQuery)

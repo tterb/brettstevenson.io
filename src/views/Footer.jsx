@@ -93,10 +93,6 @@ const GatsbyIcon = () => (
 )
 
 const Footer = ({ offset, speed }) => {
-  const { height, width } = useWindowDimensions()
-  // if(width <= 500) {
-  //   offset = (offset+(offset*(0.0275*(100/width))))
-  // }
   return (
     <>
       <Content offset={offset+0.025} speed={0} factor={0.2} style={{ zIndex: `99999` }}>

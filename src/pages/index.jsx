@@ -21,14 +21,17 @@ import '../styles/main.scss'
 
 
 const Index = () => {
-  const { height, width } = useWindowDimensions()
   var pages = 3.85
-  if(width <= 500) {
-    pages = pages*1.025
-  }
   var footerOffset = pages-0.35
-  if(width <= 420)
-    footerOffset = pages-(0.3*(width/500))
+  if(typeof window !== 'undefined') {
+    const { height, width } = useWindowDimensions()
+    if(width <= 500) {
+      pages = pages*1.025
+    }
+    footerOffset = pages-0.35
+    if(width <= 420)
+      footerOffset = pages-(0.3*(width/500))
+  }
   return (
     <>
       <Layout />
