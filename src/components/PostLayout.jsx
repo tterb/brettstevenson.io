@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import TweenLite from 'gsap'
-import scrollTo from 'gsap/ScrollToPlugin';
 import tw from 'tailwind.macro'
 import { accent } from '../../tailwind'
 import styled from 'styled-components'
@@ -30,23 +28,31 @@ const Separator = styled.hr`
   border-bottom: 2px solid rgba(0,0,0,0.095);
 `
 
-const BackToTop = styled.span`
+const BackToTop = styled(Link)`
   ${tw`fixed rounded-full text-center w-4 h-4 p-4 shadow-md hover:shadow-lg cursor-pointer`}
   background: rgba(255,255,255,0.985);
+  line-height: inherit;
   right: 4vw;
   bottom: 10vh;
   transition: all 450ms ease-in-out;
   svg {
     ${tw`relative`}
-    vertical-align: top;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 0;
+    transition: all 450ms ease-in-out 100ms;
     path {
       fill: rgba(0,0,0,0.5);
       transition: fill 450ms ease-in-out;
     }
   }
-  &:hover {
-    svg path {
+  &:hover svg {
+    transition: all 450ms ease-in-out 100ms;
+    path {
       fill: ${accent};
+      transition: all 450m ease-in-out 100ms;
     }
   }
 `
@@ -55,11 +61,6 @@ class PostLayout extends React.Component {
   
   constructor(props) {
     super(props);
-    this.scrollToTop = this.scrollToTop.bind(this);
-  }
-  
-  scrollToTop() {
-    TweenLite.to(window, .8, {scrollTo:0});
   }
   
   render() {
@@ -67,18 +68,25 @@ class PostLayout extends React.Component {
     const { post, location, context, children } = this.props
     const { prev, next } = context
     let rootPath = `/`
-    if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
+    if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
       rootPath = __PATH_PREFIX__ + `/`
+    }
+    if (typeof window !== 'undefined') {
+      require('smooth-scroll')('a[href*="#"]', {
+        speed: 400,
+        easing: 'easeInOutQuad',
+      })
     }
 
     return (
       <>
+        <span id='top'></span>
         <PostNav active={location.pathname} />
         <PostHeader id='postHero' post={post} />
         <Wrapper className='wrapper'>
           <div style={{ background: `#fff` }}>
             {children}
-            <BackToTop onClick={this.scrollToTop}>
+            <BackToTop to={`/${location.pathname}/#top`}>
               <FontAwesomeIcon icon={faArrowUp} />
             </BackToTop>
           </div>
@@ -92,7 +100,7 @@ class PostLayout extends React.Component {
               <span className='prev-title'>{prev.node.title}</span>
             </PageLink></span> }
           { next && <span className='next'>
-            <PageLink direction='right' to={`blog/${next.node.slug}`} rel='next'>
+            <PageLink to={`blog/${next.node.slug}`} direction='right'  rel='next'>
               <span className='next-title'>{next.node.title}</span>
               <FontAwesomeIcon icon={faArrowAltCircleRight} />
             </PageLink></span> }
