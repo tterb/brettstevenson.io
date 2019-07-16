@@ -13,13 +13,18 @@ const Wrapper = styled.div`
     height: 6px;
     top: -10px;
     left: -0.5rem;
+    @media (min-width: 900px) {
+      height: 7px;
+    }
+    @media (min-width: 1100px) {
+      height: 8px;
+    }
   }
 `
 
 const PostTitle = styled.h1`
-  ${tw`relative font-bold leading-tight m-0 mx-auto xs:w-9/10 xs:text-4xl sm:text-5xl md:text-5xl lg:text-5xl`}
+  ${tw`relative font-bold tracking-tight leading-tight m-0 mx-auto xs:w-9/10 xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl`}
   color: rgba(0,0,0,0.75);
-  /* font-size: 6.75vw; */
   margin-left: -1vw;
   @media (max-width: 600px) {
     font-size: 3.25rem;

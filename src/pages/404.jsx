@@ -17,7 +17,7 @@ import '../styles/404.scss'
 
 
 const PageTitle = styled(BigTitle)`
-  ${tw`sm:text-6xl ml-1 md:text-8xl lg:text-9xl font-title text-center font-extrabold mt-0 ml-0`};
+  ${tw`sm:text-7xl ml-1 md:text-9xl lg:text-10xl font-title text-center font-extrabold mt-0 ml-0`}
   font-size: 8rem;
   text-shadow: 0 2.5px 6px rgba(0,0,0,0.4) !important;
 `

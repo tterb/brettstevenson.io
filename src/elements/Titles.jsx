@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import tw from 'tailwind.macro'
 
 export const BigTitle = styled.h1`
-  ${tw`font-title tracking-wide leading-tighter w-full sm:text-6xl md:text-7xl mt-4 mb-6 ml-0`}
+  ${tw`font-title tracking-wide leading-tighter w-full sm:text-7xl md:text-8xl mt-4 mb-6 ml-0`}
   color: rgba(255,255,255,0.95);
   font-size: 3em;
   font-weight: 800;
