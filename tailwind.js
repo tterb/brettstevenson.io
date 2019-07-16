@@ -300,11 +300,11 @@ module.exports = {
     '3xl': '1.875rem',  // 30px
     '4xl':  '2.25rem',  // 36px
     '5xl':     '4rem',
-    '6xl':   '5.5rem',
-    '7xl':   '6.5rem',
-    '8xl':     '7.5rem',
-    '9xl':     '9rem',
-    '10xl':   '10rem',
+    '6xl':     '5rem',
+    '7xl':   '5.5rem',
+    '8xl':   '6.5rem',
+    '9xl':   '7.5rem',
+    '10xl':    '9rem',
   },
 
   /*
@@ -366,7 +366,7 @@ module.exports = {
   */
 
   tracking: {
-    tight: '-0.05em',
+    tight: '-1px',
     normal: '0',
     wide: '0.05em',
   },
