@@ -5,7 +5,7 @@ import { accent } from '../../tailwind'
 import styled from 'styled-components'
 import { Disqus } from 'gatsby-plugin-disqus'
 // Components
-import PostNav from './PostNav'
+import Nav from './Nav'
 import PostHeader from './PostHeader'
 import PostAuthor from './PostAuthor'
 import PageLink from './PageLink'
@@ -15,7 +15,7 @@ import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowUp } from '@fortawe
 
 
 const Wrapper = styled.div`
-  ${tw`font-default leading-normal xs:w-9/10 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-9 pt-0`}
+  ${tw`font-default leading-normal xs:w-9/10 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-9 md:pb-9`}
   color: rgba(0,0,0,0.85);
   font-size: 1.1rem;
   letter-spacing: 0.01em;
@@ -63,9 +63,13 @@ class PostLayout extends React.Component {
     super(props);
   }
   
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
+ 
   render() {
     const config = require(`../../config/website`)
-    const { post, location, context, children } = this.props
+    const { post, mobile, location, context, children } = this.props
     const { prev, next } = context
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
@@ -81,7 +85,7 @@ class PostLayout extends React.Component {
     return (
       <>
         <span id='top'></span>
-        <PostNav active={location.pathname} />
+        <Nav mobile={mobile} />
         <PostHeader id='postHero' post={post} />
         <Wrapper className='wrapper'>
           <div style={{ background: `#fff` }}>
