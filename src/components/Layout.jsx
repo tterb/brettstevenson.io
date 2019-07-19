@@ -1,7 +1,5 @@
 import React from 'react'
 import SEO from './SEO'
-// Components
-import DevToolsMsg from './DevToolsMsg'
 // Styles
 import GlobalStyle from '../styles/global'
 import 'typeface-titillium-web'
@@ -16,7 +14,6 @@ const Layout = () => {
   return (
     <>
       <SEO />
-      <DevToolsMsg />
       <GlobalStyle />
     </>
   )
