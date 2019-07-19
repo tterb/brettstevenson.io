@@ -53,6 +53,7 @@ const BgImage = styled(Image)`
 `
 
 const CardContent = styled.div`
+  ${tw`overflow-visible`}
   margin-top: 0.35rem;
 `
 
@@ -91,12 +92,20 @@ const Text = styled.p`
   font-size: 1.05rem;
   margin-top: 0.3em;
   padding-left: 2px; 
+  @media (max-width: 500px) {
+    p {
+      margin-block-start: 0.25rem;
+    }
+  }
 `
 
 const Date = styled.span`
   ${tw`absolute text-base`}
   color: rgba(0,0,0,0.55);
   bottom: 3rem;
+  @media (max-width: 500px) {
+    bottom: 1.5rem;
+  }
   svg {
     margin: 0 10px 0 6px;
   }

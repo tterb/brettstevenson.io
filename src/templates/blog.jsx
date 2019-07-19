@@ -1,20 +1,20 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
+// Componentes
+import Layout from '../components/Layout'
 import BlogLayout from '../components/BlogLayout'
 
 class Blog extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const { currentPage, numPages, count } = this.props.pageContext
     return (
       <>
+        <Layout />
         <BlogLayout
           title='Blog'
-          currentPage={currentPage} 
-          numPages={numPages}
-          count={count} 
+          context={this.props.pageContext}
           posts={posts}
         />
       </>

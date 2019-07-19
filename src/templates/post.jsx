@@ -8,34 +8,44 @@ import styled from 'styled-components'
 import PageLink from '../components/PageLink'
 import PostLayout from '../components/PostLayout'
 import PostMeta from '../components/PostMeta'
+// Hooks
+import useWindowDimensions from '../hooks/WindowDimensions'
 // Styles
 import postStyles from '../styles/post.scss'
 // Fonts
 import 'typeface-source-code-pro'
 
 
-class PostTemplate extends React.Component {
-  render() {
-    const config = require(`../../config/website`)
-    const post = _.get(this.props, 'data.contentfulBlogPost')
-    return (
-      <>
-        <PostMeta
-          title={`${post.title} | ${config.siteTitle}`}
-          description={post.description}
-          thumbnail={post.heroImage.fluid}
-          url={`/blog/${post.slug}`}
-        />
-        <PostLayout
-          post={post}
-          style={postStyles}
-          location={this.props.location} 
-          context={this.props.pageContext}>
-            <div className='post-body' dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
-        </PostLayout>
-      </>
-    )
+const PostTemplate = (props) => {
+  const config = require(`../../config/website`)
+  const post = _.get(props, 'data.contentfulBlogPost')
+  let mobile = false
+  if(typeof window !== 'undefined') {
+    const { height, width } = useWindowDimensions()
+    if (width <= 500) {
+      mobile = true
+    } else {
+      mobile = false
+    }
   }
+  return (
+    <>
+      <PostMeta
+        title={`${post.title} | ${config.siteTitle}`}
+        description={post.description}
+        thumbnail={post.heroImage.fluid}
+        url={`/blog/${post.slug}`}
+      />
+      <PostLayout
+        post={post}
+        style={postStyles}
+        mobile={mobile}
+        location={props.location} 
+        context={props.pageContext}>
+          <div className='post-body' dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
+      </PostLayout>
+    </>
+  )
 }
 
 export default PostTemplate

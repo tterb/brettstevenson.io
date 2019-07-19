@@ -21,14 +21,15 @@ import '../styles/main.scss'
 
 
 const Index = () => {
-  var pages = 3.85
-  var footerOffset = pages-0.35
+  let pages = 3.85
+  let mobile = false
+  let footerOffset = pages-0.35
   if(typeof window !== 'undefined') {
     const { height, width } = useWindowDimensions()
     if(width <= 500) {
       pages = pages*1.025
+      mobile = true
     }
-    footerOffset = pages-0.35
     if(width <= 420)
       footerOffset = pages-(0.3*(width/500))
   }
@@ -36,7 +37,7 @@ const Index = () => {
     <>
       <Layout />
       <Parallax pages={pages}>
-        <Nav logo={false} />
+        <Nav logo={false} mobile={mobile} />
         <Hero offset={0} />
         <About offset={0.925} factor={1.25} id='about' />
         <Projects offset={2} factor={2.2} id='projects' />

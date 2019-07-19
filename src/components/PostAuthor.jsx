@@ -21,7 +21,7 @@ const Avatar = styled.span`
 `
 
 const AuthorText = styled.span`
-  ${tw`inline-block xs:max-w-4/5 xs:ml-0 md:max-w-3/5 md:ml-4`}
+  ${tw`inline-block xs:max-w-full xs:ml-0 md:max-w-3/5 md:ml-4`}
   vertical-align: top;
   .author-bio, p {
     ${tw`leading-tight mx-auto my-1`}

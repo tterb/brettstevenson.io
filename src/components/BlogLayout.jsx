@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import Bounce from 'react-reveal/Bounce';
 import { Parallax } from 'react-spring/renderprops-addons'
 // Components
-import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
 import BlogCard from '../components/BlogCard'
@@ -16,6 +15,8 @@ import { BigTitle } from '../elements/Titles'
 import Content from '../elements/Content'
 // Views
 import Footer from '../views/Footer'
+// Hooks
+import { isMobile } from '../hooks/WindowDimensions'
 // Styles
 import '../styles/blog.scss'
 
@@ -47,46 +48,42 @@ const navStyle = {
 }
 
 
-class BlogLayout extends React.Component {
-  render() {
-    const { title, currentPage, numPages, count, posts } = this.props
-    const path = (title === 'Blog') ? `blog` : `blog/tags/${_.kebabCase(title)}`
-    
-    let postCount = count%4
-    if(count < 4)
-      postCount = count
-    else if(currentPage <= Math.floor(count/4))
-      postCount = 4
-    const pageHeight = 1.05+(postCount*0.39)
-    return (
-      <>
-        <Layout />
-        <Parallax pages={pageHeight}>
-          <Nav style={navStyle} />
-          <Header offset={0} factor={0.45}>
-            <PageTitle>{ _.upperFirst(title) }<span className='accent'>.</span></PageTitle>
-          </Header>
-          <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={{padding: `14rem 5rem !important`}}>
-            <Wrapper>
-              <CardList>
-                {posts.map(({ node, i }) => (
-                  <Bounce bottom delay={100*(i+1)} duration={1000}>
-                    <BlogCard key={node.slug} post={node} />
-                  </Bounce>
-                ))}
-              </CardList>
-              <Sidebar />
-              <Pagination 
-                path={path}
-                current={currentPage} 
-                numPages={numPages} />
-            </Wrapper>
-          </Content>
-          <Footer offset={pageHeight-0.325} speed={0.15} />
-        </Parallax>
-      </>
-    )
-  }
+const BlogLayout = ({ title, context, posts }) => {
+  const mobile = isMobile()
+  const { currentPage, numPages, count } = context
+  const path = (title === 'Blog') ? `blog` : `blog/tags/${_.kebabCase(title)}`
+  
+  let postCount = count%4
+  if(count < 4)
+    postCount = count
+  else if(currentPage <= Math.floor(count/4))
+    postCount = 4
+  const pageHeight = 1.05+(postCount*0.39)
+  return (
+    <Parallax pages={pageHeight}>
+      <Nav mobile={mobile}/>
+      <Header offset={0} factor={0.45}>
+        <PageTitle>{ _.upperFirst(title) }<span className='accent'>.</span></PageTitle>
+      </Header>
+      <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={{padding: `14rem 5rem !important`}}>
+        <Wrapper>
+          <CardList>
+            {posts.map(({ node, i }) => (
+              <Bounce bottom delay={100*(i+1)} duration={1000}>
+                <BlogCard key={node.slug} post={node} />
+              </Bounce>
+            ))}
+          </CardList>
+          <Sidebar />
+          <Pagination 
+            path={path}
+            current={currentPage} 
+            numPages={numPages} />
+        </Wrapper>
+      </Content>
+      <Footer offset={pageHeight-0.325} speed={0.15} />
+    </Parallax>
+  )
 }
 
 export default BlogLayout
