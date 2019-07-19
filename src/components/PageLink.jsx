@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { colors } from '../../tailwind'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 const PageLink = ({ direction, duration, to, className, children }) => (
   <>
-    <AniLink cover bg='#23262b' className={className}
+    <AniLink cover bg={colors['background-alt']} className={className}
     to={to} direction={direction} duration={duration}>{ children }</AniLink>
   </>
 )
