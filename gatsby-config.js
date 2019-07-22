@@ -27,6 +27,7 @@ contentfulConfig = {
 }
 
 const { spaceId, accessToken } = contentfulConfig
+const githubToken = process.env.GITHUB_TOKEN
 
 if (!spaceId || !accessToken) {
   throw new Error(
@@ -87,14 +88,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
       options: {
-        disabledFeatures: [`shorthands`, `cloning`],
+        disabledFeatures: [`cloning`, `flattening`, `metadata`, `placeholders`, `shorthands`],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/images/`,
         name: `images`,
+        path: `${__dirname}/src/images/`,
+        ignore: [`**/*_\.*`],
       },
     },
     { 

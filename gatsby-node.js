@@ -91,7 +91,7 @@ exports.createPages = ({ graphql, actions }) => {
                 currentPage: i + 1,
                 count: tags[tag],
                 numPages: tagPageCount,
-                tag
+                tag: tag,
               }
             })
           })
