@@ -1,8 +1,4 @@
 import React from 'react'
-import get from 'lodash/get'
-import styled from 'styled-components'
-import tw from 'tailwind.macro'
-import colors from '../../tailwind'
 import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'

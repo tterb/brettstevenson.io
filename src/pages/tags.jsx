@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
-import _ from 'lodash'
+import kebabCase from 'lodash/kebabCase'
 import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'
@@ -17,8 +17,6 @@ import { Divider } from '../elements/Dividers'
 import { BigTitle } from '../elements/Titles'
 // Views
 import Footer from '../views/Footer'
-// Styles
-import '../styles/tags.scss'
 
 
 const TagList = styled.ul`
@@ -56,38 +54,41 @@ const TagsPage = ({
       siteMetadata: { title },
     },
   },
-}) => (
-  <>
-  <Layout />
-  <Parallax pages={1.3}>
-    <Nav />
-    <Header offset={0} factor={0.4}>
-      <BigTitle>Tags<span className='accent'>.</span></BigTitle>
-    </Header>
-    <Divider
-      bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
-      clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)'
-      speed={0.2}
-      offset={0.2}
-      factor={1.3}
-    />
-    <Content speed={0.25} offset={0.2} factor={0.8} className='tags-content pt-0'>
-      <Inner>
-        <TagList className='tags-list'>
-          {group.map(tag => (
-            <li key={tag.fieldValue}>
-              <PageLink to={`/blog/tags/${_.kebabCase(tag.fieldValue)}/`}>
-                {tag.fieldValue} ({tag.totalCount})
-              </PageLink>
-            </li>
-          ))}
-        </TagList>
-      </Inner>
-    </Content>
-    <Footer offset={1} factor={0.5} />
-  </Parallax>
-  </>
-)
+}) => {
+  require('../styles/tags.scss')
+  return (
+    <>
+    <Layout />
+    <Parallax pages={1.3}>
+      <Nav />
+      <Header offset={0} factor={0.4}>
+        <BigTitle>Tags<span className='accent'>.</span></BigTitle>
+      </Header>
+      <Divider
+        bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
+        clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)'
+        speed={0.2}
+        offset={0.2}
+        factor={1.3}
+      />
+      <Content speed={0.25} offset={0.2} factor={0.8} className='tags-content pt-0'>
+        <Inner>
+          <TagList className='tags-list'>
+            {group.map(tag => (
+              <li key={tag.fieldValue}>
+                <PageLink to={`/blog/tags/${kebabCase(tag.fieldValue)}/`}>
+                  {tag.fieldValue} ({tag.totalCount})
+                </PageLink>
+              </li>
+            ))}
+          </TagList>
+        </Inner>
+      </Content>
+      <Footer offset={1} factor={0.5} />
+    </Parallax>
+    </>
+  )
+}
 
 export default TagsPage
 

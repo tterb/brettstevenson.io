@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'gatsby-image'
-import _ from 'lodash'
+import kebabCase from 'lodash/kebabCase'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
 import PageLink from './PageLink'
@@ -124,7 +124,7 @@ class BlogCard extends React.Component {
   
   // handleCategoryClick(e) {
   //   e.stopPropagation()
-  //   location.href='/blog/tag/'+_.kebabCase(this.props.post.category.toLowerCase())
+  //   location.href='/blog/tag/'+kebabCase(this.props.post.category.toLowerCase())
   // }
   
   render() {
@@ -134,7 +134,7 @@ class BlogCard extends React.Component {
       <Card className='blog-card' onClick={this.handleClick}>
           <BgImage alt={post.title} fluid={preview.fluid} />
         <Wrapper className='content-mask'>
-          <Category className={`card-category ${_.kebabCase(post.category.toString().toLowerCase())}`}>
+          <Category className={`card-category ${kebabCase(post.category.toString().toLowerCase())}`}>
             {post.category}
           </Category>
           <CardContent>

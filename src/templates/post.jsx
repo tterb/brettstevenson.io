@@ -1,24 +1,20 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
-import _ from 'lodash'
-import tw from 'tailwind.macro'
-import styled from 'styled-components'
+import get from 'lodash/get'
 // Components
 import PageLink from '../components/PageLink'
 import PostLayout from '../components/PostLayout'
 import PostMeta from '../components/PostMeta'
 // Hooks
 import useWindowDimensions from '../hooks/WindowDimensions'
-// Styles
-import postStyles from '../styles/post.scss'
-// Fonts
-import 'typeface-source-code-pro'
 
 
-const PostTemplate = (props) => {
+const PostTemplate = ({ pageContext, location, data }) => {
+  require('typeface-source-code-pro')
+  const postStyle = require('../styles/post.scss')
   const config = require(`../../config/website`)
-  const post = _.get(props, 'data.contentfulBlogPost')
+  const post = data.contentfulBlogPost
   let mobile = false
   if(typeof window !== 'undefined') {
     const { height, width } = useWindowDimensions()
@@ -38,10 +34,10 @@ const PostTemplate = (props) => {
       />
       <PostLayout
         post={post}
-        style={postStyles}
+        style={postStyle}
         mobile={mobile}
-        location={props.location} 
-        context={props.pageContext}>
+        location={location} 
+        context={pageContext}>
           <div className='post-body' dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
       </PostLayout>
     </>

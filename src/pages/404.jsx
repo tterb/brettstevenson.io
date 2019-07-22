@@ -12,8 +12,6 @@ import Content from '../elements/Content'
 import { BigTitle } from '../elements/Titles'
 // Views
 import Footer from '../views/Footer'
-// Styles
-import '../styles/404.scss'
 
 
 const PageTitle = styled(BigTitle)`
@@ -108,6 +106,7 @@ class FourOhFour extends React.Component {
   }
   
   render() {
+    require('../styles/404.scss')
     return (
       <>
         <Layout style={{background: `linear-gradient(to bottom, #23262b, #161719)`}}/>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import _ from 'lodash'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
 import styled from 'styled-components'
@@ -18,8 +17,7 @@ import { Divider } from '../elements/Dividers'
 import { BigTitle, Title } from '../elements/Titles'
 // Views
 import Footer from '../views/Footer'
-// Styles
-import '../styles/tags.scss'
+
 
 const ArchiveTitle = styled(Title)`
   ${tw`ml-0`}
@@ -30,44 +28,43 @@ const ArchiveList = styled.ul`
   ${tw`list-reset`}
 `
 
-class ArchivePage extends React.Component {
-  render() {
-    const { tag } = this.props.pageContext
-    const edges = _.get(this, 'props.data.allContentfulBlogPost.edges')
-    return (
-      <>
-      <Layout />
-      <Parallax pages={1.8}>
-        <Nav />
-        <Header offset={0} factor={0.4}>
-          <BigTitle>Archive<span className='accent'>.</span></BigTitle>
-        </Header>
-        <Divider
-          bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
-          clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)'
-          speed={0.2}
-          offset={0.2}
-          factor={1.25}
-        />
-        <Content offset={0.3} factor={1.05} speed={0.25} className='tags-content pt-0'>
-          <Inner>
-            <ArchiveList className='archive-list'>
-              {edges.map(({ node }) => {
-                return (
-                  <InlinePost node={node} />
-                )
-              })}
-            </ArchiveList>
-            <div className='back-blog-btn'>
-              <PageLink direction='right' to='/blog' className='back-blog btn'>Back to Blog</PageLink>
-            </div>
-          </Inner>
-        </Content>
-        <Footer offset={1.5} factor={0.5} />
-      </Parallax>
-      </>
-    )
-  }
+const ArchivePage = ({ pageContext, data }) => {
+  require('../styles/tags.scss')
+  const { tag } = pageContext
+  const edges = data.allContentfulBlogPost.edges
+  return (
+    <>
+    <Layout />
+    <Parallax pages={1.8}>
+      <Nav />
+      <Header offset={0} factor={0.4}>
+        <BigTitle>Archive<span className='accent'>.</span></BigTitle>
+      </Header>
+      <Divider
+        bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
+        clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)'
+        speed={0.2}
+        offset={0.275}
+        factor={1.25}
+      />
+      <Content offset={0.375} factor={1.05} speed={0.25} className='tags-content pt-0'>
+        <Inner>
+          <ArchiveList className='archive-list'>
+            {edges.map(({ node }) => {
+              return (
+                <InlinePost node={node} />
+              )
+            })}
+          </ArchiveList>
+          <div className='back-blog-btn'>
+            <PageLink direction='right' to='/blog' className='back-blog btn'>Back to Blog</PageLink>
+          </div>
+        </Inner>
+      </Content>
+      <Footer offset={1.5} factor={0.5} />
+    </Parallax>
+    </>
+  )
 }
 
 export default ArchivePage

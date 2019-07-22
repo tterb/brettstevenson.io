@@ -1,8 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
-import tw from 'tailwind.macro'
-import { accent, accentHover } from '../../tailwind'
-import styled from 'styled-components'
 import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'
