@@ -1,28 +1,22 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import _ from 'lodash'
-import tw from 'tailwind.macro'
-import styled from 'styled-components'
+// Components
+import Layout from '../components/Layout'
 import BlogLayout from '../components/BlogLayout'
 
 
-class Tags extends React.Component {
-  render() {
-    const siteTitle = _.get(this, 'props.data.site.siteMetadata.title')
-    const posts = _.get(this, 'props.data.allContentfulBlogPost.edges')
-    const { tag, currentPage, numPages, count } = this.props.pageContext
-    return (
-      <>
-        <BlogLayout 
-          title={tag}
-          currentPage={currentPage} 
-          numPages={numPages}
-          count={count} 
-          posts={posts}
-        />
-      </>
-    )
-  }
+const Tags = ({ pageContext, data }) => {
+  const posts = data.allContentfulBlogPost.edges
+  return (
+    <>
+      <Layout />
+      <BlogLayout
+        title={pageContext.tag}
+        posts={posts}
+        pageContext={pageContext}
+      />
+    </>
+  )
 }
 
 export default Tags
@@ -43,8 +37,13 @@ export const tagQuery = graphql`
           category
           tags
           heroImage {
-            fixed(resizingBehavior: SCALE) {
-              ...GatsbyContentfulFixed_withWebp
+            fluid(maxWidth: 900) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+          previewImage {
+            fluid(maxWidth: 900) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           description {
