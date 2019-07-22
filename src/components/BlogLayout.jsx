@@ -1,5 +1,6 @@
 import React from 'react'
-import _ from 'lodash'
+import kebabCase from 'lodash/kebabCase'
+import upperFirst from 'lodash/upperFirst'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
 import Bounce from 'react-reveal/Bounce';
@@ -17,8 +18,6 @@ import Content from '../elements/Content'
 import Footer from '../views/Footer'
 // Hooks
 import { isMobile } from '../hooks/WindowDimensions'
-// Styles
-import '../styles/blog.scss'
 
 
 const PageTitle = styled(BigTitle)`
@@ -35,23 +34,27 @@ const Wrapper = styled.div`
   padding-bottom: 18rem;
 `
 
+const BlogContent = styled(Content)`
+  ${tw`h-auto p-0 pt-16 z-10`}
+  background: rgba(255,255,255,0.985);
+  top: -1.5rem;
+  padding: 0 !important;
+  div {
+    z-index: 9999999;
+  }
+`
+
 const CardList = styled.div`
   ${tw`inline-block w-7/10 xs:inline xs:w-9/10 xs:mx-auto lg:inline-block lg:w-7/10`}
   margin-top: -1vh;
   margin-right: 3%;
 `
 
-const navStyle = {
-  position: 'absolute',
-  top: '-0.5rem',
-  right: '8vw',
-}
-
-
-const BlogLayout = ({ title, context, posts }) => {
+const BlogLayout = ({ title, posts, pageContext }) => {
+  require('../styles/blog.scss')
   const mobile = isMobile()
-  const { currentPage, numPages, count } = context
-  const path = (title === 'Blog') ? `blog` : `blog/tags/${_.kebabCase(title)}`
+  const { currentPage, numPages, count } = pageContext
+  const path = (title === 'Blog') ? `blog` : `blog/tags/${kebabCase(title)}`
   
   let postCount = count%4
   if(count < 4)
@@ -63,9 +66,9 @@ const BlogLayout = ({ title, context, posts }) => {
     <Parallax pages={pageHeight}>
       <Nav mobile={mobile}/>
       <Header offset={0} factor={0.45}>
-        <PageTitle>{ _.upperFirst(title) }<span className='accent'>.</span></PageTitle>
+        <PageTitle>{ upperFirst(title) }<span className='accent'>.</span></PageTitle>
       </Header>
-      <Content className='light-bg blog-content' offset={0.45} factor={3} speed={0.6} style={{padding: `14rem 5rem !important`}}>
+      <BlogContent className='light-bg' offset={0.45} factor={3} speed={0.6}>
         <Wrapper>
           <CardList>
             {posts.map(({ node, i }) => (
@@ -80,7 +83,7 @@ const BlogLayout = ({ title, context, posts }) => {
             current={currentPage} 
             numPages={numPages} />
         </Wrapper>
-      </Content>
+      </BlogContent>
       <Footer offset={pageHeight-0.325} speed={0.15} />
     </Parallax>
   )
