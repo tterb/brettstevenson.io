@@ -12,7 +12,6 @@ import Footer from '../views/Footer'
 // Hooks
 import useWindowDimensions from '../hooks/WindowDimensions'
 // Styles
-import '../styles/normalize.scss'
 import '../styles/main.scss'
 
 
