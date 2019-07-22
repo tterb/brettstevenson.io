@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import _ from 'lodash'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
+// Components
 import PageLink from './PageLink'
 
 const TagList = styled.ul`
@@ -12,7 +13,7 @@ const TagList = styled.ul`
 const Tag = styled.li`
   ${tw `inline-block`}
   a {
-    ${tw `mb-2`}
+    ${tw `mb-2 no-underline`}
     display: grid;
     color: rgba(0,0,0,0.4);
     span {

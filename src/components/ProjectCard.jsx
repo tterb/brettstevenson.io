@@ -53,7 +53,7 @@ const Title = styled.div`
   transition: all 350ms ease-in-out;
 `
 const Text = styled.div`
-  ${tw`font-sans leading-tight text-base xl:text-lg pb-4 md:pb-8 xs:hidden sm:block`}
+  ${tw`font-sans leading-tight text-base lg:text-lg pb-4 md:pb-8 xs:hidden sm:block`}
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: all 400ms ease-in-out;
 `

@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import upperFirst from 'lodash/upperFirst'
 import tw from 'tailwind.macro'
 import { accent, accentHover } from '../../tailwind'
 import styled from 'styled-components'
@@ -84,7 +84,7 @@ const ContactInput = (props) => (
            name={props.name}
            value={props.value}
            onChange={props.onChange} />
-    <FocusLine className='focus-input' data-placeholder={_.upperFirst(props.name)} />
+    <FocusLine className='focus-input' data-placeholder={upperFirst(props.name)} />
   </InputWrapper>
 )
 
@@ -93,7 +93,7 @@ const ContactMessage = (props) => (
     <textarea name={props.name}
            value={props.value}
            onChange={props.onChange} />
-    <FocusLine className='focus-input' data-placeholder={_.upperFirst(props.name)} />
+    <FocusLine className='focus-input' data-placeholder={upperFirst(props.name)} />
   </InputWrapper>
 )
 

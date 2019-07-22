@@ -50,6 +50,9 @@ const HeroImage = styled(Image)`
   max-height: 45vh;
   top: -1px;
   left: -1px;
+  > div {
+    padding-bottom: 28% !important;
+  }
 `
 
 export default ({ post }) => (
