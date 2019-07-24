@@ -261,9 +261,9 @@ code {
 
 #disqus_thread {
   width: 85%;
-  margin-bottom: 3rem;
+  padding-bottom: 3rem;
   @media (max-width: 450px) {
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
   }
 }
 

@@ -4,7 +4,7 @@ import tw from 'tailwind.macro'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  ${tw`font-default leading-normal xs:w-9/10 md:w-4/5 lg:w-3/4 my-10 mb-14 mx-auto p-0 md:px-9`}
+  ${tw`font-default leading-normal xs:w-9/10 md:w-4/5 lg:w-3/4 mb-14 mx-auto p-0 pt-10 md:px-9`}
   max-width: 900px;
   &::after {
     ${tw`block relative w-1/4`}
@@ -44,20 +44,8 @@ const PostDate = styled.p`
   }
 `
 
-const HeroImage = styled(Image)`
-  width: 100.5%;
-  height: 60vw;
-  max-height: 45vh;
-  top: -1px;
-  left: -1px;
-  > div {
-    padding-bottom: 28% !important;
-  }
-`
-
 export default ({ post }) => (
   <>
-    <HeroImage alt={post.title} fluid={post.heroImage.fluid} />
     <Wrapper className='post-header'>
       <PostTitle>{post.title}</PostTitle>
       <PostDate>

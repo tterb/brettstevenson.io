@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import get from 'lodash/get'
 // Components
+import Layout from '../components/Layout'
 import PageLink from '../components/PageLink'
 import PostLayout from '../components/PostLayout'
 import PostMeta from '../components/PostMeta'
@@ -32,6 +33,7 @@ const PostTemplate = ({ pageContext, location, data }) => {
         thumbnail={post.heroImage.fluid}
         url={`/blog/${post.slug}`}
       />
+      <Layout />
       <PostLayout
         post={post}
         style={postStyle}

@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { Disqus } from 'gatsby-plugin-disqus'
 // Components
 import Nav from './Nav'
+import PostHero from './PostHero'
 import PostHeader from './PostHeader'
 import PostAuthor from './PostAuthor'
 import PageLink from './PageLink'
@@ -15,12 +16,17 @@ import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowUp } from '@fortawe
 
 
 const Wrapper = styled.div`
-  ${tw`font-default leading-normal xs:w-9/10 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-9 md:pb-9`}
+  ${tw`font-default m-0`}
+  background: rgba(255,255,255,0.985);
+  margin-bottom: 2vh;
+`
+
+const Content = styled.div`
+  ${tw`leading-normal xs:w-9/10 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-9 md:pb-9`}
   color: rgba(0,0,0,0.85);
   font-size: 1.1rem;
   letter-spacing: 0.01em;
   max-width: 900px;
-  margin-bottom: 2vh;
 `
 
 const Separator = styled.hr`
@@ -86,30 +92,31 @@ class PostLayout extends React.Component {
       <>
         <span id='top'></span>
         <Nav mobile={mobile} />
-        <PostHeader id='postHero' post={post} />
+        <PostHero post={post} />
         <Wrapper className='wrapper'>
-          <div style={{ background: `#fff` }}>
+          <PostHeader id='postHero' post={post} />
+          <Content>
             {children}
             <BackToTop to={`/${location.pathname}/#top`}>
               <FontAwesomeIcon icon={faArrowUp} />
             </BackToTop>
+          </Content>
+          <Separator />
+          <PostAuthor author={post.author} />
+          <div className='prev-next'>
+            { prev && <span className='prev'>
+              <PageLink to={`blog/${prev.node.slug}`} rel='prev'>
+                <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+                <span className='prev-title'>{prev.node.title}</span>
+              </PageLink></span> }
+            { next && <span className='next'>
+              <PageLink to={`blog/${next.node.slug}`} direction='right'  rel='next'>
+                <span className='next-title'>{next.node.title}</span>
+                <FontAwesomeIcon icon={faArrowAltCircleRight} />
+              </PageLink></span> }
           </div>
+          <Disqus identifier={post.id} title={post.title} url={`${config.siteUrl}${location.pathname}`} />
         </Wrapper>
-        <Separator />
-        <PostAuthor author={post.author} />
-        <div className='prev-next'>
-          { prev && <span className='prev'>
-            <PageLink to={`blog/${prev.node.slug}`} rel='prev'>
-              <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-              <span className='prev-title'>{prev.node.title}</span>
-            </PageLink></span> }
-          { next && <span className='next'>
-            <PageLink to={`blog/${next.node.slug}`} direction='right'  rel='next'>
-              <span className='next-title'>{next.node.title}</span>
-              <FontAwesomeIcon icon={faArrowAltCircleRight} />
-            </PageLink></span> }
-        </div>
-        <Disqus identifier={post.id} title={post.title} url={`${config.siteUrl}${location.pathname}`} />
       </>
     )
   }
