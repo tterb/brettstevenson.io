@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -21,17 +21,6 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     padding: 0;
-  }
-  a {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    border: none;
-    transition: all 300ms ease-in-out;
-    cursor: pointer;
-    &:hover,
-    &.active a {
-      color: ${accent};
-    }
   }
 `
 

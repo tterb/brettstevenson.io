@@ -1,9 +1,5 @@
 @import 'variables';
 
-body {
-  font-family: 'Product Sans', 'Titillium Web', sans-serif;
-}
-
 #___gatsby {
   height: 100% !important;
   > div {
@@ -33,6 +29,18 @@ body {
 
 .accent-blue {
   color: $secondary-accent;
+}
+
+a {
+  color: $text-color;
+  text-decoration: none;
+  border: none;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  &:hover, 
+  &.active a {
+    color: $accent;
+  }
 }
 
 /* Menu */
@@ -124,16 +132,6 @@ svg.logo {
     left: 31rem;
   }
 }
-
-.light-bg {
-  background: rgba(#fff, 0.985);
-  height: auto !important;
-  padding-bottom: 14rem;
-  div {
-    z-index: 9999999;
-  }
-}
-
 
 /* Title Cubes */
 .cube {
