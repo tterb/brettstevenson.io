@@ -59,12 +59,12 @@ module.exports = {
       },
       {
         name: `Blog`,
-        link: `/blog`,
+        link: `/blog/`,
         external: false,
       },
       {
         name: `Contact`,
-        link: `/contact`,
+        link: `/contact/`,
         external: false,
       },
     ],
@@ -131,7 +131,7 @@ module.exports = {
       options: contentfulConfig,
     },
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: config.googleAnalyticsID
       },
