@@ -21,7 +21,7 @@ const MenuContainer = styled.div`
 `
 
 const Menu = styled.ul`
-  ${tw`flex relative w-full font-title text-right list-reset m-0 mr-8`}
+  ${tw`flex relative w-full font-title text-right list-reset m-0 md:mr-4 lg:mr-8`}
   background: transparent;
   z-index: 999999;
 `
@@ -36,11 +36,11 @@ const MenuItem = styled.li`
     ${tw`pr-0`}
   }
   &.external {
-    padding-right: 0.2rem;
+    padding-right: 0.75rem;
     &::after {
+      ${tw`absolute opacity-0`}
       content: '*';
       color: #63666b;
-      opacity: 0;
       transition: opacity 300ms ease-in-out;
     }
     &:hover {
@@ -60,74 +60,119 @@ const Navbar = styled.div`
 `
 
 const MenuPanel = styled.div`
-  ${tw`fixed w-1/2 pin-t pin-r px-6 py-10`}
+  ${tw`fixed text-center pin-t pin-r px-6 py-10`}
   position: fixed;
   background: ${colors['background-alt']};
-  height: 300vh;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   box-shadow: 0 0 10px rgba(0,0,0,0.7);
-  transform: translateX(20rem);
-  transition: transform 500ms ease;
+  transform: translatey(-100vh);
+  transition: transform 400ms ease;
+  opacity: 0.975;
   z-index: -1;
-  &.active {
-    transform: translateX(0)
+  &::before {
+    ${tw`absolute w-full h-full pin-t pin-l`}
+    background: ${colors['background-alt']};
+    content: '';
+    filter: blur(0);
+    transition: filter 350ms ease 250ms;
+    z-index: -1;
   }
-  li {
+  &.active {
+    &::before {
+      filter: blur(1rem);
+    }
+    transform: translateY(0);
+  }
+  /* li {
     ${tw`w-9/10 mt-3 p-0 py-3`}
     border-bottom: 1px solid rgba(255,255,255,0.1);
+  } */
+  li {
+    ${tw`relative inline-block mt-1 mx-auto px-0 py-3 z-999`}
+    font-size: 14vw;
+    width: max-content;
+    margin: 0 10%;
+    &:first-child {
+      margin-top: 1.5rem;
+    }
+    a {
+      &::before {
+        ${tw`absolute w-0`}
+        background: ${accent};
+        content: '';
+        height: 8px;
+        top: 50%;
+        left: -10%;
+        transition: width 500ms cubic-bezier(0.77, 0, 0.175, 1);
+      }
+      &:hover, &:active {
+        color: rgba(255, 255, 255, 0.8);
+        &::before {
+          width: 120%;
+          transition: width 500ms cubic-bezier(0.77, 0, 0.175, 1);
+        }
+      }
+    }
   }
 `
 
-const MenuButton = styled.span`
-  ${tw`absolute text-3xl ml-auto overflow-visible z-9999`}
+const Button = styled.span`
+  ${tw`absolute flex flex-col justify-between cursor-pointer z-9999`}
   color: rgba(255,255,255,0.75);
-  width: 35px;
-  height: 35px;
-  top: 1rem;
+  width: 30px;
+  height: 25px;
+  top: 0.75rem;
   right: 1rem;
+  transition: all 350ms ease-in-out;
   &.active {
-    position: fixed;
-    top: 0.25rem;
-    span {
-      background: transparent;
-      top: 1rem;
+    width: 25px;
+    transform: rotate(-45deg);
+    transition: all 200ms ease-out;
+    .half {
+      ${tw`w-1/2`}
     }
-    span::before {
-      top: 1rem;
-      transform-origin: center;
-      transform: rotate(-45deg);
+    .start {
+      transform: rotate(-90deg) translateX(2px);
+      transition: width 300ms ease-out 25ms, transform 300ms cubic-bezier(0.54, -0.81, 0.57, 0.57) 25ms;
+      transform-origin: right;
     }
-    span::after {
-      top: 1rem;
-      transform-origin: center;
-      transform: rotate(45deg);
+    .end {
+      transform: rotate(-90deg) translateX(-2px);
+      transition: width 300ms ease-out 25ms, transform 300ms cubic-bezier(0.54, -0.81, 0.57, 0.57) 25ms;
+      transform-origin: left;
     }
   }
 `
 
-const Icon = styled.span`
-  ${tw`absolute block w-full overflow-visible z-9999`}
-  background: #fff;
+const Line = styled.div`
+  ${tw`w-full`}
+  background: rgba(255,255,255,0.75);
+  border-radius: 5px;
   height: 3px;
-  top: 1rem;
-  border-radius: 20px;
-  transition: position 300ms ease-in-out, transform 500ms ease;
-  &::before, &::after {
-    ${tw`absolute block w-7/10 overflow-visible z-9999`}
-    background: #fff;
-    content: '';
-    height: 3px;
-    top: 1rem;
-    border-radius: 20px;
-    transition: position 300ms ease-in-out, transform 500ms ease;
+  transition: transform 350ms ease-out;
+  &.half {
+    ${tw`w-3/5`}
   }
-  &::before {
-    top: -8px;
+  &.start {
+    transition: width 300ms ease-out, transform 250ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
+    transform-origin: right;
   }
-  &::after {
-    top: 8px;
+  &.end {
+    align-self: flex-end;
+    transition: width 300ms ease-out, transform 250ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
+    transform-origin: left;
   }
 `
+
+const MenuButton = ({ status, onClick }) => (
+  <Button className={`menu-button ${status}`} onClick={onClick}>
+    <Line className='half start' />
+    <Line />
+    <Line className='half end' />
+  </Button>
+)
 
 class Nav extends React.Component {
   
@@ -159,9 +204,7 @@ class Nav extends React.Component {
               <MenuContainer>
                 {logo ? <Logo className='logo-container' link={data.site.siteMetadata.menuLinks[0].link} /> : null}
                 { mobile ?
-                  <MenuButton className={`menu-button ${this.isPanelVisible()}`} onClick={this.togglePanel}>
-                    <Icon />
-                  </MenuButton>
+                  <MenuButton status={this.isPanelVisible()} onClick={this.togglePanel} />
                   :
                   <Navbar>
                     <Menu className='menu'>
