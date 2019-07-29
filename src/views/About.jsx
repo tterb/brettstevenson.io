@@ -19,8 +19,11 @@ const AboutHero = styled.div`
 `
 
 const Avatar = styled(Image)`
-  ${tw`rounded-full w-full xl:h-auto xs:hidden sm:block`}
+  ${tw`rounded-full xs:w-1/2 md:w-full xl:h-auto xs:hidden sm:block`}
   box-shadow: 0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25);
+  @media (max-width: 500px) {
+    min-width: 50vw;
+  }
   @media (max-width: 900px) {
     min-width: 25vw;
   }
@@ -41,7 +44,7 @@ const AboutDesc = styled.p`
 `
 
 const About = ({ offset, factor }) => {
-  const avatar = useStaticQuery(aboutQuery).file.childImageSharp;
+  const avatar = useStaticQuery(aboutQuery).file.childImageSharp
   return (
     <>
       <Content id='about' offset={offset} speed={0.25}>
