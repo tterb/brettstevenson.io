@@ -83,8 +83,9 @@ class PostLayout extends React.Component {
     }
     if (typeof window !== 'undefined') {
       require('smooth-scroll')('a[href*="#"]', {
-        speed: 400,
-        easing: 'easeInOutQuad',
+        speed: 450,
+        easing: 'easeInOutCubic',
+        updateURL: false,
       })
     }
 

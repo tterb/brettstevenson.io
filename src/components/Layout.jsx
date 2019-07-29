@@ -6,10 +6,11 @@ import GlobalStyle from '../styles/global'
 
 const Layout = () => {
   require('typeface-titillium-web')
-  if (typeof window !== "undefined") {
-    require("smooth-scroll")('a[href*="#"]', {
-      speed: 400,
-      easing: 'easeInOutQuad',
+  if (typeof window !== 'undefined') {
+    require('smooth-scroll')('a[href*="#"]', {
+      speed: 600,
+      easing: 'easeInOutCubic',
+      updateURL: false,
     })
   }
   return (
