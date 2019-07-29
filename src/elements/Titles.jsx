@@ -20,6 +20,6 @@ export const Title = styled.h1`
 `
 
 export const Subtitle = styled.p`
-  ${tw`text-2xl sm:mt-2 lg:text-3xl font-sans text-white lg:mt-8 ml-2 xxl:w-3/4`}
+  ${tw`text-grey text-2xl sm:mt-2 lg:text-3xl font-sans text-white lg:mt-8 ml-2 xxl:w-3/4`}
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 `

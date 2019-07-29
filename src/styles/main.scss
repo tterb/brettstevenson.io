@@ -13,10 +13,6 @@
   }
 }
 
-.hero {
-  top: 0;
-}
-
 .accent {
   color:  $accent;
   font-size: 1.1em;
@@ -98,7 +94,7 @@ svg.logo {
 
 .typed-cursor {
   font-size: 1.65rem;
-  vertical-align: top;
+  vertical-align: bottom;
   margin-left: 1px;
 }
 
