@@ -119,7 +119,7 @@ class BlogCard extends React.Component {
   }
   
   handleClick() {
-    location.href='/blog/'+this.props.post.slug
+    location.href='/blog/'+this.props.post.slug+'/'
   }
   
   // handleCategoryClick(e) {
@@ -139,7 +139,7 @@ class BlogCard extends React.Component {
           </Category>
           <CardContent>
             <CardTitle>
-              <PageLink to={`/blog/${post.slug}`}>{post.title}</PageLink>
+              <PageLink to={`/blog/${post.slug}/`}>{post.title}</PageLink>
             </CardTitle>
             <Text dangerouslySetInnerHTML={{ __html: post.description.childMarkdownRemark.html }}
             />
