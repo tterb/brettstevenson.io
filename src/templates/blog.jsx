@@ -1,14 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 // Componentes
-import Layout from '../components/Layout'
 import BlogLayout from '../components/BlogLayout'
 
 const Blog = ({ pageContext, data }) => {
   const posts = data.allContentfulBlogPost.edges
   return (
     <>
-      <Layout />
       <BlogLayout
         title='Blog'
         posts={posts}

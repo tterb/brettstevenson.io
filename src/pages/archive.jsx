@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'
-import Nav from '../components/Nav'
 import Header from '../components/Header'
 import InlinePost from '../components/InlinePost'
 import PageLink from '../components/PageLink'
@@ -33,10 +32,7 @@ const ArchivePage = ({ pageContext, data }) => {
   const { tag } = pageContext
   const edges = data.allContentfulBlogPost.edges
   return (
-    <>
-    <Layout />
-    <Parallax pages={1.8}>
-      <Nav />
+    <Layout pages={1.8}>
       <Header offset={0} factor={0.4}>
         <BigTitle>Archive<span className='accent'>.</span></BigTitle>
       </Header>
@@ -62,8 +58,7 @@ const ArchivePage = ({ pageContext, data }) => {
         </Inner>
       </Content>
       <Footer offset={1.5} factor={0.5} />
-    </Parallax>
-    </>
+    </Layout>
   )
 }
 

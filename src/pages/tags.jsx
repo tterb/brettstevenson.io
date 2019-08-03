@@ -8,7 +8,6 @@ import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'
 import Header from '../components/Header'
-import Nav from '../components/Nav'
 import PageLink from '../components/PageLink'
 // Elements
 import Content from '../elements/Content'
@@ -57,10 +56,7 @@ const TagsPage = ({
 }) => {
   require('../styles/tags.scss')
   return (
-    <>
-    <Layout />
-    <Parallax pages={1.3}>
-      <Nav />
+    <Layout pages={1.3}>
       <Header offset={0} factor={0.4}>
         <BigTitle>Tags<span className='accent'>.</span></BigTitle>
       </Header>
@@ -84,9 +80,7 @@ const TagsPage = ({
           </TagList>
         </Inner>
       </Content>
-      <Footer offset={1} factor={0.5} />
-    </Parallax>
-    </>
+    </Layout>
   )
 }
 

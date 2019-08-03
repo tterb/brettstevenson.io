@@ -108,51 +108,47 @@ class FourOhFour extends React.Component {
   render() {
     require('../styles/404.scss')
     return (
-      <>
-        <Layout style={{background: `linear-gradient(to bottom, #23262b, #161719)`}}/>
-        <Parallax pages={1.25}>
+      <Layout pages={1.25} nav={false} style={{background: `linear-gradient(to bottom, #23262b, #161719)`}}>
         <Content offset={0} factor={0.375} speed={0.6}>
           <Header offset={0} factor={0.4} speed={0.6} style={{ paddingTop: `0` }}>
             <PageTitle>404<span className='accent'>.</span></PageTitle>
           </Header>
-          </Content>
-          <Content offset={0.325} factor={0.5} speed={0.5} style={{padding: `14rem !important`}}>
-            <div className='terminal'>
-              <div className='window-title'>
-                <div className='win-buttons'>
-                  <a id='close' className='term-button' href='../'></a>
-                  <a id='min' className='term-button' href='#'></a>
-                  <a id='max' className='term-button' href='#'></a>
-                </div>
-                <TermTitle>404</TermTitle>
+        </Content>
+        <Content offset={0.325} factor={0.5} speed={0.5} style={{padding: `14rem !important`}}>
+          <div className='terminal'>
+            <div className='window-title'>
+              <div className='win-buttons'>
+                <a id='close' className='term-button' href='../'></a>
+                <a id='min' className='term-button' href='#'></a>
+                <a id='max' className='term-button' href='#'></a>
               </div>
-              <TermBody className='message'>
-                <Prompt className='prompt'>
-                  <span className='user'>root</span>
-                  <span className='at'>@</span>
-                  <span className='path'>~/404</span>
-                  <span>&gt;$</span>
-                </Prompt>
-                <Typed style={typedStyle} strings={[
-                    "Oops! <br/>" + "><span className='caret'>$</span> You might have mis-typed the URL, <br/> ^1" + "><span className='caret'>$</span> or maybe the page has been moved. <br/> ^500" + "><span className='caret'>$</span> Anyways, there is nothing to see here... <br/> ^500" + "><span className='caret'>$</span> Would you like to return to the <a href='../'>homepage</a> (Y/N)?"
-                    ]}
-                    cursorChar={'█'} showCursor={false}
-                    autoInsertCss={true} loop={false}
-                    typeSpeed={10} backSpeed={30}
-                    smartBackspace>
-                </Typed>
-                <TermInput>&gt;<span className='caret'>$</span>
-                  <input id='term-input' type='text' 
-                    value={this.state.value} 
-                    onKeyDown={this.keyPress}
-                    onChange={this.handleChange} autoFocus/>
-                </TermInput>
-              </TermBody>
+              <TermTitle>404</TermTitle>
             </div>
-          </Content>
-          <Footer offset={0.95} factor={0.5} speed={0.5} />
-        </Parallax>
-      </>
+            <TermBody className='message'>
+              <Prompt className='prompt'>
+                <span className='user'>root</span>
+                <span className='at'>@</span>
+                <span className='path'>~/404</span>
+                <span>&gt;$</span>
+              </Prompt>
+              <Typed style={typedStyle} strings={[
+                  "Oops! <br/>" + "><span className='caret'>$</span> You might have mis-typed the URL, <br/> ^1" + "><span className='caret'>$</span> or maybe the page has been moved. <br/> ^500" + "><span className='caret'>$</span> Anyways, there is nothing to see here... <br/> ^500" + "><span className='caret'>$</span> Would you like to return to the <a href='../'>homepage</a> (Y/N)?"
+                  ]}
+                  cursorChar={'█'} showCursor={false}
+                  autoInsertCss={true} loop={false}
+                  typeSpeed={10} backSpeed={30}
+                  smartBackspace>
+              </Typed>
+              <TermInput>&gt;<span className='caret'>$</span>
+                <input id='term-input' type='text' 
+                  value={this.state.value} 
+                  onKeyDown={this.keyPress}
+                  onChange={this.handleChange} autoFocus/>
+              </TermInput>
+            </TermBody>
+          </div>
+        </Content>
+      </Layout>
     )
   }
 }

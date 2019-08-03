@@ -1,12 +1,13 @@
 import React from 'react'
 import kebabCase from 'lodash/kebabCase'
 import upperFirst from 'lodash/upperFirst'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
+import tw from 'tailwind.macro'
 import Bounce from 'react-reveal/Bounce';
 import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Header from '../components/Header'
+import Layout from '../components/Layout'
 import Nav from '../components/Nav'
 import BlogCard from '../components/BlogCard'
 import Pagination from '../components/Pagination'
@@ -14,10 +15,6 @@ import Sidebar from '../components/Sidebar'
 // Elements
 import { BigTitle } from '../elements/Titles'
 import Content from '../elements/Content'
-// Views
-import Footer from '../views/Footer'
-// Hooks
-import { isMobile } from '../hooks/WindowDimensions'
 
 
 const PageTitle = styled(BigTitle)`
@@ -52,7 +49,6 @@ const CardList = styled.div`
 
 const BlogLayout = ({ title, posts, pageContext }) => {
   require('../styles/blog.scss')
-  const mobile = isMobile()
   const { currentPage, numPages, count } = pageContext
   const path = (title === 'Blog') ? `blog` : `blog/tags/${kebabCase(title)}`
   
@@ -63,8 +59,7 @@ const BlogLayout = ({ title, posts, pageContext }) => {
     postCount = 4
   const pageHeight = 1.05+(postCount*0.39)
   return (
-    <Parallax pages={pageHeight}>
-      <Nav mobile={mobile}/>
+    <Layout pages={pageHeight}>
       <Header offset={0} factor={0.45}>
         <PageTitle>{ upperFirst(title) }<span className='accent'>.</span></PageTitle>
       </Header>
@@ -84,8 +79,7 @@ const BlogLayout = ({ title, posts, pageContext }) => {
             numPages={numPages} />
         </Wrapper>
       </BlogContent>
-      <Footer offset={pageHeight-0.325} speed={0.15} />
-    </Parallax>
+    </Layout>
   )
 }
 
