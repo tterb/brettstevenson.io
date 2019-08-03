@@ -5,7 +5,7 @@ import { accent, accentHover } from '../../tailwind'
 import styled from 'styled-components'
 
 const Form = styled.form`
-  ${tw`text-left mx-auto ml-4 xl:w-5/6 ml-auto`}
+  ${tw`text-left mt-8 mx-auto ml-4 xl:w-5/6 ml-auto`}
   @media (max-width: 400px) {
     width: 100%;
   }
@@ -17,7 +17,7 @@ const Form = styled.form`
 const InputWrapper = styled.div`
   ${tw`relative mb-6`}
   input, textarea {
-    ${tw`w-4/5 text-left border-none outline-none py-2 px-4 pl-1`}
+    ${tw`w-4/5 text-left text-lg border-none outline-none py-2 px-4 pl-1`}
     background: transparent;
     color: rgba(255,255,255,0.8);
     -webkit-text-fill-color: rgba(255,255,255,0.8);
@@ -27,10 +27,11 @@ const InputWrapper = styled.div`
       color: rgba(255,255,255,0.4) !important;
     }
     + .focus-input::after {
-      top: 10px;
+      top: 8px;
       left: 1px !important;
     }
     &:focus {
+      padding-top: 0.75rem;
       + .focus-input::before {
         background: linear-gradient(to bottom right, SlateBlue 35%, DeepSkyBlue 65%);
       }
@@ -38,6 +39,7 @@ const InputWrapper = styled.div`
         color: #888;
         top: -15px;
         left: 1px;
+        transition: all 400ms ease-in-out;
       }
     }
   }
@@ -45,6 +47,10 @@ const InputWrapper = styled.div`
     min-height: 8rem;
   }
   &.has-input {
+    margin-top: 0.25rem;
+    input, textarea {
+      padding-top: 0.75rem;
+    }
     input + .focus-input::after,
     textarea + .focus-input::after {
       color: #888;
@@ -52,9 +58,11 @@ const InputWrapper = styled.div`
       left: 1px;
     }
     textarea, textarea:focus {
-      min-height: 12rem;
       margin-top: 0.25rem;
     }
+  }
+  &:focus-within {
+    margin-top: 0.25rem;
   }
 `
 
@@ -70,7 +78,7 @@ const FocusLine = styled.span`
     transition: all 400ms ease-in-out;
   }
   &::after {
-    ${tw`block absolute text-base w-full pin-t overflow-hidden`}
+    ${tw`block absolute text-lg w-full pin-t overflow-hidden`}
     color: #666;
     content: attr(data-placeholder);
     line-height: 1.2;
@@ -98,16 +106,16 @@ const ContactMessage = (props) => (
 )
 
 const SubmitBtn = styled.button`
-  ${tw`block h-auto font-semibold text-center border-none outline-none cursor-pointer mt-12 ml-1 mb-5 px-5 py-3 xs:w-1/2 md:w-1/4`}
+  ${tw`block text-lg font-semibold text-center h-auto border-none outline-none cursor-pointer mt-12 pl-1 pb-5 px-5 py-3 xs:w-1/2 md:w-1/4`}
   background: ${accent};
   color: rgba(255,255,255,0.9);
   text-shadow: 0 1px 1px rgba(0,0,0,0.4);
   max-width: 175px;
   border-radius: 4px;
-  transition: all 350ms ease-in-out, text-shadow 400ms ease-in-out;
-  &:hover, &:active, &:focus, &:visited {
-    background: ${accentHover};
-    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+  transition: all 350ms ease-in-out;
+  &:hover, &:active, &:focus {
+    background: #DF3028;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   }
 `
 
