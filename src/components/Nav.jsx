@@ -1,13 +1,13 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 import Fade from 'react-reveal/Fade'
+import styled from 'styled-components'
 import tw from 'tailwind.macro'
 import { colors, accent } from '../../tailwind'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
 // Components
-import PageLink from './PageLink'
 import Logo from './Logo'
+import PageLink from './PageLink'
 
 const Wrapper = styled.div`
   ${tw`relative block font-title h-0 pin-t pin-x z-999`}
@@ -60,44 +60,40 @@ const Navbar = styled.div`
 `
 
 const MenuPanel = styled.div`
-  ${tw`fixed text-center pin-t pin-r px-6 py-10`}
-  position: fixed;
-  background: ${colors['background-alt']};
+  ${tw`fixed text-left pin-t pin-r p-10`}
+  background: ${colors['menu']};
   width: 100vw;
   height: 100vh;
   top: 0;
   box-shadow: 0 0 10px rgba(0,0,0,0.7);
   transform: translatey(-100vh);
-  transition: transform 400ms ease;
-  opacity: 0.975;
+  transition: all 450ms ease, transform 0ms ease;
+  opacity: 0;
   z-index: -1;
   &::before {
     ${tw`absolute w-full h-full pin-t pin-l`}
-    background: ${colors['background-alt']};
+    background: ${colors['menu']};
     content: '';
     filter: blur(0);
     transition: filter 350ms ease 250ms;
     z-index: -1;
   }
   &.active {
+    transform: translateY(0);
+    opacity: 0.975;
     &::before {
       filter: blur(1rem);
     }
-    transform: translateY(0);
   }
-  /* li {
-    ${tw`w-9/10 mt-3 p-0 py-3`}
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  } */
   li {
-    ${tw`relative inline-block mt-1 mx-auto px-0 py-3 z-999`}
-    font-size: 14vw;
+    ${tw`relative block font-black my-0 ml-0 mr-auto px-0 py-3 z-999`}
+    font-size: 12vw;
     width: max-content;
-    margin: 0 10%;
     &:first-child {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
     a {
+      color: rgba(255,255,255,0.95);
       &::before {
         ${tw`absolute w-0`}
         background: ${accent};
@@ -108,7 +104,7 @@ const MenuPanel = styled.div`
         transition: width 500ms cubic-bezier(0.77, 0, 0.175, 1);
       }
       &:hover, &:active {
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.95);
         &::before {
           width: 120%;
           transition: width 500ms cubic-bezier(0.77, 0, 0.175, 1);
