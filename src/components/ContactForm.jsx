@@ -5,19 +5,13 @@ import { accent, accentHover } from '../../tailwind'
 import styled from 'styled-components'
 
 const Form = styled.form`
-  ${tw`text-left mt-8 mx-auto ml-4 xl:w-5/6 ml-auto`}
-  @media (max-width: 400px) {
-    width: 100%;
-  }
-  @media (min-width: 400px) {
-    width: 92%;
-  }
+  ${tw`text-left w-full mt-8 mx-auto md:w-9/10 md:ml-0 xl:w-5/6`}
 `
 
 const InputWrapper = styled.div`
   ${tw`relative mb-6`}
   input, textarea {
-    ${tw`w-4/5 text-left text-lg border-none outline-none py-2 px-4 pl-1`}
+    ${tw`w-9/10 text-left text-lg border-none outline-none py-2 px-4 pl-1`}
     background: transparent;
     color: rgba(255,255,255,0.8);
     -webkit-text-fill-color: rgba(255,255,255,0.8);
@@ -67,7 +61,7 @@ const InputWrapper = styled.div`
 `
 
 const FocusLine = styled.span`
-  ${tw`block w-9/10 md:w-4/5 h-full pin-t pin-l overflow-hidden`}
+  ${tw`block w-full md:w-4/5 h-full pin-t pin-l overflow-hidden md:w-9/10`}
   pointer-events: none;
   &::before {
     ${tw`block w-full pin-l overflow-hidden`}
