@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
+// Components
+import PageLink from '../components/PageLink'
 // Elements
 import { DividerStatic } from '../elements/Dividers'
 import Content from '../elements/Content'
@@ -31,9 +33,9 @@ const InnerWave = styled.div`
   }
   svg {
     width: 100%;
-    height: 30vw;
-    min-height: 16rem;
-    max-height: 20rem;
+    height: 40vh;
+    /* min-height: 16rem;
+    max-height: 20rem; */
     filter: drop-shadow(0px 1px 16px rgba(0,0,0,0.5));
   }
   path {
@@ -46,9 +48,9 @@ const FooterWrapper = styled.footer`
   font-size: 0.6rem;
   top: 4rem;
   z-index: 9999;
-  @media screen and (max-width: 420px) {
+  /* @media screen and (max-width: 420px) {
     ${tw`pin-t`}
-  }
+  } */
   .separator {
     position: relative;
     font-size: 5px;
@@ -96,7 +98,7 @@ const GatsbyIcon = () => (
 const Footer = ({ offset, speed }) => {
   return (
     <>
-      <Content offset={offset+0.025} speed={0} factor={0.2} style={{ zIndex: `99999` }}>
+      <Content offset={offset+0.025} speed={0} factor={0.3} style={{ zIndex: `99999` }}>
         <DividerStatic className='footer-bg' fill={colors['blue-grey']} speed={speed} offset={offset} style={{ zIndex: `999` }} factor={0.2}>
           <WaveWrapper style={{ height: `100%`, top: `2rem`, left: `0` }}>
             <InnerWave>
@@ -116,8 +118,10 @@ const Footer = ({ offset, speed }) => {
             <li><a href='https://dribbble.com/tterb' aria-label='Dribbble'><FontAwesomeIcon icon={faDribbble}/></a></li>
             <li><a href='https://linkedin.com/in/brett-stevenson/' aria-label='LinkedIn'><FontAwesomeIcon icon={faLinkedinIn}/></a></li>
           </SocialList>
-          &copy; 2019 by Brett Stevenson<FontAwesomeIcon className='separator' icon={faCircle}/>
-          <a href='https://github.com/tterb/gatsby-portfolio' aria-label='Check out the GitHub repository'>Github Repository</a><FontAwesomeIcon className='separator' icon={faCircle}/>Powered by<a href='https://www.gatsbyjs.org/' className='gatsby-icon' aria-label='Visit gatsbyjs.org'><GatsbyIcon/></a>
+          &copy; 2019 by &nbsp;
+          <PageLink to='/'>Brett Stevenson</PageLink>
+          <FontAwesomeIcon className='separator' icon={faCircle}/>
+          Powered by<a href='https://www.gatsbyjs.org/' className='gatsby-icon' aria-label='Visit gatsbyjs.org'><GatsbyIcon/></a>
         </FooterWrapper>
       </Content>
     </>

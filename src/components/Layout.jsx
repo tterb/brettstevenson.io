@@ -21,7 +21,10 @@ const Layout = ({ pages, nav, navLogo, children }) => {
     })
   }
   const mobile = isMobile()
-  const footerOffset = pages - 0.325
+  let footerScale = 0.35
+  if(mobile) 
+    footerScale = 0.32
+  const footerOffset = pages - footerScale
   return (
     <>
       <SEO />
@@ -29,7 +32,7 @@ const Layout = ({ pages, nav, navLogo, children }) => {
       <Parallax pages={pages}>
         { nav ? <Nav logo={navLogo} mobile={mobile} /> : null }
         {children}
-        <Footer offset={footerOffset} />
+        <Footer offset={footerOffset} scale={footerScale}/>
       </Parallax>
     </>
   )
