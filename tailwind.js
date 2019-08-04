@@ -134,7 +134,7 @@ const colors = {
 }
 
 const accent = '#F2433B'
-const accentHover = '#FE665E'
+const accentHover = '#DF3028'
 
 const accents = {
   'red-darkest': '#5F2623',
@@ -193,7 +193,7 @@ module.exports = {
 
   screens: {
     xs: '250px',
-    sm: '400px',
+    sm: '420px',
     md: '600px',
     lg: '900px',
     xl: '1200px',
