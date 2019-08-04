@@ -1,8 +1,10 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import kebabCase from 'lodash/kebabCase'
+import truncate from 'lodash/truncate'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
+// Components
 import PageLink from './PageLink'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -130,6 +132,13 @@ class BlogCard extends React.Component {
   render() {
     const post = this.props.post
     let preview = this.props.post.heroImage
+    let desc = post.description.childMarkdownRemark.excerpt
+    if(this.props.mobile) {
+      desc = truncate(desc, {
+        'length': 55,
+        'separator': ' '
+      })
+    }
     return (
       <Card className='blog-card' onClick={this.handleClick}>
           <BgImage alt={post.title} fluid={preview.fluid} />
@@ -141,8 +150,7 @@ class BlogCard extends React.Component {
             <CardTitle>
               <PageLink to={`/blog/${post.slug}/`}>{post.title}</PageLink>
             </CardTitle>
-            <Text dangerouslySetInnerHTML={{ __html: post.description.childMarkdownRemark.html }}
-            />
+            <Text>{desc}</Text>
             <Date>
               <FontAwesomeIcon icon={faCalendarAlt} />
               {post.publishDate}

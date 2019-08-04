@@ -15,6 +15,8 @@ import Sidebar from '../components/Sidebar'
 // Elements
 import { BigTitle } from '../elements/Titles'
 import Content from '../elements/Content'
+// Hooks
+import { isMobile } from '../hooks/WindowDimensions'
 
 
 const PageTitle = styled(BigTitle)`
@@ -32,7 +34,7 @@ const Wrapper = styled.div`
 `
 
 const BlogContent = styled(Content)`
-  ${tw`h-auto p-0 pt-16 z-10`}
+  ${tw`h-full p-0 pt-16 z-10`}
   background: rgba(255,255,255,0.985);
   top: -1.5rem;
   padding: 0 !important;
@@ -57,7 +59,8 @@ const BlogLayout = ({ title, posts, pageContext }) => {
     postCount = count
   else if(currentPage <= Math.floor(count/4))
     postCount = 4
-  const pageHeight = 1.05+(postCount*0.39)
+  const pageHeight = 1.05+(postCount*0.38)
+  const mobile = isMobile()
   return (
     <Layout pages={pageHeight}>
       <Header offset={0} factor={0.45}>
@@ -68,7 +71,7 @@ const BlogLayout = ({ title, posts, pageContext }) => {
           <CardList>
             {posts.map(({ node, i }) => (
               <Bounce bottom delay={100*(i+1)} duration={1000}>
-                <BlogCard key={node.slug} post={node} />
+                <BlogCard key={node.slug} post={node} mobile={mobile} />
               </Bounce>
             ))}
           </CardList>
