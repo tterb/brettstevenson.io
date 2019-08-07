@@ -35,19 +35,19 @@ const Separator = styled.hr`
 `
 
 const BackToTop = styled(Link)`
-  ${tw`fixed rounded-full text-center w-4 h-4 p-4 shadow-md hover:shadow-lg cursor-pointer`}
+  ${tw`fixed rounded-full text-center w-12 h-12 p-4 shadow-md hover:shadow-lg cursor-pointer`}
   background: rgba(255,255,255,0.985);
   line-height: inherit;
   right: 4vw;
   bottom: 10vh;
   transition: all 450ms ease-in-out;
   svg {
-    ${tw`relative`}
-    display: flex;
+    ${tw`absolute flex w-10 h-10 p-0`}
     align-items: center;
     justify-content: space-around;
-    box-sizing: border-box;
-    padding: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     transition: all 450ms ease-in-out 100ms;
     path {
       fill: rgba(0,0,0,0.5);

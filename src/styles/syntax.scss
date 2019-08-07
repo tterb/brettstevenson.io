@@ -22,19 +22,19 @@ $green:      hsl(120, 65%, 66%);
 // $blue:       hsl(195, 83%, 73%);
 $blue:       hsl(190, 89%, 60%);
 // $purple:     hsl(246, 80%, 80%);
-$purple:     hsl(246, 70%, 75%);
+$purple:     hsl(246, 70%, 78%);
 // $magenta:    hsl(350, 93%, 70%);
 $magenta:    hsl(350, 99%, 69%);
 $error:        $red;
 
 code[class*='language-'],
 pre[class*='language-'] {
-	font-family: 'Source Code Pro', Monaco, Consolas, 'Ubuntu Mono', monospace;
+	font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
 	color: $text;
 	background: none;
-	font-weight: 400;
-	line-height: 1.475;
-	// text-shadow: 0 1px rgba(#000, 0.3);
+	font-weight: 500;
+	line-height: 1.4;
+	text-shadow: none;
 	text-align: left;
 	text-shadow: none;
 	word-spacing: normal;

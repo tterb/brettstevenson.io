@@ -22,7 +22,7 @@ const Avatar = styled.span`
 
 const AuthorText = styled.span`
   ${tw`inline-block xs:max-w-full xs:ml-0 md:max-w-3/5 md:ml-4`}
-  vertical-align: top;
+  vertical-align: super;
   .author-bio, p {
     ${tw`leading-tight mx-auto my-1`}
     color: rgba(0,0,0,0.7);
@@ -36,7 +36,7 @@ const AuthorTitle = styled.h4`
 `
 
 const AuthorLinks = styled.ul`
-  ${tw`list-reset	my-3 ml-2 xs:text-2xl pl-0 md:text-xl`}
+  ${tw`list-reset	text-2xl my-3 ml-1 pl-0`}
   li {
     ${tw`inline-block mr-2 cursor-pointer`}
     &:first-child {
