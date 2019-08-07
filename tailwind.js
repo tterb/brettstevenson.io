@@ -49,6 +49,7 @@ const colors = {
   'blue-black': '#161719',
   'blue-grey': '#23262b',
   'background-alt': '#202124',
+  'menu': '#1C1D1E',
 
   black: '#000000',
   'grey-darkest': '#273238',
@@ -270,7 +271,14 @@ module.exports = {
       'Georgia',
       'serif',
     ],
-    mono: ['Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+    mono: [
+      'Source Code Pro',
+      'Menlo',
+      'Monaco', 
+      'Consolas',
+      'Ubuntu Mono',
+      'monospace'
+    ],
   },
 
   /*
@@ -809,11 +817,12 @@ module.exports = {
   */
 
   opacity: {
-    '0': '0',
+    '0':    '0',
+    '10':  '.1',
     '25': '.25',
-    '50': '.5',
+    '50':  '.5',
     '75': '.75',
-    '100': '1',
+    '100':  '1',
   },
 
   /*
