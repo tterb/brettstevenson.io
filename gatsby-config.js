@@ -11,8 +11,6 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-// const { spaceId, accessToken } = process.env;
-
 let contentfulConfig
 
 // Load the Contentful config from the .contentful.json
@@ -99,10 +97,12 @@ module.exports = {
         ignore: [`**/*_\.*`],
       },
     },
+
     { 
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          'gatsby-remark-external-links',
           `gatsby-remark-smartypants`,
           {
             resolve: `gatsby-remark-prismjs`,
