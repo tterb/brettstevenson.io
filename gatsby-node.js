@@ -78,12 +78,12 @@ exports.createPages = ({ graphql, actions }) => {
             })
           }
         })
-        
+
         for(var tag in tags) {
           const tagPageCount = Math.ceil(tags[tag]/postsPerPage)
           Array.from({ length: tagPageCount }).forEach((x, i) => {
             createPage({
-              path: i === 0 ? `blog/tags/${_.kebabCase(tag)}/` : `blog/tags/${_.kebabCase(tag)}/${i + 1}`,
+              path: i === 0 ? `blog/tag/${_.kebabCase(tag)}/` : `blog/tag/${_.kebabCase(tag)}/${i + 1}`,
               component: path.resolve("./src/templates/tags.jsx"),
               context: {
                 limit: postsPerPage,
