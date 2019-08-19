@@ -6,20 +6,18 @@ import BlogLayout from '../components/BlogLayout'
 const Blog = ({ pageContext, data }) => {
   const posts = data.allContentfulBlogPost.edges
   return (
-    <>
-      <BlogLayout
-        title='Blog'
-        posts={posts}
-        pageContext={pageContext}
-      />
-    </>
+    <BlogLayout
+      title='Blog'
+      posts={posts}
+      pageContext={pageContext}
+    />
   )
 }
 
 export default Blog
 
-export const pageQuery = graphql`
-  query BlogQuery($skip: Int!, $limit: Int!) {
+export const pageQuery2 = graphql`
+  query BlogQuery2($skip: Int!, $limit: Int!) {
     allContentfulBlogPost(
       sort: { fields: [publishDate], order: DESC }
       limit: $limit
