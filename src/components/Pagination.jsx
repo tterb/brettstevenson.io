@@ -35,10 +35,10 @@ const Pagination = ({ path, current, numPages }) => {
     <>
       <Wrapper>
         {!isFirst && (
-          <PageLink to={`${path}/${prevPage}`} rel='prev'><FontAwesomeIcon icon={faArrowAltCircleLeft}/></PageLink>
+          <PageLink direction={'left'} to={`/${path}/${prevPage}`} rel='prev'><FontAwesomeIcon icon={faArrowAltCircleLeft}/></PageLink>
         )}
         {!isLast && (
-          <PageLink to={`${path}/${nextPage}`} rel='next'><FontAwesomeIcon icon={faArrowAltCircleRight}/></PageLink>
+          <PageLink to={`/${path}/${nextPage}`} rel='next'><FontAwesomeIcon icon={faArrowAltCircleRight}/></PageLink>
         )}
       </Wrapper>
     </>

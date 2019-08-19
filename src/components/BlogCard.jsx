@@ -2,61 +2,71 @@ import React from 'react'
 import Image from 'gatsby-image'
 import kebabCase from 'lodash/kebabCase'
 import truncate from 'lodash/truncate'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
+import { accent } from '../../tailwind'
+import tw from 'tailwind.macro'
 // Components
 import PageLink from './PageLink'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons'
 
-const Wrapper = styled.div`
-  ${tw`relative inline-block h-full pin-t pin-l py-3 px-0 xs:pl-7 md:pl-10 cursor-pointer overflow-hidden z-5`}
-  background: rgba(255,255,255,0.8);
-  width: 65%;
-  border-top-left-radius: 9px;
-  border-bottom-left-radius: 9px;
-  @media (max-width: 420px) {
-    width: 70%;
-  }
-`
-
 const Card = styled.div`
-  ${tw`block relative bg-center bg-no-repeat w-full float-left cursor-pointer`}
+  ${tw`block relative bg-center bg-no-repeat w-full cursor-pointer`}
   background-size: cover;
-  height: 53vh;
-  border-radius: 9px;
-  box-shadow: 2px 5px 30px 15px rgba(0,0,0,0.05);
+  max-width: 950px;
+  height: 68vh;
+  border-radius: 5px;
+  box-shadow: 0 31px 44px -30px rgba(0,0,0,0.3);
   transition: all 300ms ease-in-out;
   margin: 7vh auto;
+  @media (min-width: 501px) {
+    height: 53vh;
+  }
   &:first-child {
     margin-top: 2vh;
   }
   &:hover {
-    box-shadow: 2px 10px 20px -5px rgba(0,0,0,0.2);
+    box-shadow: 0 25px 32px -20px rgba(0,0,0,0.35);
     transform: translate3D(0,-0.35rem,0);
   }
-`
-
-const Angle = styled.div`
-  ${tw`relative inline-block w-1/5 h-full pin-t pin-r overflow-hidden`}
-  background: linear-gradient(to top right, rgba(255,255,255,0.8) 50%, transparent 0);
+  
 `
 
 const BgImage = styled(Image)`
-  ${tw`absolute min-w-full pin-t pin-l`}
-  position: absolute !important;
-  height: 53vh;
+  ${tw`relative block w-full sm:inline-block sm:h-full pin-t pin-l`}
+  position: relative !important;
+  height: 35%;
+  border-radius: 5px;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
   z-index: -1;
   & > img {
     object-fit: cover !important; 
     object-position: 0% 0% !important;
   }
+  @media (min-width: 501px) {
+    width: 35%;
+    border-radius: 5px;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important
+  }
+`
+
+const Wrapper = styled.div`
+  ${tw`relative block w-full sm:inline-block sm:h-full py-6 px-6 sm:px-10 sm:pr-12 sm:py-10 cursor-pointer overflow-hidden z-5`}
+  background: rgba(255,255,255,0.8);
+  height: 65%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  @media (min-width: 501px) {
+    width: 65%;
+  }
 `
 
 const CardContent = styled.div`
   ${tw`overflow-visible`}
-  margin-top: 0.35rem;
 `
 
 const Category = styled.span`
@@ -73,16 +83,15 @@ const Category = styled.span`
 `
 
 const CardTitle = styled.h2`
-  ${tw`font-title font-bold mt-0 pb-2`}
+  ${tw`font-title font-bold mt-0 pb-3`}
   font-size: 2.9rem;
   line-height: 1.15;
-  /* border-bottom: 2px solid rgba(0,0,0,0.125); */
-  border-bottom: 2px solid rgba(255,255,255,0.5);
+  border-bottom: 2px solid rgba(0,0,0,0.05);
   margin-bottom: 0.35em;
   @media (max-width: 420px) {
-    font-size: 2.4rem;
+    font-size: 2.25rem;
   }
-  a {
+  a, a:hover {
     ${tw`no-underline`}
     color: rgba(0,0,0,0.8);
   }
@@ -91,7 +100,7 @@ const CardTitle = styled.h2`
 const Text = styled.p`
   ${tw`tracking-wide leading-normal w-full mb-4 pb-1 cursor-pointer z-10`}
   color: rgba(0,0,0,0.65);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   margin-top: 0.3em;
   padding-left: 2px; 
   @media (max-width: 500px) {
@@ -101,15 +110,56 @@ const Text = styled.p`
   }
 `
 
+const ReadBtn = styled(PageLink)`
+  ${tw`inline-flex relative font-lg font-medium tracking-wide leading-normal w-full mt-4 px-6 py-2 cursor-pointer overflow-hidden z-1`}
+  background: 0 0;
+  color: ${ accent };
+  width: max-content;
+  align-items: center;
+  border: 3px solid ${ accent };
+  border-radius: 20px;
+  transition: all 300ms ease-in-out;
+  &:before {
+    ${tw`absolute h-full pin-t pin-l`}
+    content: '';
+    background: ${ accent };
+    width: 200%;
+    transform: rotate(-30deg) translate(-30%,-100%);
+    transform-origin: left;
+    transition: all 200ms;
+    z-index: -1;
+  }
+  &:hover {
+    background: ${ accent };
+    color: rgba(255,255,255,0.95);
+    &:before {
+      transform: rotate(0) translate(0,0);
+    }
+  }
+`
+
 const Date = styled.span`
   ${tw`absolute text-base`}
   color: rgba(0,0,0,0.55);
-  bottom: 3rem;
+  left: 2.5rem;
+  bottom: 2.25rem;
+  vertical-align: middle;
   @media (max-width: 500px) {
+    left: 1.5rem;
     bottom: 1.5rem;
+  }
+  a {
+    color: rgba(0,0,0,0.55);
   }
   svg {
     margin: 0 10px 0 6px;
+  }
+  .separator {
+    color: rgba(0,0,0,0.25);
+    height: 0.3rem;
+    vertical-align: middle;
+    margin-left: 6px;
+    margin-right: 1px;
   }
 `
 
@@ -121,43 +171,31 @@ class BlogCard extends React.Component {
   }
   
   handleClick() {
-    location.href='/blog/'+this.props.post.slug+'/'
+    location.href='./blog/'+this.props.post.slug+'/'
   }
-  
-  // handleCategoryClick(e) {
-  //   e.stopPropagation()
-  //   location.href='/blog/tag/'+kebabCase(this.props.post.category.toLowerCase())
-  // }
   
   render() {
     const post = this.props.post
     let preview = this.props.post.heroImage
     let desc = post.description.childMarkdownRemark.excerpt
-    if(this.props.mobile) {
-      desc = truncate(desc, {
-        'length': 55,
-        'separator': ' '
-      })
-    }
+
     return (
-      <Card className='blog-card' onClick={this.handleClick}>
-          <BgImage alt={post.title} fluid={preview.fluid} />
+      <Card onClick={this.handleClick}>
+        <BgImage alt={post.title} fluid={preview.fluid} />
         <Wrapper className='content-mask'>
-          <Category className={`card-category ${kebabCase(post.category.toString().toLowerCase())}`}>
-            {post.category}
-          </Category>
           <CardContent>
             <CardTitle>
               <PageLink to={`/blog/${post.slug}/`}>{post.title}</PageLink>
             </CardTitle>
             <Text>{desc}</Text>
             <Date>
+              <PageLink to={`/blog2/tag/${kebabCase(post.category)}/`}>{ post.category }</PageLink>
+              <FontAwesomeIcon className='separator' icon={faCircle} />
               <FontAwesomeIcon icon={faCalendarAlt} />
               {post.publishDate}
             </Date>
           </CardContent>
         </Wrapper>
-        <Angle />
       </Card>
     )
   }
