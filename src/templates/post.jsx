@@ -24,6 +24,11 @@ const PostTemplate = ({ pageContext, location, data }) => {
     } else {
       mobile = false
     }
+    require('smooth-scroll')('a[href*="#"]', {
+      speed: 100,
+      easing: 'easeInOutCubic',
+      updateURL: false,
+    })
   }
   return (
     <>
