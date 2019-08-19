@@ -22,7 +22,7 @@ const Title = styled.span`
   ${tw`absolute cursor-default opacity-0 z-10`}
   color: rgba(255,255,255,0.9);
   font-size: 1.4rem;
-  top: 1.3rem;
+  top: 1rem;
   left: 5.25rem;
   transition: all 350ms ease-in-out;
 `
@@ -30,14 +30,9 @@ const Title = styled.span`
 export default class Logo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = props
     this.bPath = React.createRef()
     this.sPath = React.createRef()
     this.pathAnim = React.createRef()
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(nextProps)
   }
   
   componentDidMount() {
