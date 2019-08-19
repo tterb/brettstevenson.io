@@ -189,7 +189,7 @@ class BlogCard extends React.Component {
             </CardTitle>
             <Text>{desc}</Text>
             <Date>
-              <PageLink to={`/blog2/tag/${kebabCase(post.category)}/`}>{ post.category }</PageLink>
+              <PageLink to={`/blog/tag/${kebabCase(post.category)}/`}>{ post.category }</PageLink>
               <FontAwesomeIcon className='separator' icon={faCircle} />
               <FontAwesomeIcon icon={faCalendarAlt} />
               {post.publishDate}

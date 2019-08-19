@@ -143,7 +143,7 @@ class TagMenu extends React.Component {
                 <TagList className={this.state.open ? 'open' : ''}>
                   {tags.map((tag, index) => (
                     <TagItem key={index}>
-                      <PageLink to={`/blog2/tag/${_.kebabCase(tag.fieldValue)}/`}>
+                      <PageLink to={`/blog/tag/${_.kebabCase(tag.fieldValue)}/`}>
                         {tag.fieldValue} (<span>{tag.totalCount}</span>)
                       </PageLink>
                     </TagItem>

@@ -89,7 +89,7 @@ const BlogLayout = ({ title, posts, pageContext }) => {
   require('../styles/blog.scss')
   config({ ssrFadeout: true })
   const { currentPage, numPages, count } = pageContext
-  const path = (title === 'Blog') ? `blog2` : `blog2/tags/${kebabCase(title)}`
+  const path = (title === 'Blog') ? `blog` : `blog/tags/${kebabCase(title)}`
   
   let postCount = count%4
   if(count < 4)
