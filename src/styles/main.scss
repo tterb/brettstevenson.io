@@ -13,6 +13,10 @@
   }
 }
 
+h1, h2, h3, h4, h5 {
+  font-feature-settings: 'liga' 1;
+}
+
 .accent {
   color:  $accent;
   font-size: 1.1em;
