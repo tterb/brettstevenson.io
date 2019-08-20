@@ -7,9 +7,9 @@ import PageLink from './PageLink'
 const InlinePost = ({node}) => (
   <li key={node.slug}>
     <PageLink to={`blog/${node.slug}`}>
-      <span className='date'>{node.publishDate}</span>
+      <span className='date'>{node.date}</span>
       <span className='title'>{node.title}</span>
-      <span className='desc'>{node.description.childMarkdownRemark.excerpt}</span>
+      <span className='desc'>{node.description}</span>
     </PageLink>
   </li>
 )
