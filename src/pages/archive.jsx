@@ -30,7 +30,7 @@ const ArchiveList = styled.ul`
 const ArchivePage = ({ pageContext, data }) => {
   require('../styles/tags.scss')
   const { tag } = pageContext
-  const edges = data.allContentfulBlogPost.edges
+  const posts = data.allMdx.edges
   return (
     <Layout pages={1.8}>
       <Header offset={0} factor={0.4}>
@@ -46,7 +46,7 @@ const ArchivePage = ({ pageContext, data }) => {
       <Content offset={0.375} factor={1.05} speed={0.25} className='tags-content pt-0'>
         <Inner>
           <ArchiveList className='archive-list'>
-            {edges.map(({ node }) => {
+            {posts.map(({ node }) => {
               return (
                 <InlinePost node={node} />
               )
@@ -65,22 +65,21 @@ const ArchivePage = ({ pageContext, data }) => {
 export default ArchivePage
 
 export const archiveQuery = graphql`
-  query ArchiveQuery {
-    allContentfulBlogPost(
+  query {
+    allMdx(
+      filter: { fields: { sourceInstanceName: { eq: "posts" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
       limit: 100
-      sort: { fields: [publishDate], order: DESC }
     ) {
       edges {
         node {
-          title
-          slug
-          publishDate(formatString: "DD MMM, YYYY")
-          tags
-          description {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 60, truncate: true)
-            }
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date(formatString: "DD MMM, YYYY")
+            description
           }
         }
       }

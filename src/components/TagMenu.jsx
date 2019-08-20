@@ -131,7 +131,7 @@ class TagMenu extends React.Component {
       <StaticQuery
         query={tags2Query}
         render={data => {
-          const tags = _.orderBy(data.allContentfulBlogPost.group, [(tag) => tag.totalCount], ['desc'])
+          const tags = _.orderBy(data.allMdx.group, [(tag) => tag.totalCount], ['desc'])
           // topTags = _.take(topTags, 12)
         return (
           <Container>
@@ -162,8 +162,8 @@ export default TagMenu
 
 const tags2Query = graphql`
   query Tags2($limit: Int) {
-    allContentfulBlogPost(limit: $limit) {
-      group(field: tags) {
+    allMdx(limit: $limit) {
+      group(field: frontmatter___tags) {
         fieldValue
         totalCount
       }

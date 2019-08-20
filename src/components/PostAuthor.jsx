@@ -63,7 +63,7 @@ const PostAuthor = ({ author }) => (
     </Avatar>
     <AuthorText>
       <AuthorTitle>{author.name}</AuthorTitle>
-      <p className='author-bio' dangerouslySetInnerHTML={{ __html: author.shortBio.childMarkdownRemark.html }} />
+      <p className='author-bio'>{ author.bio }</p>
       <AuthorLinks>
         <li><a href={author.github}><FontAwesomeIcon icon={faGithub}/></a></li>
         <li><a href={author.twitter}><FontAwesomeIcon icon={faTwitter}/></a></li>

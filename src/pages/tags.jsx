@@ -48,7 +48,7 @@ const TagList = styled.ul`
 
 const TagsPage = ({
   data: {
-    allContentfulBlogPost: { group },
+    allMdx: { group },
     site: {
       siteMetadata: { title },
     },
@@ -93,8 +93,8 @@ export const tagQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost(limit: 50) {
-      group(field: tags) {
+    allMdx(limit: 50) {
+      group(field: frontmatter___tags) {
         fieldValue
         totalCount
       }

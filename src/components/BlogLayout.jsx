@@ -89,7 +89,8 @@ const BlogLayout = ({ title, posts, pageContext }) => {
   require('../styles/blog.scss')
   config({ ssrFadeout: true })
   const { currentPage, numPages, count } = pageContext
-  const path = (title === 'Blog') ? `blog` : `blog/tags/${kebabCase(title)}`
+  const tagPage = (title !== 'Blog')
+  const path = tagPage ? `blog` : `blog/tags/${kebabCase(title)}`
   
   let postCount = count%4
   if(count < 4)
@@ -129,11 +130,13 @@ const BlogLayout = ({ title, posts, pageContext }) => {
             <TagMenu />
           </ButtonsWrapper>
           <CardList>
-            {posts.map(({ node, i }) => (
-              <Bounce bottom key={node.slug} delay={100*(i+1)} duration={1000}>
-                <BlogCard key={node.slug} post={node} mobile={mobile} />
-              </Bounce>
-            ))}
+            {posts.map(({ node, i }) => {
+              return (
+                <Bounce bottom key={node} delay={100*(i+1)} duration={1000}>
+                  <BlogCard key={node} post={node} mobile={mobile} />
+                </Bounce>
+              )
+            })}
           </CardList>
           <Pagination 
             path={path}

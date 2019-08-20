@@ -5,7 +5,7 @@ import BlogLayout from '../components/BlogLayout'
 
 
 const Tags = ({ pageContext, data }) => {
-  const posts = data.allContentfulBlogPost.edges
+  const posts = data.posts.edges
   return (
     <BlogLayout
       title={pageContext.tag}
@@ -17,35 +17,34 @@ const Tags = ({ pageContext, data }) => {
 
 export default Tags
 
-export const tagQuery2 = graphql`
-  query TagQuery2($skip: Int!, $limit: Int!, $tag: String!) {
-    allContentfulBlogPost(
-      sort: { fields: [publishDate], order: DESC }
-      filter: { tags: { in: [$tag] } }
-      limit: $limit
-      skip: $skip
-    ) {
+export const tagQuery = graphql`
+  query($skip: Int!, $limit: Int!, $tag: String!) {
+    posts: allMdx(
+      filter: {fields: {sourceInstanceName: {eq: "posts"}},
+      frontmatter: {tags: {in: [$tag]}}},
+      sort: {fields: frontmatter___date, order: DESC}
+      limit: $limit,
+      skip: $skip) {
       edges {
         node {
-          title
-          slug
-          publishDate(formatString: "DD MMMM, YYYY")
-          category
-          tags
-          heroImage {
-            fluid(maxWidth: 900) {
-              ...GatsbyContentfulFluid_withWebp
-            }
+          fields {
+            slug
           }
-          previewImage {
-            fluid(maxWidth: 900) {
-              ...GatsbyContentfulFluid_withWebp
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 120)
+          frontmatter {
+            title
+            description
+            date(formatString: "DD MMMM, YYYY")
+            category
+            tags
+            image {
+              childImageSharp {
+                fluid(maxWidth: 1920, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+                fixed(width: 600) {
+                  ...GatsbyImageSharpFixed_withWebp
+                }
+              }
             }
           }
         }

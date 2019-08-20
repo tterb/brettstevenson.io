@@ -1,5 +1,7 @@
 import React from 'react'
+import { navigate } from "gatsby"
 import Image from 'gatsby-image'
+import assignIn from 'lodash/assignIn'
 import kebabCase from 'lodash/kebabCase'
 import truncate from 'lodash/truncate'
 import styled from 'styled-components'
@@ -171,28 +173,27 @@ class BlogCard extends React.Component {
   }
   
   handleClick() {
-    location.href='./blog/'+this.props.post.slug+'/'
+    navigate('blog'+this.props.post.fields.slug+'/')
   }
   
   render() {
-    const post = this.props.post
-    let preview = this.props.post.heroImage
-    let desc = post.description.childMarkdownRemark.excerpt
+    let post = this.props.post
+    _.assignIn(post, post.frontmatter, post.fields)
 
     return (
       <Card onClick={this.handleClick}>
-        <BgImage alt={post.title} fluid={preview.fluid} />
+        <BgImage alt={post.title} fluid={post.image.childImageSharp.fluid} />
         <Wrapper className='content-mask'>
           <CardContent>
             <CardTitle>
-              <PageLink to={`/blog/${post.slug}/`}>{post.title}</PageLink>
+              <PageLink to={`blog${post.slug}/`}>{post.title}</PageLink>
             </CardTitle>
-            <Text>{desc}</Text>
+            <Text>{post.description}</Text>
             <Date>
               <PageLink to={`/blog/tag/${kebabCase(post.category)}/`}>{ post.category }</PageLink>
               <FontAwesomeIcon className='separator' icon={faCircle} />
               <FontAwesomeIcon icon={faCalendarAlt} />
-              {post.publishDate}
+              {post.date}
             </Date>
           </CardContent>
         </Wrapper>

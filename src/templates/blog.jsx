@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import BlogLayout from '../components/BlogLayout'
 
 const Blog = ({ pageContext, data }) => {
-  const posts = data.allContentfulBlogPost.edges
+  const posts = data.posts.edges
   return (
     <BlogLayout
       title='Blog'
@@ -16,34 +16,34 @@ const Blog = ({ pageContext, data }) => {
 
 export default Blog
 
-export const pageQuery2 = graphql`
-  query BlogQuery2($skip: Int!, $limit: Int!) {
-    allContentfulBlogPost(
-      sort: { fields: [publishDate], order: DESC }
+export const blogQuery = graphql`
+  query BlogQuery($skip: Int!, $limit: Int!) {
+    posts: allMdx(
+      filter: { fields: { sourceInstanceName: { eq: "posts" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
     ) {
       edges {
         node {
-          title
-          slug
-          publishDate(formatString: "DD MMMM, YYYY")
-          category
-          tags
-          heroImage {
-            fluid(maxWidth: 900) {
-              ...GatsbyContentfulFluid_withWebp
-            }
+          fields {
+            slug
           }
-          previewImage {
-            fluid(maxWidth: 900) {
-              ...GatsbyContentfulFluid_withWebp
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 120)
+          frontmatter {
+            title
+            description
+            date(formatString: "DD MMMM, YYYY")
+            category
+            tags
+            image {
+              childImageSharp {
+                fluid(maxWidth: 1920, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+                fixed(width: 600) {
+                  ...GatsbyImageSharpFixed_withWebp
+                }
+              }
             }
           }
         }

@@ -14,5 +14,5 @@ const HeroImage = styled(Image)`
   }
 `
 export default ({ post }) => (
-  <HeroImage alt={post.title} fluid={post.heroImage.fluid} />
+  <HeroImage alt={post.title} fluid={post.image.fluid} />
 )

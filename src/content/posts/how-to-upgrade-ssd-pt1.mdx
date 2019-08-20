@@ -1,0 +1,100 @@
+---
+title: Upgrading the SSD on a Razer Blade
+slug: /upgrading-ssd-on-razer-blade
+description: A guide to upgrading the SSD on a Razer Blade laptop
+date: 2016-10-05
+category: Tutorial
+next: how-to-upgrade-ssd-pt2.html
+image: ./img/razer-blade.jpg
+tags:
+  - tutorial
+  - tech
+  - tools
+  - how-to
+---
+
+When upgrading the SSD on my 2015 Razer Blade, I found many inquiries, yet limited resources on the topic. As a result, I figured I would make this guide seeing as the process was fairly straight&ndash;forward and the results were both beneficial and cost-effective.
+<br/>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/16360374/59972350-53ee0a00-9542-11e9-81ff-ba378099569f.png" height="275" alt="razer blade" title="Razer Blade"/>
+</p>
+<br/>
+
+## Choosing your Drive
+  If you&rsquo;ve already chosen your new SSD you can skip ahead to [**Step One**](#step1), but for those of you who haven&rsquo;t I thought I&rsquo;d provide you with a few notable options.
+  I personally chose to upgrade my original 256gb SSD to a 500gb [Samsung 850 EVO] as they can be found affordably online and provide a performance increase over the stock SSD. Yet, I also know others who have had success with the [Crucial M550] series of hard drives as well.
+
+<br/>
+
+### Supplies:
+ * The new [M.2 SATA III SSD hard drive]
+ * [M.2 SATA III SSD enclosure & adapter]
+ * [Macrium Reflect Free]
+ * [T5 torx screwdriver]
+ * [Compressed air] (*optional*)
+
+<hr/>
+## Step One: **Back it up**
+<a name="step1"/>
+  Before you get started, make sure you backup all of your data if you haven&rsquo;t already. We&rsquo;ve all made the mistake &mdash; and we&rsquo;ve all felt like an idiot after. **Trust me**. There are plenty of [free options] available, so there&rsquo;s no reason to skip this essential step.
+
+
+## Step Two: **Prepare the new hard drive**
+
+  Now, you&rsquo;re going to insert the new M.2 SATA III SSD into the hard drive enclosure. I used the [ZTC Thunder] enclosure, as it was compatible, affordable, and had good reviews. So you aren&rsquo;t sure which one to buy, that one is a safe bet. Though, no matter which one you get, once disassembled, the circuit board that the hard drive is connected to will be almost identical. First, you will want to plug the hard drive into the connector, then use the provided screw(s) and standoff to secure the SSD to the board and reassemble your enclosure.
+  <p align="center">
+    <img src="https://user-images.githubusercontent.com/16360374/59972341-1f7a4e00-9542-11e9-8e69-767515a1794b.png" height="325" align="center" alt="enclosure" title="Enclosure"/>
+  </p>
+
+## Step Three: **Cloning**
+  This is the part where a lot of people can feel bewildered by either the complexity or cost of the available software. Yet, if you follow these instructions you should be able to complete this task for free, without a hitch.
+  <br/>
+
+  * First, you&rsquo;ll need to download [Macrium Reflect Free]. This is available as a 30&ndash;day free trial, which includes all features necessary to clone your hard drive.
+
+  * Connect your new hard drive (*inside the enclosure*) via a SATA to USB cable, which was probably included with your SSD enclosure.
+
+  * After opening the Macrium Reflect software, you will see both your new and internal hard drive within the **Create a Backup** tab. You will now want to select your internal drive, titled *MBR* in the example image, and insure that your new hard drive is in the lower window. Now click the ***Clone this disk*** button circled in red, below.
+  <br/>
+  <p align="center">
+    <img src="https://cloud.githubusercontent.com/assets/16360374/20454261/29f2ed38-adf0-11e6-959e-8c12611a4dbb.png" height="300" alt="example" title="example"/>
+  </p><br/>
+
+  * This will open a new dialogue window. In the destination section, click the ***Select a disk to clone to...*** link and select your new SSD.
+
+  * You can now drag and drop all of the partitions from your internal drive to your new hard drive, as shown by the red arrow below.
+  Though, if there are already established partitions on your new target disk, you&rsquo;ll need to select each one and click the ***Delete Existing partition*** link before you&rsquo;ll be able to drag and resize partitions from the source drive.
+  <br/>
+  <p align="center">
+  	<img src="https://cloud.githubusercontent.com/assets/16360374/20454353/78777002-adf3-11e6-940a-27002b3846d9.png" height="350" alt="example" title="example"/>
+  </p><br/>
+
+  * In most cases, your new hard drive will be larger than your existing internal drive. So you will now want to use the circled icon to resize the primary partition that you&rsquo;ve dragged to your new drive to fill the remaining capacity. You can do this by dragging the icon to the right until it fills the remaining space, in turn, maximizing the storage that will be at your disposal after installation. Once the partition size has been set, you can now click ***Ok***.
+
+  * You will then be shown a summary screen where you can  review your settings checked that everything is in order. Once you&rsquo;re finished reviewing your options, click ***Finish***.
+  <br/>
+  <p align="center">
+    <img src="https://cloud.githubusercontent.com/assets/16360374/20454386/9d73af46-adf4-11e6-9d66-5c71dab08c20.png" height="350" alt="example" title="example"/>
+  </p><br/>
+
+  <br/>
+
+  <p class="h-note"> Depending on the amount of data on your internal drive, cloning may take awhile. I would recommend doing this when you won&rsquo;t need to use your computer too heavily.</p>
+
+<br/>
+<hr/>
+Once the cloning process is complete, **[continue to Part 2]**
+
+<br/>
+
+[Samsung 850 EVO]: https://www.amazon.com/Samsung-850-EVO-Internal-MZ-N5E500BW/dp/B00TGIW1XG/ref=sr_1_13?s=pc&ie=UTF8&qid=1479538259&sr=1-13&keywords=m.2+ssd+cable
+[Crucial M550]: https://www.amazon.com/Crucial-256GB-Internal-Solid-CT256M550SSD4/dp/B00ITFZTHC/ref=sr_1_fkmr0_2?ie=UTF8&qid=1479540595&sr=8-2-fkmr0&keywords=crucial%2Bm500%2Bm.2%2Bsata&th=1
+[M.2 SATA III SSD hard drive]: https://www.amazon.com/Samsung-850-EVO-Internal-MZ-N5E500BW/dp/B00TGIW1XG/ref=sr_1_13?s=pc&ie=UTF8&qid=1479538259&sr=1-13&keywords=m.2+ssd+cable
+[M.2 SATA III SSD enclosure & adapter]: https://www.amazon.com/gp/product/B00KQ4LNJC/ref=oh_aui_detailpage_o06_s00?ie=UTF8&psc=1
+[Macrium Reflect Free]: http://www.macrium.com/reflectfree.aspx
+[T5 torx screwdriver]: https://www.amazon.com/gp/product/B01FAN2MLQ/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1
+[Compressed air]: https://www.amazon.com/Compressed-Professional-Blow-Off-Electronics/dp/B015UNJZAC/ref=sr_1_2?ie=UTF8&qid=1479548500&sr=8-2-spons&keywords=compressed+air&psc=1
+[free options]: https://www.lifewire.com/free-backup-software-tools-2617964
+[ZTC Thunder]: https://www.amazon.com/gp/product/B00KQ4LNJC/ref=oh_aui_detailpage_o06_s00?ie=UTF8&psc=1
+[continue to Part 2]: https://tterb-gatsby.netlify.com/blog/how-to-upgrade-ssd-pt2.html
