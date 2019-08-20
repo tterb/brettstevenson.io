@@ -34,20 +34,20 @@ const Head = props => {
     name: config.siteTitle,
     author: {
       '@type': 'Person',
-      name: config.author,
+      name: config.author.name,
     },
     copyrightHolder: {
       '@type': 'Person',
-      name: config.author,
+      name: config.author.name,
     },
     copyrightYear: '2019',
     creator: {
       '@type': 'Person',
-      name: config.author,
+      name: config.author.name,
     },
     publisher: {
       '@type': 'Person',
-      name: config.author,
+      name: config.author.name,
     },
     datePublished: '2019-01-17',
     dateModified: buildTime,
