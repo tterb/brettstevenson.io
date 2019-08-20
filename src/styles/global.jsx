@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     width: 100%;
     height: 100%;
-    margin: 0;
+    margin: 0 !important;
     padding: 0;
     overflow-x: hidden;
     box-sizing: border-box;
