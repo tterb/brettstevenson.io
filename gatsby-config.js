@@ -11,27 +11,7 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-let contentfulConfig
-
-// Load the Contentful config from the .contentful.json
-try {
-  contentfulConfig = require(`./.contentful`)
-} catch (_) {}
-
-// Overwrite the Contentful config with environment variables if they exist
-contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
-  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
-}
-
-const { spaceId, accessToken } = contentfulConfig
 const githubToken = process.env.GITHUB_TOKEN
-
-if (!spaceId || !accessToken) {
-  throw new Error(
-    `Contentful spaceId and the delivery token need to be provided.`
-  )
-}
 
 module.exports = {
   /* General Information */
@@ -76,17 +56,73 @@ module.exports = {
   },
   /* Plugins */
   plugins: [
+    `gatsby-plugin-catch-links`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-transition-link`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `tterb-gatsby`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: config.googleAnalyticsID
+      },
+    },
     {
       resolve: `gatsby-plugin-lodash`,
       options: {
         disabledFeatures: [`cloning`, `flattening`, `metadata`, `placeholders`, `shorthands`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              aliases: { sh: `bash` },
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 820,
+              quality: 90,
+              linkImagesToOriginal: false,
+            },
+          },
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`,
+              rel: `nofollow noopener noreferrer`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-emojis`,
+            options: {
+              class: `emoji`,
+              size: 32,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        stripMetadata: true,
       },
     },
     {
@@ -97,7 +133,32 @@ module.exports = {
         ignore: [`**/*_\.*`],
       },
     },
-
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/src/content/posts/`,
+        ignore: [`drafts/*.*`],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projects`,
+        path: `${__dirname}/src/content/projects/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `GitHub`,
+        fieldName: `github`,
+        url: `https://api.github.com/graphql`,
+        headers: {
+          Authorization: `bearer ${githubToken}`,
+        }
+      },
+    },
     { 
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -118,28 +179,6 @@ module.exports = {
             },
           }
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        stripMetadata: true,
-      },
-    },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: contentfulConfig,
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: config.googleAnalyticsID
-      },
-    },
-    {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `tterb-gatsby`,
       },
     },
     /* Must be placed at the end */
