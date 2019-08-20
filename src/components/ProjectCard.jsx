@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { animated, useSpring } from 'react-spring'
+import get from 'lodash/get'
 import tw from 'tailwind.macro'
 import PropTypes from 'prop-types'
 import PageLink from './PageLink'
@@ -87,8 +88,8 @@ function ProjectsCard(props) {
     xys: [0, 0, 1], config: { mass: 5, tension: 200, friction: 40 } 
   }))
   const project = props.project
-  const hasRepo = project.github ? true : false
-  const link = hasRepo ? project.github : project.site
+  const hasRepo = get(project, 'github') ? true : false
+  const link = hasRepo ? project.github : project.link
   
   function handleClick(e) {
     window.open(props.project.link, '_target')
@@ -108,7 +109,7 @@ function ProjectsCard(props) {
           </a>
         </Corner>
         <Title className='title'>{project.title}</Title>
-        <Text className='desc'>{project.description.childMarkdownRemark.excerpt}</Text>
+        <Text className='desc'>{project.description}</Text>
       </Card>
     </Wrapper>
   )
