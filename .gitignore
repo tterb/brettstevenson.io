@@ -63,4 +63,13 @@ public/
 # Bundle stats
 bundle-stats.json
 
+posts/
+
+.contentful.json
+
+.env*
+.secrets
+TODO.md
+
+src/**/*_.*
 tailwind.custom.css
