@@ -12,7 +12,14 @@ module.exports = {
   siteLanguage: `en`, // Language Tag on <html> element
   siteLogo: `/logo.png`, // Used for SEO and manifest
   siteDescription: `Developer, Designer, Student`,
-  author: `Brett Stevenson`, // Author for schema.org JSONLD
+  author: {
+    name: `Brett Stevenson`,
+    bio: `Software developer, designer, and student with a passion for exploring new ideas, platforms, and web-technologies, while creating tools that myself and other enjoy.`,
+    github: `https://github.com/tterb`,
+    dribbble: `https://dribbble.com/tterb`,
+    twitter: `https://twitter.com/bstevensondev`,
+    linkedIn: `https://www.linkedin.com/in/brett-stevenson/`,
+  },
   disqusShortname: `tterb-gatsby`,
   // siteFBAppID: '123456789', // Facebook App ID - Optional
   userTwitter: `@bstevensondev`, // Twitter Username

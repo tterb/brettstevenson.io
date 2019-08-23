@@ -48,7 +48,7 @@ const AuthorLinks = styled.ul`
     }
     a {
       color: rgba(0,0,0,0.7);
-      transition: all 300ms ease-in-out;
+      transition: all 200ms ease-in-out;
       &:hover {
         color: ${accent};
       }
@@ -65,11 +65,11 @@ const PostAuthor = ({ author }) => (
       <AuthorTitle>{author.name}</AuthorTitle>
       <p className='author-bio'>{ author.bio }</p>
       <AuthorLinks>
-        <li><a href={author.github}><FontAwesomeIcon icon={faGithub}/></a></li>
-        <li><a href={author.twitter}><FontAwesomeIcon icon={faTwitter}/></a></li>
-        <li><a href={author.dribbble}><FontAwesomeIcon icon={faDribbble}/></a></li>
-        <li><a href={author.linkedIn}><FontAwesomeIcon icon={faLinkedinIn}/></a></li>
-        <li><a href='https://brettstevenson.io' target='_blank'><FontAwesomeIcon icon={faEnvelope}/></a></li>
+        <li><a href={author.github} target='_blank'><FontAwesomeIcon icon={faGithub}/></a></li>
+        <li><a href={author.twitter} target='_blank'><FontAwesomeIcon icon={faTwitter}/></a></li>
+        <li><a href={author.dribbble} target='_blank'><FontAwesomeIcon icon={faDribbble}/></a></li>
+        <li><a href={author.linkedIn} target='_blank'><FontAwesomeIcon icon={faLinkedinIn}/></a></li>
+        <li><a href='https://brettstevenson.io/contact' target='_blank'><FontAwesomeIcon icon={faEnvelope}/></a></li>
       </AuthorLinks>
     </AuthorText>
   </Wrapper>
