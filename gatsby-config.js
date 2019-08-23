@@ -97,7 +97,17 @@ module.exports = {
         ignore: [`**/*_\.*`],
       },
     },
-
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `GitHub`,
+        fieldName: `github`,
+        url: `https://api.github.com/graphql`,
+        headers: {
+          Authorization: `bearer ${githubToken}`,
+        }
+      },
+    },
     { 
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -141,6 +151,18 @@ module.exports = {
       options: {
         shortname: `tterb-gatsby`,
       },
+    },
+    { 
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        //printRejected: true, // Print removed selectors and processed file names
+        //develop: true, // Enable while using `gatsby develop`
+        tailwind: true, // Enable tailwindcss support
+        whitelist: ['cube-blue', 'cube-purple', 'gatsby-highlight'], // Don't remove this selector
+        whitelistPatterns: [/^cube/],
+        ignore: ['src/styles/post.scss'], // Ignore files/folders
+        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+      }
     },
     /* Must be placed at the end */
     `gatsby-plugin-offline`,
