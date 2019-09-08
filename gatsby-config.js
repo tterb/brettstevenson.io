@@ -89,12 +89,6 @@ module.exports = {
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`,
           {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              aliases: { sh: `bash` },
-            },
-          },
-          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 820,
@@ -157,28 +151,6 @@ module.exports = {
         headers: {
           Authorization: `bearer ${githubToken}`,
         }
-      },
-    },
-    { 
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          'gatsby-remark-external-links',
-          `gatsby-remark-smartypants`,
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              aliases: { sh: `bash` },
-            },
-          },
-          {
-            resolve: `gatsby-remark-emojis`,
-            options: {
-              class: `emoji`,
-              size: 32,
-            },
-          }
-        ],
       },
     },
     /* Must be placed at the end */
