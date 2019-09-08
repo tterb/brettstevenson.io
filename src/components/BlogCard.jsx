@@ -3,7 +3,6 @@ import { navigate } from "gatsby"
 import Image from 'gatsby-image'
 import assignIn from 'lodash/assignIn'
 import kebabCase from 'lodash/kebabCase'
-import truncate from 'lodash/truncate'
 import styled from 'styled-components'
 import { accent } from '../../tailwind'
 import tw from 'tailwind.macro'
@@ -178,7 +177,7 @@ class BlogCard extends React.Component {
   
   render() {
     let post = this.props.post
-    _.assignIn(post, post.frontmatter, post.fields)
+    assignIn(post, post.frontmatter, post.fields)
 
     return (
       <Card onClick={this.handleClick}>

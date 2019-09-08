@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import assignIn from 'lodash/assignIn'
-import get from 'lodash/get'
 // import { MDXRenderer } from 'gatsby-plugin-mdx'
 import MDXRenderer from '../components/Post/MDX'
 // Config
@@ -17,7 +16,7 @@ const PostTemplate = ({ data, pageContext, location }) => {
   require('typeface-source-code-pro')
   require('../styles/post.scss')
   let post = data.post
-  _.assignIn(post, post.frontmatter)
+  assignIn(post, post.frontmatter)
   post.author = config.author
   post.author.image = data.avatar.childImageSharp
   const thumbnail = (post.thumbnail ? post.thumbnail.fluid : post.image.fluid)
