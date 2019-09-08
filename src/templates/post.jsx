@@ -2,7 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import assignIn from 'lodash/assignIn'
 import get from 'lodash/get'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+// import { MDXRenderer } from 'gatsby-plugin-mdx'
+import MDXRenderer from '../components/Post/MDX'
 // Config
 import config from '../../config/website'
 // Components
@@ -49,7 +50,7 @@ const PostTemplate = ({ data, pageContext, location }) => {
         location={location}
         context={pageContext}>
           <div className='post-body'>
-            <MDXRenderer>{post.body}</MDXRenderer>
+            <MDXRenderer content={post.body}></MDXRenderer>
           </div>
       </PostLayout>
     </>

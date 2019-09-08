@@ -1,6 +1,8 @@
 @import 'variables';
 @import 'syntax';
 
+$body-width: 90%;
+
 .wrapper {
   .post-header {
     letter-spacing: -1px;
@@ -33,14 +35,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 code {
+  position: relative;
   background: rgba(#000, 0.075);
   color: rgba(#000, 0.75);
-  font-size: 80%;
-  border-radius: 5px;
-  padding: 0 6px 4px;
+  font-size: 100%;
+  top: -2px;
+  border-radius: 3px;
+  padding: 1px 6px 2px;
 }
 
 .post-body {
+  font-size: 1.2rem;
+  width: 90%;
+  margin: auto;
   h1 {
     font-size: 3rem;
   }
@@ -70,20 +77,31 @@ code {
     line-height: 1;
     margin-bottom: 0;
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1rem;
+  }
 
   p {
     color: rgba(#000, 0.8);
     letter-spacing: .015em;
-    margin: 1rem 0;
+    line-height: 1.625;
+    margin: 0 0 1rem;
   }
 
   a {
     color: #0366d6;
+    font-weight: 500;
     text-decoration: none;
     transition: all 300ms ease-in-out;
     &:hover {
-      color: lighten(#0366d6, 20%);
+      // color: lighten(#0366d6, 20%);
+      color: SlateBlue;
     }
+  }
+  
+  ul {
+    margin-block-start: 0;
   }
   
   img {
@@ -257,6 +275,80 @@ code {
     }
   }
 }
+
+.h-note, .h-tip, .h-tldr, .h-warning {
+  color: rgba(#000, 0.85);
+  font-size: 0.9rem !important;
+  letter-spacing: 0.035rem;
+  line-height: 1.4 !important;
+  text-shadow: none;
+  width: 90%;
+  border-left-width: 6px;
+  border-left-style: solid;
+  border-radius: 5px;
+  box-shadow: 0.5px 1px 6px rgba(#000, 0.25);
+  margin: 1rem auto 2rem !important;
+  padding: 6px 20px 15px;
+  overflow: hidden;
+  &::before {
+    display: block;
+    color: rgba(#000, 0.7);
+    font-size: 1.25em;
+    font-weight: 600;
+    letter-spacing: 0.035em;
+    line-height: 1.5;
+    text-shadow: none;
+    margin-left: -3px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+  }
+  p {
+    line-height: 1.4 !important;
+    margin-bottom: 0.15em !important;
+  }
+  code {
+    background: rgba(#000, 0.075) !important;
+  }
+  @media(max-width: 767px) {
+    margin: 25px 0;
+  }
+}
+
+.h-note {
+  background: rgba(3,169,244,0.05);
+  border-left-color: rgba(#03A9F4,0.75);
+  &::before {
+    content: 'Note:';
+  }
+}
+
+.h-tip {
+  background: rgba(76,175,80,0.075);
+  border-left-color: rgba(#4CAF50,0.75);
+  &::before {
+    content: 'Tip:';
+  }
+}
+
+.h-tldr {
+  background: rgba(#000, 0.035);
+  border-left-color: rgba(#000, 0.45);
+  &::before {
+    content: 'tldr;';
+    font-size: 1.5em;
+    margin-left: -2px;
+  }
+}
+
+.h-warning {
+  background: rgba(255,153,0,0.075);
+  border-left-color: rgba(#FCAB08,0.75);
+  &::before {
+    content: 'Warning:';
+    letter-spacing: 0.045em;
+  }
+}
+
 
 #disqus_thread {
   width: 85%;

@@ -67,12 +67,13 @@ pre[class*='language-'] {
 	white-space: normal;
 }
 
-pre code[class*='language-'] {
+pre[class*='language-'] {
 	display: block;
 	// white-space: pre;
   // white-space: pre-wrap;
 }
 
+pre[class*='language-'],
 code[class*='language-'] {
 	display: block;
 	background-color: $base;
@@ -85,7 +86,7 @@ code[class*='language-'] {
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   text-transform: none;
-	width: 90%;
+	// width: 90%;
 	border-radius: 8px;
 	white-space: pre;
 	margin: 0 auto 0 0.75%;
@@ -114,6 +115,17 @@ code[class*='language-'] {
 		&.symbol,
 		&.deleted {
 			color: $magenta;
+		}
+		&.tag {
+			&.class-name {
+				color: $text;
+			}
+			&.script {
+				color: $text;
+				&.punctuation {
+					color: $magenta;
+				}
+			}
 		}
 
 		&.boolean,
