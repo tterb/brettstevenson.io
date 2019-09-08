@@ -37,11 +37,8 @@ export const blogQuery = graphql`
             tags
             image {
               childImageSharp {
-                fluid(maxWidth: 1920, quality: 90) {
+                fluid(maxWidth: 480, quality: 72) {
                   ...GatsbyImageSharpFluid_withWebp
-                }
-                fixed(width: 600) {
-                  ...GatsbyImageSharpFixed_withWebp
                 }
               }
             }
