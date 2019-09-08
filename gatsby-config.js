@@ -142,17 +142,6 @@ module.exports = {
         path: `${__dirname}/src/content/projects/`,
       },
     },
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
-        typeName: `GitHub`,
-        fieldName: `github`,
-        url: `https://api.github.com/graphql`,
-        headers: {
-          Authorization: `bearer ${githubToken}`,
-        }
-      },
-    },
     /* Must be placed at the end */
     `gatsby-plugin-offline`,
   ],
