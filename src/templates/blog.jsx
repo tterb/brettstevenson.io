@@ -10,6 +10,7 @@ const Blog = ({ pageContext, data }) => {
       title='Blog'
       posts={posts}
       pageContext={pageContext}
+      algolia={data.site.siteMetadata.algolia}
     />
   )
 }
@@ -18,6 +19,15 @@ export default Blog
 
 export const blogQuery = graphql`
   query BlogQuery($skip: Int!, $limit: Int!) {
+    site {
+      siteMetadata {
+        algolia {
+          appId
+          searchOnlyApiKey
+          indexName
+        }
+      }
+    }
     posts: allMdx(
       filter: { fields: { sourceInstanceName: { eq: "posts" } } }
       sort: { fields: [frontmatter___date], order: DESC }

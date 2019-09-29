@@ -24,8 +24,9 @@ import { isMobile } from '../hooks/WindowDimensions'
 
 
 const BGTitle = styled(BigTitle)`
-  ${tw`mt-0`}
+  ${tw`font-semibold mt-0`}
   font-size: 38vw !important;
+  letter-spacing: -0.35rem;
   opacity: 0.05;
   z-index: -99;
 `
@@ -33,16 +34,17 @@ const BGTitle = styled(BigTitle)`
 const PageTitle = styled(Title)`
   ${tw`m-0 mt-12`}
   font-size: 4.75rem !important;
-  margin-left: 1rem !important;
+  margin-left: 0.75rem !important;
 `
 
 const Subtitle = styled.h4`
-  ${tw`font-sans text-grey font-medium text-base md:text-xl text-left w-full sm:w-9/10 md:w-3/4 my-3 ml-4 mr-auto`}
+  ${tw`font-sans text-grey text-lg font-medium md:text-xl text-left w-full sm:w-9/10 md:w-3/4 my-3 ml-4 mr-auto`}
 `
 
 const HeaderContent = styled(Content)`
   ${tw`pt-0`}
-  top: -4rem;
+  top: -5rem;
+  left: -1rem;
   height: 100% !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -85,7 +87,7 @@ const ButtonsWrapper = styled.div`
 `
 
 
-const BlogLayout = ({ title, posts, pageContext }) => {
+const BlogLayout = ({ title, posts, pageContext, algolia }) => {
   require('../styles/blog.scss')
   config({ ssrFadeout: true })
   const { currentPage, numPages, count } = pageContext
@@ -126,7 +128,7 @@ const BlogLayout = ({ title, posts, pageContext }) => {
       <BlogContent className='light-bg' offset={0.55} factor={contentHeight} speed={0.6}>
         <Wrapper>
           <ButtonsWrapper>
-            <Search />
+            <Search algolia={algolia} />
             <TagMenu />
           </ButtonsWrapper>
           <CardList>
