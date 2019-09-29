@@ -14,6 +14,7 @@
 }
 
 body {
+  font-variant-ligatures: no-common-ligatures;
   margin: 0 !important;
 }
 
@@ -102,7 +103,7 @@ svg.logo {
 
 .typed-cursor {
   font-size: 1.65rem;
-  vertical-align: bottom;
+  vertical-align: top;
   margin-left: 1px;
 }
 
