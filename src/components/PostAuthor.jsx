@@ -20,8 +20,13 @@ const Avatar = styled.span`
   }
 `
 
+const AuthorTitle = styled.h4`
+  ${tw`text-2xl m-auto mt-3 mb-2`}
+  color: rgba(0,0,0,0.75);
+`
+
 const AuthorText = styled.span`
-  ${tw`inline-block xs:max-w-full xs:ml-0 md:max-w-3/5 md:ml-4`}
+  ${tw`inline-block xs:max-w-full xs:ml-0 md:max-w-3/5 md:ml-5`}
   vertical-align: super;
   .author-bio, p {
     ${tw`leading-tight mx-auto my-1`}
@@ -30,15 +35,11 @@ const AuthorText = styled.span`
   }
 `
 
-const AuthorTitle = styled.h4`
-  ${tw`text-2xl m-auto mt-3 mb-2`}
-  color: rgba(0,0,0,0.75);
-`
-
 const AuthorLinks = styled.ul`
   ${tw`list-reset	text-2xl my-3 ml-1 pl-0`}
   li {
-    ${tw`inline-block mr-2 cursor-pointer`}
+    ${tw`inline-block cursor-pointer`}
+    margin-right: 0.65rem;
     &:first-child {
       font-size: 105%;
     }
