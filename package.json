@@ -81,7 +81,7 @@
     "styled-icons": "^8.3.0",
     "tailwind.macro": "0.5.10",
     "tailwindcss": "0.7.3",
-    "typeface-source-code-pro": "0.0.71",
+    "typeface-source-code-pro": "0.0.71"
   },
   "peerDependencies": {
     "stylis": "^3.5.0"
