@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Parallax } from 'react-spring/renderprops-addons'
+import SmoothScroll from 'smooth-scroll'
 // Componemts
 import Nav from './Nav'
 import SEO from './SEO'
@@ -14,7 +15,7 @@ import { isMobile } from '../hooks/WindowDimensions'
 const Layout = ({ pages, nav, navLogo, children }) => {
   require('typeface-titillium-web')
   if (typeof window !== 'undefined') {
-    require('smooth-scroll')('a[href*="#"]', {
+    SmoothScroll('a[href*="#"]', {
       speed: 600,
       easing: 'easeInOutCubic',
       updateURL: false,
