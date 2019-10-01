@@ -49,13 +49,13 @@ const Card = styled.div`
 `
 
 const Title = styled.div`
-  ${tw`font-title font-semibold text-white uppercase xs:text-3xl xl:text-4xl tracking-normal py-1 sm:pb-4`}
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  ${tw`font-title font-semibold text-white uppercase w-9/10 xs:text-3xl xl:text-4xl tracking-normal py-1 sm:pb-4`}
+  text-shadow: 0 2px 4px rgba(0,0,0,0.25);
   transition: all 350ms ease-in-out;
 `
 const Text = styled.div`
   ${tw`font-sans leading-tight text-base lg:text-lg pb-4 md:pb-8 xs:hidden sm:block`}
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
   transition: all 400ms ease-in-out;
 `
 
