@@ -4,26 +4,28 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
-  ${tw`relative sm:invisible md:visible ml-8`}
+  ${tw`relative ml-8`}
   width: 58px;
   height: 58px;
   top: 82px;
   left: -58px;
   transform: translateY(0) rotatex(-33.5deg) rotatey(45deg);
   transform-style: preserve-3D;
-  @media (max-width: 600px) {
-    visibility: hidden;
-  }
   @media (min-width: 600px) {
     left: -30px;
   }
 `
 
 const WrapperInner = styled.div`
+${tw`sm:opacity-0 md:opacity-100`}
   transform: translate3d(0, 0, 0);
   transform-style: preserve-3D;
   animation: hoverY 2s infinite alternate;
+  transition: opacity 300ms ease-in-out;
   backface-visibility: hidden;
+  @media (max-width: 600px) {
+    opacity: 0;
+  }
 `
 
 const Side = styled.div`
