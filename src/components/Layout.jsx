@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Parallax } from 'react-spring/renderprops-addons'
-import SmoothScroll from 'smooth-scroll'
 // Componemts
 import Nav from './Nav'
 import SEO from './SEO'
@@ -14,7 +13,7 @@ import { isMobile } from '../hooks/WindowDimensions'
 
 const Layout = ({ pages, nav, navLogo, children }) => {
   if (typeof window !== 'undefined') {
-    SmoothScroll('a[href*="#"]', {
+    requirw('smooth-scroll')('a[href*="#"]', {
       speed: 600,
       easing: 'easeInOutCubic',
       updateURL: false,

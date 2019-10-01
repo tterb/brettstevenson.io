@@ -7,7 +7,6 @@ import Typed from 'react-typed';
 import { Transition } from 'react-spring'
 import { Parallax } from 'react-spring/renderprops-addons'
 import Fade from 'react-reveal/Fade'
-import SmoothScroll from 'smooth-scroll'
 // Elements
 import Content from '../elements/Content'
 import { Subtitle } from '../elements/Titles'
@@ -92,37 +91,28 @@ const ScrollArrow = () => (
   </ScrollContainer>
 )
 
-const Hero = ({ offset }) => {
-  if (typeof window !== 'undefined') {
-    SmoothScroll('a[href*="#"]', {
-      speed: 100,
-      easing: 'easeInOutCubic',
-      updateURL: false,
-    })
-  }
-  return (
-    <Container speed={0.7} offset={offset}>
-      <Wrapper>
-        <Title>Hello,<br/>I'm Brett<br/>Stevenson<span className='accent'>.</span></Title>
-        <Subtitle>
-          <Typed style={typedStyle} strings={[
-              'I am a Software Engineer',
-              'I am a UI/UX Designer',
-              'I am a Code Monkey',
-              'I am a Full-Stack Developer',
-              '. . .^1000',
-              'I like to build stuff<span class="accent-text">.</span>',
-              ]}
-              typeSpeed={40} backSpeed={30}
-              smartBackspace>
-          </Typed>
-        </Subtitle>
-        <Code />
-        <ScrollArrow />
-      </Wrapper>
-    </Container>
-  )
-}
+const Hero = ({ offset }) => (
+  <Container speed={0.7} offset={offset}>
+    <Wrapper>
+      <Title>Hello,<br/>I'm Brett<br/>Stevenson<span className='accent'>.</span></Title>
+      <Subtitle>
+        <Typed style={typedStyle} strings={[
+            'I am a Software Engineer',
+            'I am a UI/UX Designer',
+            'I am a Code Monkey',
+            'I am a Full-Stack Developer',
+            '. . .^1000',
+            'I like to build stuff<span class="accent-text">.</span>',
+            ]}
+            typeSpeed={40} backSpeed={30}
+            smartBackspace>
+        </Typed>
+      </Subtitle>
+      <Code />
+      <ScrollArrow />
+    </Wrapper>
+  </Container>
+)
 
 export default Hero
 
