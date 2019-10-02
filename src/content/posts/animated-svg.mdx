@@ -1,0 +1,48 @@
+---
+title: Creating Animated SVGs
+slug: /creating-animated-svgs
+description: The best way to show off your new project
+date: 2019-01-02
+category: Documentation
+image: ./img/carbon-svg.png
+tags:
+  - documentation
+  - open source
+  - web dev
+  - terminal
+  - tutorial
+---
+
+## Why?  
+In most cases, your projects README.md or documentation will be a new user's first introduction to your project. As a resulting, it's important to put your best foot forward and have your documentation demonstrate the quality of your project. So in response to a few questions I've recieved about the graphics used in my own README's, I decided I'd make a post explaining the process for spicing up your projects with animated SVGs.  
+Now, I'm sure you've noticed how including effectively coordinated GIFs in a project README.md can provide immediate insight as to the functionality and capability of a new project and definitely make for a great starting-point. Though GIFs aren't without their drawbacks. Specifically, their limited color pattern, immutability, and the file size necessary to maintain non-pixalated, fluid animations. Fortunately, these shortcomings are where SVGs thrive.  
+
+For the uninitiated, SVG stands for [*Scalable Vector Graphic*](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) which means that the image is created using mathematical calculations rather than using pixels to form lines and shapes. This essentially means that the image can be scaled to any size and the lines will remain crisp and clear.  
+
+![svg](https://user-images.githubusercontent.com/16360374/50585691-17f7a900-0e2b-11e9-8e85-76e8e3910569.png)
+
+Nonetheless, it's also important to note that there are still many places where custom animated SVGs aren't supported, but luckily for us, [GitHub] (*and this blog*) both support animated SVGs with *no-workarounds-needed*.  
+Additionally, while this may be the most advantageous for command-line projects, these animated SVGs can be used for examples, installation instructions, or anything involving the command-line.  
+
+
+## Getting Started  
+
+The first step is that you're going to need to install [asciinema](https://asciinema.org/docs/installation) and [svg-term-cli]. This will provide the terminal session recording and tool that we'll use to create the animated SVG.  
+Once these are installed, you'll want to create your recording. Using the following command will spawn a new shell instance and start your recording:  
+```sh
+asciinema rec <filename>
+```
+When your finished, you can stop the recording by typing `exit` or pressing <kbd>ctrl+D</kbd>. The recording will be saved as a `.cast` file, that you'll be able to pass to [svg-term-cli] to create your animated SVG.  
+Once you're satisfied with your recording, you can create your animated SVG with the following command:  
+```sh
+svg-term <filename(.cast)> --out <filename(.svg)> --window
+```
+
+<img src="https://camo.githubusercontent.com/fa6306a10d7bb4678008aec7387d0e4178aef817/68747470733a2f2f63646e2e7261776769742e636f6d2f74746572622f7974326d70332f64393662386337302f646f63732f696d616765732f7465726d696e616c2e737667" alt="example" style="width:80%; margin-top:1.5em" />
+
+
+
+[asciinema]: (https://asciinema.org/)
+[svg-term-cli]: (https://github.com/marionebl/svg-term-cli)
+[GitHub]: (https://github.com)
+[asciinema.org]: (https://asciinema.org/)

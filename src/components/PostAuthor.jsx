@@ -20,8 +20,13 @@ const Avatar = styled.span`
   }
 `
 
+const AuthorTitle = styled.h4`
+  ${tw`text-2xl m-auto mt-3 mb-2`}
+  color: rgba(0,0,0,0.75);
+`
+
 const AuthorText = styled.span`
-  ${tw`inline-block xs:max-w-full xs:ml-0 md:max-w-3/5 md:ml-4`}
+  ${tw`inline-block xs:max-w-full xs:ml-0 md:max-w-3/5 md:ml-5`}
   vertical-align: super;
   .author-bio, p {
     ${tw`leading-tight mx-auto my-1`}
@@ -30,15 +35,11 @@ const AuthorText = styled.span`
   }
 `
 
-const AuthorTitle = styled.h4`
-  ${tw`text-2xl m-auto mt-3 mb-2`}
-  color: rgba(0,0,0,0.75);
-`
-
 const AuthorLinks = styled.ul`
   ${tw`list-reset	text-2xl my-3 ml-1 pl-0`}
   li {
-    ${tw`inline-block mr-2 cursor-pointer`}
+    ${tw`inline-block cursor-pointer`}
+    margin-right: 0.65rem;
     &:first-child {
       font-size: 105%;
     }
@@ -48,7 +49,7 @@ const AuthorLinks = styled.ul`
     }
     a {
       color: rgba(0,0,0,0.7);
-      transition: all 300ms ease-in-out;
+      transition: all 200ms ease-in-out;
       &:hover {
         color: ${accent};
       }
@@ -63,13 +64,13 @@ const PostAuthor = ({ author }) => (
     </Avatar>
     <AuthorText>
       <AuthorTitle>{author.name}</AuthorTitle>
-      <p className='author-bio' dangerouslySetInnerHTML={{ __html: author.shortBio.childMarkdownRemark.html }} />
+      <p className='author-bio'>{ author.bio }</p>
       <AuthorLinks>
-        <li><a href={author.github}><FontAwesomeIcon icon={faGithub}/></a></li>
-        <li><a href={author.twitter}><FontAwesomeIcon icon={faTwitter}/></a></li>
-        <li><a href={author.dribbble}><FontAwesomeIcon icon={faDribbble}/></a></li>
-        <li><a href={author.linkedIn}><FontAwesomeIcon icon={faLinkedinIn}/></a></li>
-        <li><a href='https://brettstevenson.io' target='_blank'><FontAwesomeIcon icon={faEnvelope}/></a></li>
+        <li><a href={author.github} target='_blank'><FontAwesomeIcon icon={faGithub}/></a></li>
+        <li><a href={author.twitter} target='_blank'><FontAwesomeIcon icon={faTwitter}/></a></li>
+        <li><a href={author.dribbble} target='_blank'><FontAwesomeIcon icon={faDribbble}/></a></li>
+        <li><a href={author.linkedIn} target='_blank'><FontAwesomeIcon icon={faLinkedinIn}/></a></li>
+        <li><a href='https://brettstevenson.io/contact' target='_blank'><FontAwesomeIcon icon={faEnvelope}/></a></li>
       </AuthorLinks>
     </AuthorText>
   </Wrapper>

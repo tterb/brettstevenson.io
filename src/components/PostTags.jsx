@@ -1,8 +1,8 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import _ from 'lodash'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
+import tw from 'tailwind.macro'
 // Components
 import PageLink from './PageLink'
 
@@ -29,7 +29,7 @@ const Tag = styled.li`
     }
     .active {
       ${tw `opacity-0 z-0`}
-      transition: color 350ms ease-in-out, opacity 450ms ease-in-out;
+      transition: color 350ms ease-in-out, opacity 250ms ease-in-out;
     }
     &:hover {
       box-shadow: none !important;
@@ -50,14 +50,14 @@ export default () => (
   <StaticQuery
     query={tagsQuery}
     render={data => {
-      const tags = data.allContentfulBlogPost.group
+      const tags = data.allMdx.group
       let topTags = _.orderBy(tags, [(tag) => tag.totalCount], ['desc'])
       topTags = _.take(topTags, 12)
       return (
         <TagList>
           {topTags.map(tag => (
             <Tag key={tag.fieldValue}>
-              <PageLink to={`blog/tags/${_.kebabCase(tag.fieldValue)}/`}>
+              <PageLink to={`/tag/${_.kebabCase(tag.fieldValue)}/`}>
                 <span>{tag.fieldValue} ({tag.totalCount})</span>
                 <span className='active'>{tag.fieldValue} ({tag.totalCount})</span>
               </PageLink>
@@ -71,8 +71,8 @@ export default () => (
 
 const tagsQuery = graphql`
   query Tags($limit: Int) {
-    allContentfulBlogPost(limit: $limit) {
-      group(field: tags) {
+    allMdx(limit: $limit) {
+      group(field: frontmatter___tags) {
         fieldValue
         totalCount
       }

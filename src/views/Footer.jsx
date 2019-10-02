@@ -25,10 +25,10 @@ const WaveWrapper = styled.div`
 const InnerWave = styled.div`
   ${tw`relative h-full`}
   top: 0;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 600px) {
     top: -3rem;
   }
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 500px) {
     top: 2rem;
   }
   svg {
@@ -44,7 +44,7 @@ const InnerWave = styled.div`
 `
 
 const FooterWrapper = styled.footer`
-  ${tw`text-center text-grey absolute pin-b p-6 px-4 font-sans xs:text-sm lg:text-lg sm:p-10 sm:px-4 md:p-10`}
+  ${tw`text-center text-grey absolute pin-b p-6 px-4 font-sans xs:text-lg lg:text-lg sm:p-10 sm:px-4 md:p-10`}
   font-size: 0.6rem;
   top: 4rem;
   z-index: 9999;

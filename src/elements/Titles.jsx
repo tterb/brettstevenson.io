@@ -14,7 +14,8 @@ export const Title = styled.h1`
   ${tw`relative inline-block text-5xl lg:text-5xl font-title my-6 tracking-normal xs:ml-0 md:ml-3`}
   color: rgba(255,255,255,0.9);
   text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  @media (min-width: 600px) {
+  transition: all 200ms ease-in-out;
+  @media (min-width: 650px) {
     margin-left: 2.5rem;
   }
 `

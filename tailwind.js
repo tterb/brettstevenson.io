@@ -221,7 +221,7 @@ module.exports = {
 
   fonts: {
     sans: [
-      'Titillium Web',
+      'TT Norms',
       'Product Sans',
       '-apple-system',
       'BlinkMacSystemFont',
@@ -236,8 +236,8 @@ module.exports = {
       'sans-serif',
     ],
     title: [
+      'TT Norms',
       'Product Sans',
-      'Titillium Web',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
@@ -248,6 +248,7 @@ module.exports = {
     ],
     default: [
       '-apple-system',
+      'system-ui',
       'BlinkMacSystemFont',
       'Segoe UI',
       'Roboto',
@@ -358,9 +359,10 @@ module.exports = {
   leading: {
     none: 1,
     tighter: 1.1,
-    tight: 1.25,
+    tight:  1.25,
     normal: 1.45,
-    loose: 2,
+    loose:  1.75,
+    looser:    2,
   },
 
   /*
@@ -684,6 +686,7 @@ module.exports = {
     '2':  '0.5rem',
     '3': '0.75rem',
     '4':    '1rem',
+    '5': '1.25rem',
     '6':  '1.5rem',
     '7': '1.75rem',
     '8':    '2rem',

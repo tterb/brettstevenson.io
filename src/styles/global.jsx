@@ -7,11 +7,11 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background-color: ${colors['blue-black']};
-    font-family: 'Product Sans', 'Titillium Web', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+    font-family: 'TT Norms', 'Product Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
     text-rendering: optimizeLegibility;
     width: 100%;
     height: 100%;
-    margin: 0;
+    margin: 0 !important;
     padding: 0;
     overflow-x: hidden;
     box-sizing: border-box;

@@ -36,7 +36,7 @@ const AboutTitle = styled(Title)`
   ${tw`xs:mb-2 sm:mb-6`}
 `
 const AboutSub = styled.span`
-  ${tw`text-white text-2xl pt-8 xs:hidden md:block md:pt-0 md:pl-10 lg:pl-12 lg:text-3xl xl:text-4xl`}
+  ${tw`text-white text-2xl font-medium pt-8 xs:hidden md:block md:pt-0 md:pl-10 lg:pl-12 lg:text-3xl xl:text-4xl`}
 `
 const AboutDesc = styled.p`
   ${tw`text-grey-light xs:text-xl lg:text-2xl font-sans xs:pt-0 sm:pt-4  md:pt-6`}

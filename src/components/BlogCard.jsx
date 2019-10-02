@@ -1,7 +1,8 @@
 import React from 'react'
+import { navigate } from "gatsby"
 import Image from 'gatsby-image'
+import assignIn from 'lodash/assignIn'
 import kebabCase from 'lodash/kebabCase'
-import truncate from 'lodash/truncate'
 import styled from 'styled-components'
 import { accent } from '../../tailwind'
 import tw from 'tailwind.macro'
@@ -39,7 +40,7 @@ const BgImage = styled(Image)`
   position: relative !important;
   height: 35%;
   border-radius: 5px;
-  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   z-index: -1;
   & > img {
@@ -58,8 +59,8 @@ const Wrapper = styled.div`
   ${tw`relative block w-full sm:inline-block sm:h-full py-6 px-6 sm:px-10 sm:pr-12 sm:py-10 cursor-pointer overflow-hidden z-5`}
   background: rgba(255,255,255,0.8);
   height: 65%;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   @media (min-width: 501px) {
     width: 65%;
   }
@@ -85,6 +86,7 @@ const Category = styled.span`
 const CardTitle = styled.h2`
   ${tw`font-title font-bold mt-0 pb-3`}
   font-size: 2.9rem;
+  letter-spacing: -2px;
   line-height: 1.15;
   border-bottom: 2px solid rgba(0,0,0,0.05);
   margin-bottom: 0.35em;
@@ -99,8 +101,9 @@ const CardTitle = styled.h2`
 
 const Text = styled.p`
   ${tw`tracking-wide leading-normal w-full mb-4 pb-1 cursor-pointer z-10`}
-  color: rgba(0,0,0,0.65);
+  color: rgba(0,0,0,0.8);
   font-size: 1.15rem;
+  line-height: 1.6;
   margin-top: 0.3em;
   padding-left: 2px; 
   @media (max-width: 500px) {
@@ -140,7 +143,7 @@ const ReadBtn = styled(PageLink)`
 
 const Date = styled.span`
   ${tw`absolute text-base`}
-  color: rgba(0,0,0,0.55);
+  color: rgba(0,0,0,0.7);
   left: 2.5rem;
   bottom: 2.25rem;
   vertical-align: middle;
@@ -149,15 +152,16 @@ const Date = styled.span`
     bottom: 1.5rem;
   }
   a {
-    color: rgba(0,0,0,0.55);
+    color: rgba(0,0,0,0.7);
   }
   svg {
     margin: 0 10px 0 6px;
   }
   .separator {
-    color: rgba(0,0,0,0.25);
+    color: rgba(0,0,0,0.4);
     height: 0.3rem;
     vertical-align: middle;
+    margin-top: -1px;
     margin-left: 6px;
     margin-right: 1px;
   }
@@ -171,28 +175,27 @@ class BlogCard extends React.Component {
   }
   
   handleClick() {
-    location.href='./blog/'+this.props.post.slug+'/'
+    navigate('blog'+this.props.post.fields.slug+'/')
   }
   
   render() {
-    const post = this.props.post
-    let preview = this.props.post.heroImage
-    let desc = post.description.childMarkdownRemark.excerpt
+    let post = this.props.post
+    assignIn(post, post.frontmatter, post.fields)
 
     return (
       <Card onClick={this.handleClick}>
-        <BgImage alt={post.title} fluid={preview.fluid} />
+        <BgImage alt={post.title} fluid={post.image.childImageSharp.fluid} />
         <Wrapper className='content-mask'>
           <CardContent>
             <CardTitle>
-              <PageLink to={`/blog/${post.slug}/`}>{post.title}</PageLink>
+              <PageLink to={`blog${post.slug}/`}>{post.title}</PageLink>
             </CardTitle>
-            <Text>{desc}</Text>
+            <Text>{post.description}</Text>
             <Date>
               <PageLink to={`/blog/tag/${kebabCase(post.category)}/`}>{ post.category }</PageLink>
               <FontAwesomeIcon className='separator' icon={faCircle} />
               <FontAwesomeIcon icon={faCalendarAlt} />
-              {post.publishDate}
+              {post.date}
             </Date>
           </CardContent>
         </Wrapper>

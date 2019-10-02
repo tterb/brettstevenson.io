@@ -13,6 +13,11 @@
   }
 }
 
+body {
+  font-variant-ligatures: no-common-ligatures;
+  margin: 0 !important;
+}
+
 h1, h2, h3, h4, h5 {
   font-feature-settings: 'liga' 1;
 }
@@ -98,7 +103,7 @@ svg.logo {
 
 .typed-cursor {
   font-size: 1.65rem;
-  vertical-align: bottom;
+  vertical-align: top;
   margin-left: 1px;
 }
 

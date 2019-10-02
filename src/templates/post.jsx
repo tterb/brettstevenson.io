@@ -1,21 +1,26 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
-import get from 'lodash/get'
+import assignIn from 'lodash/assignIn'
+// import { MDXRenderer } from 'gatsby-plugin-mdx'
+import MDXRenderer from '../components/Post/MDX'
+// Config
+import config from '../../config/website'
 // Components
-import Layout from '../components/Layout'
-import PageLink from '../components/PageLink'
 import PostLayout from '../components/PostLayout'
 import PostMeta from '../components/PostMeta'
 // Hooks
 import useWindowDimensions from '../hooks/WindowDimensions'
 
 
-const PostTemplate = ({ pageContext, location, data }) => {
+const PostTemplate = ({ data, pageContext, location }) => {
   require('typeface-source-code-pro')
-  const postStyle = require('../styles/post.scss')
-  const config = require(`../../config/website`)
-  const post = data.contentfulBlogPost
+  require('../styles/post.scss')
+  let post = data.post
+  assignIn(post, post.frontmatter)
+  post.author = config.author
+  post.author.image = data.avatar.childImageSharp
+  const thumbnail = (post.thumbnail ? post.thumbnail.fluid : post.image.fluid)
+  
   let mobile = false
   if(typeof window !== 'undefined') {
     const { height, width } = useWindowDimensions()
@@ -35,17 +40,17 @@ const PostTemplate = ({ pageContext, location, data }) => {
       <PostMeta
         title={`${post.title} | ${config.siteTitle}`}
         description={post.description}
-        thumbnail={post.heroImage.fluid}
-        url={`/blog/${post.slug}`}
+        thumbnail={thumbnail}
+        url={`/blog${post.fields.slug}`}
       />
-      <Layout />
       <PostLayout
         post={post}
-        style={postStyle}
         mobile={mobile}
-        location={location} 
+        location={location}
         context={pageContext}>
-          <div className='post-body' dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
+          <div className='post-body'>
+            <MDXRenderer content={post.body}></MDXRenderer>
+          </div>
       </PostLayout>
     </>
   )
@@ -54,40 +59,36 @@ const PostTemplate = ({ pageContext, location, data }) => {
 export default PostTemplate
 
 export const postQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    contentfulBlogPost(slug: { eq: $slug }) {
-      title
-      slug
-      id
-      publishDate(formatString: "DD MMMM YYYY")
-      tags
-      heroImage {
-        fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid_withWebp
-        }
+  query($slug: String!) {
+    post: mdx(fields: { slug: { eq: $slug } }) {
+      body
+      excerpt
+      fields {
+        slug
       }
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
-      author {
-        name
-        shortBio {
-          childMarkdownRemark {
-            html
-          }
-        }
+      frontmatter {
+        title
+        date(formatString: "DD MMMM YYYY")
+        description
+        category
+        tags
         image {
-          fixed(width: 250, height: 250) {
-            ...GatsbyContentfulFixed_withWebp
+          childImageSharp {
+            fluid(maxWidth: 1920, quality: 90) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+            fixed(width: 600) {
+              ...GatsbyImageSharpFixed_withWebp
+            }
           }
         }
-        email
-        github
-        dribbble
-        twitter
-        linkedIn
+      }
+    }
+    avatar: file(relativePath: { eq: "avatar.png" }) {
+      childImageSharp {
+        fixed(width: 250, height: 250) {
+          ...GatsbyImageSharpFixed_withWebp
+        }
       }
     }
   }

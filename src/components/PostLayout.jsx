@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Image from 'gatsby-image'
 import tw from 'tailwind.macro'
-import { accent } from '../../tailwind'
 import styled from 'styled-components'
 import { Disqus } from 'gatsby-plugin-disqus'
+// Config
+import { accent } from '../../tailwind'
+import config from '../../config/website'
 // Components
 import Nav from './Nav'
-import PostHero from './PostHero'
 import PostHeader from './PostHeader'
 import PostAuthor from './PostAuthor'
 import PageLink from './PageLink'
@@ -27,6 +29,17 @@ const Content = styled.div`
   font-size: 1.1rem;
   letter-spacing: 0.01em;
   max-width: 900px;
+`
+
+const HeroImage = styled(Image)`
+  width: 100.5%;
+  height: 60vw;
+  max-height: 45vh;
+  top: -1px;
+  left: -1px;
+  > div {
+    padding-bottom: 28% !important;
+  }
 `
 
 const Separator = styled.hr`
@@ -74,26 +87,18 @@ class PostLayout extends React.Component {
   }
  
   render() {
-    const config = require(`../../config/website`)
     const { post, mobile, location, context, children } = this.props
     const { prev, next } = context
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
       rootPath = __PATH_PREFIX__ + `/`
     }
-    if (typeof window !== 'undefined') {
-      require('smooth-scroll')('a[href*="#"]', {
-        speed: 450,
-        easing: 'easeInOutCubic',
-        updateURL: false,
-      })
-    }
-
+    
     return (
       <>
         <span id='top'></span>
         <Nav mobile={mobile} />
-        <PostHero post={post} />
+        <HeroImage alt={post.title} fluid={post.image.childImageSharp.fluid} />
         <Wrapper className='wrapper'>
           <PostHeader id='postHero' post={post} />
           <Content>

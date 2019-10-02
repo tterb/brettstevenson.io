@@ -86,7 +86,7 @@ const MenuPanel = styled.div`
     }
   }
   li {
-    ${tw`relative block font-black my-0 ml-0 mr-auto px-0 py-3 z-999`}
+    ${tw`relative block font-bold my-0 ml-0 mr-auto px-0 py-3 z-999`}
     font-size: 12vw;
     width: max-content;
     &:first-child {
@@ -260,7 +260,7 @@ Nav.propTypes = {
 }
 
 const menuQuery = graphql`
-  query menuQuery {
+  query {
     site {
       siteMetadata {
         menuLinks {

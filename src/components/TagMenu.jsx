@@ -69,9 +69,9 @@ const ListWrapper = styled.div`
   &:before {
     ${tw`absolute w-3 h-0`}
     content: '';
-    background: ${colors['grey-lighter']};
+    background: ${colors['grey-lightest']};
     top: 2.25rem;
-    left: 0.5rem;
+    left: 2rem;
     box-shadow: 1px 0.5px 3px -0.5px rgba(0,0,0,0.5);
     transform: rotate(45deg);
   }
@@ -87,9 +87,10 @@ const ListWrapper = styled.div`
 
 const TagList = styled.ul`
   ${tw`relative list-reset h-0 pin-t p-0 overflow-scroll`}
-  background: ${colors['grey-lighter']};
+  background: ${colors['grey-lightest']};
   width: max-content;
   top: 2.65rem;
+  left: -60%;
   border-radius: 8px;
   box-shadow: -0.5px 2px 6px -2px rgba(0,0,0,0.35);
   transition: all 350ms ease-in-out;
@@ -131,7 +132,7 @@ class TagMenu extends React.Component {
       <StaticQuery
         query={tags2Query}
         render={data => {
-          const tags = _.orderBy(data.allContentfulBlogPost.group, [(tag) => tag.totalCount], ['desc'])
+          const tags = _.orderBy(data.allMdx.group, [(tag) => tag.totalCount], ['desc'])
           // topTags = _.take(topTags, 12)
         return (
           <Container>
@@ -162,8 +163,8 @@ export default TagMenu
 
 const tags2Query = graphql`
   query Tags2($limit: Int) {
-    allContentfulBlogPost(limit: $limit) {
-      group(field: tags) {
+    allMdx(limit: $limit) {
+      group(field: frontmatter___tags) {
         fieldValue
         totalCount
       }

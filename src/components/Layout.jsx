@@ -12,9 +12,8 @@ import GlobalStyle from '../styles/global'
 import { isMobile } from '../hooks/WindowDimensions'
 
 const Layout = ({ pages, nav, navLogo, children }) => {
-  require('typeface-titillium-web')
   if (typeof window !== 'undefined') {
-    require('smooth-scroll')('a[href*="#"]', {
+    requirw('smooth-scroll')('a[href*="#"]', {
       speed: 600,
       easing: 'easeInOutCubic',
       updateURL: false,

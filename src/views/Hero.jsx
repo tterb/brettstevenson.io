@@ -28,11 +28,10 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h1`
-  ${tw`font-title leading-none w-full text-6xl md:text-7xl lg:text-8xl xl:text-9xl mt-4 lg:mt-6 mb-6 ml-0`}
+  ${tw`font-title font-bold leading-none w-full text-6xl md:text-7xl lg:text-8xl xl:text-9xl mt-4 lg:mt-6 mb-6 ml-0`}
   color: rgba(255,255,255,0.95);
   /* font-size: 3.5rem; */
-  font-weight: 800;
-  letter-spacing: 0.025em;
+  letter-spacing: -2px;
   text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
   @media screen and (max-width: 420px) {
     font-size: 17vw;
@@ -67,8 +66,9 @@ const ScrollContainer = styled(Parallax.Layer)`
 `
 
 const Arrow = styled(Link)`
-  ${tw`relative text-4xl text-center mx-auto my-2 cursor-pointer z-999`}
+  ${tw`relative text-center mx-auto my-2 cursor-pointer z-999`}
   color: rgba(255,255,255,0.2);
+  font-size: 2.75rem;
   transition: color 300ms ease-in-out;
   &:hover {
     color: rgba(255,255,255,0.7);
@@ -76,13 +76,13 @@ const Arrow = styled(Link)`
 `
 
 const Code = () => (
-    <CodeWrapper pages={0.05} speed={0.5}>
+    <CodeWrapper pages={0.05} speed={0.15}>
       <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 210 168" className="code-svg"><path d="M50.9,124.77,11,85.59a3.93,3.93,0,0,1-.54-5.44,2.31,2.31,0,0,1,.54-.54L50.79,39.88a4.53,4.53,0,0,1,6.41-.12h0l.12.12,7.94,7.94a4.53,4.53,0,0,1,.12,6.41h0l-.12.12L38.05,80.91a2.1,2.1,0,0,0,0,3l0,0,27.1,26.34c1.85,1.74,2.72,3.81.11,6.53l-7.84,7.94A4.63,4.63,0,0,1,50.9,124.77Z"/><path d="M158.09,124.77,199,84.61c1.85-1.85,2-3.7,0-5.55L158.53,38.69a4.53,4.53,0,0,0-6.41-.12h0l-.12.12L144,47.29a4.53,4.53,0,0,0-.12,6.41h0l.12.12,26.88,26.87a2.1,2.1,0,0,1,0,3l0,0-27,26.45a4.62,4.62,0,0,0-.11,6.53l7.84,7.94a4.46,4.46,0,0,0,6.28.4Z"/><path d="M92.53,157.64l-11.86-3.16a4.58,4.58,0,0,1-3.28-5.58h0v-.07l37-136.47A4.58,4.58,0,0,1,120,9.06h.1l11.86,3.16a4.58,4.58,0,0,1,3.28,5.58h0v.07l-37,136.47a4.68,4.68,0,0,1-5.66,3.26Z"/></svg>
     </CodeWrapper>
 )
 
 const ScrollArrow = () => (
-  <ScrollContainer pages={0.35} offset={0.1} speed={-0.4}>
+  <ScrollContainer pages={0.35} offset={0.05} speed={-0.1}>
     <Fade bottom delay={450}>
       <Arrow to={`/${location.pathname}/#about`}>
         <FontAwesomeIcon icon={faAngleDoubleDown} />

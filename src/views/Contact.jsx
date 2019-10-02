@@ -14,10 +14,11 @@ import Cube from '../components/Cube'
 // Hooks
 import useWindowDimensions from '../hooks/WindowDimensions'
 
+
 const ContactTitle = styled(Title)`
   ${tw`leading-tighter`}
+  font-size: 4.5rem;
 `
-
 
 const ContactText = styled.p`
   ${tw`text-grey font-sans text-xl mt-3 ml-2 sm:text-2xl md:text-2xl lg:text-3xl sm:leading-tight`}

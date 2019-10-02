@@ -49,7 +49,7 @@ export default ({ post }) => (
     <Wrapper className='post-header'>
       <PostTitle>{post.title}</PostTitle>
       <PostDate>
-        { post.publishDate.split(' ').map((item, i) => {
+        { post.date.split(' ').map((item, i) => {
             return (i != 1) ? <strong key={i}>{item}</strong>:item
         })}
       </PostDate>

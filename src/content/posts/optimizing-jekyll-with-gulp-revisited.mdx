@@ -1,0 +1,332 @@
+---
+title: Optimizing Jekyll with Gulp
+slug: /optimizing-jekyll-with-gulp
+description: An exploration into optimizing your Jekyll website using Gulp
+date: 2018-06-01
+category: Web Dev
+image: ./img/gulp.jpg
+tags:
+  - javascript
+  - jekyll
+  - web dev
+  - optimization
+---
+
+While the previous entry on optimizing your Jekyll site provided some basics to optimizing your Jekyll site performance, in this post I want to focus on providing a more comprehensive explanation of how you can create a more enjoyable development experience with the magic of [**Gulp**](https://gulpjs.com/).  
+To get started, lets first discuss the basic workflow and file structure that we&rsquo;ll be working with. As shown in the image below, we'll be storing our site assets in the `_assets/` directory.  
+
+<img src="https://user-images.githubusercontent.com/16360374/41262490-f9d106b4-6d95-11e8-9e2d-c63b80bfdd45.png" alt="file tree" style="width:50%"/>  
+
+This will allow these files to be processed from within our [Gulpfile](https://gist.github.com/tterb/9bd8e94eb094f1f38fc3dd33a250a2ed), while remaining ignored by Jekyll. Though, a more in-depth explaination of the file-structure will be provided during each of the respective tasks.
+
+
+## Defining Paths  
+One of the first things that probably stands out is the `gulp-config/paths.js` file. In a practice I&rsquo;ve borrowed from [savaslabs](https://github.com/savaslabs/savaslabs.github.io/), the purpose of this file is to define the paths that will be used within our Gulpfile, allowing for cleaner code and increased modularity. Given a similar file-structure, the file should be as follows:  
+
+```js
+var paths = {};
+// Directory locations.
+paths.assetsDir        = '_assets/';      // The files Gulp will handle.
+paths.jekyllDir        = '';              // The files Jekyll will handle.
+paths.jekyllAssetsDir  = 'assets/';       // The asset files Jekyll will handle.
+paths.siteDir          = '_site/';        // The resulting static site.
+paths.siteAssetsDir    = '_site/assets/'; // The resulting static site's assets.
+
+// Folder naming conventions.
+paths.postFolder   = '_posts';
+paths.fontFolder   = 'fonts';
+paths.imageFolder  = 'img';
+paths.scriptFolder = 'js';
+paths.stylesFolder = 'styles';
+
+// Asset files locations.
+paths.sassFiles   = paths.assetsDir + paths.stylesFolder;
+paths.jsFiles     = paths.assetsDir + paths.scriptFolder;
+paths.imageFiles  = paths.assetsDir + paths.imageFolder;
+paths.fontFiles   = paths.assetsDir + paths.fontFolder;
+
+// Jekyll files locations.
+paths.jekyllPostFiles  = paths.jekyllDir       + paths.postFolder;
+paths.jekyllCssFiles   = paths.jekyllAssetsDir + paths.stylesFolder;
+paths.jekyllJsFiles    = paths.jekyllAssetsDir + paths.scriptFolder;
+paths.jekyllImageFiles = paths.jekyllAssetsDir + paths.imageFolder;
+paths.jekyllFontFiles  = paths.jekyllAssetsDir + paths.fontFolder;
+
+// Site files locations.
+paths.siteCssFiles   = paths.siteAssetsDir + paths.stylesFolder;
+paths.siteJsFiles    = paths.siteAssetsDir + paths.scriptFolder;
+paths.siteImageFiles = paths.siteAssetsDir + paths.imageFolder;
+paths.siteFontFiles  = paths.siteAssetsDir + paths.fontFolder;
+
+// Glob patterns by file type.
+paths.sassPattern     = '/**/*.scss';
+paths.jsPattern       = '/**/*.js';
+paths.imagePattern    = '/**/*.+(jpg|jpeg|png|svg|gif|webp|tif)';
+paths.markdownPattern = '/**/*.+(md|MD|markdown|MARKDOWN)';
+paths.htmlPattern     = '/**/*.html';
+
+// Asset files globs
+paths.sassFilesGlob  = paths.sassFiles  + paths.sassPattern;
+paths.jsFilesGlob    = paths.jsFiles    + paths.jsPattern;
+paths.imageFilesGlob = paths.imageFiles + paths.imagePattern;
+
+// Jekyll files globs
+paths.jekyllPostFilesGlob  = paths.jekyllPostFiles  + paths.markdownPattern;
+paths.jekyllHtmlFilesGlob  = paths.jekyllDir        + paths.htmlPattern;
+paths.jekyllImageFilesGlob = paths.jekyllImageFiles + paths.imagePattern;
+
+// Site files globs
+paths.siteHtmlFilesGlob = paths.siteDir + paths.htmlPattern;
+
+module.exports = paths;
+```
+
+## Dependencies  
+To get started with our Gulpfile, we first need to define and install the packages we'll be using.  
+
+```js
+// Gulpfile.js
+
+const autoprefixer = require('autoprefixer');
+const browserSync  = require('browser-sync').create();
+const concat       = require('gulp-concat');
+const cssnano      = require('cssnano');
+const del          = require('del');
+const gulp         = require('gulp');
+const gutil        = require('gulp-util');
+const newer        = require('gulp-newer');
+const imagemin     = require('gulp-imagemin');
+const pngquant     = require('imagemin-pngquant');
+const postcss      = require('gulp-postcss');
+const rename       = require('gulp-rename');
+const run          = require('gulp-run');
+const runSequence  = require('run-sequence');
+const sass         = require('gulp-ruby-sass');
+const uglify       = require('gulp-uglify-es').default;  // For es6 support
+
+// Include paths from the created paths.js file
+const paths = require('./_assets/gulp-config/paths');
+```
+
+Now, you *could* manually install all of these packages independantly, but in-case you&rsquo;re looking for a shortcut, I&rsquo;ve compiled the following command to allow you to conveniently install them all at once.  
+
+```bash
+npm i -D autoprefixer browser-sync del gulp gulp-cssnano gulp-concat gulp-util gulp-newer gulp-imagemin imagemin-pngquant gulp-notify gulp-postcss gulp-ruby-sass gulp-run gulp-rename gulp-uglify-es run-sequence
+```
+
+## Styles  
+To optimize our site&rsquo;s stylesheets, we&rsquo;re first going to compile our main Sass file and utilize *autoprefixer* and *cssnano* to add the necessary vendor-prefixes and optimize the resulting CSS. Additionally, the use of [PostCSS](https://github.com/postcss/postcss) allows us to perform both of these processes while only parsing the CSS once. All of which, produces a single stylesheet that gets placed in our `assets` and `_site/assets` directories.  
+<p class="h-note">
+  If you&rsquo;re really looking to squeeze out all the performance possible, you can check out the <a href="https://github.com/GoalSmashers/css-minification-benchmark">CSS minification benchmark</a> and see which one works best for you.
+</p>
+
+```js
+// Process styles, add vendor-prefixes, minify, then
+// output the file to the appropriate location
+gulp.task('build:styles:main', () => {
+  return sass(paths.sassFiles + '/main.scss', {
+    style: 'compressed',
+    trace: true,
+    loadPath: [paths.sassFiles]
+  }).pipe(postcss([autoprefixer({ browsers: ['last 2 versions']}), cssnano()]))
+    .pipe(gulp.dest(paths.jekyllCssFiles))
+    .pipe(gulp.dest(paths.siteCssFiles))
+    .pipe(browserSync.stream())
+    .on('error', gutil.log);
+});
+```
+
+To further optimize our stylesheet delivery we are going to want to ensure that we prioritize the most important and immediately utilized styles. This can be accomplished by creating a `critical.scss` file that includes only the critical and above-the-fold styling of your site to be loaded before the rest of your stylesheets, resulting in improved page-load speeds.  
+To accomplish this, we will perform the same optimizations as the previous stylesheets, though we will pipe the output to a CSS file to the `_includes/` directory, rather than the `assets/` directory, so that it can be included in the sites `head.html`.  
+
+```js
+// Create and process critical CSS file to be included in head
+gulp.task('build:styles:critical', function() {
+  return sass(paths.sassFiles + '/critical.scss', {
+    style: 'compressed',
+    trace: true,
+    loadPath: [paths.sassFiles]
+  }).pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }), cssnano()]))
+    .pipe(gulp.dest('_includes'))
+    .on('error', gutil.log);
+});
+
+// Build all styles
+gulp.task('build:styles', ['build:styles:main', 'build:styles:critical']);
+```
+
+## Scripts  
+Within the `js/` directory, you&rsquo;ll notice there are two subdirectories. The purpose of these directories is to differentiate global javascript files from those that are only needed on certain pages. Consequently, the global third-party javsacript files should be placed within the `libs/` subdirectory, while the `local/` subdirectory is reserved for scripts that are only included on specific pages. This allows for the concatenation of the global javascript files, while preserving the distinction of the local javscript files so they may be individually included as necessary.  
+For this process we will need to create three tasks, two for processing the global and the local scripts, and a third task that calls them both.
+
+```js
+// Concatenate and uglify global JS files and output the
+// result to the appropriate location
+gulp.task('build:scripts:global', function() {
+  return gulp.src([
+    paths.jsFiles + '/lib' + paths.jsPattern,
+    paths.jsFiles + '/*.js'
+  ])
+    .pipe(concat('main.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.jekyllJsFiles))
+    .pipe(gulp.dest(paths.siteJsFiles))
+    .on('error', gutil.log);
+});
+
+// Uglify local JS files and output the result to the
+// appropriate location
+gulp.task('build:scripts:local', function() {
+  return gulp.src(paths.jsFiles + '/local' + paths.jsPattern)
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.jekyllJsFiles))
+    .pipe(gulp.dest(paths.siteJsFiles))
+    .on('error', gutil.log);
+});
+
+// Build all scripts
+gulp.task('build:scripts', ['build:scripts:global', 'build:scripts:local']);
+```
+
+## Images  
+If you&rsquo;ve read my previous installment on this topic, this task should look pretty familiar. Though, it&rsquo;s important to note that this task is not intended to lessen the importance of choosing the correct image size and filetype, which are integral to optimizing your site&rsquo;s images. 
+
+<!-- Nevertheless, image optimization can often take some trial and error, so it&rsquo;s usually best to expirement a bit.   -->
+Additionally, this task currently optimizes all of your site&rsquo;s images, rather than only processing new images, in most cases, making this the most time-consuming build processes. As a result, if your site has a lot of images it may be beneficial to remove this task from the default `build` task, and instead run this task manually when new images are added, rather than with each build.  
+
+```js
+// Optimize and copy image files
+gulp.task('build:images', function() {
+  return gulp.src(paths.imageFilesGlob)
+    .pipe(imagemin({ 
+      optimizationLevel: 3, 
+      progressive: true, 
+      interlaced: true,
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest(paths.jekyllImageFiles))
+    .pipe(gulp.dest(paths.siteImageFiles))
+    .pipe(browserSync.stream());
+});
+```
+
+## Fonts  
+The task for processing the fonts is fairly simple, we simply want to collect all of the files from the `fonts/` subdirectories and place them all within the resulting `assets/fonts/` directory.  
+
+```js
+// Place fonts in proper location
+gulp.task('build:fonts', function() {
+  return gulp.src(paths.fontFiles + '/**/**.*')
+    .pipe(rename(function(path) {path.dirname = '';}))
+    .pipe(gulp.dest(paths.jekyllFontFiles))
+    .pipe(gulp.dest(paths.siteFontFiles))
+    .pipe(browserSync.stream())
+    .on('error', gutil.log);
+});
+```
+
+## Jekyll  
+Now it&rsquo;s time to setup the basic Jekyll build process and browser-sync for the convenient auto-reload functionality.
+
+```js
+// Run jekyll build command.
+gulp.task('build:jekyll', function() {
+  var shellCommand = 'bundle exec jekyll build --config _config.yml';
+  return gulp.src('')
+    .pipe(run(shellCommand))
+    .on('error', gutil.log);
+});
+
+// Special tasks for building and reloading BrowserSync
+gulp.task('build:jekyll:watch', ['build:jekyll:local'], function(callback) {
+  browserSync.reload();
+  callback();
+});
+
+gulp.task('build:scripts:watch', ['build:scripts'], function(callback) {
+  browserSync.reload();
+  callback();
+});
+
+// Serve site and watch files
+gulp.task('serve', ['build'], function() {
+  browserSync.init({
+    server: paths.siteDir,
+    ghostMode: false, // Toggle to mirror clicks, reloads etc (performance)
+    logFileChanges: true,
+    logLevel: 'debug',
+    open: true       // Toggle to auto-open page when starting
+  });
+  gulp.watch(['_config.yml'], ['build:jekyll:watch']);
+  // Watch .scss files and pipe changes to browserSync
+  gulp.watch('_assets/styles/**/*.scss', ['build:styles']);
+  // Watch .js files
+  gulp.watch('_assets/js/**/*.js', ['build:scripts:watch']);
+  // Watch image files and pipe changes to browserSync
+  gulp.watch('_assets/img/**/*', ['build:images']);
+  // Watch posts
+  gulp.watch('_posts/**/*.+(md|markdown|MD)', ['build:jekyll:watch']);
+  // Watch drafts if --drafts flag was passed
+  if (module.exports.drafts) {
+    gulp.watch('_drafts/*.+(md|markdown|MD)', ['build:jekyll:watch']);
+  }
+  // Watch html and markdown files
+  gulp.watch(['**/*.+(html|md|markdown|MD)', '!_site/**/*.*'], ['build:jekyll:watch']);
+  // Watch RSS feed
+  gulp.watch('feed.xml', ['build:jekyll:watch']);
+  // Watch data files
+  gulp.watch('_data/**.*+(yml|yaml|csv|json)', ['build:jekyll:watch']);
+});
+
+// Build site
+gulp.task('build', function(callback) {
+  runSequence(['build:scripts', 'build:styles', 'build:images', 'build:fonts', 'build:downloads'], 'build:jekyll', callback);
+});
+```
+
+## Cleaning up  
+In accordance with the [Boy Scout Rule](http://wiki.c2.com/?BoyScoutRule), we&rsquo;re gonna need a few tasks to clean up after ourselves. These tasks can basically act as an &ldquo;*undo*&rdquo; button for the gulp tasks we&rsquo;ve created.
+
+```js
+// Delete CSS
+gulp.task('clean:styles', function(callback) {
+  del([paths.jekyllCssFiles + 'main.css',
+    paths.siteCssFiles + 'main.css',
+    '_includes/critical.css'
+  ]);
+  callback();
+});
+
+// Delete processed JS
+gulp.task('clean:scripts', function(callback) {
+  del([paths.jekyllJsFiles + 'main.js', paths.siteJsFiles + 'main.js']);
+  callback();
+});
+
+// Delete processed images
+gulp.task('clean:images', function(callback) {
+  del([paths.jekyllImageFiles, paths.siteImageFiles]);
+  callback();
+});
+
+// Delete processed font files
+gulp.task('clean:fonts', function(callback) {
+  del([paths.jekyllFontFiles, paths.siteFontFiles]);
+  callback();
+});
+
+// Delete the entire _site directory
+gulp.task('clean:jekyll', function(callback) {
+  del(['_site']);
+  callback();
+});
+
+// Deletes _site directory and processed assets
+gulp.task('clean', ['clean:jekyll', 'clean:styles', 'clean:scripts', 'clean:images', 'clean:fonts', 'clean:downloads']
+);
+```
+
+<p class="h-tldr">Here&rsquo;s a <a href="https://gist.github.com/tterb/9bd8e94eb094f1f38fc3dd33a250a2ed">gist</a> with the resulting Gulpfile.js</p>
+
+## Conclusion  
+While this Gulpfile provides a lot of optimization and added convenience to just about any site, there is definitely still room for improvement. Feel free to contact me or leave a comment with any improvements or suggestions!

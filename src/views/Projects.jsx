@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby'
-import get from 'lodash/get'
 import { useTrail } from 'react-spring'
+import get from 'lodash/get'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
 import { colors } from '../../tailwind'
@@ -43,8 +43,8 @@ const Projects = ({ offset, factor }) => {
     }
   }
   const colors = ['linear-gradient(to right, #7f7fd5, #86a8ef)', 'linear-gradient(to right, #83a0e8, #76bef6)']
-  const data = useStaticQuery(projectsQuery)
-  const projects = data.allContentfulProject.edges
+  const data = useStaticQuery(projectQuery)
+  const projects = data.allMdx.edges
   const trail = useTrail(projects.length, {
     from: { top: '100rem' },
     to: { top: '-0.75rem' },
@@ -64,7 +64,7 @@ const Projects = ({ offset, factor }) => {
           <ProjectsWrapper>
             {trail.map((style, index) => {
               return (
-                <ProjectCard key={index} style={style} project={projects[index].node} bg={colors[index%colors.length]} />
+                <ProjectCard key={index} style={style} project={projects[index].node.frontmatter} bg={colors[index%colors.length]} />
               )
             })}
           </ProjectsWrapper>
@@ -80,26 +80,20 @@ Projects.propTypes = {
 
 export default Projects
 
-const projectsQuery = graphql`
+const projectQuery = graphql`
   query ProjectQuery {
-    allContentfulProject(sort: { fields: [key], order: ASC }) {
+    allMdx(
+      filter: { fields: { sourceInstanceName: { eq: "projects" } } }
+      sort: { fields: [frontmatter___key], order: ASC }
+    ) {
       edges {
         node {
-          title
-          link
-          github
-          site
-          lang
-          image {
-            fixed(resizingBehavior: SCALE) {
-              ...GatsbyContentfulFixed_withWebp
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 175)
-            }
+          frontmatter {
+            title
+            description
+            link
+            github
+            languages
           }
         }
       }

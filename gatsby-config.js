@@ -11,27 +11,7 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-let contentfulConfig
-
-// Load the Contentful config from the .contentful.json
-try {
-  contentfulConfig = require(`./.contentful`)
-} catch (_) {}
-
-// Overwrite the Contentful config with environment variables if they exist
-contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
-  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
-}
-
-const { spaceId, accessToken } = contentfulConfig
 const githubToken = process.env.GITHUB_TOKEN
-
-if (!spaceId || !accessToken) {
-  throw new Error(
-    `Contentful spaceId and the delivery token need to be provided.`
-  )
-}
 
 module.exports = {
   /* General Information */
@@ -76,13 +56,26 @@ module.exports = {
   },
   /* Plugins */
   plugins: [
+    `gatsby-plugin-catch-links`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-transition-link`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `tterb-gatsby`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: config.googleAnalyticsID
+      },
+    },
     {
       resolve: `gatsby-plugin-lodash`,
       options: {
@@ -90,24 +83,24 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images/`,
-        ignore: [`**/*_\.*`],
-      },
-    },
-
-    { 
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          'gatsby-remark-external-links',
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`,
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: `gatsby-remark-images`,
             options: {
-              aliases: { sh: `bash` },
+              maxWidth: 820,
+              quality: 90,
+              linkImagesToOriginal: false,
+            },
+          },
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`,
+              rel: `nofollow noopener noreferrer`,
             },
           },
           {
@@ -116,7 +109,7 @@ module.exports = {
               class: `emoji`,
               size: 32,
             },
-          }
+          },
         ],
       },
     },
@@ -127,19 +120,26 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-contentful`,
-      options: contentfulConfig,
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        trackingId: config.googleAnalyticsID
+        name: `images`,
+        path: `${__dirname}/src/images/`,
+        ignore: [`**/*_\.*`],
       },
     },
     {
-      resolve: `gatsby-plugin-disqus`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        shortname: `tterb-gatsby`,
+        name: `posts`,
+        path: `${__dirname}/src/content/posts/`,
+        ignore: [`drafts/*.*`],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projects`,
+        path: `${__dirname}/src/content/projects/`,
       },
     },
     /* Must be placed at the end */
