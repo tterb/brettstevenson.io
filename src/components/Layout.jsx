@@ -13,7 +13,7 @@ import { isMobile } from '../hooks/WindowDimensions'
 
 const Layout = ({ pages, nav, navLogo, children }) => {
   if (typeof window !== 'undefined') {
-    requirw('smooth-scroll')('a[href*="#"]', {
+    require('smooth-scroll')('a[href*="#"]', {
       speed: 600,
       easing: 'easeInOutCubic',
       updateURL: false,
