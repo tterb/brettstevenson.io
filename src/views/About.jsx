@@ -59,7 +59,7 @@ const About = ({ offset, factor }) => {
             </AboutSub>
           </AboutHero>
           <AboutDesc>
-             I'm a full-stack developer with a passion for experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy. I have experience working in a variety of languages, though I'm particularly found of <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=python'>Python</a>, <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=javascript'>Javascript</a>, and <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=java'>Java</a>.
+             I'm a full-stack developer with a passion for experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy. I have experience working in a variety of languages, though I'm particularly fond of <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=python'>Python</a>, <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=javascript'>Javascript</a>, and <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=java'>Java</a>.
           </AboutDesc>
         </Inner>
       </Content>

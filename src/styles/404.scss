@@ -17,36 +17,39 @@
     border-top-right-radius: 8px;
     padding: 1px 8px;
     .win-buttons {
-      position: relative;
+      position: absolute;
+      display: inline-flex;
+      flex-direction: row;
       width: 10%;
-      left: -1.5%;
-      float: left;
+      top: -0.25%;
+      left: 0.5%;
+      justify-content: space-between;
       margin: 0;
       margin-left: 0.5em;
     }
-    .term-button {
-      display: inline-block;
-      text-align: center;
-      width: 12px;
-      height: 12px;
-      border: 0.5px solid;
-      border-radius: 100px;
-      vertical-align: middle;
-      margin: 0.45vw 0.55vw;
-      margin-left: 0;
-    }
-    #close {
-      background: #e25544;
-      border-color: #d84b3a;
-    }
-    #min {
-      background: #f5b640;
-      border-color: #e0a12b;
-    }
-    #max {
-      background: #7cb058;
-      border-color: #6fa44b;
-    }
+    // .term-button {
+      // display: inline-block;
+      // text-align: center;
+      // width: 12px;
+      // height: 12px;
+      // border: 0.5px solid;
+      // border-radius: 100px;
+      // vertical-align: middle;
+      // margin: 0.45vw 0.55vw;
+      // margin-left: 0;
+    // }
+    // #close {
+    //   background: #e25544;
+    //   border-color: #d84b3a;
+    // }
+    // #min {
+    //   background: #f5b640;
+    //   border-color: #e0a12b;
+    // }
+    // #max {
+    //   background: #7cb058;
+    //   border-color: #6fa44b;
+    // }
   }
   .caret {
     color: #50cd70;

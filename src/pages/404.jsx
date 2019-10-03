@@ -2,11 +2,10 @@ import React from 'react'
 import tw from 'tailwind.macro'
 import { colors, accent } from '../../tailwind'
 import styled from 'styled-components'
-import { Parallax } from 'react-spring/renderprops-addons'
+import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons'
 import Typed from 'react-typed';
 // Components
 import Layout from '../components/Layout'
-import Header from '../components/Header'
 // Elements
 import Content from '../elements/Content'
 import { BigTitle } from '../elements/Titles'
@@ -14,23 +13,57 @@ import { BigTitle } from '../elements/Titles'
 import Footer from '../views/Footer'
 
 
+const Header = styled(ParallaxLayer)`
+  ${tw`flex justify-center items-center text-2xl px-8 py-0 md:px-20 lg:px-22`}
+  height: 47vh !important;
+  z-index: -9;
+  @media (min-width: 600px) {
+    height: 50vh !important;
+  }
+  @media (min-width: 800px) {
+    height: 50vh !important;
+    max-height: 400px !important;
+  }
+`
+
+const HeaderWrapper = styled.div`
+  ${tw`relative w-4/5 mx-auto xl:w-5/6`}
+`
+
 const PageTitle = styled(BigTitle)`
-  ${tw`sm:text-7xl ml-1 md:text-9xl lg:text-10xl font-title text-center font-extrabold mt-0 ml-0`}
+  ${tw`font-title text-center font-bold mt-0 ml-0 sm:text-7xl sm:ml-1 md:text-9xl lg:text-10xl`}
   font-size: 8rem;
   text-shadow: 0 2.5px 6px rgba(0,0,0,0.4) !important;
 `
 
-const TermTitle = styled.span`
-  ${tw`relative inline-block font-normal tracking-wide text-center align-middle`}
-  color: rgba(0,0,0,0.65);
-  top: 0.5px;
-  left: -45px;
+const WinButton = styled.a`
+  ${tw`inline-block text-center rounded-full align-middle mx-2 my-2 ml-0`}
+  line-height: 0.65;
+  width: 12px;
+  height: 12px;
+  border: 0.5px solid;
+  &.close {
+    background: #e25544;
+    color: #a41807;
+    border-color: #d84b3a;
+  }
+  &.min {
+    background: #f5b640;
+    color: #b77800;
+    border-color: #dc9d28;
+  }
+  &.max {
+    background: #7cb058;
+    color: #4b8028;
+    border-color: #6fa44b;
+  }
 `
 
 const TermBody = styled.div`
-  ${tw`relative text-sm font-medium leading-normal m-auto p-0 pt-4 z-999`}
-  font-family: Monaco, Consolas, 'Ubuntu Mono', monospace;
+  ${tw`relative font-mono text-sm font-bold m-auto p-0 pt-4 z-999`}
   color: rgba(255,255,255,0.75);
+  font-family: Monaco, Consolas, 'Ubuntu Mono', monospace;
+  line-height: 1.55;
   width: 94%;
   span {
     ${tw`font-light leading-tight mb-4`}
@@ -58,10 +91,12 @@ const Prompt = styled.span`
 `
 
 const TermInput = styled.form`
-  ${tw`text-base mt-1`}
+  ${tw`mt-1`}
+  color: #50cd70;
   input {
-    ${tw`inline-block w-4/5 h-4 border-none rounded-none py-0 px-2 shadow-none outline-none`}
+    ${tw`inline-block w-4/5 h-4 text-base border-none rounded-none py-0 px-2 shadow-none outline-none`}
     background: transparent;
+    font-family: Monaco, Consolas, 'Ubuntu Mono', monospace;
     caret-color: #50cd70;
     &:focus {
       ${tw`border-none outline-none`}
@@ -110,19 +145,20 @@ class FourOhFour extends React.Component {
     return (
       <Layout pages={1.25} nav={false} style={{background: `linear-gradient(to bottom, #23262b, #161719)`}}>
         <Content offset={0} factor={0.375} speed={0.6}>
-          <Header offset={0} factor={0.4} speed={0.6} style={{ paddingTop: `0` }}>
-            <PageTitle>404<span className='accent'>.</span></PageTitle>
+          <Header offset={0} factor={0.4} speed={0.6}>
+            <HeaderWrapper>
+              <PageTitle>404<span className='accent'>.</span></PageTitle>
+            </HeaderWrapper>
           </Header>
         </Content>
         <Content offset={0.325} factor={0.5} speed={0.5} style={{padding: `14rem !important`}}>
           <div className='terminal'>
             <div className='window-title'>
               <div className='win-buttons'>
-                <a id='close' className='term-button' href='../'></a>
-                <a id='min' className='term-button' href='#'></a>
-                <a id='max' className='term-button' href='#'></a>
+                <WinButton className='close' href='../'>&times;</WinButton>
+                <WinButton className='min' href='#'>&minus;</WinButton>
+                <WinButton className='max' href='#'>&#43;</WinButton>
               </div>
-              <TermTitle>404</TermTitle>
             </div>
             <TermBody className='message'>
               <Prompt className='prompt'>
