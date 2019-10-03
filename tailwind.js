@@ -314,8 +314,8 @@ module.exports = {
     '6xl':     '5rem',
     '7xl':   '5.5rem',
     '8xl':   '6.5rem',
-    '9xl':   '7.5rem',
-    '10xl':    '9rem',
+    '9xl':     '7rem',
+    '10xl':    '8rem',
   },
 
   /*
