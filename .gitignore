@@ -63,7 +63,12 @@ public/
 # Bundle stats
 bundle-stats.json
 
+*.ai
+*.psd
+
 posts/
+!src/content/posts/
+src/content/posts/img/thumbnails/
 
 .contentful.json
 
