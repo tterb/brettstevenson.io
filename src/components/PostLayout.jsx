@@ -91,13 +91,6 @@ class PostLayout extends React.Component {
     if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
       rootPath = __PATH_PREFIX__ + `/`
     }
-    if (typeof window !== 'undefined') {
-      require('smooth-scroll')('a[href*="#"]', {
-        speed: 600,
-        easing: 'easeInOutCubic',
-        updateURL: false,
-      })
-    }
     return (
       <>
         <span id='top'></span>

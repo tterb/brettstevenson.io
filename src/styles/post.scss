@@ -6,7 +6,7 @@ $body-width: 90%;
 .wrapper {
   .post-header {
     letter-spacing: -1px;
-    margin-bottom: 8vh;
+    margin-bottom: 6vh;
     &::after {
       display: block;
       position: relative;
@@ -38,39 +38,39 @@ code {
   position: relative;
   background: rgba(#000, 0.075);
   color: rgba(#000, 0.75);
-  font-size: 100%;
-  top: -2px;
+  font-size: 95%;
+  top: -1px;
   border-radius: 3px;
   padding: 1px 6px 2px;
 }
 
 .post-body {
-  font-size: 1.2rem;
-  width: 90%;
+  font-size: 1.1rem;
+  width: 100%;
   margin: auto;
   h1 {
     font-size: 3rem;
   }
   
   h2 {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     letter-spacing: -0.5px;
     line-height: 1.1;
     margin-bottom: 1rem;
   }
   
   h3 {
-    font-size: 1.75rem;
+    font-size: 2rem;
     margin-bottom: 0.35rem;
   }
   
   h4 {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
   }
   
   h5 {
     color: #777;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
   
   h4, h5, h6 {
@@ -85,7 +85,7 @@ code {
   p {
     color: rgba(#000, 0.8);
     letter-spacing: .015em;
-    line-height: 1.625;
+    line-height: 1.55;
     margin: 0 0 1rem;
   }
 
@@ -222,32 +222,32 @@ code {
     &:hover {
       color: rgba(#000, 0.8);
       box-shadow: 0 15px 30px 0 rgba(#000, 0.11), 0 5px 15px 0 rgba(#000, 0.08);
-      padding: 1rem 0.5rem 1rem 1.5rem;
+      // padding: 1rem 0.5rem 1rem 1.5rem;
       svg {
         color: $accent;
-        font-size: 1.5rem;
+        // font-size: 1.5rem;
       }
     }
   }
   .prev {
     float: left;
     svg {
-      margin-right: 0.55rem;
+      margin-right: 0.75rem;
     }
     &:hover {
-      padding: 1rem 1.5rem 1rem 0.5rem;
+      // padding: 1rem 1.5rem 1rem 0.5rem;
       svg {
-        margin-left: 1rem;
+        // margin-left: 1rem;
       }
     }
   }
   .next {
     float: right;
     svg {
-      margin-left: 0.55rem;
+      margin-left: 0.75rem;
     }
     &:hover svg {
-      margin-right: 1rem;
+      // margin-right: 1rem;
     }
   }
 }

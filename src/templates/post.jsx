@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import assignIn from 'lodash/assignIn'
-// import { MDXRenderer } from 'gatsby-plugin-mdx'
 import MDXRenderer from '../components/Post/MDX'
 // Config
 import config from '../../config/website'

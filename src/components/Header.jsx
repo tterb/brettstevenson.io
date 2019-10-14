@@ -20,15 +20,21 @@ const HeaderContent = styled(ParallaxLayer)`
 
 const Wrapper = styled.div`
   ${tw`relative w-4/5 mr-auto xl:w-5/6`}
+  &.full {
+    ${tw`w-full`}
+  }
 `
 
-const Header = ({ children, offset, speed, style}) => (
-  <>
-    <HeaderContent className='header' speed={speed} offset={offset}>
-      <Wrapper>{children}</Wrapper>
-    </HeaderContent>
-  </>
-)
+const Header = ({ children, offset, speed, style, ...props}) => {
+  let full = (props.full ? 'full' : null)
+  return (
+    <>
+      <HeaderContent className='header' speed={speed} offset={offset}>
+        <Wrapper className={full}>{children}</Wrapper>
+      </HeaderContent>
+    </>
+  )
+}
 
 Header.propTypes = {
   children: PropTypes.node.isRequired,

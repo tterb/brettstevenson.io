@@ -4,7 +4,7 @@ import tw from 'tailwind.macro'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  ${tw`font-default leading-normal xs:w-9/10 md:w-4/5 lg:w-3/4 mb-14 mx-auto p-0 pt-10 md:px-9`}
+  ${tw`font-default leading-normal xs:w-4/5 md:w-3/4 mb-14 mx-auto p-0 pt-10 md:px-9`}
   max-width: 900px;
   &::after {
     ${tw`block relative w-1/4`}

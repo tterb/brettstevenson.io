@@ -37,6 +37,7 @@ export default MDX
 const PrismCSS = `
   .prism-code {
     background: hsl(275, 5%, 19%);
+    width: 95%;
     border-radius: 5px;
     margin: 0.5rem auto;
     border-radius: 5px;
@@ -49,7 +50,7 @@ const PrismCSS = `
     .number-line {
       display: inline-block;
       color: hsl(275, 5%, 70%);
-      width: 32px;
+      width: 25px;
       user-select: none;
       opacity: 0.3;
     }

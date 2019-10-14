@@ -12,10 +12,9 @@ const Wrapper = styled.div`
   ${tw`mr-auto mb-5 overflow-auto`}
   width: 100%;
   &.multiline {
-    width: 110%;
-    margin-left: -5%;
+    width: 100%;
     pre {
-      padding: 1.5rem 1rem !important;
+      padding: 1rem 1rem 1.5rem !important;
     }
     button {
       top: 1rem !important;
@@ -26,7 +25,7 @@ const Wrapper = styled.div`
   }
   button {
     transition: all 350ms ease-in-out;
-    opacity: 0.35;
+    opacity: 0.45;
   }
   &:hover {
     button {
@@ -125,13 +124,9 @@ function Copy({ toCopy }) {
   return (
     <CopyButton onClick={copyToClipboardOnClick} data-a11y='false'>
       {hasCopied ? (
-        <>
-          Copied <FontAwesomeIcon icon={faCopy} />
-        </>
+        <>Copied <FontAwesomeIcon icon={faCopy} /></>
       ) : (
-        <>
-          Copy <FontAwesomeIcon icon={faCopy} />
-        </>
+        <>Copy <FontAwesomeIcon icon={faCopy} /></>
       )}
     </CopyButton>
   )
@@ -141,7 +136,7 @@ const CopyButton = styled.button`
   ${tw`absolute text-sm align-middle cursor-pointer outline-none py-2 px-3`}
   background: hsl(275, 5%, 25%);
   color: rgba(255,255,255,0.65);
-  top: 0.75rem;
+  top: 0.5rem;
   right: 1rem;
   border-radius: 5px;
   border: 1px solid rgba(255,255,255,0.1);
