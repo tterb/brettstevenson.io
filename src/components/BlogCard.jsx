@@ -84,9 +84,8 @@ const Category = styled.span`
 `
 
 const CardTitle = styled.h2`
-  ${tw`font-title font-bold mt-0 pb-3`}
+  ${tw`font-title font-bold tracking-tight mt-0 pb-3`}
   font-size: 2.9rem;
-  letter-spacing: -2px;
   line-height: 1.15;
   border-bottom: 2px solid rgba(0,0,0,0.05);
   margin-bottom: 0.35em;
@@ -175,7 +174,7 @@ class BlogCard extends React.Component {
   }
   
   handleClick() {
-    navigate('blog'+this.props.post.fields.slug+'/')
+    navigate('/blog'+this.props.post.fields.slug+'/')
   }
   
   render() {
@@ -188,7 +187,7 @@ class BlogCard extends React.Component {
         <Wrapper className='content-mask'>
           <CardContent>
             <CardTitle>
-              <PageLink to={`blog${post.slug}/`}>{post.title}</PageLink>
+              <PageLink to={`/blog${post.slug}/`}>{post.title}</PageLink>
             </CardTitle>
             <Text>{post.description}</Text>
             <Date>

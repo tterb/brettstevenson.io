@@ -23,9 +23,18 @@ import Content from '../elements/Content'
 import { isMobile } from '../hooks/WindowDimensions'
 
 
+const HeaderContent = styled(Content)`
+  ${tw`pt-0`}
+  top: -5rem;
+  left: -1rem;
+  height: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+`
+
 const BGTitle = styled(BigTitle)`
   ${tw`font-semibold mt-0`}
-  font-size: 38vw !important;
+  font-size: 40vw !important;
   letter-spacing: -0.35rem;
   opacity: 0.05;
   z-index: -99;
@@ -38,16 +47,10 @@ const PageTitle = styled(Title)`
 `
 
 const Subtitle = styled.h4`
-  ${tw`font-sans text-grey text-lg font-medium md:text-xl text-left w-full sm:w-9/10 md:w-3/4 my-3 ml-4 mr-auto`}
+  ${tw`font-sans text-grey text-lg font-medium md:text-xl text-left sm:w-4/5 md:w-3/4 my-3 ml-4 mr-auto`}
 `
 
-const HeaderContent = styled(Content)`
-  ${tw`pt-0`}
-  top: -5rem;
-  left: -1rem;
-  height: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+const HeaderText = styled.div`
 `
 
 const Wrapper = styled.div`
@@ -116,14 +119,14 @@ const BlogLayout = ({ title, posts, pageContext, algolia }) => {
   
   return (
     <Layout pages={pageHeight}>
-      <Header offset={0} factor={0.45}>
+      <Header offset={0} factor={0.45} full={true}>
         <HeaderContent offset={0.125} speed={0.25}>
           <BGTitle>Blog</BGTitle>
         </HeaderContent>
-        <Slide left>
-          <PageTitle>{ upperFirst(title) }<span className='accent'>.</span></PageTitle>
+        <HeaderText>
+          <PageTitle>{upperFirst(title)}<span className='accent'>.</span></PageTitle>
           <Subtitle>Read my latest articles and posts on software development, design, technology and more.</Subtitle>
-        </Slide>
+        </HeaderText>
       </Header>
       <BlogContent className='light-bg' offset={0.55} factor={contentHeight} speed={0.6}>
         <Wrapper>
@@ -134,8 +137,8 @@ const BlogLayout = ({ title, posts, pageContext, algolia }) => {
           <CardList>
             {posts.map(({ node, i }) => {
               return (
-                <Bounce bottom key={node} delay={100*(i+1)} duration={1000}>
-                  <BlogCard key={node} post={node} mobile={mobile} />
+                <Bounce bottom key={node.fields.slug} delay={100*(i+1)} duration={1000}>
+                  <BlogCard post={node} mobile={mobile} />
                 </Bounce>
               )
             })}
