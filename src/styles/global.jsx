@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background-color: ${colors['blue-black']};
-    font-family: 'TT Norms', 'Product Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+    font-family: 'TTNorms', 'Product Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
     text-rendering: optimizeLegibility;
     width: 100%;
     height: 100%;

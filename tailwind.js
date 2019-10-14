@@ -221,7 +221,7 @@ module.exports = {
 
   fonts: {
     sans: [
-      'TT Norms',
+      'TTNorms',
       'Product Sans',
       '-apple-system',
       'BlinkMacSystemFont',
@@ -236,7 +236,7 @@ module.exports = {
       'sans-serif',
     ],
     title: [
-      'TT Norms',
+      'TTNorms',
       'Product Sans',
       '-apple-system',
       'BlinkMacSystemFont',
