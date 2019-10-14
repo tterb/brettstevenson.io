@@ -1,11 +1,11 @@
 import React from 'react';
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 
 // Meta-tags for blog posts
 function Metatags(props) {
   const { title, description, url, pathname, thumbnail } = props
   return (
-    <Helmet>
+    <Helmet defer={false}>
       <html lang='en' />
       <title>{title}</title>
       <meta name='title' content={title} />
