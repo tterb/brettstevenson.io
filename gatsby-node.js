@@ -47,13 +47,15 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await wrapper(
     graphql(`
       {
-        posts: allMdx(filter: { fields: { sourceInstanceName: { eq: "posts" } } }) {
+        posts: allMdx(filter: { fields: { sourceInstanceName: { eq: "posts" } } }
+        sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               fields {
                 slug
               }
               frontmatter {
+                title
                 tags
               }
             }

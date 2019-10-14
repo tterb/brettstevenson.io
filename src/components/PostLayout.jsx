@@ -48,16 +48,14 @@ const Separator = styled.hr`
 `
 
 const BackToTop = styled(Link)`
-  ${tw`fixed rounded-full text-center w-12 h-12 p-4 shadow-md hover:shadow-lg cursor-pointer`}
+  ${tw`fixed rounded-full text-center w-6 h-6 p-4 shadow-md hover:shadow-lg cursor-pointer`}
   background: rgba(255,255,255,0.985);
   line-height: inherit;
   right: 4vw;
   bottom: 10vh;
   transition: all 450ms ease-in-out;
   svg {
-    ${tw`absolute flex w-10 h-10 p-0`}
-    align-items: center;
-    justify-content: space-around;
+    ${tw`absolute flex items-center justify-between w-10 h-10 p-0`}
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -93,7 +91,13 @@ class PostLayout extends React.Component {
     if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
       rootPath = __PATH_PREFIX__ + `/`
     }
-    
+    if (typeof window !== 'undefined') {
+      require('smooth-scroll')('a[href*="#"]', {
+        speed: 600,
+        easing: 'easeInOutCubic',
+        updateURL: false,
+      })
+    }
     return (
       <>
         <span id='top'></span>
@@ -103,7 +107,7 @@ class PostLayout extends React.Component {
           <PostHeader id='postHero' post={post} />
           <Content>
             {children}
-            <BackToTop to={`/${location.pathname}/#top`}>
+            <BackToTop to={`${location.pathname}/#top`}>
               <FontAwesomeIcon icon={faArrowUp} />
             </BackToTop>
           </Content>
@@ -111,13 +115,13 @@ class PostLayout extends React.Component {
           <PostAuthor author={post.author} />
           <div className='prev-next'>
             { prev && <span className='prev'>
-              <PageLink to={`blog/${prev.node.slug}`} rel='prev'>
+              <PageLink to={`blog${prev.node.fields.slug}`} rel='prev'>
                 <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-                <span className='prev-title'>{prev.node.title}</span>
+                <span className='prev-title'>{prev.node.frontmatter.title}</span>
               </PageLink></span> }
             { next && <span className='next'>
-              <PageLink to={`blog/${next.node.slug}`} direction='right'  rel='next'>
-                <span className='next-title'>{next.node.title}</span>
+              <PageLink to={`blog${next.node.fields.slug}`} direction='right'  rel='next'>
+                <span className='next-title'>{next.node.frontmatter.title}</span>
                 <FontAwesomeIcon icon={faArrowAltCircleRight} />
               </PageLink></span> }
           </div>
