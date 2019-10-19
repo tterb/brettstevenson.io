@@ -74,6 +74,20 @@ const BackToTop = styled(Link)`
   }
 `
 
+const Comments = styled(Disqus)`
+  ${tw`xs:w-9/10 md:w-4/5 lg:w-3/4`}
+  margin-bottom: 3rem !important;
+  @media (min-width: 350px) {
+    width: 90% !important;
+  }
+  @media (min-width: 650px) {
+    width: 80% !important;
+  }
+  @media (min-width: 900px) {
+    width: 75% !important;
+  }
+`
+
 class PostLayout extends React.Component {
   
   constructor(props) {
@@ -118,7 +132,7 @@ class PostLayout extends React.Component {
                 <FontAwesomeIcon icon={faArrowAltCircleRight} />
               </PageLink></span> }
           </div>
-          <Disqus identifier={post.id} title={post.title} url={`${config.siteUrl}${location.pathname}`} />
+          <Comments identifier={post.id} title={post.title} url={`${config.siteUrl}${location.pathname}`} />
         </Wrapper>
       </>
     )

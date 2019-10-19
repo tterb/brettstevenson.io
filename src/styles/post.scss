@@ -37,8 +37,8 @@ h1, h2, h3, h4, h5, h6 {
 code {
   position: relative;
   background: rgba(#000, 0.075);
-  color: rgba(#000, 0.75);
-  font-size: 95%;
+  color: rgba(#000, 0.85);
+  font-size: 100%;
   top: -1px;
   border-radius: 3px;
   padding: 1px 6px 2px;
@@ -191,7 +191,7 @@ code {
 .prev-next {
   width: 80%;
   height: 3.5rem;
-  margin: 0 auto 5rem;
+  margin: 0 auto 4rem;
   @media (max-width: 450px) {
     margin-bottom: 8rem;
   }
@@ -222,10 +222,8 @@ code {
     &:hover {
       color: rgba(#000, 0.8);
       box-shadow: 0 15px 30px 0 rgba(#000, 0.11), 0 5px 15px 0 rgba(#000, 0.08);
-      // padding: 1rem 0.5rem 1rem 1.5rem;
       svg {
         color: $accent;
-        // font-size: 1.5rem;
       }
     }
   }
@@ -234,20 +232,11 @@ code {
     svg {
       margin-right: 0.75rem;
     }
-    &:hover {
-      // padding: 1rem 1.5rem 1rem 0.5rem;
-      svg {
-        // margin-left: 1rem;
-      }
-    }
   }
   .next {
     float: right;
     svg {
       margin-left: 0.75rem;
-    }
-    &:hover svg {
-      // margin-right: 1rem;
     }
   }
 }
@@ -346,15 +335,6 @@ code {
   &::before {
     content: 'Warning:';
     letter-spacing: 0.045em;
-  }
-}
-
-
-#disqus_thread {
-  width: 85%;
-  padding-bottom: 3rem;
-  @media (max-width: 450px) {
-    padding-bottom: 1rem;
   }
 }
 

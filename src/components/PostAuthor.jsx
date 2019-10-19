@@ -9,10 +9,14 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faTwitter, faDribbble, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 
 const Wrapper = styled.div`
-  ${tw`w-4/5 m-auto mt-14 mb-18 xs:text-center xs:mb-12 md:text-left `}
+  ${tw`m-auto mt-10 mb-18 xs:w-4/5 xs:text-center xs:mb-12 md:w-4/5 md:text-left xl:w-7/10 xl:mx-auto`}
+  @media (min-width: 900px) {
+    /* max-width: 780px !important; */
+  }
 `
 
 const Avatar = styled.span`
+  vertical-align: unset;
   .author-img {
     width: 135px !important;
     height: 135px !important;
@@ -20,19 +24,18 @@ const Avatar = styled.span`
   }
 `
 
-const AuthorTitle = styled.h4`
-  ${tw`text-2xl m-auto mt-3 mb-2`}
-  color: rgba(0,0,0,0.75);
-`
-
 const AuthorText = styled.span`
-  ${tw`inline-block xs:max-w-full xs:ml-0 md:max-w-3/5 md:ml-5`}
-  vertical-align: super;
+  ${tw`inline-block xs:max-w-9/10 xs:ml-0 md:max-w-3/4 md:ml-5 xl:max-w-3/5`}
   .author-bio, p {
     ${tw`leading-tight mx-auto my-1`}
     color: rgba(0,0,0,0.7);
     padding-left: 2px;
   }
+`
+
+const AuthorTitle = styled.h4`
+  ${tw`text-2xl m-auto mt-3 mb-2`}
+  color: rgba(0,0,0,0.75);
 `
 
 const AuthorLinks = styled.ul`

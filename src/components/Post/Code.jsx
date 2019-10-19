@@ -9,12 +9,12 @@ import { faCopy } from '@fortawesome/free-regular-svg-icons'
 const RE = /{([\d,-]+)}/
 
 const Wrapper = styled.div`
-  ${tw`mr-auto mb-5 overflow-auto`}
+  ${tw`mr-auto mb-3 overflow-auto`}
   width: 100%;
   &.multiline {
-    width: 100%;
+    ${tw`w-full mb-5`}
     pre {
-      padding: 1rem 1rem 1.5rem !important;
+      ${tw`p-4 pb-5`}
     }
     button {
       top: 1rem !important;
