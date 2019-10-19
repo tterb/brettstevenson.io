@@ -338,6 +338,13 @@ code {
   }
 }
 
+#disqus_thread {
+  font-family: 'TTNorms', 'Product Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  a {
+    color: #0376d6;
+  }
+}
+
 @keyframes fromTop {
     0% { height: 0; }
     100% { height: 50px; }
