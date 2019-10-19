@@ -14,12 +14,20 @@
 }
 
 body {
-  font-variant-ligatures: no-common-ligatures;
+  font-feature-settings: 'liga' 0;
+  -webkit-font-feature-settings: "liga" 0;
+  -moz-font-feature-settings: "liga" 0;
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  -moz-font-variant-ligatures: none;
+  font-weight: 500;
   margin: 0 !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 h1, h2, h3, h4, h5 {
-  font-feature-settings: 'liga' 1;
+  // font-feature-settings: 'liga' 1;
 }
 
 .accent {

@@ -56,7 +56,7 @@ const BgImage = styled(Image)`
 `
 
 const Wrapper = styled.div`
-  ${tw`relative block w-full sm:inline-block sm:h-full py-6 px-6 sm:px-10 sm:pr-12 sm:py-10 cursor-pointer overflow-hidden z-5`}
+  ${tw`absolute block w-full sm:inline-block sm:h-full py-6 px-6 sm:px-10 sm:pr-12 sm:py-10 cursor-pointer overflow-hidden z-5`}
   background: rgba(255,255,255,0.8);
   height: 65%;
   border-top-right-radius: 5px;

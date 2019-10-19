@@ -21,6 +21,7 @@ const AboutHero = styled.div`
 const Avatar = styled(Image)`
   ${tw`rounded-full xs:w-1/2 md:w-full xl:h-auto xs:hidden sm:block`}
   box-shadow: 0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
   @media (max-width: 500px) {
     min-width: 50vw;
   }
