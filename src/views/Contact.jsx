@@ -44,7 +44,7 @@ const Contact = ({ offset, factor }) => {
         <Cube color='purple' />
         <ContactTitle>Get in touch</ContactTitle>
         <ContactText>
-          Say <PageLink to='./contact'>Hello</PageLink> or find me on other platforms:{' '}
+          <PageLink to='./contact'>Say Hello</PageLink> or find me on other platforms:{' '}
           <a href='https://github.com/tterb' aria-label='GitHub' target='_blank'>GitHub</a> &{' '}
           <a href='https://www.dribbble.com/tterb/' aria-label='Dribbble' target='_blank'>Dribbble</a>
         </ContactText>
