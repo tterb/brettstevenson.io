@@ -65,7 +65,7 @@ class FourOhFour extends React.Component {
     const message = this.messages[this.state.index]
     return (
       <Header>
-        <Title className='title'>404</Title>
+        <Title className='404-title'>404</Title>
         <Message dangerouslySetInnerHTML={{ __html: message }}></Message>
         <Glitch className='glitch'>
           <Title>404</Title>
