@@ -70,7 +70,7 @@ class FourOhFour extends React.Component {
         <Glitch className='glitch'>
           <Title>404</Title>
         </Glitch>
-        <Button onClick={this.handleClick} data-text='Home'>Home</Button>
+        <Button className='404-button' onClick={this.handleClick} data-text='Home'>Home</Button>
       </Header>
     )
   }
