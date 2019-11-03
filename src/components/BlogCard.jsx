@@ -15,8 +15,7 @@ import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons'
 
 const Card = styled.div`
   ${tw`block relative bg-center bg-no-repeat w-full cursor-pointer`}
-  background-size: cover;
-  max-width: 950px;
+  max-width: 1200px;
   height: 68vh;
   border-radius: 5px;
   box-shadow: 0 31px 44px -30px rgba(0,0,0,0.3);
@@ -39,6 +38,7 @@ const BgImage = styled(Image)`
   ${tw`relative block w-full sm:inline-block sm:h-full pin-t pin-l`}
   position: relative !important;
   height: 35%;
+  max-width: ${props => props.maxWidth};
   border-radius: 5px;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
@@ -56,7 +56,7 @@ const BgImage = styled(Image)`
 `
 
 const Wrapper = styled.div`
-  ${tw`absolute block w-full sm:inline-block sm:h-full py-6 px-6 sm:px-10 sm:pr-12 sm:py-10 cursor-pointer overflow-hidden z-5`}
+  ${tw`absolute block w-full sm:inline-block sm:h-full py-6 px-6 sm:px-10 sm:pr-12 sm:py-9 sm:pb-12 cursor-pointer overflow-hidden z-5`}
   background: rgba(255,255,255,0.8);
   height: 65%;
   border-top-right-radius: 5px;
@@ -85,7 +85,7 @@ const Category = styled.span`
 
 const CardTitle = styled.h2`
   ${tw`font-title font-bold tracking-tight mt-0 pb-3`}
-  font-size: 2.9rem;
+  font-size: 3rem;
   line-height: 1.15;
   border-bottom: 2px solid rgba(0,0,0,0.05);
   margin-bottom: 0.35em;
@@ -99,12 +99,13 @@ const CardTitle = styled.h2`
 `
 
 const Text = styled.p`
-  ${tw`tracking-wide leading-normal w-full mb-4 pb-1 cursor-pointer z-10`}
+  ${tw`leading-normal w-full mb-4 pb-1 cursor-pointer z-10`}
   color: rgba(0,0,0,0.8);
   font-size: 1.15rem;
+  letter-spacing: 0.5px;
   line-height: 1.6;
   margin-top: 0.3em;
-  padding-left: 2px; 
+  padding-left: 2px;
   @media (max-width: 500px) {
     p {
       margin-block-start: 0.25rem;
@@ -183,7 +184,7 @@ class BlogCard extends React.Component {
 
     return (
       <Card onClick={this.handleClick}>
-        <BgImage alt={post.title} fluid={post.image.childImageSharp.fluid} />
+        <BgImage alt={post.title} maxWidth={post.image.childImageSharp.fluid.presentationWidth} fluid={post.image.childImageSharp.fluid} />
         <Wrapper className='content-mask'>
           <CardContent>
             <CardTitle>

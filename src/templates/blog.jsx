@@ -42,13 +42,14 @@ export const blogQuery = graphql`
           frontmatter {
             title
             description
-            date(formatString: "DD MMMM, YYYY")
+            date(formatString: "DD MMMM YYYY")
             category
             tags
             image {
               childImageSharp {
-                fluid(maxWidth: 480, quality: 72) {
+                fluid(maxWidth: 420, quality: 72) {
                   ...GatsbyImageSharpFluid_withWebp
+                  presentationWidth
                 }
               }
             }

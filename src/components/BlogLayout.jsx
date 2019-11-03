@@ -41,13 +41,15 @@ const BGTitle = styled(BigTitle)`
 `
 
 const PageTitle = styled(Title)`
-  ${tw`m-0 mt-12`}
-  font-size: 4.75rem !important;
+  ${tw`m-0 mt-12 md:text-6xl md:mt-6 xl:text-7xl xl:mt-6`}
   margin-left: 0.75rem !important;
+  @media (max-width: 820px) {
+    font-size: 4.75rem !important;
+  }
 `
 
 const Subtitle = styled.h4`
-  ${tw`font-sans text-grey text-lg font-medium md:text-xl text-left sm:w-4/5 md:w-3/4 my-3 ml-4 mr-auto`}
+  ${tw`font-sans text-grey text-lg text-left font-medium leading-tight md:text-xl sm:w-4/5 md:w-3/4 my-3 ml-4 mr-auto`}
 `
 
 const HeaderText = styled.div`
@@ -56,7 +58,7 @@ const HeaderText = styled.div`
 const Wrapper = styled.div`
   ${tw`m-auto xs:pt-8 sm:my-1 md:pt-16`}
   width: 95%;
-  max-width: 1200px;
+  max-width: 2000px;
   padding-left: 4vw;
   padding-right: 4vw;
   padding-bottom: 18rem;
