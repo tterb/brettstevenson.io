@@ -222,7 +222,6 @@ module.exports = {
   fonts: {
     sans: [
       'TTNorms',
-      'Product Sans',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
@@ -237,7 +236,6 @@ module.exports = {
     ],
     title: [
       'TTNorms',
-      'Product Sans',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
