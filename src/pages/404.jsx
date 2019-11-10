@@ -36,7 +36,7 @@ const Button = styled.button`
 `
 
 class FourOhFour extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -50,27 +50,26 @@ class FourOhFour extends React.Component {
       'Return to the NPC that gave you this quest.',
     ]
     this.state = {
-      index: Math.round(Math.random()*this.messages.length)
+      index: Math.round(Math.random() * this.messages.length),
     }
   }
-  
+
   handleClick(evt) {
     evt.preventDefault();
     window.location.href = '../';
   }
-  
+
   render() {
-    require('../../static/fonts/fonts.css')
     require('../styles/404.scss')
     const message = this.messages[this.state.index]
     return (
       <Header>
-        <Title className='404-title'>404</Title>
-        <Message dangerouslySetInnerHTML={{ __html: message }}></Message>
+        <Title className='fourohfour-title'>404</Title>
+        <Message dangerouslySetInnerHTML={{ __html: message }} />
         <Glitch className='glitch'>
           <Title>404</Title>
         </Glitch>
-        <Button className='404-button' onClick={this.handleClick} data-text='Home'>Home</Button>
+        <Button className='fourohfour-button' onClick={this.handleClick} data-text='Home'>Home</Button>
       </Header>
     )
   }

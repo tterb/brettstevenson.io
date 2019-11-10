@@ -86,17 +86,13 @@ Glitchy Text from https://css-tricks.com/glitch-effect-text-images-svg/
   }
 }
 
-button {
+.fourohfour-button {
   transition: box-shadow 300ms ease, transform 300ms ease;
   mix-blend-mode: exclusion;
   &:hover {
     @include textGlitch('glitch', 20, #111, #eee, #f05, #0ff, 105, 55);
     box-shadow:inset 0px 0px 0px 2px #000;
   }
-}
-
-.glitch h1:hover {
-  // opacity: 0;
 }
 
 .title:hover {
