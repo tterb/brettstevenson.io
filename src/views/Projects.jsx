@@ -1,12 +1,9 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import { useTrail } from 'react-spring'
-import get from 'lodash/get'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
-import { colors } from '../../tailwind'
-import PropTypes from 'prop-types'
 // Elements
 import { DividerMiddle } from '../elements/Dividers'
 import { Title } from '../elements/Titles'
@@ -34,12 +31,12 @@ const ProjectsWrapper = styled.div`
 `
 
 const Projects = ({ offset, factor }) => {
-  var divOffset = offset
-  if(typeof window !== 'undefined') {
+  let divOffset = offset
+  if (typeof window !== 'undefined') {
     const { height, width } = useWindowDimensions()
-    if(width <= 600) {
-      factor = factor*1.25
-      divOffset = offset-(offset*0.175)
+    if (width <= 600) {
+      factor *= 1.25
+      divOffset = offset - (offset * 0.175)
     }
   }
   const colors = ['linear-gradient(to right, #7f7fd5, #86a8ef)', 'linear-gradient(to right, #83a0e8, #76bef6)']
@@ -53,20 +50,22 @@ const Projects = ({ offset, factor }) => {
     <>
       <DividerMiddle
         bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
-        speed={0.35}
-        offset={divOffset-0.2}
+        offset={divOffset - 0.2}
         factor={factor}
+        speed={0.35}
       />
-      <Content speed={0.45} offset={offset-0.005} factor={1.75}>
+      <Content offset={offset - 0.005} factor={1.75} speed={0.45}>
         <Inner>
-          <Cube/>
+          <Cube />
           <Title>Projects</Title>
           <ProjectsWrapper>
-            {trail.map((style, index) => {
-              return (
-                <ProjectCard key={index} style={style} project={projects[index].node.frontmatter} bg={colors[index%colors.length]} />
-              )
-            })}
+            {trail.map((style, index) => (
+              <ProjectCard
+                key={index}
+                project={projects[index].node.frontmatter}
+                bg={colors[index % colors.length]}
+                style={style} />
+            ))}
           </ProjectsWrapper>
         </Inner>
       </Content>
@@ -76,6 +75,7 @@ const Projects = ({ offset, factor }) => {
 
 Projects.propTypes = {
   offset: PropTypes.number.isRequired,
+  factor: PropTypes.number,
 }
 
 export default Projects

@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
 import { colors } from '../../tailwind'
-import PropTypes from 'prop-types'
 // Elements
 import { Divider } from '../elements/Dividers'
 import Content from '../elements/Content'
@@ -64,13 +64,14 @@ const About = ({ offset, factor }) => {
           </AboutDesc>
         </Inner>
       </Content>
-      <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset+0.019}`} factor={factor} speed={0.35} />
+      <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset + 0.019}`} factor={factor} speed={0.35} />
     </>
   )
 }
 
 About.propTypes = {
   offset: PropTypes.number.isRequired,
+  factor: PropTypes.number,
 }
 
 const aboutQuery = graphql`
@@ -91,4 +92,4 @@ export default About
 
 // As a designer. I'm passionate about bridging the gap between intent and realization, while making for an enjoyable ride
 
-//As a developer, I have experience working in both front and back-end development and enjoy experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy.  
+// As a developer, I have experience working in both front and back-end development and enjoy experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy.  

@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
-import { colors, accent } from '../../tailwind'
-import PropTypes from 'prop-types'
+import { accent } from '../../tailwind'
 // Elements
-import { Divider } from '../elements/Dividers'
 import Content from '../elements/Content'
 import Inner from '../elements/Inner'
 import { Title } from '../elements/Titles'
@@ -33,10 +32,12 @@ const ContactText = styled.p`
   }
 `
 
-const Contact = ({ offset, factor }) => {
+const Contact = (props) => {
   const { height, width } = useWindowDimensions()
-  if(width <= 500) {
-    offset = offset+(offset*0.04)
+  const factor = props.factor
+  let offset = props.offset
+  if (width <= 500) {
+    offset += (offset * 0.04)
   }
   return (
     <Content offset={offset} factor={factor} speed={0.55}>
@@ -55,6 +56,7 @@ const Contact = ({ offset, factor }) => {
 
 Contact.propTypes = {
   offset: PropTypes.number.isRequired,
+  factor: PropTypes.number.isRequired,
 }
 
 export default Contact
