@@ -86,7 +86,7 @@ Glitchy Text from https://css-tricks.com/glitch-effect-text-images-svg/
   }
 }
 
-.404-button {
+button {
   transition: box-shadow 300ms ease, transform 300ms ease;
   mix-blend-mode: exclusion;
   &:hover {
@@ -99,7 +99,7 @@ Glitchy Text from https://css-tricks.com/glitch-effect-text-images-svg/
   // opacity: 0;
 }
 
-.404-title:hover {
+.title:hover {
   &:before,
   &:after {
     content: '404';
