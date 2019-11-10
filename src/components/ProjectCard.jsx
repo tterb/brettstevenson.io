@@ -1,11 +1,9 @@
 import React from 'react'
-import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { animated, useSpring } from 'react-spring'
 import get from 'lodash/get'
 import tw from 'tailwind.macro'
 import PropTypes from 'prop-types'
-import PageLink from './PageLink'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
@@ -54,7 +52,8 @@ const Title = styled.div`
   transition: all 350ms ease-in-out;
 `
 const Text = styled.div`
-  ${tw`font-sans leading-tight text-base lg:text-lg pb-4 md:pb-8 xs:hidden sm:block`}
+  ${tw`font-sans text-base leading-tight lg:text-lg pb-4 md:pb-8 xs:hidden sm:block`}
+  line-height: 1.3;
   text-shadow: 0 2px 10px rgba(0,0,0,0.3);
   transition: all 400ms ease-in-out;
 `
@@ -80,32 +79,36 @@ const Corner = styled.span`
   }
 `
 
-const calc = (x, y) => [-(y - window.innerHeight/2)/40, (x - window.innerWidth/2)/40, 1.05]
+const calc = (x, y) => [-(y - window.innerHeight / 2) / 40, (x - window.innerWidth / 2) / 40, 1.05]
 const trans = (x, y, s) => `perspective(1200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
 function ProjectsCard(props) {
-  const [prop, set] = useSpring(() => ({ 
-    xys: [0, 0, 1], config: { mass: 5, tension: 200, friction: 40 } 
+  const [prop, set] = useSpring(() => ({
+    xys: [0, 0, 1],
+    config: { mass: 5, tension: 200, friction: 40 },
   }))
   const project = props.project
   const hasRepo = get(project, 'github') ? true : false
   const link = hasRepo ? project.github : project.link
-  
-  function handleClick(e) {
+
+  function handleClick() {
     window.open(props.project.link, '_target')
   }
-  
+
   return (
-    <Wrapper className='card-wrapper' rel='noopener noreferrer' target='_blank' 
-      bg={props.bg} 
+    <Wrapper className='card-wrapper' rel='noopener noreferrer' target='_blank'
+      bg={props.bg}
       onClick={handleClick}
-      onMouseMove={({clientX: x, clientY: y}) => set({ xys: calc(x, y) })}
+      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{ transform: prop.xys.interpolate(trans) }}>
       <Card>
         <Corner>
-          <a href={link} target='_blank'>
-            { project.github ? <FontAwesomeIcon icon={faGithub}/> : <FontAwesomeIcon icon={faGlobe}/> }
+          <a href={link} target='_blank' rel='nooperner noreferrer'>
+            { project.github ?
+              <FontAwesomeIcon icon={faGithub} />
+              : <FontAwesomeIcon icon={faGlobe} />
+            }
           </a>
         </Corner>
         <Title className='title'>{project.title}</Title>
@@ -116,12 +119,15 @@ function ProjectsCard(props) {
 }
 
 
-PageLink.defaultProps = {
+ProjectsCard.defaultProps = {
   bg: 'linear-gradient(to right, #7f7fd5, #86a8ef)',
 }
-PageLink.propTypes = {
-  project: PropTypes.object.isRequired,
-  bg: PropTypes.string,
+ProjectsCard.propTypes = {
+  project: PropTypes.shape({
+    github: PropTypes.string,
+    link: PropTypes.string,
+  }).isRequired,
+  bg: PropTypes.string.isRequired,
 }
 
 export default ProjectsCard
