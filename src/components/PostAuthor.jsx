@@ -9,14 +9,14 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faTwitter, faDribbble, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 
 const Wrapper = styled.div`
-  ${tw`m-auto mt-10 mb-18 xs:w-4/5 xs:text-center xs:mb-12 md:w-4/5 md:text-left xl:w-7/10 xl:mx-auto`}
+  ${tw`m-auto mt-10 mb-18 xs:w-4/5 xs:text-center xs:mb-12 md:w-3/4 md:text-left xl:w-7/10 xl:mx-auto`}
   @media (min-width: 900px) {
     /* max-width: 780px !important; */
   }
 `
 
 const Avatar = styled.span`
-  vertical-align: unset;
+  vertical-align: bottom;
   .author-img {
     width: 135px !important;
     height: 135px !important;
@@ -39,7 +39,7 @@ const AuthorTitle = styled.h4`
 `
 
 const AuthorLinks = styled.ul`
-  ${tw`list-reset	text-2xl my-3 ml-1 pl-0`}
+  ${tw`list-reset text-2xl my-3 ml-1 pl-0`}
   li {
     ${tw`inline-block cursor-pointer`}
     margin-right: 0.65rem;

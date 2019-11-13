@@ -14,14 +14,14 @@ import useWindowDimensions from '../hooks/WindowDimensions'
 const PostTemplate = ({ data, pageContext, location }) => {
   require('typeface-source-code-pro')
   require('../styles/post.scss')
-  let post = data.post
+  const post = data.post
   assignIn(post, post.frontmatter)
   post.author = config.author
   post.author.image = data.avatar.childImageSharp
   const thumbnail = (post.thumbnail ? post.thumbnail.fluid : post.image.fluid)
-  
+
   let mobile = false
-  if(typeof window !== 'undefined') {
+  if (typeof window !== 'undefined') {
     const { height, width } = useWindowDimensions()
     if (width <= 500) {
       mobile = true
@@ -47,9 +47,9 @@ const PostTemplate = ({ data, pageContext, location }) => {
         mobile={mobile}
         location={location}
         context={pageContext}>
-          <div className='post-body'>
-            <MDXRenderer content={post.body}></MDXRenderer>
-          </div>
+        <div className='post-body'>
+          <MDXRenderer content={post.body} />
+        </div>
       </PostLayout>
     </>
   )
@@ -83,7 +83,7 @@ export const postQuery = graphql`
         }
       }
     }
-    avatar: file(relativePath: { eq: "avatar.png" }) {
+    avatar: file(relativePath: { eq: "me.png" }) {
       childImageSharp {
         fixed(width: 250, height: 250) {
           ...GatsbyImageSharpFixed_withWebp
