@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Image from 'gatsby-image'
 import tw from 'tailwind.macro'
 import { accent } from '../../tailwind'
@@ -48,7 +49,6 @@ const AuthorLinks = styled.ul`
     }
     @media (max-width: 500px) {
       ${tw`mt-2 mr-3`}
-      /* margin-right: 0.75rem; */
     }
     a {
       color: rgba(0,0,0,0.7);
@@ -78,5 +78,17 @@ const PostAuthor = ({ author }) => (
     </AuthorText>
   </Wrapper>
 )
+
+PostAuthor.propTypes = {
+  author: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+    github: PropTypes.string.isRequired,
+    twitter: PropTypes.string.isRequired,
+    dribbble: PropTypes.string.isRequired,
+    linkedIn: PropTypes.string.isRequired,
+  }).isRequired,
+}
 
 export default PostAuthor
