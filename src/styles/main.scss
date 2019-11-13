@@ -71,16 +71,6 @@ a {
   .react-reveal {
     height: 4rem;
   }
-  .logo-container {
-    .logo-title {
-      left: 4.55rem;
-      transition: opacity 350ms ease-in-out;
-      opacity: 0;
-    }
-    &:hover .logo-title {
-      opacity: 1;
-    }
-  }
 }
 
 svg.logo {
