@@ -1,14 +1,11 @@
 import React from 'react'
-import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'
-import Nav from '../components/Nav'
 // Views
 import Hero from '../views/Hero'
 import Projects from '../views/Projects'
 import About from '../views/About'
 import Contact from '../views/Contact'
-import Footer from '../views/Footer'
 // Hooks
 import useWindowDimensions from '../hooks/WindowDimensions'
 // Styles
@@ -17,13 +14,10 @@ import '../styles/main.scss'
 
 const Index = () => {
   let pages = 3.85
-  let footerOffset = pages-0.325
-  if(typeof window !== 'undefined') {
+  if (typeof window !== 'undefined') {
     const { height, width } = useWindowDimensions()
-    if(width <= 420) {
-      pages = pages*1.025
-      footerOffset = pages-(0.3*(width/420))
-    }
+    if (width <= 420)
+      pages *= 1.025
   }
   return (
     <Layout pages={pages} navLogo={false}>

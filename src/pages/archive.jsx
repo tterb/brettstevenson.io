@@ -1,9 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import tw from 'tailwind.macro'
-import { colors } from '../../tailwind'
 import styled from 'styled-components'
-import { Parallax } from 'react-spring/renderprops-addons'
 // Components
 import Layout from '../components/Layout'
 import Header from '../components/Header'
@@ -13,15 +12,10 @@ import PageLink from '../components/PageLink'
 import Content from '../elements/Content'
 import Inner from '../elements/Inner'
 import { Divider } from '../elements/Dividers'
-import { BigTitle, Title } from '../elements/Titles'
+import { BigTitle } from '../elements/Titles'
 // Views
 import Footer from '../views/Footer'
 
-
-const ArchiveTitle = styled(Title)`
-  ${tw`ml-0`}
-  margin-left: 0 !important;
-`
 
 const ArchiveList = styled.ul`
   ${tw`list-reset`}
@@ -29,7 +23,6 @@ const ArchiveList = styled.ul`
 
 const ArchivePage = ({ pageContext, data }) => {
   require('../styles/tags.scss')
-  const { tag } = pageContext
   const posts = data.allMdx.edges
   return (
     <Layout pages={1.8}>
@@ -46,11 +39,9 @@ const ArchivePage = ({ pageContext, data }) => {
       <Content offset={0.375} factor={1.05} speed={0.25} className='tags-content pt-0'>
         <Inner>
           <ArchiveList className='archive-list'>
-            {posts.map(({ node }) => {
-              return (
-                <InlinePost node={node} />
-              )
-            })}
+            {posts.map(({ node }) => (
+              <InlinePost node={node} />
+            ))}
           </ArchiveList>
           <div className='back-blog-btn'>
             <PageLink direction='right' to='/blog' className='back-blog btn'>Back to Blog</PageLink>
@@ -60,6 +51,11 @@ const ArchivePage = ({ pageContext, data }) => {
       <Footer offset={1.5} factor={0.5} />
     </Layout>
   )
+}
+
+ArchivePage.propTypes = {
+  data: PropTypes.shape.isRequired,
+  pageContext: PropTypes.shape.isRequired,
 }
 
 export default ArchivePage
