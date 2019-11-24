@@ -181,8 +181,9 @@ class BlogCard extends React.Component {
 
   render() {
     const post = this.props.post
-    const bgImage = post.image.childImageSharp.fluid.presentationWidth
     assignIn(post, post.frontmatter, post.fields)
+    debugger;
+    const bgImage = post.image.childImageSharp.fluid
 
     return (
       <Card onClick={this.handleClick}>
@@ -217,6 +218,7 @@ BlogCard.propTypes = {
     date: PropTypes.string,
     description: PropTypes.string,
     category: PropTypes.string,
+    tags: PropTypes.array,
     image: PropTypes.shape,
   }).isRequired,
 }
