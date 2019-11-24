@@ -88,15 +88,16 @@ function ProjectsCard(props) {
     config: { mass: 5, tension: 200, friction: 40 },
   }))
   const project = props.project
-  const hasRepo = get(project, 'github') ? true : false
-  const link = hasRepo ? project.github : project.link
+  const link = get(project, 'github') ? project.github : project.link
 
   function handleClick() {
     window.open(props.project.link, '_target')
   }
 
   return (
-    <Wrapper className='card-wrapper' rel='noopener noreferrer' target='_blank'
+    <Wrapper className='card-wrapper'
+      target='_blank'
+      rel='noopener noreferrer'
       bg={props.bg}
       onClick={handleClick}
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
@@ -104,20 +105,19 @@ function ProjectsCard(props) {
       style={{ transform: prop.xys.interpolate(trans) }}>
       <Card>
         <Corner>
-          <a href={link} target='_blank' rel='nooperner noreferrer'>
+          <a href={link} target='_blank' rel='noopener noreferrer'>
             { project.github ?
               <FontAwesomeIcon icon={faGithub} />
               : <FontAwesomeIcon icon={faGlobe} />
             }
           </a>
         </Corner>
-        <Title className='title'>{project.title}</Title>
+        <Title>{project.title}</Title>
         <Text className='desc'>{project.description}</Text>
       </Card>
     </Wrapper>
   )
 }
-
 
 ProjectsCard.defaultProps = {
   bg: 'linear-gradient(to right, #7f7fd5, #86a8ef)',
