@@ -61,7 +61,7 @@ const Navbar = styled.div`
 
 const MenuPanel = styled.div`
   ${tw`fixed text-left pin-t pin-r p-10`}
-  background: ${colors['menu']};
+  background: ${colors.menu};
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -72,7 +72,7 @@ const MenuPanel = styled.div`
   z-index: -1;
   &::before {
     ${tw`absolute w-full h-full pin-t pin-l`}
-    background: ${colors['menu']};
+    background: ${colors.menu};
     content: '';
     filter: blur(0);
     transition: filter 350ms ease 250ms;
@@ -170,31 +170,33 @@ const MenuButton = ({ status, onClick }) => (
   </Button>
 )
 
+MenuButton.propTypes = {
+  status: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+}
+
+
 class Nav extends React.Component {
-  
+
   state = {
     panel: false,
   }
-  
+
   togglePanel = () => {
-    if(this.state.panel)
-      this.setState({ panel: false }) 
+    if (this.state.panel)
+      this.setState({ panel: false })
     else
       this.setState({ panel: true })
   }
-  
-  isPanelVisible = () => {
-    return this.state.panel ? 'active' : ''
-  }
-  
+
+  isPanelVisible = () => (this.state.panel ? 'active' : '')
+
   render() {
     const logo = this.props.logo
     const mobile = this.props.mobile
-    const panel = this.state.panel
     return (
-      <StaticQuery query={menuQuery} 
+      <StaticQuery query={menuQuery}
         render={data => (
-          <>
           <Wrapper className='nav-wrapper'>
             <Fade top delay={250}>
               <MenuContainer>
@@ -204,20 +206,19 @@ class Nav extends React.Component {
                   :
                   <Navbar>
                     <Menu className='menu'>
-                      {data.site.siteMetadata.menuLinks.map((item, i) => {
-                        if(item.external) {
+                      {data.site.siteMetadata.menuLinks.map((item) => {
+                        if (item.external) {
                           return (
                             <MenuItem className='menu-item external' key={item.name}>
-                              <a href={item.link} target='_blank'>{item.name}</a>
-                            </MenuItem>
-                          )
-                        } else {
-                          return (
-                            <MenuItem className='menu-item' key={item.name}>
-                              <PageLink to={item.link}>{item.name}</PageLink>
+                              <a href={item.link} target='_blank' rel='noopener noreferrer'>{item.name}</a>
                             </MenuItem>
                           )
                         }
+                        return (
+                          <MenuItem className='menu-item' key={item.name}>
+                            <PageLink to={item.link}>{item.name}</PageLink>
+                          </MenuItem>
+                        )
                       })}
                     </Menu>
                   </Navbar>
@@ -226,24 +227,22 @@ class Nav extends React.Component {
             </Fade>
             { mobile ?
               <MenuPanel className={`${this.isPanelVisible()}`}>
-                {data.site.siteMetadata.menuLinks.map((item, i) => {
-                  if(item.external) {
+                {data.site.siteMetadata.menuLinks.map((item) => {
+                  if (item.external) {
                     return (
                       <MenuItem className='menu-item external' key={item.name}>
-                        <a href={item.link} target='_blank'>{item.name}</a>
-                      </MenuItem>
-                    )
-                  } else {
-                    return (
-                      <MenuItem className='menu-item' key={item.name}>
-                        <PageLink to={item.link}>{item.name}</PageLink>
+                        <a href={item.link} target='_blank' rel='noopener noreferrer'>{item.name}</a>
                       </MenuItem>
                     )
                   }
+                  return (
+                    <MenuItem className='menu-item' key={item.name}>
+                      <PageLink to={item.link}>{item.name}</PageLink>
+                    </MenuItem>
+                  )
                 })}
               </MenuPanel> : null }
           </Wrapper>
-          </>
         )}
       />
     )
@@ -259,6 +258,8 @@ Nav.propTypes = {
   mobile: PropTypes.bool,
 }
 
+export default Nav
+
 const menuQuery = graphql`
   query {
     site {
@@ -272,5 +273,3 @@ const menuQuery = graphql`
     }
   }
 `
-
-export default Nav
