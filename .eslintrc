@@ -22,6 +22,9 @@
     "arrow-body-style": [2, "as-needed"],
     "consistent-return": 1,
     "comma-dangle": 1,
+    "class-methods-use-this": 0,
+    "curly": [1, "multi-or-nest"],
+    "global-require": 0,
     "import": 0,
     "import/extensions": 0,
     "indent": [
@@ -84,6 +87,7 @@
     ],
     "no-trailing-spaces": 1,
     "no-use-before-define": 0,
+    "nonblock-statement-body-position": 0,
     "semi": 0,
     "quotes": [
       2, "single", {
@@ -101,20 +105,21 @@
     "react/no-danger": 0,
     "react/no-unescaped-entities": 0,
     "react/no-array-index-key": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/require-default-props": 0,
+    "react/jsx-boolean-value": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-curly-brace-presence": 0,
+    "react/jsx-first-prop-new-line": 0,
+    "react/jsx-indent-props": 0,
     "react/jsx-max-props-per-line": [
       1, {
         "maximum": 5 
         }
       ],
-    "react/react-in-jsx-scope": 0,
-    "react/require-default-props": 0,
-    "react/jsx-boolean-value": 0,
-    "react/jsx-first-prop-new-line": 0,
-    "react/jsx-indent-props": 0,
-    "react/jsx-no-target-blank": 0,
-    "react/jsx-closing-bracket-location": 0,
-    "react/jsx-curly-brace-presence": 0,
+    "react/jsx-no-target-blank": 2,
     "react/jsx-one-expression-per-line": 0,
+    "react/jsx-wrap-multilines": 0,
     "react/no-unused-prop-types": 1,
     "react/default-props-match-prop-types": 0,
     "space-before-function-paren": 0
