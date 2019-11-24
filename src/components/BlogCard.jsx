@@ -1,17 +1,18 @@
 import React from 'react'
-import { navigate } from "gatsby"
+import PropTypes from 'prop-types'
+import { navigate } from 'gatsby'
 import Image from 'gatsby-image'
 import assignIn from 'lodash/assignIn'
 import kebabCase from 'lodash/kebabCase'
 import styled from 'styled-components'
 import { accent } from '../../tailwind'
 import tw from 'tailwind.macro'
-// Components
-import PageLink from './PageLink'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons'
+// Components
+import PageLink from './PageLink'
 
 const Card = styled.div`
   ${tw`block relative bg-center bg-no-repeat w-full cursor-pointer`}
@@ -116,16 +117,16 @@ const Text = styled.p`
 const ReadBtn = styled(PageLink)`
   ${tw`inline-flex relative font-lg font-medium tracking-wide leading-normal w-full mt-4 px-6 py-2 cursor-pointer overflow-hidden z-1`}
   background: 0 0;
-  color: ${ accent };
+  color: ${accent};
   width: max-content;
   align-items: center;
-  border: 3px solid ${ accent };
+  border: 3px solid ${accent};
   border-radius: 20px;
   transition: all 300ms ease-in-out;
   &:before {
     ${tw`absolute h-full pin-t pin-l`}
     content: '';
-    background: ${ accent };
+    background: ${accent};
     width: 200%;
     transform: rotate(-30deg) translate(-30%,-100%);
     transform-origin: left;
@@ -133,7 +134,7 @@ const ReadBtn = styled(PageLink)`
     z-index: -1;
   }
   &:hover {
-    background: ${ accent };
+    background: ${accent};
     color: rgba(255,255,255,0.95);
     &:before {
       transform: rotate(0) translate(0,0);
@@ -168,23 +169,27 @@ const Date = styled.span`
 `
 
 class BlogCard extends React.Component {
-  
+
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
   }
-  
+
   handleClick() {
-    navigate('/blog'+this.props.post.fields.slug+'/')
+    navigate(`/blog${this.props.post.fields.slug}/`)
   }
-  
+
   render() {
-    let post = this.props.post
+    const post = this.props.post
+    const bgImage = post.image.childImageSharp.fluid.presentationWidth
     assignIn(post, post.frontmatter, post.fields)
 
     return (
       <Card onClick={this.handleClick}>
-        <BgImage alt={post.title} maxWidth={post.image.childImageSharp.fluid.presentationWidth} fluid={post.image.childImageSharp.fluid} />
+        <BgImage
+          alt={post.title}
+          maxWidth={bgImage.presentationWidth}
+          fluid={bgImage} />
         <Wrapper className='content-mask'>
           <CardContent>
             <CardTitle>
@@ -202,6 +207,18 @@ class BlogCard extends React.Component {
       </Card>
     )
   }
+}
+
+BlogCard.propTypes = {
+  post: PropTypes.shape({
+    fields: PropTypes.shape,
+    frontmatter: PropTypes.shape,
+    title: PropTypes.string,
+    date: PropTypes.string,
+    description: PropTypes.string,
+    category: PropTypes.string,
+    image: PropTypes.shape,
+  }).isRequired,
 }
 
 export default BlogCard
