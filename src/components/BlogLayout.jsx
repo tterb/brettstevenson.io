@@ -1,21 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import kebabCase from 'lodash/kebabCase'
 import upperFirst from 'lodash/upperFirst'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
 import Bounce from 'react-reveal/Bounce';
-import Slide from 'react-reveal/Slide';
-import { Parallax } from 'react-spring/renderprops-addons'
 import config from 'react-reveal/globals'
 // Components
-import Header from '../components/Header'
-import Layout from '../components/Layout'
-import Nav from '../components/Nav'
-import BlogCard from '../components/BlogCard'
-import Pagination from '../components/Pagination'
-import Search from '../components/Search'
-import TagMenu from '../components/TagMenu'
-import Sidebar from '../components/Sidebar'
+import Layout from './Layout'
+import Header from './Header'
+import BlogCard from './BlogCard'
+import Pagination from './Pagination'
+import Search from './Search'
+import TagMenu from './TagMenu'
 // Elements
 import { BigTitle, Title } from '../elements/Titles'
 import Content from '../elements/Content'
@@ -64,10 +61,6 @@ const Wrapper = styled.div`
   padding-bottom: 18rem;
 `
 
-const BlogHeader = styled(Header)`
-  height: 60vh !important;
-`
-
 const BlogContent = styled(Content)`
   ${tw`w-4/5 h-full mx-auto p-0 pt-16 z-10`}
   background: rgba(255,255,255,0.95);
@@ -98,27 +91,22 @@ const BlogLayout = ({ title, posts, pageContext, algolia }) => {
   const { currentPage, numPages, count } = pageContext
   const tagPage = (title !== 'Blog')
   const path = tagPage ? `blog/tag/${kebabCase(title)}` : `blog`
-  
-  let postCount = count%4
-  if(count < 4)
+
+  let postCount = count % 4
+  if (count < 4)
     postCount = count
-  else if(currentPage <= Math.floor(count/4))
+  else if (currentPage <= Math.floor(count / 4))
     postCount = 4
 
-  let pageHeight = 1.05+(postCount*0.38)
-  let offset = (numPages > 1 ? 0.075 : 0)
-  let contentHeight = 0.525+(postCount*0.6)+offset
+  const offset = (numPages > 1 ? 0.075 : 0)
+  let pageHeight = 1.05 + (postCount * 0.38)
+  let contentHeight = 0.525 + (postCount * 0.6) + offset
   const mobile = isMobile()
-  if(mobile) {
-    pageHeight += postCount*0.09
+  if (mobile) {
+    pageHeight += postCount * 0.09
     contentHeight += 0.55
   }
-  
-  const charPoses = {
-    exit: { opacity: 0 },
-    enter: { opacity: 1 }
-  };
-  
+
   return (
     <Layout pages={pageHeight}>
       <Header offset={0} factor={0.45} full={true}>
@@ -137,22 +125,27 @@ const BlogLayout = ({ title, posts, pageContext, algolia }) => {
             <TagMenu />
           </ButtonsWrapper>
           <CardList>
-            {posts.map(({ node, i }) => {
-              return (
-                <Bounce bottom key={node.fields.slug} delay={100*(i+1)} duration={1000}>
-                  <BlogCard post={node} mobile={mobile} />
-                </Bounce>
-              )
-            })}
+            {posts.map(({ node, i }) => (
+              <Bounce bottom key={node.fields.slug} delay={100 * (i + 1)} duration={1000}>
+                <BlogCard post={node} mobile={mobile} />
+              </Bounce>
+            ))}
           </CardList>
-          <Pagination 
+          <Pagination
             path={path}
-            current={currentPage} 
+            current={currentPage}
             numPages={numPages} />
         </Wrapper>
       </BlogContent>
     </Layout>
   )
+}
+
+BlogLayout.propTypes = {
+  title: PropTypes.string.isRequired,
+  posts: PropTypes.array.isRequired,
+  pageContext: PropTypes.shape.isRequired,
+  algolia: PropTypes.shape,
 }
 
 export default BlogLayout
