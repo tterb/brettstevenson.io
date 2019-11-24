@@ -1,14 +1,13 @@
 const path = require('path')
-const _ = require("lodash")
+const _ = require('lodash')
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
-const wrapper = promise =>
-  promise.then(result => {
-    if (result.errors) {
-      throw result.errors
-    }
-    return result
-  })
+const wrapper = promise => promise.then(result => {
+  if (result.errors) {
+    throw result.errors
+  }
+  return result
+})
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -20,16 +19,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (
       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
       Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
-    ) {
+    )
       slug = `/${_.kebabCase(node.frontmatter.slug)}`
-    }
+
     // Otherwise use the title for the slug
     if (
       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
       Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
-    ) {
+    )
       slug = `/${_.kebabCase(node.frontmatter.title)}`
-    }
+
     createNodeField({ node, name: 'slug', value: slug })
     // Adds the name of "gatsby-source-filesystem" as field (in this case "projects" or "pages")
     createNodeField({ node, name: 'sourceInstanceName', value: fileNode.sourceInstanceName })
@@ -38,12 +37,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  
+
   // page templates
   const blogTemplate = path.resolve('./src/templates/blog.jsx')
   const postTemplate = path.resolve('./src/templates/post.jsx')
-  const tagTemplate = path.resolve("src/templates/tags.jsx")
-  
+  const tagTemplate = path.resolve('src/templates/tags.jsx')
+
   const result = await wrapper(
     graphql(`
       {
@@ -62,9 +61,9 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-    `)
+    `),
   )
-  
+
   const posts = result.data.posts.edges
   posts.forEach((post, index) => {
     createPage({
@@ -79,10 +78,10 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-  
+
   // Handle blog pagination
   const postsPerPage = 4
-  const numPages = Math.ceil(posts.length/postsPerPage)
+  const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((x, i) => {
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
@@ -92,17 +91,16 @@ exports.createPages = async ({ graphql, actions }) => {
         skip: i * postsPerPage,
         numPages,
         currentPage: i + 1,
-        count: posts.length
+        count: posts.length,
       },
     })
   })
-  
+
   // Iterate through posts collecting tags
   let allTags = []
   _.each(posts, edge => {
-    if (_.get(edge, 'node.frontmatter.tags')) {
+    if (_.get(edge, 'node.frontmatter.tags'))
       allTags = _.concat(allTags, edge.node.frontmatter.tags)
-    }
   })
   const tags = _.countBy(allTags)
 
