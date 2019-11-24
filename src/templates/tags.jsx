@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 // Components
 import BlogLayout from '../components/BlogLayout'
@@ -13,6 +14,21 @@ const Tags = ({ pageContext, data }) => {
       pageContext={pageContext}
     />
   )
+}
+
+Tags.propTypes = {
+  pageContext: PropTypes.shape({
+    currentPage: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired,
+    limit: PropTypes.number.isRequired,
+    numPages: PropTypes.number.isRequired,
+    skip: PropTypes.number.isRequired,
+    tag: PropTypes.string.isRequired,
+  }).isRequired,
+  data: PropTypes.shape({
+    posts: PropTypes.array.isRequired,
+    site: PropTypes.shape.isRequired,
+  }).isRequired,
 }
 
 export default Tags

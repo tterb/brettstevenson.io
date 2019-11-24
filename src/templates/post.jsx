@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import assignIn from 'lodash/assignIn'
 import MDXRenderer from '../components/Post/MDX'
@@ -23,11 +24,11 @@ const PostTemplate = ({ data, pageContext, location }) => {
   let mobile = false
   if (typeof window !== 'undefined') {
     const { height, width } = useWindowDimensions()
-    if (width <= 500) {
+    if (width <= 500)
       mobile = true
-    } else {
+    else
       mobile = false
-    }
+
     require('smooth-scroll')('a[href*="#"]', {
       speed: 100,
       easing: 'easeInOutCubic',
@@ -53,6 +54,19 @@ const PostTemplate = ({ data, pageContext, location }) => {
       </PostLayout>
     </>
   )
+}
+
+PostTemplate.propTypes = {
+  data: PropTypes.shape({
+    avatar: PropTypes.shape.isRequired,
+    post: PropTypes.shape.isRequired,
+  }).isRequired,
+  pageContext: PropTypes.shape({
+    next: PropTypes.shape,
+    prev: PropTypes.shape,
+    slug: PropTypes.string.isRequired,
+  }).isRequired,
+  location: PropTypes.string.isRequired,
 }
 
 export default PostTemplate
