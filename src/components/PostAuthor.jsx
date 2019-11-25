@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Image from 'gatsby-image'
 import tw from 'tailwind.macro'
-import { accent } from '../../tailwind'
 import styled from 'styled-components'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faTwitter, faDribbble, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+import { accent } from '../../tailwind'
 
 const Wrapper = styled.div`
   ${tw`m-auto mt-10 mb-18 xs:w-4/5 xs:text-center xs:mb-12 md:w-3/4 md:text-left xl:w-7/10 xl:mx-auto`}
@@ -69,11 +69,11 @@ const PostAuthor = ({ author }) => (
       <AuthorTitle>{author.name}</AuthorTitle>
       <p className='author-bio'>{ author.bio }</p>
       <AuthorLinks>
-        <li><a href={author.github} target='_blank'><FontAwesomeIcon icon={faGithub}/></a></li>
-        <li><a href={author.twitter} target='_blank'><FontAwesomeIcon icon={faTwitter}/></a></li>
-        <li><a href={author.dribbble} target='_blank'><FontAwesomeIcon icon={faDribbble}/></a></li>
-        <li><a href={author.linkedIn} target='_blank'><FontAwesomeIcon icon={faLinkedinIn}/></a></li>
-        <li><a href='https://brettstevenson.io/contact' target='_blank'><FontAwesomeIcon icon={faEnvelope}/></a></li>
+        <li><a href={author.github} target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faGithub} /></a></li>
+        <li><a href={author.twitter} target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faTwitter} /></a></li>
+        <li><a href={author.dribbble} target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faDribbble} /></a></li>
+        <li><a href={author.linkedIn} target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faLinkedinIn} /></a></li>
+        <li><a href='https://brettstevenson.io/contact' target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faEnvelope} /></a></li>
       </AuthorLinks>
     </AuthorText>
   </Wrapper>
