@@ -105,7 +105,7 @@ function ProjectsCard(props) {
       style={{ transform: prop.xys.interpolate(trans) }}>
       <Card>
         <Corner>
-          <a href={link} target='_blank' rel='noopener noreferrer'>
+          <a href={link} aria-label={project.title} target='_blank' rel='noopener noreferrer'>
             { project.github ?
               <FontAwesomeIcon icon={faGithub} />
               : <FontAwesomeIcon icon={faGlobe} />
