@@ -45,11 +45,11 @@ const defaultConfig = require('tailwindcss/defaultConfig')();
 
 const colors = {
   transparent:   'transparent',
-  
+
   'blue-black':      '#161719',
   'blue-grey':       '#23262b',
   'background-alt':  '#202124',
-  'menu':            '#1C1D1E',
+  menu:              '#1C1D1E',
 
   black:             '#000000',
   'grey-darkest':    '#273238',
@@ -68,7 +68,7 @@ const colors = {
   'red-light':       '#E0513E',
   'red-lighter':     '#FF8878',
   'red-lightest':    '#FFAA9F',
-  
+
   'orange-darkest':  '#462A05',
   'orange-darker':   '#A45E03',
   'orange-dark':     '#D97B00',
@@ -100,7 +100,7 @@ const colors = {
   'teal-light':      '#65E1D5',
   'teal-lighter':    '#8CFFF4',
   'teal-lightest':   '#B3FFF7',
-  
+
   'blue-darkest':    '#0B2C41',
   'blue-darker':     '#104060',
   'blue-dark':       '#2279B3',
@@ -116,7 +116,7 @@ const colors = {
   'indigo-light':    '#5D69E9',
   'indigo-lighter':  '#808AFF',
   'indigo-lightest': '#ABB2FF',
-  
+
   'purple-darkest':  '#48277A',
   'purple-darker':   '#6233A8',
   'purple-dark':     '#7B45CC',
@@ -124,7 +124,7 @@ const colors = {
   'purple-light':    '#A56EF7',
   'purple-lighter':  '#B584FF',
   'purple-lightest': '#C59EFF',
-  
+
   'pink-darkest':    '#330816',
   'pink-darker':     '#661429',
   'pink-dark':       '#992A45',
@@ -145,7 +145,7 @@ const accents = {
   'red-light':     '#FE625A',
   'red-lighter':   '#FE8079',
   'red-lightest':  '#FFA49F',
-  
+
   'teal-darkest':  '#164239',
   'teal-darker':   '#206F5F',
   'teal-dark':     '#289C85',
@@ -193,11 +193,11 @@ module.exports = {
   */
 
   screens: {
-    xs: '350px',
-    sm: '501px',
-    md: '650px',
-    lg: '900px',
-    xl: '1200px',
+    xs:   '350px',
+    sm:   '501px',
+    md:   '650px',
+    lg:   '900px',
+    xl:  '1200px',
     xxl: '1600px',
   },
 
@@ -273,10 +273,10 @@ module.exports = {
     mono: [
       'Source Code Pro',
       'Menlo',
-      'Monaco', 
+      'Monaco',
       'Consolas',
       'Ubuntu Mono',
-      'monospace'
+      'monospace',
     ],
   },
 
@@ -300,14 +300,14 @@ module.exports = {
   */
 
   textSizes: {
-    xs:      '.75rem',  // 12px
-    sm:     '.875rem',  // 14px
-    base:      '1rem',  // 16px
-    lg:    '1.125rem',  // 18px
-    xl:     '1.25rem',  // 20px
-    '2xl':   '1.5rem',  // 24px
-    '3xl': '1.875rem',  // 30px
-    '4xl':  '2.25rem',  // 36px
+    xs:      '.75rem', // 12px
+    sm:     '.875rem', // 14px
+    base:      '1rem', // 16px
+    lg:    '1.125rem', // 18px
+    xl:     '1.25rem', // 20px
+    '2xl':   '1.5rem', // 24px
+    '3xl': '1.875rem', // 30px
+    '4xl':  '2.25rem', // 36px
     '5xl':     '4rem',
     '6xl':     '5rem',
     '7xl':   '5.5rem',
@@ -331,15 +331,15 @@ module.exports = {
   */
 
   fontWeights: {
-    hairline: 100,
-    thin: 200,
-    light: 300,
-    normal: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700,
+    hairline:  100,
+    thin:      200,
+    light:     300,
+    normal:    400,
+    medium:    500,
+    semibold:  600,
+    bold:      700,
     extrabold: 800,
-    black: 900,
+    black:     900,
   },
 
   /*
@@ -355,12 +355,12 @@ module.exports = {
   */
 
   leading: {
-    none: 1,
-    tighter: 1.1,
-    tight:  1.25,
-    normal: 1.45,
-    loose:  1.75,
-    looser:    2,
+    none:       1,
+    tighter:  1.1,
+    tight:   1.25,
+    normal:  1.45,
+    loose:   1.75,
+    looser:     2,
   },
 
   /*
@@ -376,8 +376,8 @@ module.exports = {
   */
 
   tracking: {
-    tight: '-1px',
-    normal: '0',
+    tight:  '-1px',
+    normal:    '0',
     wide: '0.05em',
   },
 
@@ -426,10 +426,10 @@ module.exports = {
 
   borderWidths: {
     default: '1px',
-    '0': '0',
-    '2': '2px',
-    '4': '4px',
-    '8': '8px',
+    0:         '0',
+    2:       '2px',
+    4:       '4px',
+    8:       '8px',
   },
 
   /*
@@ -468,11 +468,11 @@ module.exports = {
   */
 
   borderRadius: {
-    none: '0',
-    sm: '.125rem',
+    none:         '0',
+    sm:     '.125rem',
     default: '.25rem',
-    lg: '.5rem',
-    full: '9999px',
+    lg:       '.5rem',
+    full:    '9999px',
   },
 
   /*
@@ -498,25 +498,25 @@ module.exports = {
   width: {
     auto:        'auto',
     px:           '1px',
-    '0':            '0',
-    '1':      '0.25rem',
-    '2':       '0.5rem',
-    '3':      '0.75rem',
-    '4':         '1rem',
-    '5':      '1.25rem',
-    '6':       '1.5rem',
-    '7':      '1.75rem',
-    '8':         '2rem',
-    '10':      '2.5rem',
-    '12':        '3rem',
-    '14':      '3.5rem',
-    '15':     '3.75rem',
-    '16':        '4rem',
-    '18':      '4.5rem',
-    '24':        '6rem',
-    '32':        '8rem',
-    '48':       '12rem',
-    '64':       '16rem',
+    0:              '0',
+    1:        '0.25rem',
+    2:         '0.5rem',
+    3:        '0.75rem',
+    4:           '1rem',
+    5:        '1.25rem',
+    6:         '1.5rem',
+    7:        '1.75rem',
+    8:           '2rem',
+    10:        '2.5rem',
+    12:          '3rem',
+    14:        '3.5rem',
+    15:       '3.75rem',
+    16:          '4rem',
+    18:        '4.5rem',
+    24:          '6rem',
+    32:          '8rem',
+    48:         '12rem',
+    64:         '16rem',
     '1/2':        '50%',
     '1/3':  '33.33333%',
     '2/3':  '66.66667%',
@@ -552,23 +552,23 @@ module.exports = {
   height: {
     auto:    'auto',
     px:       '1px',
-    '0':     '0rem',
-    '1':  '0.25rem',
-    '2':   '0.5rem',
-    '3':  '0.75rem',
-    '4':     '1rem',
-    '6':   '1.5rem',
-    '7':  '1.75rem',
-    '8':     '2rem',
-    '10':  '2.5rem',
-    '12':    '3rem',
-    '14':  '3.5rem',
-    '15': '3.75rem',
-    '16':    '4rem',
-    '24':    '6rem',
-    '32':    '8rem',
-    '48':   '12rem',
-    '64':   '16rem',
+    0:       '0rem',
+    1:    '0.25rem',
+    2:     '0.5rem',
+    3:    '0.75rem',
+    4:       '1rem',
+    6:     '1.5rem',
+    7:    '1.75rem',
+    8:       '2rem',
+    10:    '2.5rem',
+    12:      '3rem',
+    14:    '3.5rem',
+    15:   '3.75rem',
+    16:      '4rem',
+    24:      '6rem',
+    32:      '8rem',
+    48:     '12rem',
+    64:     '16rem',
     full:    '100%',
     screen: '100vh',
   },
@@ -588,7 +588,7 @@ module.exports = {
   */
 
   minWidth: {
-    '0':     '0',
+    0:       '0',
     full: '100%',
   },
 
@@ -607,7 +607,7 @@ module.exports = {
   */
 
   minHeight: {
-    '0':        '0',
+    0:          '0',
     full:    '100%',
     screen: '100vh',
   },
@@ -680,26 +680,26 @@ module.exports = {
   */
 
   padding: {
-    px:      '1px',
-    '0':       '0',
-    '1': '0.25rem',
-    '2':  '0.5rem',
-    '3': '0.75rem',
-    '4':    '1rem',
-    '5': '1.25rem',
-    '6':  '1.5rem',
-    '7': '1.75rem',
-    '8':    '2rem',
-    '9': '2.25rem',
-    '10': '2.5rem',
-    '12':   '3rem',
-    '14': '3.5rem',
-    '16':   '4rem',
-    '18': '4.5rem',
-    '20':   '5rem',
-    '22': '5.5rem',
-    '24':   '6rem',
-    '32':   '8rem',
+    px:    '1px',
+    0:       '0',
+    1: '0.25rem',
+    2:  '0.5rem',
+    3: '0.75rem',
+    4:    '1rem',
+    5: '1.25rem',
+    6:  '1.5rem',
+    7: '1.75rem',
+    8:    '2rem',
+    9: '2.25rem',
+    10: '2.5rem',
+    12:   '3rem',
+    14: '3.5rem',
+    16:   '4rem',
+    18: '4.5rem',
+    20:   '5rem',
+    22: '5.5rem',
+    24:   '6rem',
+    32:   '8rem',
   },
 
   /*
@@ -718,22 +718,23 @@ module.exports = {
   */
 
   margin: {
-    auto:   'auto',
-    px:      '1px',
-    '0':       '0',
-    '1': '0.25rem',
-    '2':  '0.5rem',
-    '3': '0.75rem',
-    '4':    '1rem',
-    '5': '1.25rem',
-    '6':  '1.5rem',
-    '8':    '2rem',
-    '10': '2.5rem',
-    '12':   '3rem',
-    '14': '3.5rem',
-    '16':   '4rem',
-    '18': '4.5rem',
-    '20':   '5rem',
+    auto:  'auto',
+    px:     '1px',
+    0:        '0',
+    1:  '0.25rem',
+    2:   '0.5rem',
+    3:  '0.75rem',
+    4:     '1rem',
+    5:  '1.25rem',
+    6:   '1.5rem',
+    8:     '2rem',
+    10:  '2.5rem',
+    11: '2.75rem',
+    12:    '3rem',
+    14:  '3.5rem',
+    16:    '4rem',
+    18:  '4.5rem',
+    20:    '5rem',
   },
 
   /*
@@ -753,13 +754,13 @@ module.exports = {
 
   negativeMargin: {
     px:      '1px',
-    '0':       '0',
-    '1': '0.25rem',
-    '2':  '0.5rem',
-    '3': '0.75rem',
-    '4':    '1rem',
-    '6':  '1.5rem',
-    '8':    '2rem',
+    0:         '0',
+    1:   '0.25rem',
+    2:    '0.5rem',
+    3:   '0.75rem',
+    4:      '1rem',
+    6:    '1.5rem',
+    8:      '2rem',
   },
 
   /*
@@ -801,16 +802,16 @@ module.exports = {
 
   zIndex: {
     auto: 'auto',
-    '0':       0,
-    '1':       1,
-    '5':       5,
-    '10':     10,
-    '20':     20,
-    '30':     30,
-    '40':     40,
-    '50':     50,
-    '999':   999,
-    '9999': 9999,
+    0:         0,
+    1:         1,
+    5:         5,
+    10:       10,
+    20:       20,
+    30:       30,
+    40:       40,
+    50:       50,
+    999:     999,
+    9999:   9999,
   },
 
   /*
@@ -827,12 +828,12 @@ module.exports = {
   */
 
   opacity: {
-    '0':    '0',
-    '10':  '.1',
-    '25': '.25',
-    '50':  '.5',
-    '75': '.75',
-    '100':  '1',
+    0:    '0',
+    10:  '0.1',
+    25: '0.25',
+    50:  '0.5',
+    75: '0.75',
+    100:   '1',
   },
 
   /*
