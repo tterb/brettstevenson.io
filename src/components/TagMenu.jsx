@@ -7,7 +7,6 @@ import { colors, accent } from '../../tailwind'
 // Components
 import PageLink from './PageLink'
 // Icons
-// import { Tag } from 'styled-icons/evil/Tag'
 import Tag from '../images/tag'
 
 const Container = styled.div`
@@ -78,9 +77,6 @@ const ListWrapper = styled.div`
   &.open {
     &:before {
       ${tw`h-3`}
-      // border-left: 8px solid transparent;
-      // border-right: 8px solid transparent;
-      // border-bottom: 8px solid ${colors['grey-lighter']};
     }
   }
 `
@@ -116,17 +112,17 @@ const TagItem = styled.li`
 `
 
 class TagMenu extends React.Component {
-  
+
   state = {
     open: false,
   }
-  
+
   handleOnClick = () => {
     this.setState(prevState => ({
       open: !prevState.open,
     }))
   }
-  
+
   render() {
     return (
       <StaticQuery
@@ -134,26 +130,28 @@ class TagMenu extends React.Component {
         render={data => {
           const tags = _.orderBy(data.allMdx.group, [(tag) => tag.totalCount], ['desc'])
           // topTags = _.take(topTags, 12)
-        return (
-          <Container>
-            <TagWrapper>
-              <TagButton className={this.state.open ? 'open' : ''} onClick={this.handleOnClick}>
-                <TagIcon />
-              </TagButton>
-              <ListWrapper className={this.state.open ? 'open' : ''}>
-                <TagList className={this.state.open ? 'open' : ''}>
-                  {tags.map((tag, index) => (
-                    <TagItem key={index}>
-                      <PageLink to={`/blog/tag/${_.kebabCase(tag.fieldValue)}/`}>
-                        {tag.fieldValue} (<span>{tag.totalCount}</span>)
-                      </PageLink>
-                    </TagItem>
-                  ))}
-                </TagList>
-              </ListWrapper>
-            </TagWrapper>
-          </Container>
-        )}}
+          return (
+            <Container>
+              <TagWrapper>
+                <TagButton className={this.state.open ? 'open' : ''} onClick={this.handleOnClick}>
+                  <TagIcon />
+                </TagButton>
+                <ListWrapper className={this.state.open ? 'open' : ''}>
+                  <TagList className={this.state.open ? 'open' : ''}>
+                    {tags.map((tag, index) => (
+                      <TagItem key={index}>
+                        <PageLink label={tag.fieldValue}
+                          to={`/blog/tag/${_.kebabCase(tag.fieldValue)}/`}>
+                          {tag.fieldValue} (<span>{tag.totalCount}</span>)
+                        </PageLink>
+                      </TagItem>
+                    ))}
+                  </TagList>
+                </ListWrapper>
+              </TagWrapper>
+            </Container>
+          )
+        }}
       />
     )
   }

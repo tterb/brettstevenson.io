@@ -7,17 +7,17 @@ import tw from 'tailwind.macro'
 import PageLink from './PageLink'
 
 const TagList = styled.ul`
-  ${tw `list-reset text-left text-lg p-0 pl-3 pr-5`}
+  ${tw`list-reset text-left text-lg p-0 pl-3 pr-5`}
 `
 
 const Tag = styled.li`
-  ${tw `inline-block`}
+  ${tw`inline-block`}
   a {
-    ${tw `mb-2 no-underline`}
+    ${tw`mb-2 no-underline`}
     display: grid;
     color: rgba(0,0,0,0.4);
     span {
-      ${tw `inline-block text-left m-0 mr-2 mb-1 opacity-100 z-999`}
+      ${tw`inline-block text-left m-0 mr-2 mb-1 opacity-100 z-999`}
       background: #efefef;
       color: rgba(0,0,0,0.5);
       font-size: 0.9rem;
@@ -28,13 +28,13 @@ const Tag = styled.li`
       padding: 6px 8px;
     }
     .active {
-      ${tw `opacity-0 z-0`}
+      ${tw`opacity-0 z-0`}
       transition: color 350ms ease-in-out, opacity 250ms ease-in-out;
     }
     &:hover {
       box-shadow: none !important;
       span {
-        ${tw `opacity-0`}
+        ${tw`opacity-0`}
       }
       .active {
         background: linear-gradient(-25deg, SlateBlue, DeepSkyBlue);
@@ -46,7 +46,7 @@ const Tag = styled.li`
   }
 `
 
-export default () => (
+const PostTags = () => (
   <StaticQuery
     query={tagsQuery}
     render={data => {
@@ -57,7 +57,7 @@ export default () => (
         <TagList>
           {topTags.map(tag => (
             <Tag key={tag.fieldValue}>
-              <PageLink to={`/tag/${_.kebabCase(tag.fieldValue)}/`}>
+              <PageLink label={tag.fieldValue} to={`/tag/${_.kebabCase(tag.fieldValue)}/`}>
                 <span>{tag.fieldValue} ({tag.totalCount})</span>
                 <span className='active'>{tag.fieldValue} ({tag.totalCount})</span>
               </PageLink>
@@ -79,3 +79,5 @@ const tagsQuery = graphql`
     }
   }
 `
+
+export default PostTags
