@@ -3,9 +3,8 @@ const dotenv = require(`dotenv`)
 
 const pathPrefix = config.pathPrefix === `/` ? `` : config.pathPrefix
 
-if (process.env.ENVIRONMENT !== "production") {
+if (process.env.ENVIRONMENT !== 'production')
   dotenv.config();
-}
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -21,7 +20,9 @@ module.exports = {
     siteUrl: config.siteUrl + pathPrefix,
     author: `Brett Stevenson`,
     keywords: [
-      `brett stevenson`, `full-stack`, `software`, `developer`, `design`, `portfolio`, `blog`, `python`, `javascript`, `react`, `gatsby`, `website optimization`
+      `brett stevenson`, `full-stack`, `software`, `developer`,
+      `design`, `portfolio`, `blog`, `python`, `javascript`,
+      `react`, `gatsby`, `website optimization`,
     ],
     disqusShortname: `tterb-gatsby`,
     menuLinks: [
@@ -51,7 +52,7 @@ module.exports = {
       searchOnlyApiKey: process.env.ALGOLIA_SEARCH_ONLY_API_KEY
         ? process.env.ALGOLIA_SEARCH_ONLY_API_KEY
         : ``,
-      indexName: process.env.ALGOLIA_INDEX_NAME ? process.env.ALGOLIA_INDEX_NAME : ``
+      indexName: process.env.ALGOLIA_INDEX_NAME ? process.env.ALGOLIA_INDEX_NAME : ``,
     },
   },
   /* Plugins */
@@ -73,7 +74,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: config.googleAnalyticsID
+        trackingId: config.googleAnalyticsID,
+        optimizeId: config.googleOptimizeID,
+        pageTransitionDelay: 1000,
+        head: true,
       },
     },
     {
@@ -124,7 +128,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
-        ignore: [`**/*_\.*`],
+        ignore: [`**/*_.*`],
       },
     },
     {
