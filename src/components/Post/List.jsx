@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
 
@@ -18,12 +19,6 @@ const Ordered = styled.ol`
   }
 `
 
-export const OrderedList = ({ children }) => (
-  <Ordered>
-    {children}
-  </Ordered>
-)
-
 const Unordered = styled.ul`
   ${tw`list-reset leading-loose align-middle mt-0 ml-5`}
   line-height: 1.625;
@@ -39,8 +34,26 @@ const Unordered = styled.ul`
   }
 `
 
+export const OrderedList = ({ children }) => (
+  <Ordered>
+    {children}
+  </Ordered>
+)
+OrderedList.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+}
+
 export const UnorderedList = ({ children }) => (
   <Unordered>
     {children}
   </Unordered>
 )
+UnorderedList.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+}

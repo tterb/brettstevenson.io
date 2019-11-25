@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import CodeBlock from './Code'
 
 function preToCodeBlock(preProps) {
@@ -16,23 +17,24 @@ function preToCodeBlock(preProps) {
     const matches = className.match(/language-(?<lang>.*)/)
     return {
       codeString: codeString.trim(),
+      language: matches && matches.groups && matches.groups.lang ? matches.groups.lang : '',
       className,
-      language:
-        matches && matches.groups && matches.groups.lang
-          ? matches.groups.lang
-          : '',
       ...props,
     }
   }
+  return null
 }
 
-function CodePre(preProps) {
-  const props = preToCodeBlock(preProps);
-  if (props) {
-    return <CodeBlock {...props} />;
-  } else {
-    return <pre {...preProps} />;
-  }
+const CodePre = (props) => {
+  const preProps = preToCodeBlock(props)
+  return preProps ? <CodeBlock {...preProps} /> : <pre {...props} />
+}
+CodePre.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.shape,
+    PropTypes.node,
+  ]).isRequired,
 }
 
 export default CodePre

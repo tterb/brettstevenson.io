@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
@@ -9,8 +10,7 @@ import { faCopy } from '@fortawesome/free-regular-svg-icons'
 const RE = /{([\d,-]+)}/
 
 const Wrapper = styled.div`
-  ${tw`mr-auto mb-3 overflow-auto`}
-  width: 100%;
+  ${tw`w-full mr-auto mb-3 overflow-auto`}
   &.multiline {
     ${tw`w-full mb-5`}
     pre {
@@ -33,104 +33,6 @@ const Wrapper = styled.div`
     }
   }
 `
-
-function copyToClipboard(toCopy) {
-  const el = document.createElement('textarea')
-  el.value = toCopy
-  el.setAttribute('readonly', '')
-  el.style.position = 'absolute'
-  el.style.left = '-9999px'
-  document.body.appendChild(el)
-  el.select()
-  document.execCommand('copy')
-  document.body.removeChild(el)
-}
-
-function calculateLinesToHighlight(meta) {
-  if (RE.test(meta)) {
-    const lineNumbers = RE.exec(meta)[1]
-      .split(',')
-      .map(v => v.split('-').map(y => parseInt(y, 10)))
-    return index => {
-      const lineNumber = index + 1
-      const inRange = lineNumbers.some(([start, end]) =>
-        end ? lineNumber >= start && lineNumber <= end : lineNumber === start
-      );
-      return inRange
-    };
-  } else {
-    return () => false
-  }
-}
-
-const CodeBlock= ({ codeString, language, metastring, ...props }) => {
-  const shouldHighlightLine = calculateLinesToHighlight(metastring)
-  return (
-    <Highlight {...defaultProps} code={codeString} language={language}>
-      {({ className, tokens, getLineProps, getTokenProps }) => {
-        const multiline = tokens.length > 1 ? 'multiline' : ''
-        return (
-          <Wrapper className={multiline}>
-            <pre className={className}>
-              <Copy toCopy={codeString} />
-              {tokens.map((line, index) => {
-                const { className } = getLineProps({
-                  line,
-                  key: index,
-                  className: shouldHighlightLine(index)
-                    ? 'highlight-line'
-                    : ''
-                })
-
-                return (
-                  <div key={index} className={className}>
-                    <span className='number-line'>{index + 1}</span>
-                    {line.map((token, key) => {
-                      const { className, children } = getTokenProps({
-                        token,
-                        key
-                      })
-                      return (
-                        <span key={key} className={className}>
-                          {children}
-                        </span>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-            </pre>
-          </Wrapper>
-        )
-      }}
-    </Highlight>
-  )
-}
-
-export default CodeBlock
-
-function Copy({ toCopy }) {
-  const [hasCopied, setHasCopied] = useState(false)
-
-  function copyToClipboardOnClick() {
-    if (hasCopied) return
-    copyToClipboard(toCopy)
-    setHasCopied(true)
-    setTimeout(() => {
-      setHasCopied(false);
-    }, 4000)
-  }
-
-  return (
-    <CopyButton onClick={copyToClipboardOnClick} data-a11y='false'>
-      {hasCopied ? (
-        <>Copied <FontAwesomeIcon icon={faCopy} /></>
-      ) : (
-        <>Copy <FontAwesomeIcon icon={faCopy} /></>
-      )}
-    </CopyButton>
-  )
-}
 
 const CopyButton = styled.button`
   ${tw`absolute text-sm align-middle cursor-pointer outline-none py-2 px-3`}
@@ -160,14 +62,103 @@ const CopyButton = styled.button`
   }
 `
 
-const Container = styled.div`
-  ${tw`w-full mt-4 mx-auto overflow-scroll`}
-  max-width: 750px;
-  font-size: 13px;
-  margin-bottom: 50px;
-  border-radius: 5px;
-  textarea,
-  pre {
-    ${tw`p-8`}
+function copyToClipboard(toCopy) {
+  const el = document.createElement('textarea')
+  el.value = toCopy
+  el.setAttribute('readonly', '')
+  el.style.position = 'absolute'
+  el.style.left = '-9999px'
+  document.body.appendChild(el)
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
+}
+
+function calculateLinesToHighlight(meta) {
+  if (RE.test(meta)) {
+    const lineNumbers = RE.exec(meta)[1]
+      .split(',')
+      .map(v => v.split('-').map(y => parseInt(y, 10)))
+    return index => {
+      const lineNumber = index + 1
+      const inRange = lineNumbers.some(([start, end]) => (
+        end ? lineNumber >= start && lineNumber <= end : lineNumber === start))
+      return inRange
+    };
   }
-`
+  return () => false
+}
+
+const CodeBlock = ({ codeString, language, metaString }) => {
+  const shouldHighlightLine = calculateLinesToHighlight(metaString)
+  return (
+    <Highlight {...defaultProps} code={codeString} language={language}>
+      {({ className, tokens, getLineProps, getTokenProps }) => {
+        const multiline = tokens.length > 1 ? 'multiline' : ''
+        return (
+          <Wrapper className={multiline}>
+            <pre className={className}>
+              <Copy toCopy={codeString} />
+              {tokens.map((line, index) => {
+                const { className } = getLineProps({
+                  line,
+                  key: index,
+                  className: shouldHighlightLine(index) ? 'highlight-line' : '',
+                })
+
+                return (
+                  <div key={index} className={className}>
+                    <span className='number-line'>{index + 1}</span>
+                    {line.map((token, key) => {
+                      const { className, children } = getTokenProps({ token, key })
+                      return (
+                        <span key={key} className={className}>
+                          {children}
+                        </span>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </pre>
+          </Wrapper>
+        )
+      }}
+    </Highlight>
+  )
+}
+
+CodeBlock.propTypes = {
+  codeString: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  metaString: PropTypes.string,
+}
+
+export default CodeBlock
+
+function Copy({ toCopy }) {
+  const [hasCopied, setHasCopied] = useState(false)
+
+  function copyToClipboardOnClick() {
+    if (hasCopied) return
+    copyToClipboard(toCopy)
+    setHasCopied(true)
+    setTimeout(() => {
+      setHasCopied(false);
+    }, 4000)
+  }
+
+  return (
+    <CopyButton onClick={copyToClipboardOnClick} data-a11y='false'>
+      {hasCopied ? (
+        <>Copied <FontAwesomeIcon icon={faCopy} /></>
+      ) : (
+        <>Copy <FontAwesomeIcon icon={faCopy} /></>
+      )}
+    </CopyButton>
+  )
+}
+
+Copy.propTypes = {
+  toCopy: PropTypes.func.isRequired,
+}

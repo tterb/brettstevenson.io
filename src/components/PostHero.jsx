@@ -1,6 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Image from 'gatsby-image'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
 
 const HeroImage = styled(Image)`
@@ -13,6 +13,15 @@ const HeroImage = styled(Image)`
     padding-bottom: 28% !important;
   }
 `
-export default ({ post }) => (
+const PostHero = ({ post }) => (
   <HeroImage alt={post.title} fluid={post.image.fluid} />
 )
+
+PostHero.propTypes = {
+  post: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.shape.isRequired,
+  }).isRequired,
+}
+
+export default PostHero

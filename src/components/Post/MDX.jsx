@@ -1,13 +1,24 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
-import kebabCase from 'lodash/kebabCase'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 // Components
 import { OrderedList, UnorderedList } from './List'
 import CodePre from './Pre'
 import CodeBlock from './Code'
+
+/**
+ * MDXBody
+ * Here we're applying "global" selectors to make sure we maintain an article
+ * body type feel. We're also applying all the Prism selecotors and styles within
+ * the MDXBody.
+ */
+const MDXBody = styled.div`
+  ${tw`relative flex flex-col justify-center z-10`}
+  ${PrismCSS}
+`
 
 const components = {
   ol: OrderedList,
@@ -29,10 +40,15 @@ function MDX({ content, children, ...props }) {
     </MDXProvider>
   )
 }
+MDX.propTypes = {
+  content: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+}
 
 export default MDX
-
-    // max-width: 744px;
 
 const PrismCSS = `
   .prism-code {
@@ -64,15 +80,4 @@ const PrismCSS = `
       color: #ffcf74 !important;
     }
   }
-`
-
-/**
- * MDXBody
- * Here we're applying "global" selectors to make sure we maintain an article
- * body type feel. We're also applying all the Prism selecotors and styles within
- * the MDXBody.
- */
-const MDXBody = styled.div`
-  ${tw`relative flex flex-col justify-center z-10`}
-  ${PrismCSS}
 `

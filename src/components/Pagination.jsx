@@ -1,11 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import tw from 'tailwind.macro'
-import { accent } from '../../tailwind'
 import styled from 'styled-components'
-import PageLink from '../components/PageLink'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
+// Components
+import PageLink from './PageLink'
+import { accent } from '../../tailwind'
 
 const Wrapper = styled.div`
   ${tw`block w-full text-center m-auto pt-8`}
@@ -35,14 +37,29 @@ const Pagination = ({ path, current, numPages }) => {
     <>
       <Wrapper>
         {!isFirst && (
-          <PageLink direction={'left'} to={`/${path}/${prevPage}`} rel='prev'><FontAwesomeIcon icon={faArrowAltCircleLeft}/></PageLink>
+          <PageLink
+            label='previous' rel='prev'
+            direction={'left'}
+            to={`/${path}/${prevPage}`}>
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+          </PageLink>
         )}
         {!isLast && (
-          <PageLink to={`/${path}/${nextPage}`} rel='next'><FontAwesomeIcon icon={faArrowAltCircleRight}/></PageLink>
+          <PageLink
+            label='next' rel='next'
+            to={`/${path}/${nextPage}`}>
+            <FontAwesomeIcon icon={faArrowAltCircleRight} />
+          </PageLink>
         )}
       </Wrapper>
     </>
   )
+}
+
+Pagination.propTypes = {
+  path: PropTypes.string.isRequired,
+  current: PropTypes.number.isRequired,
+  numPages: PropTypes.number.isRequired,
 }
 
 export default Pagination

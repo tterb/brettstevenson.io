@@ -1,9 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Image from 'gatsby-image'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
 import { Disqus } from 'gatsby-plugin-disqus'
+// FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 // Config
 import { accent } from '../../tailwind'
 import config from '../../config/website'
@@ -12,9 +16,6 @@ import Nav from './Nav'
 import PostHeader from './PostHeader'
 import PostAuthor from './PostAuthor'
 import PageLink from './PageLink'
-// FontAwesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 
 const Wrapper = styled.div`
@@ -89,25 +90,21 @@ const Comments = styled(Disqus)`
 `
 
 class PostLayout extends React.Component {
-  
-  constructor(props) {
-    super(props);
-  }
-  
+
   componentDidMount() {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
- 
+
   render() {
     const { post, mobile, location, context, children } = this.props
     const { prev, next } = context
     let rootPath = `/`
-    if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
+    if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__)
       rootPath = __PATH_PREFIX__ + `/`
-    }
+
     return (
       <>
-        <span id='top'></span>
+        <span id='top' />
         <Nav mobile={mobile} />
         <HeroImage alt={post.title} fluid={post.image.childImageSharp.fluid} />
         <Wrapper className='wrapper'>
@@ -121,22 +118,47 @@ class PostLayout extends React.Component {
           <Separator />
           <PostAuthor author={post.author} />
           <div className='prev-next'>
-            { prev && <span className='prev'>
-              <PageLink to={`blog${prev.node.fields.slug}`} rel='prev'>
-                <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-                <span className='prev-title'>{prev.node.frontmatter.title}</span>
-              </PageLink></span> }
-            { next && <span className='next'>
-              <PageLink to={`blog${next.node.fields.slug}`} direction='right'  rel='next'>
-                <span className='next-title'>{next.node.frontmatter.title}</span>
-                <FontAwesomeIcon icon={faArrowAltCircleRight} />
-              </PageLink></span> }
+            { prev &&
+              <span className='prev'>
+                <PageLink label='previous' rel='prev' to={`blog${prev.node.fields.slug}`}>
+                  <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+                  <span className='prev-title'>{prev.node.frontmatter.title}</span>
+                </PageLink>
+              </span>
+            }
+            { next &&
+              <span className='next'>
+                <PageLink
+                  label='next' rel='next' direction='right'
+                  to={`blog${next.node.fields.slug}`}>
+                  <span className='next-title'>{next.node.frontmatter.title}</span>
+                  <FontAwesomeIcon icon={faArrowAltCircleRight} />
+                </PageLink>
+              </span>
+            }
           </div>
           <Comments identifier={post.id} title={post.title} url={`${config.siteUrl}${location.pathname}`} />
         </Wrapper>
       </>
     )
   }
+}
+
+PostLayout.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  context: PropTypes.shape({
+    next: PropTypes.shape,
+    prev: PropTypes.shape,
+  }).isRequired,
+  mobile: PropTypes.bool,
+  location: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 }
 
 export default PostLayout

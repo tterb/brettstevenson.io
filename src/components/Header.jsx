@@ -25,8 +25,8 @@ const Wrapper = styled.div`
   }
 `
 
-const Header = ({ children, offset, speed, style, ...props}) => {
-  let full = (props.full ? 'full' : null)
+const Header = ({ offset, speed, children, ...props }) => {
+  const full = (props.full ? 'full' : null)
   return (
     <>
       <HeaderContent className='header' speed={speed} offset={offset}>
@@ -37,8 +37,13 @@ const Header = ({ children, offset, speed, style, ...props}) => {
 }
 
 Header.propTypes = {
-  children: PropTypes.node.isRequired,
+  full: PropTypes.bool,
   offset: PropTypes.number.isRequired,
+  speed: PropTypes.number.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 }
 
 export default Header
