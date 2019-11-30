@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 function getWindowDimensions() {
   if (typeof window !== 'undefined') {
     const { innerWidth: width, innerHeight: height } = window
-    return {
-      width,
-      height
-    }
+    return { width, height }
   }
+  // Return non-descript default values
+  return { width: 600, height: 1000 }
 }
 
 function getMobileState() {
