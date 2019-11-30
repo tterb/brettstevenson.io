@@ -52,7 +52,7 @@ const Title = styled.div`
   transition: all 350ms ease-in-out;
 `
 const Text = styled.div`
-  ${tw`font-sans text-base leading-tight lg:text-lg pb-4 md:pb-8 xs:hidden sm:block`}
+  ${tw`font-sans text-lg leading-tight pt-2 pb-4 lg:text-lg md:pb-8 sm:block sm:text-base sm:pt-0`}
   line-height: 1.3;
   text-shadow: 0 2px 10px rgba(0,0,0,0.3);
   transition: all 400ms ease-in-out;

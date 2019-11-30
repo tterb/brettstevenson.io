@@ -11,7 +11,7 @@ const Forms = styled.form`
 const InputWrapper = styled.div`
   ${tw`relative mb-6`}
   input, textarea {
-    ${tw`w-9/10 text-left text-lg border-none outline-none py-2 px-4 pl-1`}
+    ${tw`w-full text-left text-lg border-none outline-none py-2 px-4 pl-1 md:w-9/10`}
     background: transparent;
     color: rgba(255,255,255,0.8);
     -webkit-text-fill-color: rgba(255,255,255,0.8);
@@ -56,7 +56,7 @@ const InputWrapper = styled.div`
 `
 
 const FocusLine = styled.span`
-  ${tw`block w-full md:w-4/5 h-full pin-t pin-l overflow-hidden md:w-9/10`}
+  ${tw`block w-full h-full pin-t pin-l overflow-hidden md:w-9/10`}
   pointer-events: none;
   &::before {
     ${tw`block w-full pin-l overflow-hidden`}
