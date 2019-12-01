@@ -24,8 +24,11 @@ const PrismCSS = `
     }
     .number-line {
       display: inline-block;
+      position: relative;
       color: hsl(275, 5%, 70%);
+      text-align: right;
       width: 25px;
+      left: -15px;
       user-select: none;
       opacity: 0.3;
     }
