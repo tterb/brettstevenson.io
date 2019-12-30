@@ -1,8 +1,8 @@
-import TTNormsBlackWOFF from '../fonts/TTNorms-Black.woff'
-import TTNormsBlackWOFF2 from '../fonts/TTNorms-Black.woff2'
+import TTNormsBlackWOFF from '../fonts/TTNorms-Black2.woff'
+import TTNormsBlackWOFF2 from '../fonts/TTNorms-Black2.woff2'
 
-import TTNormsHeavyWOFF from '../fonts/TTNorms-Heavy.woff'
-import TTNormsHeavyWOFF2 from '../fonts/TTNorms-Heavy.woff2'
+import TTNormsHeavyWOFF from '../fonts/TTNorms-Heavy2.woff'
+import TTNormsHeavyWOFF2 from '../fonts/TTNorms-Heavy2.woff2'
 import TTNormsHeavyItalicWOFF from '../fonts/TTNorms-HeavyItalic.woff'
 import TTNormsHeavyItalicWOFF2 from '../fonts/TTNorms-HeavyItalic.woff2'
 
@@ -11,18 +11,18 @@ import TTNormsExtraBoldWOFF2 from '../fonts/TTNorms-ExtraBold.woff2'
 import TTNormsExtraBoldItalicWOFF from '../fonts/TTNorms-ExtraBoldItalic.woff'
 import TTNormsExtraBoldItalicWOFF2 from '../fonts/TTNorms-ExtraBoldItalic.woff2'
 
-import TTNormsBoldWOFF from '../fonts/TTNorms-Bold.woff'
-import TTNormsBoldWOFF2 from '../fonts/TTNorms-Bold.woff2'
+import TTNormsBoldWOFF from '../fonts/TTNorms-Bold2.woff'
+import TTNormsBoldWOFF2 from '../fonts/TTNorms-Bold2.woff2'
 import TTNormsBoldItalicWOFF from '../fonts/TTNorms-BoldItalic.woff'
 import TTNormsBoldItalicWOFF2 from '../fonts/TTNorms-BoldItalic.woff2'
 
-import TTNormsMediumWOFF from '../fonts/TTNorms-Medium.woff'
-import TTNormsMediumWOFF2 from '../fonts/TTNorms-Medium.woff2'
+import TTNormsMediumWOFF from '../fonts/TTNorms-Medium2.woff'
+import TTNormsMediumWOFF2 from '../fonts/TTNorms-Medium2.woff2'
 import TTNormsMediumItalicWOFF from '../fonts/TTNorms-MediumItalic.woff'
 import TTNormsMediumItalicWOFF2 from '../fonts/TTNorms-MediumItalic.woff2'
 
-import TTNormsRegularWOFF from '../fonts/TTNorms-Regular.woff'
-import TTNormsRegularWOFF2 from '../fonts/TTNorms-Regular.woff2'
+import TTNormsRegularWOFF from '../fonts/TTNorms-Regular2.woff'
+import TTNormsRegularWOFF2 from '../fonts/TTNorms-Regular2.woff2'
 import TTNormsItalicWOFF from '../fonts/TTNorms-Italic.woff'
 import TTNormsItalicWOFF2 from '../fonts/TTNorms-Italic.woff2'
 

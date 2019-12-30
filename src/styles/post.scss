@@ -4,28 +4,8 @@
 $body-width: 90%;
 
 .wrapper {
-  .post-header {
-    letter-spacing: -1px;
-    margin-bottom: 6vh;
-    &::after {
-      display: block;
-      position: relative;
-      background: linear-gradient(to top left, SlateBlue 30%, DeepSkyBlue 75%);
-      content: "";
-      height: 6px;
-      width: 25%;
-      top: -10px;
-      left: -0.5rem;
-    }
-  }
   @media (max-width: 500px) {
     padding-top: 1rem;
-    .post-header {
-      margin-bottom: 5vh;
-      &::after {
-        left: 0;
-      }
-    }
   }
 }
 
@@ -90,12 +70,12 @@ code {
   }
 
   a {
-    color: #0366d6;
-    font-weight: 500;
+    color: #0356c6;
+    font-weight: 400;
     text-decoration: none;
-    transition: all 300ms ease-in-out;
+    transition: all 200ms ease-in-out;
     &:hover {
-      // color: lighten(#0366d6, 20%);
+      // color: lighten(#0356c6, 20%);
       color: SlateBlue;
     }
   }
@@ -339,7 +319,7 @@ code {
 }
 
 #disqus_thread {
-  font-family: 'TTNorms', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  font-family: 'TTNorms2', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
   margin: 4.5rem auto;
   a {
     color: #0376d6;
