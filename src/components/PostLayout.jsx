@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 `
 
 const Content = styled.div`
-  ${tw`leading-normal xs:w-9/10 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-9 md:pb-9`}
+  ${tw`leading-normal w-9/10 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-9 md:pb-9`}
   color: rgba(0,0,0,0.85);
   font-size: 1.1rem;
   letter-spacing: 0.01em;
@@ -76,7 +76,7 @@ const BackToTop = styled(Link)`
 `
 
 const Comments = styled(Disqus)`
-  ${tw`xs:w-9/10 md:w-4/5 lg:w-3/4`}
+  ${tw`w-9/10 md:w-4/5 lg:w-3/4`}
   margin-bottom: 3rem !important;
   @media (min-width: 350px) {
     width: 90% !important;
@@ -100,7 +100,7 @@ class PostLayout extends React.Component {
     const { prev, next } = context
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__)
-      rootPath = __PATH_PREFIX__ + `/`
+      rootPath = `${__PATH_PREFIX__  }/`
 
     return (
       <>

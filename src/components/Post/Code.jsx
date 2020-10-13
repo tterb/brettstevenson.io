@@ -12,12 +12,14 @@ const RE = /{([\d,-]+)}/
 const Wrapper = styled.div`
   ${tw`w-full mr-auto mb-3 overflow-auto`}
   &.multiline {
-    ${tw`w-full mb-5`}
+    ${tw`mx-auto my-5`}
+    width: 95%;
     pre {
-      ${tw`p-4 pb-5`}
+      ${tw`p-4 pb-5 my-0`}
     }
     button {
-      top: 1rem !important;
+      top: 0.75rem !important;
+      right: 0.75rem;
     }
   }
   pre {
@@ -35,10 +37,10 @@ const Wrapper = styled.div`
 `
 
 const CopyButton = styled.button`
-  ${tw`absolute text-sm align-middle cursor-pointer outline-none py-2 px-3`}
+  ${tw`absolute text-sm align-middle cursor-pointer outline-none p-2`}
   background: hsl(275, 5%, 25%);
   color: rgba(255,255,255,0.65);
-  top: 0.5rem;
+  top: 0.6rem;
   right: 1rem;
   border-radius: 5px;
   border: 1px solid rgba(255,255,255,0.1);

@@ -10,7 +10,7 @@ import { faGithub, faTwitter, faDribbble, faLinkedinIn } from '@fortawesome/free
 import { accent } from '../../tailwind'
 
 const Wrapper = styled.div`
-  ${tw`m-auto mt-10 mb-18 xs:w-4/5 xs:text-center xs:mb-12 md:w-3/4 md:text-left xl:w-7/10 xl:mx-auto`}
+  ${tw`max-w-md md:max-w-lg text-center md:text-left m-auto mt-10 mb-18`}
   @media (min-width: 900px) {
     /* max-width: 780px !important; */
   }
@@ -26,7 +26,7 @@ const Avatar = styled.span`
 `
 
 const AuthorText = styled.span`
-  ${tw`inline-block xs:max-w-9/10 xs:ml-0 md:max-w-3/4 md:ml-5 xl:max-w-3/5`}
+  ${tw`inline-block max-w-9/10 ml-0 md:max-w-3/4 md:ml-5 xl:max-w-3/5`}
   .author-bio, p {
     ${tw`leading-tight mx-auto my-1`}
     color: rgba(0,0,0,0.7);
