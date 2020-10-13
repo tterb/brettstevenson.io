@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 // Components
+import Headers from './Headers'
 import { OrderedList, UnorderedList } from './List'
 import CodePre from './Pre'
 import CodeBlock from './Code'
@@ -25,7 +26,7 @@ const PrismCSS = `
     .number-line {
       display: inline-block;
       position: relative;
-      color: hsl(275, 5%, 70%);
+      color: hsl(275, 5%, 80%);
       text-align: right;
       width: 25px;
       left: -15px;
@@ -45,11 +46,12 @@ const PrismCSS = `
 `
 
 const MDXBody = styled.div`
-  ${tw`relative flex flex-col justify-center z-10`}
+  ${tw`relative flex flex-col justify-center max-w-md md:max-w-lg mx-auto z-10`}
   ${PrismCSS}
 `
 
 const components = {
+  ...Headers,
   ol: OrderedList,
   ul: UnorderedList,
   pre: CodePre,

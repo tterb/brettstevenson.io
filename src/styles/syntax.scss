@@ -2,29 +2,35 @@
 * Syntax highlighting styles
 */
 
-$syntax-hue:          275;
+$syntax-hue:          280;
 $syntax-saturation:    5%;
-$syntax-brightness:   17%;
+$syntax-brightness:   15%;
 
 $base:       hsl($syntax-hue, $syntax-saturation, $syntax-brightness);
-$text:       hsl($syntax-hue, 9%, 85%);
-$light-text: hsl($syntax-hue,  9%, 60%);
+$text:       hsl($syntax-hue, 9%, 90%);
+$light-text: hsl($syntax-hue,  9%, 65%);
 $subtle:     darken($text, 35%);
 // $subtle:     hsl($syntax-hue, 8%, 43%);
 $highlight:  hsl($syntax-hue, 9%, 95%);
 $red:        hsl(  2, 55%, 58%);
 // $orange:     hsl( 23, 90%, 68%);
-$orange:    hsl( 20, 96%, 69%);
+$orange:     hsl( 20, 96%, 69%);
+$orange:     #fc975c;
 // $yellow:     hsl( 40, 98%, 78%);
 $yellow:     hsl( 43, 87%, 74%);
+$yellow:     #f8d377;
 // $green:      hsl(100, 68%, 65%);
 $green:      hsl(120, 58%, 70%);
+$green:      #6ae16a;
 // $blue:       hsl(195, 83%, 73%);
 $blue:       hsl(190, 74%, 70%);
+$blue:       #3edcf4;
 // $purple:     hsl(246, 80%, 80%);
 $purple:     hsl(246, 70%, 78%);
+$purple:     #9d94eb;
 // $magenta:    hsl(350, 93%, 70%);
 $magenta:    hsl(350, 85%, 69%);
+$magenta:    #fe5d79;
 $error:        $red;
 
 code[class*='language-'],
@@ -32,8 +38,8 @@ pre[class*='language-'] {
 	font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
 	color: $text;
 	background: none;
-	font-weight: 400;
-	line-height: 1.4;
+	font-weight: 500;
+	line-height: 1.5;
 	text-shadow: none;
 	text-align: left;
 	text-shadow: none;
