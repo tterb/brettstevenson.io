@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         name: `Design`,
-        link: `https://brettstevenson.design/`,
+        link: `https://tterb-design.netlify.app/`,
         external: true,
       },
       {
