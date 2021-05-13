@@ -65,7 +65,7 @@
     "gatsby-transformer-remark": "^2.3.4",
     "gatsby-transformer-sharp": "^2.2.0",
     "gsap": "^2.1.2",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "node-sass": "^4.13.1",
     "prism-react-renderer": "^0.1.7",
     "prop-types": "^15.6.2",
