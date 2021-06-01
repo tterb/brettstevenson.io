@@ -1,9 +1,18 @@
-import styled from 'styled-components'
-import tw from 'tailwind.macro'
-import { Parallax } from 'react-spring/renderprops-addons'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const Content = styled(Parallax.Layer)`
-  ${tw`flex p-6 md:p-16 lg:p-24 justify-center items-center z-50`}
-`
+
+const Content = ({className, children, ...props }) => (
+  <div 
+    className={`relative w-full py-12 md:py-16 lg:py-24 justify-center items-center z-50${className ? ` ${className}` : ''}`}
+    {...props}
+  >
+    {children}
+  </div>
+)
+Content.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+}
 
 export default Content
