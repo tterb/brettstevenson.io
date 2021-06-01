@@ -1,5 +1,8 @@
 const config = require(`./config/website`)
+const styleVariables = require(`./src/styles/variables.js`)
+const tailwindConfig = require(`./tailwind.config.js`)
 const dotenv = require(`dotenv`)
+
 
 const pathPrefix = config.pathPrefix === `/` ? `` : config.pathPrefix
 
@@ -47,24 +50,23 @@ module.exports = {
         external: false,
       },
     ],
-    algolia: {
-      appId: process.env.ALGOLIA_APP_ID ? process.env.ALGOLIA_APP_ID : ``,
-      searchOnlyApiKey: process.env.ALGOLIA_SEARCH_ONLY_API_KEY
-        ? process.env.ALGOLIA_SEARCH_ONLY_API_KEY
-        : ``,
-      indexName: process.env.ALGOLIA_INDEX_NAME ? process.env.ALGOLIA_INDEX_NAME : ``,
-    },
+  },
+  /* Flags */
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true,
+    PARALLEL_SOURCING: true,
+    FAST_DEV: true,
+    DEV_SSR: true,
   },
   /* Plugins */
   plugins: [
-    `gatsby-plugin-catch-links`,
-    `gatsby-plugin-netlify`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-transition-link`,
-    `gatsby-transformer-sharp`,
+    { resolve: `gatsby-plugin-image` },
+    { resolve: `gatsby-plugin-netlify` },
+    { resolve: `gatsby-plugin-react-helmet` },
+    { resolve: `gatsby-plugin-sitemap` },
+    { resolve: `gatsby-plugin-styled-components` },
+    { resolve: `gatsby-plugin-sharp` },
+    { resolve: `gatsby-transformer-sharp` },
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
@@ -118,9 +120,21 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-sharp`,
+      resolve: `gatsby-plugin-postcss`, // Implements PostCSS
       options: {
-        stripMetadata: true,
+        postCssPlugins: [
+          require(`autoprefixer`),
+          require(`postcss-import`), // Add support for sass-like `@import`
+          require(`postcss-nested`), // Add support for sass-like nesting of rules
+          require(`postcss-simple-vars`)({ variables: styleVariables }),
+          require(`postcss-calc`),
+          require(`postcss-discard-comments`),
+          require(`cssnano`), // Minify CSS
+          require(`postcss-preset-env`)({
+            stage: 3,  // More info about stages: https://cssdb.org/#staging-process
+          }),
+          require(`tailwindcss`)(tailwindConfig),
+        ],
       },
     },
     {
@@ -147,6 +161,6 @@ module.exports = {
       },
     },
     /* Must be placed at the end */
-    `gatsby-plugin-offline`,
+    { resolve: `gatsby-plugin-offline` },
   ],
 }
