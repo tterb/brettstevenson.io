@@ -1,20 +1,13 @@
 import { useState, useEffect } from 'react';
 
+
 function getWindowDimensions() {
   if (typeof window !== 'undefined') {
     const { innerWidth: width, innerHeight: height } = window
     return { width, height }
   }
   // Return non-descript default values
-  return { width: 600, height: 1000 }
-}
-
-function getMobileState() {
-  if (typeof window !== 'undefined') {
-    const { width, height } = getWindowDimensions()
-    return (width <= 500)
-  }
-  return false
+  return { width: 800, height: 1000 }
 }
 
 export default function useWindowDimensions() {
@@ -34,15 +27,19 @@ export default function useWindowDimensions() {
 
 
 export function isMobile() {
-  const [mobileState, setMobileState] = useState(getMobileState())
+  const [mobileState, setMobileState] = useState(false)
+
+  function getMobileState() {
+    if (typeof window !== 'undefined') {
+      return setMobileState(window.innerWidth <= 500)
+    }
+    return false
+  }
 
   useEffect(() => {
-    function handleResize() {
-      setMobileState(getMobileState())
-    }
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', getMobileState)
+    
+    return () => window.removeEventListener('resize', getMobileState);
   }, [])
 
   return mobileState
