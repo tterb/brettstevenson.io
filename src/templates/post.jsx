@@ -23,7 +23,6 @@ const PostTemplate = ({ data, pageContext, location }) => {
   assign(post, post.frontmatter)
   post.author = config.author
   post.author.image = data.avatar.childImageSharp.gatsbyImageData
-  const thumbnail = (post.thumbnail ? post.thumbnail.childImageSharp.gatsbyImageData : post.image.childImageSharp.gatsbyImageData)
 
   return (
     <>
@@ -31,7 +30,7 @@ const PostTemplate = ({ data, pageContext, location }) => {
         title={`${post.title} | ${config.siteTitle}`}
         description={post.description}
         pathname={location.pathname}
-        thumbnail={thumbnail}
+        thumbnail={post.image}
         url={`/blog${post.fields.slug}`}
       />
       <PostLayout
