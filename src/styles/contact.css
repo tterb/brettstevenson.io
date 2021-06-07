@@ -1,5 +1,3 @@
-@import 'variables';
-
 input, textarea {
   &:active, &:focus, &:visited,
   &:-webkit-autofill,
@@ -7,8 +5,8 @@ input, textarea {
   &:-webkit-autofill:focus, 
   &:-webkit-autofill:active,
   &:-internal-autofill-selected {
-    background-color: $bg-color !important;
-    color: $text-color !important;
+    background-color: $bg_color !important;
+    color: $text_color !important;
     border: none !important;
     box-shadow: 0 0 0 30px #161719 inset !important;
     outline-offset: -2px;

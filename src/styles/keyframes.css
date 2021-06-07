@@ -1,0 +1,64 @@
+/* Keyframes */
+@keyframes flipY {
+    0% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(0deg) rotatez(0deg); }
+    20.25% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(90deg) rotatez(0deg); }
+    100% { transform: translateX(-50%) scale3d(1, 1, 1) rotatex(0deg) rotatey(90deg) rotatez(0deg); }
+}
+@keyframes hoverY {
+    0% { transform: translatey(0px); }
+    100% { transform: translatey(-10px); }
+}
+@keyframes border-front {
+  0% { border-width: 3px 5px 5px 3px; }
+  2.25% { border-width: 3px 5px 5px 3px; }
+  5.75% { border-width: 3px 3px 3px 3px; }
+  100% { border-width: 3px 3px 3px 3px; }
+}
+@keyframes border-back {
+  0% { border-width: 3px 3px 3px 3px; }
+  2.25% { border-width: 3px 3px 3px 3px; }
+  5.75% { border-width: 3px 3px 5px 5px; }
+  100% { border-width: 3px 3px 5px 5px; }
+}
+@keyframes border-top {
+  0% { border-width: 5px 5px 3px 3px; }
+  2.25% { border-width: 5px 5px 3px 3px; }
+  5.75% { border-width: 3px 5px 5px 3px; }
+  100% { border-width: 3px 5px 5px 3px; }
+}
+@keyframes border-left {
+  0% { border-width: 3px 3px 5px 5px; }
+  2.25% { border-width: 3px 3px 5px 5px; }
+  5.75% { border-width: 3px 5px 5px 3px; }
+  100% { border-width: 3px 5px 5px 3px; }
+}
+@keyframes line {
+  0% { background-position-x: 390px; }
+}
+@keyframes dash {
+  to { stroke-dashoffset: 20; }
+}
+@keyframes glitch {
+  0%   { clip: rect( 31px, 9999px,  94px, 0) }
+  10%  { clip: rect(112px, 9999px, 156px, 0) }
+  20%  { clip: rect( 65px, 9999px,  77px, 0) }
+  30%  { clip: rect(257px, 9999px, 290px, 0) }
+  40%  { clip: rect( 64px, 9999px, 138px, 0) }
+  50%  { clip: rect( 31px, 9999px,  55px, 0) }
+  60%  { clip: rect( 59px, 9999px,  84px, 0) }
+  70%  { clip: rect( 34px, 9999px, 115px, 0) }
+  80%  { clip: rect(193px, 9999px, 276px, 0) }
+  90%  { clip: rect( 98px, 9999px, 129px, 0) }
+  100% { clip: rect(202px, 9999px, 284px, 0) }
+}
+@keyframes glitchHover {
+  0%  { transform: translate(0) }
+  20% {
+    transform: translate(-5px, 5px);
+    transform: skewX(10deg);
+  }
+  40% { transform: translate(-5px, -5px); }
+  60% { transform: translate(5px, 5px) }
+  80% { transform: translate(5px, -5px) }
+  to  { transform: translate(0) }
+}

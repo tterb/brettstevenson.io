@@ -1,4 +1,3 @@
-@import 'variables';
 @import 'syntax';
 
 $body-width: 90%;
@@ -9,76 +8,25 @@ $body-width: 90%;
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: rgba(#000, 0.8);
-  margin-top: 1em;
-}
-
 code {
-  position: relative;
-  background: rgba(#000, 0.075);
-  color: rgba(#000, 0.85);
-  font-size: 100%;
+  @apply relative bg-base-200 bg-opacity-10 text-base text-black text-opacity-80 rounded;
+  /* background: rgba(0,0,0,0.05); */
   top: -1px;
-  border-radius: 3px;
   padding: 1px 6px 2px;
 }
 
 .post-body {
   font-size: 1.1rem;
-  width: 100%;
-  margin: auto;
-  // h1 {
-  //   font-size: 3rem;
-  // }
-  
-  // h2 {
-  //   font-size: 2.5rem;
-  //   letter-spacing: -0.5px;
-  //   line-height: 1.1;
-  //   margin-bottom: 1rem;
-  // }
-  
-  // h3 {
-  //   font-size: 2rem;
-  //   margin-bottom: 0.35rem;
-  // }
-  
-  // h4 {
-  //   font-size: 1.5rem;
-  // }
-  
-  // h5 {
-  //   color: #777;
-  //   font-size: 1.25rem;
-  // }
-  
-  // h4, h5, h6 {
-  //   line-height: 1;
-  //   margin-bottom: 0;
-  // }
-  
-  // h1, h2, h3, h4, h5, h6 {
-  //   margin-top: 1.5rem;
-  // }
 
-  p {
-    color: rgba(#000, 0.8);
-    letter-spacing: .015em;
-    line-height: 1.55;
-    margin: 0 0 1rem;
-  }
-
-  a {
+  /* a {
     color: #0356c6;
     font-weight: 400;
     text-decoration: none;
     transition: all 200ms ease-in-out;
     &:hover {
-      // color: lighten(#0356c6, 20%);
       color: SlateBlue;
     }
-  }
+  } */
   
   ul {
     margin-block-start: 0;
@@ -94,13 +42,6 @@ code {
     }
   }
   
-  hr {
-    width: 98%;
-    border: none;
-    border-bottom: 2px solid rgba(#000, 0.095);
-    margin: 1.75em auto;
-  }
-  
   pre code {
     padding: 1.15em 1.4em 1.65em;
   }
@@ -109,7 +50,7 @@ code {
     margin: 1.5em 0;
   }
   
-  blockquote {
+  /* blockquote {
     background: transparent;
     quotes: "“""”""‘""’  ";
     width: 90%;
@@ -144,12 +85,12 @@ code {
     p {
       display: flex;
       background: rgba(#686B6D, 0.05);
-      color: rgba(#000, 0.75);
+      color: rgba(0,0,0,0.75);
       font-size: 0.95em;
       line-height: 1.3em;
       width: 90%;
       border-radius: 4px;
-      box-shadow: 0 1px 5px rgba(#000, 0.25);
+      box-shadow: 0 1px 5px rgba(0,0,0,0.25);
       margin: 0 auto;
       padding: 0.85em 1.2em 1em 1.4em;
     }
@@ -162,7 +103,7 @@ code {
         right: -2rem;
       }
     }
-  }
+  } */
   .badges {
     text-align: right;
   }
@@ -177,9 +118,9 @@ code {
   }
   .prev, .next {
     position: relative;
-    border: 1px solid rgba(#000, 0.05);
+    border: 1px solid rgba(0,0,0,0.05);
     border-radius: 4px;
-    box-shadow: 0 4px 8px 0 rgba(#000, 0.12), 0 2px 4px 0 rgba(#000, 0.08);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08);
     transition: all 350ms ease-in-out;
     padding: 1rem 1.5rem;
     cursor: pointer;
@@ -187,7 +128,7 @@ code {
       margin: 0.5rem 0;
     }
     a {
-      color: rgba(#000, 0.7);
+      color: rgba(0,0,0,0.7);
       text-decoration: none;
       vertical-align: middle;
     }
@@ -200,8 +141,8 @@ code {
       margin: 0;
     }
     &:hover {
-      color: rgba(#000, 0.8);
-      box-shadow: 0 15px 30px 0 rgba(#000, 0.11), 0 5px 15px 0 rgba(#000, 0.08);
+      color: rgba(0,0,0,0.8);
+      box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08);
       svg {
         color: $accent;
       }
@@ -227,8 +168,8 @@ code {
     top: 0.2rem;
   }
   &.fixed {
-    background-color: lighten(saturate($bg-color, 5%), 5%);
-    color: rgba(#000, 0.85);
+    background-color: lighten(saturate($bg_color, 5%), 5%);
+    color: rgba(0,0,0,0.85);
     width: calc(100% - 60px);
     transition: all 400ms ease-in-out, color 300ms ease-in-out;
     animation: fromTop 1s 1;
@@ -246,7 +187,7 @@ code {
 }
 
 .h-note, .h-tip, .h-tldr, .h-warning {
-  color: rgba(#000, 0.85);
+  color: rgba(0,0,0,0.85);
   font-size: 1rem !important;
   letter-spacing: 0.035rem;
   line-height: 1.4 !important;
@@ -255,13 +196,13 @@ code {
   border-left-width: 6px;
   border-left-style: solid;
   border-radius: 5px;
-  box-shadow: 0.5px 1px 6px rgba(#000, 0.25);
+  box-shadow: 0.5px 1px 6px rgba(0,0,0,0.25);
   margin: 1rem auto !important;
   padding: 0.75rem 1.25rem 1.25rem;
   overflow: hidden;
   &::before {
     display: block;
-    color: rgba(#000, 0.7);
+    color: rgba(0,0,0,0.7);
     font-size: 1.25em;
     font-weight: 600;
     letter-spacing: 0.035em;
@@ -276,7 +217,7 @@ code {
     margin-bottom: 0.15em !important;
   }
   code {
-    background: rgba(#000, 0.075) !important;
+    background: rgba(0,0,0,0.075) !important;
   }
   @media(max-width: 767px) {
     margin: 25px 0;
@@ -285,25 +226,25 @@ code {
 
 .h-note {
   background: rgba(3,169,244,0.05);
-  border-left-color: rgba(#03A9F4, 0.75);
+  border-left-color: rgba(#00BFFF, 0.75);
   &::before {
     content: 'Note:';
-    color: darken(#03A9F4, 8%);
+    color: darken(#00BFFF, 8%);
   }
 }
 
 .h-tip {
   background: rgba(76,175,80,0.075);
-  border-left-color: rgba(#4CAF50, 0.75);
+  border-left-color: rgba(#00B287, 0.75);
   &::before {
     content: 'Tip:';
-    color: darken(#4CAF50, 8%);
+    color: darken(#00B287, 8%);
   }
 }
 
 .h-tldr {
-  background: rgba(#000, 0.035);
-  border-left-color: rgba(#000, 0.45);
+  background: rgba(0,0,0,0.035);
+  border-left-color: rgba(0,0,0,0.45);
   &::before {
     content: 'tldr;';
     font-size: 1.5em;
@@ -313,17 +254,17 @@ code {
 
 .h-warning {
   background: rgba(255,153,0,0.075);
-  border-left-color: rgba(#FCAB08, 0.75);
+  border-left-color: rgba(#F4AC30, 0.75);
   &::before {
     content: 'Warning:';
-    color: darken(#FCAB08, 8%);
+    color: darken(#F4AC30, 8%);
     letter-spacing: 0.045em;
   }
 }
 
 #disqus_thread {
   font-family: 'TTNorms2', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
-  margin: 4.5rem auto;
+  /* margin: 4.5rem auto; */
   a {
     color: #0376d6;
   }

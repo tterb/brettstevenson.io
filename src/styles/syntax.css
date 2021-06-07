@@ -2,41 +2,10 @@
 * Syntax highlighting styles
 */
 
-$syntax-hue:          280;
-$syntax-saturation:    5%;
-$syntax-brightness:   15%;
-
-$base:       hsl($syntax-hue, $syntax-saturation, $syntax-brightness);
-$text:       hsl($syntax-hue, 9%, 90%);
-$light-text: hsl($syntax-hue,  9%, 65%);
-$subtle:     darken($text, 35%);
-// $subtle:     hsl($syntax-hue, 8%, 43%);
-$highlight:  hsl($syntax-hue, 9%, 95%);
-$red:        hsl(  2, 55%, 58%);
-// $orange:     hsl( 23, 90%, 68%);
-$orange:     hsl( 20, 96%, 69%);
-$orange:     #fc975c;
-// $yellow:     hsl( 40, 98%, 78%);
-$yellow:     hsl( 43, 87%, 74%);
-$yellow:     #f8d377;
-// $green:      hsl(100, 68%, 65%);
-$green:      hsl(120, 58%, 70%);
-$green:      #6ae16a;
-// $blue:       hsl(195, 83%, 73%);
-$blue:       hsl(190, 74%, 70%);
-$blue:       #3edcf4;
-// $purple:     hsl(246, 80%, 80%);
-$purple:     hsl(246, 70%, 78%);
-$purple:     #9d94eb;
-// $magenta:    hsl(350, 93%, 70%);
-$magenta:    hsl(350, 85%, 69%);
-$magenta:    #fe5d79;
-$error:        $red;
-
 code[class*='language-'],
 pre[class*='language-'] {
 	font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
-	color: $text;
+	color: $syntax_text;
 	background: none;
 	font-weight: 500;
 	line-height: 1.5;
@@ -63,8 +32,8 @@ pre[class*='language-'] {
 /* Inline code */
 :not(pre) > code[class*='language-'] {
 	display: inline;
-	background: rgba($base, 0.1);
-	color: rgba(#000, 0.85);
+	background: rgba($syntax_base, 0.1);
+	color: rgba(0, 0, 0, 0.85);
 	font-size: 0.85em;
 	letter-spacing: -0.5px;
 	border-radius: 4px;
@@ -75,36 +44,33 @@ pre[class*='language-'] {
 
 pre[class*='language-'] {
 	display: block;
-	// white-space: pre;
-  // white-space: pre-wrap;
 }
 
 pre[class*='language-'],
 code[class*='language-'] {
 	display: block;
-	background-color: $base;
-  color: $text;
+	background-color: $syntax_base;
+  	color: $syntax_text;
 	font-size: 0.85em;
-  letter-spacing: normal;
+  	letter-spacing: normal;
 	line-height: 1.4;
 	font-variant-ligatures: normal;
-  font-feature-settings: 'calt' 1;
-  font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  text-transform: none;
-	// width: 90%;
+  	font-feature-settings: 'calt' 1;
+  	font-smoothing: antialiased;
+  	text-rendering: optimizeLegibility;
+  	text-transform: none;
 	border-radius: 8px;
 	white-space: pre;
 	margin: 0 auto 0 0.75%;
-  padding: 1em 1.15em 1.15em 1.15em;
+  	padding: 1em 1.15em 1.15em 1.15em;
 	overflow: hidden;
-  overflow-x: auto;
-	.token {
+  	overflow-x: auto;
+	/* .token {
 		&.entity,
 		&.url,
 		&.variable,
 		&.punctuation {
-			color: $text;
+			color: $syntax_text;
 		}
 		
 		&.cdata,
@@ -112,7 +78,7 @@ code[class*='language-'] {
 		&.prolog,
 		&.doctype,
 		&.plain-text {
-			color: $subtle !important;
+			color: $syntax_subtle !important;
 		}
 		
 		&.property,
@@ -120,16 +86,16 @@ code[class*='language-'] {
 		&.constant,
 		&.symbol,
 		&.deleted {
-			color: $magenta;
+			color: $syntax_magenta;
 		}
 		&.tag {
 			&.class-name {
-				color: $text;
+				color: $syntax_text;
 			}
 			&.script {
-				color: $text;
+				color: $syntax_text;
 				&.punctuation {
-					color: $magenta;
+					color: $syntax_magenta;
 				}
 			}
 		}
@@ -138,7 +104,7 @@ code[class*='language-'] {
 		&.number,
 		&.decorator,
 		&.interpolation, {
-			color: $purple;
+			color: $syntax_purple;
 		}
 
 		&.selector,
@@ -146,7 +112,7 @@ code[class*='language-'] {
 		&.string,
 		&.char,
 		&.inserted {
-			color: $yellow;
+			color: $syntax_yellow;
 		}
 
 		&.atrule,
@@ -154,21 +120,21 @@ code[class*='language-'] {
 		&.url-link,
 		&.attr-value,
 		&.function {
-			color: $green;
+			color: $syntax_green;
 		}
 
 		&.keyword {
-			color: $blue;
+			color: $syntax_blue;
 		}
 
 		&.regex,
 		&.important {
-			color: $orange;
+			color: $syntax_orange;
 		}
 		
 		&.operator,
 		&.keyword-if {
-			color: $magenta;
+			color: $syntax_magenta;
 		}
 
 		&.important,
@@ -185,24 +151,24 @@ code[class*='language-'] {
 		}
 	}
 	.nd {
-		color: $purple;
-	}
+		color: $syntax_purple;
+	} */
 }
 
 .language-css .token.string,
 .style .token.string {
-	color: $text;
+	color: $syntax_text;
 }
 
 .language-bash {
 	.token.function {
-		color: $blue !important;
+		color: $syntax_blue !important;
 	}
 	.nt {
-		color: $orange;
+		color: $syntax_orange;
 	}
 	.nv {
-		color: darken($text, 20%);
+		color: darken($syntax_text, 20%);
 	}
 }
 
@@ -210,18 +176,18 @@ code[class*='language-'] {
 	.token {
 		&.punctuation,
 		&.function-variable {
-			color: $text  !important;
+			color: $syntax_text  !important;
 		}
 		&.keyword,
 		&.tag.punctuation {
-			color: $magenta !important;
+			color: $syntax_magenta !important;
 		}
 		&.attr-name {
-			color: $blue !important;
+			color: $syntax_blue !important;
 		}
 		&.script.punctuation,
 		&.interpolation-punctuation {
-			color: $red !important;
+			color: $syntax_red !important;
 		}
 	}
 }
@@ -238,8 +204,8 @@ pre[data-line] {
 
 .line-highlight {
 	position: absolute;
-	background: hsla(24, 20%, 50%,.08);
-	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	background: hsla(24, 20%, 50%, 0.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%, 0.1) 70%, hsla(24, 20%, 50%, 0));
 	line-height: inherit;
 	left: 0;
 	right: 0;
@@ -256,7 +222,7 @@ pre[data-line] {
 .line-highlight[data-end]:after {
 	content: attr(data-start);
 	position: absolute;
-	background-color: hsla(24, 20%, 50%,.4);
+	background-color: hsla(24, 20%, 50%, 0.4);
 	color: hsl(24, 20%, 95%);
 	font: bold 65%/1.5 sans-serif;
 	text-align: center;
@@ -280,12 +246,13 @@ pre[data-line] {
 	color: inherit;
 }
 
+.token.string,
 .token.string a {
-	color: $yellow;
+	color: $syntax_yellow;
 }
 
 .token.string .se {
-	color: $purple;
+	color: $syntax_purple;
 }
 
 .command-line-prompt {
