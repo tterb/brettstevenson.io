@@ -48,11 +48,6 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
-# Lock files
-yarn.lock
-package-lock.json
-
-
 # Build Files
 public/
 .cache/
@@ -69,8 +64,10 @@ bundle-stats.json
 posts/
 !src/content/posts/
 src/content/posts/img/thumbnails/
+src/images/unused/
 
-.contentful.json
+static/fonts/Product-Sans/
+src/fonts/Product-Sans/
 
 .env*
 .secrets
