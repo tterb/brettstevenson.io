@@ -55,6 +55,7 @@ exports.createPages = async ({ graphql, actions }) => {
               category
               slug
               title
+              published
             }
             fields {
               slug
@@ -65,14 +66,10 @@ exports.createPages = async ({ graphql, actions }) => {
     `),
   )
 
-  const posts = postQuery.data.posts.nodes
+  const posts = postQuery.data.posts.nodes.filter(post => post.frontmatter.published)
   const postCategories = []
   posts.forEach((post, index) => {
     postCategories.push(post.frontmatter.category)
-    console.log('slug: ' + post.frontmatter.slug)
-    if (!post.frontmatter.slug) {
-      console.log('title: ' + post.frontmatter.title)
-    }
     createPage({
       path: `/blog${post.frontmatter.slug}`,
       component: postTemplate,
