@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// Componemts
+// Components
 import Nav from 'components/Nav'
 import SEO from 'components/SEO'
 // Views
