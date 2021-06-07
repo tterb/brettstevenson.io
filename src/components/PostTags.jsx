@@ -1,47 +1,29 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import _ from 'lodash'
+import kebabCase from 'lodash/kebabCase'
+import orderBy from 'lodash/orderBy'
+import take from 'lodash/take'
 import styled from 'styled-components'
-import tw from 'tailwind.macro'
 // Components
-import PageLink from './PageLink'
+import PageLink from 'components/PageLink'
 
-const TagList = styled.ul`
-  ${tw`list-reset text-left text-lg p-0 pl-3 pr-5`}
-`
 
 const Tag = styled.li`
-  ${tw`inline-block`}
-  a {
-    ${tw`mb-2 no-underline`}
-    display: grid;
-    color: rgba(0,0,0,0.4);
-    span {
-      ${tw`inline-block text-left m-0 mr-2 mb-1 opacity-100 z-999`}
-      background: #efefef;
-      color: rgba(0,0,0,0.5);
-      font-size: 0.9rem;
-      grid-area: 1 / 1;
-      border-radius: 6px;
-      box-shadow: 0 1.5px 4px -2px rgba(0,0,0,0.1);
-      transition: all 350ms ease-in-out;
-      padding: 6px 8px;
-    }
+  a span {
+    background: #efefef;
+    font-size: 0.9rem;
+    grid-area: 1 / 1;
+    box-shadow: 0 1.5px 4px -2px rgba(0,0,0,0.1);
+    padding: 6px 8px;
+  }
+  .active {
+    transition: color 350ms ease-in-out, opacity 250ms ease-in-out;
+  }
+  &:hover {
+    box-shadow: none !important;
     .active {
-      ${tw`opacity-0 z-0`}
-      transition: color 350ms ease-in-out, opacity 250ms ease-in-out;
-    }
-    &:hover {
-      box-shadow: none !important;
-      span {
-        ${tw`opacity-0`}
-      }
-      .active {
-        background: linear-gradient(-25deg, SlateBlue, DeepSkyBlue);
-        color: white;
-        box-shadow: 0 2px 4.5px -2px rgba(0,0,0,0.7);
-        opacity: 1 !important;
-      }
+      background: linear-gradient(-25deg, SlateBlue, DeepSkyBlue);
+      box-shadow: 0 2px 4.5px -2px rgba(0,0,0,0.7);
     }
   }
 `
@@ -51,19 +33,27 @@ const PostTags = () => (
     query={tagsQuery}
     render={data => {
       const tags = data.allMdx.group
-      let topTags = _.orderBy(tags, [(tag) => tag.totalCount], ['desc'])
-      topTags = _.take(topTags, 12)
+      let topTags = orderBy(tags, [(tag) => tag.totalCount], ['desc'])
+      topTags = take(topTags, 12)
       return (
-        <TagList>
+        <ul className='list-reset text-left text-lg p-0 pl-3 pr-5'>
           {topTags.map(tag => (
-            <Tag key={tag.fieldValue}>
-              <PageLink label={tag.fieldValue} to={`/tag/${_.kebabCase(tag.fieldValue)}/`}>
-                <span>{tag.fieldValue} ({tag.totalCount})</span>
-                <span className='active'>{tag.fieldValue} ({tag.totalCount})</span>
+            <Tag key={tag.fieldValue} className='inline-block'>
+              <PageLink
+                className='group grid text-black text-opacity-40 no-underline mb-2'
+                to={`/tag/${kebabCase(tag.fieldValue)}/`}
+                label={tag.fieldValue}
+              >
+                <span className='inline-block text-black text-opacity-50 text-left rounded m-0 mr-2 mb-1 transition-all duration-300 ease-in-out opacity-100 z-999 hover:shadow-none group-hover:opacity-0 '>
+                  {tag.fieldValue} ({tag.totalCount})
+                </span>
+                <span className='active inline-block text-black text-opacity-50 text-left rounded m-0 mr-2 mb-1 transition-all duration-300 ease-in-out opacity-0 z-0 group-hover:text-white group-hover:opacity-100'>
+                  {tag.fieldValue} ({tag.totalCount})
+                </span>
               </PageLink>
             </Tag>
           ))}
-        </TagList>
+        </ul>
       )
     }}
   />

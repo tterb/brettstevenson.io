@@ -1,142 +1,75 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { animated, useTrail } from 'react-spring'
 import kebabCase from 'lodash/kebabCase'
 import upperFirst from 'lodash/upperFirst'
-import styled from 'styled-components'
-import tw from 'tailwind.macro'
-import Bounce from 'react-reveal/Bounce';
-import config from 'react-reveal/globals'
 // Components
-import Layout from './Layout'
-import Header from './Header'
-import BlogCard from './BlogCard'
-import Pagination from './Pagination'
-import Search from './Search'
-import TagMenu from './TagMenu'
-// Elements
-import { BigTitle, Title } from '../elements/Titles'
-import Content from '../elements/Content'
+import Layout from 'components/Layout'
+import Header from 'components/Header'
+import BlogCard from 'components/BlogCard'
+import Pagination from 'components/Pagination'
+import Search from 'components/Search'
+import CategoryMenu from 'components/CategoryMenu'
 // Hooks
-import { isMobile } from '../hooks/WindowDimensions'
+import { isMobile } from 'hooks/WindowDimensions'
 
 
-const HeaderContent = styled(Content)`
-  ${tw`pt-0`}
-  top: -5rem;
-  left: -1rem;
-  height: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-`
+const BackgroundTitleStyle = {
+  fontSize: '40vw',
+  letterSpacing: '-0.35rem',
+}
 
-const BGTitle = styled(BigTitle)`
-  ${tw`font-semibold mt-0`}
-  font-size: 40vw !important;
-  letter-spacing: -0.35rem;
-  opacity: 0.05;
-  z-index: -99;
-`
-
-const PageTitle = styled(Title)`
-  ${tw`m-0 mt-12 md:text-6xl md:mt-6 xl:text-7xl xl:mt-6`}
-  margin-left: 0.75rem !important;
-  @media (max-width: 820px) {
-    font-size: 4.75rem !important;
-  }
-`
-
-const Subtitle = styled.h4`
-  ${tw`font-sans text-grey text-lg text-left font-medium leading-tight md:text-xl sm:w-4/5 md:w-3/4 my-3 ml-4 mr-auto`}
-`
-
-const HeaderText = styled.div`
-`
-
-const Wrapper = styled.div`
-  ${tw`m-auto xs:pt-8 sm:my-1 md:pt-16`}
-  width: 95%;
-  max-width: 2000px;
-  padding-left: 4vw;
-  padding-right: 4vw;
-  padding-bottom: 18rem;
-`
-
-const BlogContent = styled(Content)`
-  ${tw`w-4/5 h-full mx-auto p-0 pt-16 z-10`}
-  background: rgba(255,255,255,0.95);
-  top: -1.5rem;
-  padding: 0 !important;
-  div {
-    z-index: 9999999;
-  }
-`
-
-const CardList = styled.div`
-  ${tw`block w-full mx-auto pt-8 xs:inline`}
-  min-width: 950px;
-  margin-top: -1vh;
-`
-
-const ButtonsWrapper = styled.div`
-  ${tw`hidden md:flex relative justify-between items-end h-12 ml-0 md:ml-auto mr-auto md:mr-1`}
-  width: 8rem;
-  top: 1.5rem;
-  right: 0;
-`
-
-
-const BlogLayout = ({ title, posts, pageContext, algolia }) => {
-  require('../styles/blog.scss')
-  config({ ssrFadeout: true })
+const BlogLayout = ({ title, posts, categories, pageContext }) => {
+  // config({ ssrFadeout: true })
   const { currentPage, numPages, count } = pageContext
   const tagPage = (title !== 'Blog')
   const path = tagPage ? `blog/tag/${kebabCase(title)}` : `blog`
+  // const mobile = isMobile()
 
-  let postCount = count % 4
-  if (count < 4)
-    postCount = count
-  else if (currentPage <= Math.floor(count / 4))
-    postCount = 4
-
-  const offset = (numPages > 1 ? 0.075 : 0)
-  let pageHeight = 1.05 + (postCount * 0.38)
-  let contentHeight = 0.525 + (postCount * 0.6) + offset
-  const mobile = isMobile()
-  if (mobile) {
-    pageHeight += postCount * 0.09
-    contentHeight += 0.55
-  }
-
+  const trail = useTrail(posts.length, {
+    from: { top: '100rem' },
+    to: { top: '0' },
+  });
   return (
-    <Layout pages={pageHeight}>
-      <Header offset={0} factor={0.45} full={true}>
-        <HeaderContent offset={0.125} speed={0.25}>
-          <BGTitle>Blog</BGTitle>
-        </HeaderContent>
-        <HeaderText>
-          <PageTitle>{upperFirst(title)}<span className='accent'>.</span></PageTitle>
-          <Subtitle>Read my latest articles and posts on software development, design, technology and more.</Subtitle>
-        </HeaderText>
+    <Layout className='bg-gray-900 h-auto'>
+      <Header className='bg-base-200' full={true}>
+        <div className='absolute h-full -top-20 -left-8 pt-0 px-0'>
+          <h2 className='font-title font-semibold text-white text-opacity-5 leading-none w-full mt-0 mb-6 ml-0 cursor-default z-min' style={BackgroundTitleStyle}>Blog</h2>
+        </div>
+        <div className='w-full max-w-250 mx-auto'>
+          <h1 className='relative inline-block text-7xl font-title font-bold text-white text-opacity-90 tracking-normal m-0 mt-12 transition-all duration-200 ease-in-out md:text-8xl md:mt-6 lg:text-8xl xl:text-8xl'>
+            {upperFirst(title)}<span className='text-accent accent-dot'>.</span>
+          </h1>
+          <h4 className='font-sans text-gray-600 text-lg text-left font-medium leading-tight w-full mt-1 mb-3 ml-0 mr-auto md:text-xl md:w-9/10 lg:w-4/5'>Read my latest articles and posts on software development, design, technology and more.</h4>
+        </div>
       </Header>
-      <BlogContent className='light-bg' offset={0.55} factor={contentHeight} speed={0.6}>
-        <Wrapper>
-          <ButtonsWrapper>
-            <Search algolia={algolia} />
-            <TagMenu />
-          </ButtonsWrapper>
-          <CardList>
-            {posts.map(({ node, i }) => (
-              <Bounce bottom key={node.fields.slug} delay={100 * (i + 1)} duration={1000}>
-                <BlogCard post={node} mobile={mobile} />
-              </Bounce>
+      <div className='w-full h-full -mt-9 mb-0 mx-auto p-0 z-10'>
+        <div className='w-4/5 max-w-240 m-auto mt-8 pt-8 pb-20 z-9999 sm:mt-9 sm:mb-1 md:pt-12'>
+          <div className='hidden md:flex relative justify-between items-end w-32 h-12 ml-0 z-9999 md:ml-auto mr-auto md:mr-1'>
+            <Search />
+            <CategoryMenu categories={categories} />
+          </div>
+          <div className='inline w-full mt-0 mx-auto pt-8 z-9999'>
+            {trail.map((style, index) => (
+                <animated.div 
+                  key={index} 
+                  className='relative' 
+                  style={style}
+                >
+                  <BlogCard
+                    key={index}
+                    post={posts[index]}
+                  />
+                </animated.div>
             ))}
-          </CardList>
+          </div>
           <Pagination
             path={path}
             current={currentPage}
-            numPages={numPages} />
-        </Wrapper>
-      </BlogContent>
+            numPages={numPages}
+          />
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -144,8 +77,11 @@ const BlogLayout = ({ title, posts, pageContext, algolia }) => {
 BlogLayout.propTypes = {
   title: PropTypes.string.isRequired,
   posts: PropTypes.array.isRequired,
-  pageContext: PropTypes.shape.isRequired,
-  algolia: PropTypes.shape,
+  pageContext: PropTypes.shape({
+    currentPage: PropTypes.number.isRequired,
+    numPages: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired,
+  }).isRequired,
 }
 
 export default BlogLayout

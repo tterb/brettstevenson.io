@@ -182,7 +182,6 @@ export const Button = (props) => (
     {props.value ? props.value : props.children}
   </Submit>
 )
-
 Button.defaultProps = {
   type: 'submit',
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CodeBlock from './Code'
+import CodeBlock from 'components/Post/Code'
+
 
 function preToCodeBlock(preProps) {
   if (
@@ -32,7 +33,7 @@ const CodePre = (props) => {
 CodePre.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.shape,
+    PropTypes.object,
     PropTypes.node,
   ]).isRequired,
 }

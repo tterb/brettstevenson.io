@@ -1,8 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql, StaticQuery } from 'gatsby'
-import PropTypes from 'prop-types'
-import config from '../../config/website'
+// Config
+import config from 'config/website'
+
 
 const Head = props => {
   const {
@@ -98,7 +100,7 @@ const Head = props => {
       <meta property='og:image:alt' content={description} />
       {config.siteFBAppID && <meta property='fb:app_id' content={config.siteFBAppID} />}
       <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:creator' content={config.userTwitter ? config.userTwitter : ''} />
+      <meta name='twitter:creator' content={config.twitterUsername ? config.twitterUsername : ''} />
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:image' content={image} />
@@ -108,7 +110,6 @@ const Head = props => {
     </Helmet>
   )
 }
-
 Head.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
@@ -117,7 +118,9 @@ Head.propTypes = {
   }).isRequired,
 }
 
-const SEO = props => <StaticQuery query={querySEO} render={data => <Head {...props} data={data} />} />
+const SEO = props => (
+  <StaticQuery query={querySEO} render={data => <Head {...props} data={data} />} />
+)
 
 export default SEO
 

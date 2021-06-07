@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useTrail } from 'react-spring'
 // Elements
-import { DividerMiddle } from '../elements/Dividers'
-import { SectionTitle } from '../elements/Titles'
-import Content from '../elements/Content'
-import Inner from '../elements/Inner'
+import { DividerMiddle } from 'elements/Dividers'
+import { SectionTitle } from 'elements/Titles'
+import Content from 'elements/Content'
+import Inner from 'elements/Inner'
 // Components
-import ProjectCard from '../components/ProjectCard'
-import Cube from '../components/Cube'
+import ProjectCard from 'components/ProjectCard'
+import Cube from 'components/Cube'
 // Hooks
-import useWindowDimensions from '../hooks/WindowDimensions'
+import useWindowDimensions from 'hooks/WindowDimensions'
 
 
 const Projects = ({  id, projects, isMobile }) => {
@@ -23,15 +23,14 @@ const Projects = ({  id, projects, isMobile }) => {
   ]
   const projectCount = isMobile ? projects.length - 2 : projects.length
   const clipPath = win.width < 650 ? 'polygon(0 0, 100% 7%, 100% 100%, 0 93%)' : 'polygon(0 0, 100% 10%, 100% 100%, 0 90%)'
-  
+
   const trail = useTrail(projectCount, {
     from: { top: '100rem' },
     to: { top: '-0.75rem' },
   })
   return (
     <DividerMiddle
-      className='flex relative w-full h-full min-h-400 md:min-h-320 mt-28'
-      bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
+      className='flex relative bg-gradient-to-r from-indigo-600 to-blue-500 w-full h-full min-h-400 md:min-h-320 mt-28'
       clipPath={clipPath}
     >
       <Content id={id}>

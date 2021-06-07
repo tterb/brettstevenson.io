@@ -100,7 +100,6 @@ function ProjectsCard(props) {
     </animated.div>
   )
 }
-
 ProjectsCard.defaultProps = {
   bg: 'linear-gradient(to right, #7f7fd5, #86a8ef)',
 }

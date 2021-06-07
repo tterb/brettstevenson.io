@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const Content = ({className, children, ...props }) => (
   <div 
-    className={`relative w-full py-12 md:py-16 lg:py-24 justify-center items-center z-50${className ? ` ${className}` : ''}`}
+    className={`${className ? `${className} ` : ''}relative w-full my-6 py-6 md:my-8 md:py-8 lg:my-12 lg:py-12 justify-center items-center z-50`}
     {...props}
   >
     {children}

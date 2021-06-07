@@ -5,21 +5,22 @@ import { graphql } from 'gatsby'
 import BlogLayout from 'components/BlogLayout'
 
 
-const Blog = ({ pageContext, data }) => (
+const Category = ({ pageContext, data }) => (
   <BlogLayout
-    title='Blog'
-    posts={data.posts.nodes}
+    title={pageContext.category}
+    posts={data.posts.edges}
     categories={data.categories.group}
     pageContext={pageContext}
   />
 )
-Blog.propTypes = {
+Category.propTypes = {
   pageContext: PropTypes.shape({
     currentPage: PropTypes.number.isRequired,
     count: PropTypes.number.isRequired,
     limit: PropTypes.number.isRequired,
     numPages: PropTypes.number.isRequired,
     skip: PropTypes.number.isRequired,
+    tag: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     posts: PropTypes.shape({
@@ -35,42 +36,41 @@ Blog.propTypes = {
           image: PropTypes.object.isRequired,
         }).isRequired,
       })).isRequired,
+      categories: PropTypes.shape({
+        group: PropTypes.arrayOf(PropTypes.shape({
+          fieldValue: PropTypes.string.isRequired,
+          totalCount: PropTypes.number.isRequired,
+        }).isRequired).isRequired,
+      }).isRequired,
     }).isRequired,
-    categories: PropTypes.shape({
-      group: PropTypes.arrayOf(PropTypes.shape({
-        fieldValue: PropTypes.string.isRequired,
-        totalCount: PropTypes.number.isRequired,
-      }).isRequired).isRequired,
-    }).isRequired,
+    site: PropTypes.object.isRequired,
   }).isRequired,
 }
 
-export default Blog
+export default Category
 
-export const blogQuery = graphql`
-  query BlogQuery($skip: Int!, $limit: Int!) {
+export const categoryQuery = graphql`
+  query ($skip: Int!, $limit: Int!, $category: String!) {
     posts: allMdx(
-      filter: {fields: {sourceInstanceName: {eq: "posts"}}}
-      sort: {fields: [frontmatter___date], order: DESC}
+      filter: {fields: {sourceInstanceName: {eq: "posts"}}, frontmatter: {category: {eq: $category}}}
+      sort: {fields: frontmatter___date, order: DESC}
       limit: $limit
       skip: $skip
     ) {
-      nodes {
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          description
-          date(formatString: "DD MMM YYYY")
-          category
-          image {
-            childImageSharp {
-              gatsbyImageData( 
-                layout: CONSTRAINED,
-                placeholder: DOMINANT_COLOR,
-                height: 320,
-              )
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            date(formatString: "DD MMM, YYYY")
+            category
+            image {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH)
+              }
             }
           }
         }

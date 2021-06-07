@@ -1,78 +1,120 @@
-import React from 'react'
-import tw from 'tailwind.macro'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+// Components
+import PageLink from 'components/PageLink'
+// Content
+import messages from '../content/FourOhFour.yaml'
+// Styles
+import { glitchAnimation, glitchHoverAnimation } from 'styles/animations'
 
 
 const Glitch = styled.div`
-  ${tw`absolute w-full pin-t overflow-hidden`}
+  ${glitchAnimation('2s')};
   left: -2px;
   text-shadow: 2px 0 #F9F8F8, -1px 0 cyan, -2px 0 green, 3px 0 rgba(255,0,0,0.7);
 `
 
-const Header = styled.header`
-  ${tw`absolute font-title w-full h-full pin-l overflow-hidden`}
-  top: 50%;
-  transform: translateY(-50%);
-`
-
 const Title = styled.h1`
-  ${tw`relative font-title font-extrabold text-center uppercase my-14 mb-12`}
-  color: #222;
   font-size: 13.25rem;
-`
-
-const Message = styled.div`
-  ${tw`text-2xl font-normal text-center m-auto`}
-`
-
-const Button = styled.button`
-  ${tw`relative block text-center outline-none cursor-pointer mx-auto mb-0 p-4 px-6`}
-  background: transparent;
-  color: #000;
-  border: 4px solid transparent;
-  box-shadow:inset 0px 0px 0px 2px #000, 0 1px 3px #fafafa;
-  transform: scale(2);
-  margin-top: 16vh;
-`
-
-class FourOhFour extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.messages = [
-      'Page Not Found',
-      'It looks like John Wick found this page first.',
-      'Your lack of direction is astounding.',
-      'The cake is a lie.',
-      'You can\'t always get what you want.',
-      'There are no mistakes, only happy accidents.',
-      'Return to the NPC that gave you this quest.',
-    ]
-    this.state = {
-      index: Math.round(Math.random() * this.messages.length),
+  &:hover {
+    &:before, &:after {
+      content: '404';
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
+    }
+    &:before {
+      ${glitchHoverAnimation('1s', '250ms', '')};
+      color: #0FF;
+      z-index: -2;
+    }
+    &:after {
+      ${glitchHoverAnimation('600ms', '0ms', 'reverse')};
+      color: #F05;
+      z-index: -1;
     }
   }
+`
 
-  handleClick(evt) {
-    evt.preventDefault();
-    window.location.href = '../';
+const Button = styled(PageLink)`
+  ${glitchAnimation('2s')};
+  transform-style: preserve-3d;
+  &::before, &::after {
+    position: absolute;
+    width: 102%;
+    height: 70px;
+    top: 0;
+    left: 0;
+    border: 4px solid;
+    opacity: 0.8;
+    transform-style: preserve-3d;
+    transform: translateZ(-1px);
   }
+  &:hover {
+    &:before {
+      ${glitchHoverAnimation('1s', '250ms', 'reverse')};
+      content: '';
+      background: #0FFA;
+      border-color: #0FF;
+      z-index: -2;
+      transform: translateZ(-2px);
+    }
+    &:after {
+      ${glitchHoverAnimation('600ms', '0ms', '')};
+      content: '';
+      background: #F05A;
+      border-color: #F05;
+      z-index: -1;
+      transform: translateZ(-1px);
+    }
+  }
+`
 
-  render() {
-    require('../styles/404.scss')
-    const message = this.messages[this.state.index]
-    return (
-      <Header>
-        <Title className='fourohfour-title'>404</Title>
-        <Message dangerouslySetInnerHTML={{ __html: message }} />
-        <Glitch className='glitch'>
-          <Title>404</Title>
+const FourOhFour = () => {
+
+  const [message, setMessage] = useState({ text: '', buttonText: '' })
+
+  useEffect(() => {
+    let randomIndex = Math.floor(Math.random() * messages.length)
+    setMessage(messages[randomIndex])
+  }, [])
+
+  return (
+    <div className='absolute bg-white font-title w-full h-full top-0 left-0 -translate-y-1/2 overflow-hidden'>
+      <div>
+        <Title className='fourohfour-title relative font-title font-extrabold text-base-300 leading-none text-center uppercase mt-18 mb-10 z-10 cursor-default'>
+          <span className='z-10'>404</span>
+        </Title>
+        <div className='text-2xl font-normal text-center m-auto mt-4'> 
+          {message.text}
+        </div>
+        <Glitch className='glitch absolute w-full top-0 overflow-hidden'>
+          <Title className='relative font-title font-extrabold text-base-300 leading-none text-center uppercase mt-18 mb-10 cursor-default'>404</Title>
         </Glitch>
-        <Button className='fourohfour-button' onClick={this.handleClick} data-text='Home'>Home</Button>
-      </Header>
-    )
-  }
+      </div>
+      <div className='relative flex w-auto h-auto items-center mx-auto mt-28 mb-0 z-10'>
+        <Button
+          className='fourohfour-button group relative block bg-white text-base-400 text-xl font-bold text-center w-max min-w-48 py-4 px-6 mx-auto transition duration-300 ease outline-none cursor-pointer hover:text-base-300'
+          data-text='Home'
+          label='Home'
+          to='/'
+        >
+          {message.buttonText.length ? message.buttonText : 'Home'}
+          <PageLink
+            className='fourohfour-button group absolute block bg-white text-base-400 text-xl font-bold text-center w-max min-w-48 top-0 left-0 border-4 border-solid border-base-400 py-4 px-6 mx-auto transition duration-300 ease outline-none cursor-pointer hover:text-base-300'
+            data-text='Home'
+            label='Home'
+            to='/'
+          >
+            {message.buttonText.length ? message.buttonText : 'Home'}
+          </PageLink>
+        </Button>
+      </div>
+    </div>
+  )
 }
 
 export default FourOhFour

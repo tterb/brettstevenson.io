@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 // Elements
-import Content from '../elements/Content'
-import Inner from '../elements/Inner'
-import { Title } from '../elements/Titles'
+import Content from 'elements/Content'
+import Inner from 'elements/Inner'
+import { Title } from 'elements/Titles'
 // Components
-import PageLink from '../components/PageLink';
-import Cube from '../components/Cube'
+import PageLink from 'components/PageLink';
+import Cube from 'components/Cube'
 
 
 const ContactTitle = styled(Title)`

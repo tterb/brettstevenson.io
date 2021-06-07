@@ -7,8 +7,7 @@ import Fade from 'react-reveal/Fade'
 // Icons
 import { AngleDoubleDown } from '@styled-icons/fa-solid'
 // Elements
-import Content from '../elements/Content'
-import { Subtitle } from '../elements/Titles'
+import { Subtitle } from 'elements/Titles'
 
 
 const Title = styled.h1`
@@ -44,9 +43,9 @@ const Code = () => (
   </CodeWrapper>
 )
 
-const ScrollArrow = () => (
+const ScrollArrow = ({ location }) => (
   <div
-    className='relative text-center w-1/2 -top-16 sm:top-0 mx-auto my-2 mt-18 md:mt-6 xl:mt-2'
+    className='relative text-center w-1/2 -top-16 sm:top-0 md:-top-8 mx-auto my-2 mt-18 md:mt-6 xl:mt-2'
   >
     <Fade bottom delay={450}>
       <Arrow
@@ -59,12 +58,14 @@ const ScrollArrow = () => (
   </div>
 )
 
-const Hero = () => (
+const Hero = (props) => (
   <div className='flex flex-col p-6 justify-center items-center top-0 z-50 md:p-16 lg:p-24 lg:pt-28'>
     <div className='relative flex flex-row w-full top-12 mx-2 mt-16 sm:-top-14 sm:mx-0 sm:mt-40 md:mt-24 lg:mt-12 xl:w-full'>
       <div className='flex flex-col'>
         <Title className='font-title font-bold text-white text-opacity-95 leading-none w-full text-7xl md:text-8xl lg:text-9xl xl:text-10xl mt-4 mb-6 ml-0 lg:mt-6'>
-          Hello,<br />I'm Brett<br />Stevenson<span className='text-accent accent-dot'>.</span>
+          Hello,<br />
+          I'm Brett<br />
+          Stevenson<span className='text-accent accent-dot'>.</span>
         </Title>
         <Subtitle>
           <Typed
@@ -85,9 +86,13 @@ const Hero = () => (
       </div>
       <Code />
     </div>
-    <ScrollArrow />
+    <ScrollArrow location={props.location} />
   </div>
 )
-Hero.propTypes = {}
+Hero.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+}
 
 export default Hero

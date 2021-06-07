@@ -1,23 +1,23 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 // Components
-import Layout from '../components/Layout'
+import Layout from 'components/Layout'
 // Views
-import Hero from '../views/Hero'
-import Projects from '../views/Projects'
-import About from '../views/About'
-import Contact from '../views/Contact'
+import Hero from 'views/Hero'
+import Projects from 'views/Projects'
+import About from 'views/About'
+import Contact from 'views/Contact'
 // Hooks
-import { isMobile } from '../hooks/WindowDimensions'
+import { isMobile } from 'hooks/WindowDimensions'
 
 
-const Index = ({ data }) => {
+const Index = ({ data, ...props }) => {
   const mobile = isMobile()
   const avatar = data.avatar.childImageSharp.gatsbyImageData
   const projects = data.projects.nodes || []
   return (
     <Layout navLogo={false}>
-      <Hero />
+      <Hero {...props} />
       <About 
         id='about'
         avatar={avatar}

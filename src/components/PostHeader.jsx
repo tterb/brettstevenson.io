@@ -1,22 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
 
+
 const Wrapper = styled.div`
-  ${tw`font-default leading-normal tracking-tight max-w-md md:max-w-lg mx-auto my-0 px-0 pt-14 pb-8 md:px-9`}
   @media (max-width: 500px) {
-    ${tw`pb-8`}
     &::after {
-      ${tw`pin-l`}
+      left: 0;
     }
   }
   &::after {
-    ${tw`block relative w-1/4 pin-l`}
     content: '';
+    display: block;
+    position:relative;
     background: linear-gradient(to top left, SlateBlue 30%, DeepSkyBlue 75%);
+    width: 25%;
     height: 6px;
-    top: -0.75rem;
+    top: -1.25rem;
+    left: 0;
     @media (min-width: 900px) {
       height: 7px;
     }
@@ -27,34 +28,24 @@ const Wrapper = styled.div`
 `
 
 const PostTitle = styled.h1`
-  ${tw`relative font-bold tracking-tight leading-tighter m-0 mr-auto text-4xl sm:text-5xl md:text-4xl lg:text-5xl`}
-  color: rgba(0,0,0,0.75);
   width: 85%;
   @media (max-width: 600px) {
-    font-size: 3.25rem;
-  }
-`
-
-const PostDate = styled.p`
-  ${tw`block relative text-right leading-normal pin-t my-1 mx-0 text-lg mt-4 md:text-xl`}
-  color: rgba(0,0,0,0.75);
-  right: 4px;
-  strong {
-    ${tw`py-0 px-1`}
+    font-size: 3.5rem;
   }
 `
 
 const PostHeader = ({ post }) => (
-  <Wrapper>
-    <PostTitle>{post.title}</PostTitle>
-    <PostDate>
+  <Wrapper className='font-default leading-normal tracking-tight w-9/10 max-w-300 mx-auto my-0 px-0 pt-6 sm:pt-14 pb-6 md:w-4/5 md:px-9 lg:w-3/4'>
+    <PostTitle className='relative font-bold text-black text-opacity-75 tracking-tight leading-tighter m-0 mr-auto text-5xl sm:text-6xl'>
+      {post.title}
+    </PostTitle>
+    <span className='block relative text-lg md:text-xl text-black text-opacity-75 text-right leading-normal top-0 right-1 my-1 mx-0 mt-4'>
       {post.date.split(' ').map((item, i) => (
-        (i !== 1) ? <strong key={i}>{item}</strong> : item
+        (i !== 1) ? <strong key={i} className='py-0 px-1'>{item}</strong> : item
       ))}
-    </PostDate>
+    </span>
   </Wrapper>
 )
-
 PostHeader.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string,
