@@ -20,7 +20,7 @@ Category.propTypes = {
     limit: PropTypes.number.isRequired,
     numPages: PropTypes.number.isRequired,
     skip: PropTypes.number.isRequired,
-    tag: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     posts: PropTypes.shape({
@@ -63,7 +63,7 @@ export const categoryQuery = graphql`
         frontmatter {
           title
           description
-          date(formatString: "DD MMM, YYYY")
+          date(formatString: "DD MMM YYYY")
           category
           image {
             childImageSharp {

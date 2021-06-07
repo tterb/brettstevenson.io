@@ -87,18 +87,18 @@ const Menu = styled.ul`
   box-shadow: -0.5px 2px 6px -2px rgba(0,0,0,0.35);
   li:last-child a {
     border-bottom: none;
-  } 
+  }
 `
 
-const CategoryLink = styled.a`
+const CategoryLink = styled(PageLink)`
   border-bottom: 0.5px solid rgba(0,0,0,0.1);
 `
 
 const CategoryIcon = ({ isOpen }) => (
   <span className='category-wrapper absolute flex text-base-600 items-center justify-center w-9 h-9'>
     <Icon className={`category absolute grid grid-cols-2 gap-1 text-base-600 transition-transform ease-in-out transform ${isOpen ? 'duration-400 delay-200 scale-x-0' : 'duration-300 delay-400 scale-90'}`}>
-      {Array(4).fill(0).map((_) => (
-        <Square className={`square bg-transparent w-3 h-3 border-3 border-solid border-base-600 rounded transform transition-transform ease-in-out ${isOpen ? 'duration-300 delay-0 -rotate-45' : 'duration-200 delay-400 rotate-0'}`} />
+      {Array(4).fill(0).map((_, index) => (
+        <Square key={index} className={`square bg-transparent w-3 h-3 border-3 border-solid border-base-600 rounded transform transition-transform ease-in-out ${isOpen ? 'duration-300 delay-0 -rotate-45' : 'duration-200 delay-400 rotate-0'}`} />
       ))}
     </Icon>
   </span>
@@ -107,14 +107,21 @@ const CategoryIcon = ({ isOpen }) => (
 
 const CategoryMenu = (props) => {
 
+  const formatCategories = (categories) => {
+    categories = categories.map((category) => {
+      if (category.fieldValue === 'Web Development') {
+        category.display = 'Web Dev'
+      } else {
+        category.display = category.fieldValue
+      }
+      category.link = `/blog/category/${kebabCase(category.fieldValue)}`
+      return category
+    })
+    return orderBy(categories, [category => category.totalCount], ['desc'])
+}
+
   const [open, setOpen] = useState(false)
-  const truncatedCategories = props.categories.map((category) => {
-    if (category.fieldValue === 'Web Development') {
-      category.fieldValue = 'Web Dev'
-    }
-    return category
-  })
-  const categories = orderBy(truncatedCategories, [category => category.totalCount], ['desc'])
+  const categories = formatCategories(props.categories)
 
   return (
     <div className='relative group-hover:bg-none w-14 h-14 items-center justify-center rounded-full p-2'>
@@ -130,9 +137,9 @@ const CategoryMenu = (props) => {
                 <CategoryLink
                   className='group flex text-base-400 font-medium w-auto mx-2 p-2 hover:text-base-300'
                   label={category.fieldValue}
-                  to={`/blog/category/${kebabCase(category.fieldValue)}`}
+                  to={category.link}
                 >
-                  {category.fieldValue} <span className='text-base-600 font-normal ml-auto group-hover:text-accent'>{category.totalCount}</span>
+                  {category.display} <span className='text-base-600 font-normal ml-auto group-hover:text-accent'>{category.totalCount}</span>
                 </CategoryLink>
               </li>
             ))}

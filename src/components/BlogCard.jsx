@@ -26,7 +26,7 @@ const Card = styled.div`
 const BgImage = styled(GatsbyImage)`
   max-width: ${props => props.maxWidth};
   & > img {
-    object-fit: cover !important; 
+    object-fit: cover !important;
     object-position: 0% 0% !important;
   }
 `
@@ -78,20 +78,20 @@ class BlogCard extends React.Component {
         <div className='content-mask relative block bg-white w-full md:w-9/10 h-2/3 py-4 px-4 rounded-none overflow-hidden cursor-pointer z-5 xs:rounded-b-lg sm:rounded-r-lg sm:rounded-b-none focus:sm:inline-block sm:h-full sm:py-6 sm:px-6 sm:pr-8 md:px-8 md:pr-10 lg:pr-12'>
           <div className='flex flex-col h-full'>
             <CardTitle className='font-title font-bold text-3xl sm:text-4xl lg:text-5xl leading-tighter tracking-tight w-full mt-0 ml-0 mr-auto pb-3'>
-              <PageLink 
+              <PageLink
                 className='w-9/10 no-underline text-base-100 text-opacity-80 mr-auto hover:text-base-100'
                 to={`/blog${post.slug}`}
                 content={post.title}
               />
             </CardTitle>
-            <Text className='text-lg text-base-400 leading-normal w-full mt-0 md:mt-1 mb-4 pb-1 cursor-pointer z-10'> 
+            <Text className='text-lg text-base-400 leading-normal w-full mt-0 md:mt-1 mb-4 pb-1 cursor-pointer z-10'>
               {post.description}
             </Text>
             <Meta className='flex text-base text-base-400 text-opacity-90 items-center align-middle mt-auto mb-0'>
               <Tag className='text-base-700 my-0 ml-0 mr-2' size='1.2em' />
               <PageLink
                 className='text-base-400 text-opacity-90'
-                to={`/blog/tag/${kebabCase(post.category)}`}
+                to={`/blog/category/${kebabCase(post.category)}`}
                 content={post.category}
               />
               <Circle className='separator text-base-700 text-opacity-40 align-middle' size='1em' />
