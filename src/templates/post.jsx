@@ -11,13 +11,13 @@ import MDXRenderer from 'components/Post/MDX'
 // Hooks
 import { isMobile } from 'hooks/WindowDimensions'
 // Styles
-import 'post.css'
+import 'styles/post.css'
+import 'styles/syntax.css'
 
 
 
 const PostTemplate = ({ data, pageContext, location }) => {
   // require('typeface-source-code-pro')
-  require('../styles/syntax.css')
 
   const post = data.post
   assign(post, post.frontmatter)
