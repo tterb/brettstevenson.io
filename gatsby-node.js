@@ -8,7 +8,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // Only use MDX nodes
   if (node.internal.type === 'Mdx') {
     const fileNode = getNode(node.parent)
-    // console.log('slug: ' + node.frontmatter.slug);
     // If the frontmatter contains a "slug", use it
     if (
       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
@@ -104,7 +103,6 @@ exports.createPages = async ({ graphql, actions }) => {
   for (var name in categories) {
     const pageCount = Math.ceil(categories[name]/postsPerPage)
     Array.from({ length: pageCount }).forEach((x, index) => {
-      console.log(name + ': ' + pageCount);
       createPage({
         path: index === 0 ? `blog/category/${_.kebabCase(name)}` : `blog/category/${_.kebabCase(name)}/${index + 1}`,
         component: categoryTemplate,
