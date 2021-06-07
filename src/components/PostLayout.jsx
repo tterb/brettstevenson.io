@@ -96,11 +96,13 @@ class PostLayout extends React.Component {
       <div className='post-body w-full m-auto'>
         <span id='top' />
         <Nav mobile={mobile} />
-        <HeroImage 
-          className='w-full top-0 left-0'
-          image={post.image.childImageSharp.gatsbyImageData}
-          alt={post.title}
-        />
+        {post.image ? (
+          <HeroImage
+            className='w-full top-0 left-0'
+            image={post.image.childImageSharp.gatsbyImageData}
+            alt={post.title}
+          />
+        ) : null}
         <Wrapper className='wrapper font-default m-0 pb-20'>
           <PostHeader post={post} />
           <Content className='text-black text-opacity-85 leading-normal w-full sm:w-9/10 max-w-300 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-9 md:pb-9'>
@@ -114,7 +116,7 @@ class PostLayout extends React.Component {
           <div className='prev-next'>
             {prevPost &&
               <span className='prev'>
-                <PageLink 
+                <PageLink
                   label='previous'
                   rel='prev'
                   to={`${location.pathname}/blog${prevPost.fields.slug}`}
