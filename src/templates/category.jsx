@@ -8,7 +8,7 @@ import BlogLayout from 'components/BlogLayout'
 const Category = ({ pageContext, data }) => (
   <BlogLayout
     title={pageContext.category}
-    posts={data.posts.edges}
+    posts={data.posts.nodes}
     categories={data.categories.group}
     pageContext={pageContext}
   />
@@ -57,20 +57,18 @@ export const categoryQuery = graphql`
       limit: $limit
       skip: $skip
     ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            description
-            date(formatString: "DD MMM, YYYY")
-            category
-            image {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
-              }
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          description
+          date(formatString: "DD MMM, YYYY")
+          category
+          image {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
