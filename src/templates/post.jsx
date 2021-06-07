@@ -18,14 +18,12 @@ import 'styles/syntax.css'
 
 const PostTemplate = ({ data, pageContext, location }) => {
   // require('typeface-source-code-pro')
-
+  const mobile = isMobile()
   const post = data.post
   assign(post, post.frontmatter)
   post.author = config.author
   post.author.image = data.avatar.childImageSharp.gatsbyImageData
-  const thumbnail = (post.thumbnail ? post.thumbnail.gatsbyImageData : post.image.gatsbyImageData)
-
-  const mobile = isMobile()
+  const thumbnail = (post.thumbnail ? post.thumbnail.childImageSharp.gatsbyImageData : post.image.childImageSharp.gatsbyImageData)
 
   return (
     <>
