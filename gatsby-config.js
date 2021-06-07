@@ -1,7 +1,8 @@
+const dotenv = require(`dotenv`)
+const path = require('path')
 const config = require(`./config/website`)
 const styleVariables = require(`./src/styles/variables.js`)
 const tailwindConfig = require(`./tailwind.config.js`)
-const dotenv = require(`dotenv`)
 
 
 const pathPrefix = config.pathPrefix === `/` ? `` : config.pathPrefix
@@ -60,26 +61,27 @@ module.exports = {
   },
   /* Plugins */
   plugins: [
-    { resolve: `gatsby-plugin-image` },
     { resolve: `gatsby-plugin-netlify` },
     { resolve: `gatsby-plugin-react-helmet` },
     { resolve: `gatsby-plugin-sitemap` },
     { resolve: `gatsby-plugin-styled-components` },
+    { 
+      resolve: `gatsby-plugin-image`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`, `avif`],
+          backgroundColor: `transparent`,
+          placeholder: `blurred`,
+        },
+      },
+    },
     { resolve: `gatsby-plugin-sharp` },
     { resolve: `gatsby-transformer-sharp` },
+    { resolve: `gatsby-plugin-optimize-svgs` },
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
         shortname: `tterb-gatsby`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: config.googleAnalyticsID,
-        optimizeId: config.googleOptimizeID,
-        pageTransitionDelay: 1000,
-        head: true,
       },
     },
     {
@@ -89,11 +91,27 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-root-import`,
+      options: {
+        src: path.join(__dirname, `src`),
+        pages: path.join(__dirname, `src/pages`),
+        components: path.join(__dirname, `src/components`),
+        config: path.join(__dirname, `config`),
+        content: path.join(__dirname, `src/content`),
+        elements: path.join(__dirname, `src/elements`),
+        hooks: path.join(__dirname, `src/hooks`),
+        styles: path.join(__dirname, `src/styles`),
+        views: path.join(__dirname, `src/views`),
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`,
+          `gatsby-remark-responsive-iframe`,
+          `gatsby-remark-copy-linked-files`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -120,11 +138,26 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        mode: `async`,
+        /* Enable font loading listener to handle FOUT */
+        enableListener: true,
+        custom: [{
+          /* Exact name of the font as defied in @font-face CSS rule */
+          name: [`TTNorms2`],
+          /* Path to the font CSS file inside the "static" folder with @font-face definition */
+          file: `/fonts/fonts.css`,
+        }],
+      },
+    },
+    {
       resolve: `gatsby-plugin-postcss`, // Implements PostCSS
       options: {
         postCssPlugins: [
           require(`autoprefixer`),
           require(`postcss-import`), // Add support for sass-like `@import`
+          require(`postcss-mixins`), // Adds support for mixins
           require(`postcss-nested`), // Add support for sass-like nesting of rules
           require(`postcss-simple-vars`)({ variables: styleVariables }),
           require(`postcss-calc`),
