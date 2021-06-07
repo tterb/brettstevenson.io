@@ -1,22 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 // Components
-import Headers from './Headers'
-import { OrderedList, UnorderedList } from './List'
-import CodePre from './Pre'
-import CodeBlock from './Code'
+import Headers from 'components/Post/Headers'
+import Paragraph from 'components/Post/Paragraph'
+import Link from 'components/Post/Link'
+import { OrderedList, UnorderedList } from 'components/Post/List'
+import HorizontalRule from 'components/Post/HorizontalRule'
+import Blockquote from 'components/Post/Blockquote'
+import CodePre from 'components/Post/Pre'
+import CodeBlock from 'components/Post/Code'
+
 
 const PrismCSS = `
   .prism-code {
     background: hsl(275, 5%, 19%);
-    width: 95%;
-    border-radius: 5px;
-    margin: 0.5rem auto;
-    border-radius: 5px;
+    margin: 1rem auto;
     overflow: scroll;
     .token-line {
       border-left: 3px solid transparent;
@@ -40,29 +41,34 @@ const PrismCSS = `
       padding: 0 2rem;
     }
     .operator + .maybe-class-name {
-      color: #ffcf74 !important;
+      color: #F8D377 !important;
     }
   }
 `
 
 const MDXBody = styled.div`
-  ${tw`relative flex flex-col justify-center max-w-md md:max-w-lg mx-auto z-10`}
   ${PrismCSS}
+  .gatsby-resp-image-wrapper {
+    margin: 1rem auto;
+  }
 `
 
 const components = {
   ...Headers,
+  p: Paragraph,
+  a: Link,
   ol: OrderedList,
   ul: UnorderedList,
+  hr: HorizontalRule,
+  blockquote: Blockquote,
   pre: CodePre,
   code: CodeBlock,
 }
 
 function MDX({ content, children, ...props }) {
-  require('../../styles/post.scss')
   return (
     <MDXProvider components={components}>
-      <MDXBody>
+      <MDXBody className='relative flex flex-col justify-center max-w-160 md:max-w-200 mx-auto z-10'>
         <MDXRenderer {...props}>
           {content}
         </MDXRenderer>
@@ -76,7 +82,7 @@ MDX.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ]).isRequired,
+  ]),
 }
 
 export default MDX

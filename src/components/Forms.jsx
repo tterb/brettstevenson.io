@@ -1,28 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
-import { accent } from '../../tailwind'
 
-const Forms = styled.form`
-  ${tw`text-left w-full mt-8 mx-auto md:w-9/10 md:ml-0 xl:w-5/6`}
-`
 
 const InputWrapper = styled.div`
-  ${tw`relative mb-6`}
   input, textarea {
-    ${tw`w-full text-left text-lg border-none outline-none py-2 px-4 pl-1 md:w-9/10`}
-    background: transparent;
-    color: rgba(255,255,255,0.8);
     -webkit-text-fill-color: rgba(255,255,255,0.8);
     line-height: 1.2;
-    transition: all 350ms ease-in-out;
     &::placeholder, &::-webkit-input-placeholder {
       color: rgba(255,255,255,0.4) !important;
-    }
-    + .focus-input::after {
-      top: 8px;
-      left: 1px !important;
     }
     &:focus {
       padding-top: 0.75rem;
@@ -33,15 +19,20 @@ const InputWrapper = styled.div`
         color: #888;
         top: -15px;
         left: 1px;
-        transition: all 400ms ease-in-out;
+        transition: all 200ms ease-in-out;
       }
     }
   }
+  input + .focus-input::after {
+    top: 8px;
+    left: 1px !important;
+  }
+  textarea + .focus-input::after {
+    top: 8px;
+    left: 1px !important;
+  }
   &.has-input {
-    margin-top: 0.25rem;
-    input, textarea {
-      padding-top: 0.75rem;
-    }
+    margin-top: 1.5rem;
     input + .focus-input::after,
     textarea + .focus-input::after {
       color: #888;
@@ -50,75 +41,67 @@ const InputWrapper = styled.div`
     }
   }
   &:focus-within {
-    margin-top: 1rem;
-    transition: all 350ms ease-in-out;
+    margin-top: 1.5rem;
+    transition: all 250ms ease-in-out;
   }
 `
 
 const FocusLine = styled.span`
-  ${tw`block w-full h-full pin-t pin-l overflow-hidden md:w-9/10`}
-  pointer-events: none;
   &::before {
-    ${tw`block w-full pin-l overflow-hidden`}
-    background: rgba(255,255,255,0.3);
     content: '';
+    display: block;
+    background: rgba(255,255,255,0.3);
+    width: 100%;
     height: 2px;
+    left: 0;
     bottom: -2px;
-    transition: all 400ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    overflow: hidden;
   }
   &::after {
-    ${tw`block absolute text-lg w-full pin-t overflow-hidden`}
-    color: #666;
     content: attr(data-placeholder);
+    display: block;
+    position: absolute;
+    color: #666;
+    font-size: 1.125rem;
     line-height: 1.2;
-    transition: all 400ms ease-in-out;
+    width: 100%;
+    top: 0;
+    transition: all 200ms ease-in-out;
+    overflow: hidden;
   }
-`
-
-const TextArea = styled.textarea`
-  ${tw`mt-1`}
-  min-height: 8rem;
-  &:focus {
-    ${tw`mt-1`}
-  }
-`
-
-const HoneyPot = styled.input`
-  ${tw`absolute w-0 h-0 pin-t pin-l opacity-0`}
-  z-index: -1;
 `
 
 const Submit = styled.button`
-  ${tw`block text-lg font-semibold text-center h-auto border-none outline-none cursor-pointer mt-12 pl-1 pb-5 px-5 py-3 xs:w-1/2 md:w-1/4`}
-  /* background: ${accent}; */
-  background-image: linear-gradient(to top, #BF2310, ${accent}, ${accent}, ${accent});
+  background-image: linear-gradient(to top, #BF2310, #F2433B, #F2433B, #F2433B);
   background-size: 100% 300%;
-  color: rgba(255,255,255,0.9);
   text-shadow: 0 1px 1px rgba(0,0,0,0.4);
-  max-width: 175px;
-  border-radius: 4px;
-  transition: all 350ms ease-in-out;
   &:hover, &:active, &:focus {
     background-position: 0% 100%;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    transition: all 350ms ease-in-out;
   }
 `
 
 export const Form = (props) => (
-  <Forms
+  <form
     method={props.method}
     name={props.name}
     data-netlify='true'
     netlify-honeypot='only_for_bots'
-    accept-charset='UTF-8'>
+    acceptCharset='UTF-8'
+    className={`text-left w-full my-0 mx-auto${props.className ? ` ${props.className}` : ''}`}
+  >
     {/* action='success' */}
     <input type='hidden' name='form-name' value={props.name} />
     {props.children}
-    <HoneyPot type='email' name='only_for_bots' />
-  </Forms>
+    {/* Honeypot */}
+    <input
+      type='email'
+      name='only_for_bots'
+      className='absolute w-0 h-0 top-0 left-0 opacity-0 z-min'
+    />
+  </form>
 )
-
 Form.defaultProps = {
   method: 'POST',
   name: 'contact',
@@ -135,19 +118,22 @@ Form.propTypes = {
 
 
 export const Input = (props) => (
-  <InputWrapper className={`contact-input ${props.value.length ? 'has-input' : ''}`}>
-    <input type={props.type}
-           name={props.name}
-           value={props.value}
-           autoComplete={props.autocomplete ? 'false' : 'true'}
-           onChange={props.onChange}
-           required />
+  <InputWrapper className={`contact-input${props.value.length ? ' has-input' : ''} relative mb-6`}>
+    <input
+      className='bg-transparent text-lg text-white text-opacity-80 text-left w-full md:w-9/10 border-none outline-none py-2 px-4 pl-1 transition-all duration-300 ease-in-out'
+      type={props.type}
+      name={props.name}
+      value={props.value}
+      autoComplete={props.autocomplete ? 'false' : 'true'}
+      onChange={props.onChange}
+      required
+    />
     <FocusLine
-      className='focus-input'
-      data-placeholder={props.placeholder} />
+      className='focus-input block w-full md:w-9/10 h-full top-0 left-0 overflow-hidden pointer-events-none'
+      data-placeholder={props.placeholder}
+    />
   </InputWrapper>
 )
-
 Input.defaultProps = {
   type: 'text',
   autocomplete: false,
@@ -162,25 +148,27 @@ Input.propTypes = {
 }
 
 
-export const Message = (props) => (
-  <InputWrapper className={`contact-input ${props.value.length ? 'has-input' : ''}`}>
-    <TextArea
+export const TextArea = (props) => (
+  <InputWrapper className={`contact-input ${props.value.length ? 'has-input' : ''} relative mb-6`}>
+    <textarea
+      className='bg-transparent text-lg text-white text-opacity-80 text-left w-full md:w-9/10 min-h-32 border-none outline-none py-2 px-4 pl-1 transition-all duration-300 ease-in-out mt-1 focus:mt-1'
       name={props.name}
       value={props.value}
       autoComplete={props.autocomplete ? 'false' : 'true'}
       onChange={props.onChange}
-      required />
+      required
+    />
     <FocusLine
-      className='focus-input'
-      data-placeholder={props.placeholder} />
+      className='focus-input block w-full md:w-9/10 h-full top-0 left-0 overflow-hidden pointer-events-none'
+      data-placeholder={props.placeholder}
+    />
   </InputWrapper>
 )
-
-Message.defaultProps = {
+TextArea.defaultProps = {
   type: 'text',
   autocomplete: false,
 }
-Message.propTypes = {
+TextArea.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
@@ -190,11 +178,10 @@ Message.propTypes = {
 
 
 export const Button = (props) => (
-  <Submit type={props.type}>
+  <Submit type={props.type} className='block text-lg text-white text-opacity-90 font-semibold text-center w-1/2 md:w-1/4 max-w-44 h-auto border-none rounded mt-12 px-5 py-3 transition-all duration-300 ease-in-out outline-none cursor-pointer'>
     {props.value ? props.value : props.children}
   </Submit>
 )
-
 Button.defaultProps = {
   type: 'submit',
 }

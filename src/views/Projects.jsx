@@ -1,102 +1,83 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
 import { useTrail } from 'react-spring'
-import tw from 'tailwind.macro'
-import styled from 'styled-components'
 // Elements
-import { DividerMiddle } from '../elements/Dividers'
-import { Title } from '../elements/Titles'
-import Content from '../elements/Content'
-import Inner from '../elements/Inner'
+import { DividerMiddle } from 'elements/Dividers'
+import { SectionTitle } from 'elements/Titles'
+import Content from 'elements/Content'
+import Inner from 'elements/Inner'
 // Components
-import ProjectCard from '../components/ProjectCard'
-import Cube from '../components/Cube'
+import ProjectCard from 'components/ProjectCard'
+import Cube from 'components/Cube'
 // Hooks
-import useWindowDimensions from '../hooks/WindowDimensions'
+import useWindowDimensions from 'hooks/WindowDimensions'
 
 
-const ProjectsWrapper = styled.div`
-  ${tw`flex flex-wrap justify-between mt-8`}
-  display: grid;
-  grid-gap: 4rem;
-  grid-template-columns: repeat(2, 1fr);
-  @media (max-width: 1200px) {
-    grid-gap: 3rem;
-  }
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-    grid-gap: 2rem;
-  }
-`
+const Projects = ({  id, projects, isMobile }) => {
+  const win = useWindowDimensions()
+  const colors = win.width < 650 ? [
+    'linear-gradient(to right, #7f7fd5, #76bef6)'
+  ] : [
+    'linear-gradient(to right, #7f7fd5, #86a8ef)',
+    'linear-gradient(to right, #83a0e8, #76bef6)',
+  ]
+  const projectCount = isMobile ? projects.length - 2 : projects.length
+  const clipPath = win.width < 650 ? 'polygon(0 0, 100% 7%, 100% 100%, 0 93%)' : 'polygon(0 0, 100% 10%, 100% 100%, 0 90%)'
 
-const Projects = ({ offset, factor }) => {
-  let divOffset = offset
-  if (typeof window !== 'undefined') {
-    const { height, width } = useWindowDimensions()
-    if (width <= 600) {
-      factor *= 1.25
-      divOffset = offset - (offset * 0.175)
-    }
-  }
-  const colors = ['linear-gradient(to right, #7f7fd5, #86a8ef)', 'linear-gradient(to right, #83a0e8, #76bef6)']
-  const data = useStaticQuery(projectQuery)
-  const projects = data.allMdx.edges
-  const trail = useTrail(projects.length, {
+  const trail = useTrail(projectCount, {
     from: { top: '100rem' },
     to: { top: '-0.75rem' },
   })
   return (
-    <>
-      <DividerMiddle
-        bg='linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)'
-        offset={divOffset - 0.2}
-        factor={factor}
-        speed={0.35}
-      />
-      <Content offset={offset - 0.005} factor={1.75} speed={0.45}>
+    <DividerMiddle
+      className='flex relative bg-gradient-to-r from-indigo-600 to-blue-500 w-full h-full min-h-400 md:min-h-320 mt-28'
+      clipPath={clipPath}
+    >
+      <Content id={id}>
         <Inner>
-          <Cube />
-          <Title>Projects</Title>
-          <ProjectsWrapper>
+          <div className='section-title flex items-baseline'>
+            <Cube color='red' />
+            <SectionTitle>Projects</SectionTitle>
+          </div>
+          <div className='grid grid-cols-1 gap-8 justify-between mt-8 md:grid-cols-2 md:gap-12 xl:gap-16'>
             {trail.map((style, index) => (
               <ProjectCard
-                key={index}
-                project={projects[index].node.frontmatter}
+                key={projects[index].id}
+                project={projects[index].frontmatter}
                 bg={colors[index % colors.length]}
-                style={style} />
+                style={style}
+              />
             ))}
-          </ProjectsWrapper>
+            {isMobile ?
+              <ProjectCard
+                project={{
+                  title: 'More..',
+                  description: 'You can see what else I\'ve been building on GitHub',
+                  github: 'https://github.com/tterb'
+                }}
+                bg={colors[0]}
+              />
+            : null}
+          </div>
         </Inner>
       </Content>
-    </>
+    </DividerMiddle>
   )
 }
-
 Projects.propTypes = {
-  offset: PropTypes.number.isRequired,
-  factor: PropTypes.number,
+  id: PropTypes.string.isRequired,
+  projects: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        github: PropTypes.string,
+        link: PropTypes.string,
+        languages: PropTypes.arrayOf(PropTypes.string),
+      }).isRequired,
+    }).isRequired,
+  ).isRequired,
+  isMobile: PropTypes.bool.isRequired,
 }
 
 export default Projects
-
-const projectQuery = graphql`
-  query ProjectQuery {
-    allMdx(
-      filter: { fields: { sourceInstanceName: { eq: "projects" } } }
-      sort: { fields: [frontmatter___key], order: ASC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            description
-            link
-            github
-            languages
-          }
-        }
-      }
-    }
-  }
-`

@@ -1,45 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import assignIn from 'lodash/assignIn'
-import MDXRenderer from '../components/Post/MDX'
+import assign from 'lodash/assign'
 // Config
-import config from '../../config/website'
+import config from 'config/website'
 // Components
-import PostLayout from '../components/PostLayout'
-import PostMeta from '../components/PostMeta'
+import PostLayout from 'components/PostLayout'
+import PostMeta from 'components/PostMeta'
+import MDXRenderer from 'components/Post/MDX'
 // Hooks
-import useWindowDimensions from '../hooks/WindowDimensions'
+import { isMobile } from 'hooks/WindowDimensions'
+// Styles
+import 'post.css'
+
 
 
 const PostTemplate = ({ data, pageContext, location }) => {
-  require('typeface-source-code-pro')
-  require('../styles/post.scss')
+  // require('typeface-source-code-pro')
+  require('../styles/syntax.css')
+
   const post = data.post
-  assignIn(post, post.frontmatter)
+  assign(post, post.frontmatter)
   post.author = config.author
-  post.author.image = data.avatar.childImageSharp
-  const thumbnail = (post.thumbnail ? post.thumbnail.fluid : post.image.fluid)
+  post.author.image = data.avatar.childImageSharp.gatsbyImageData
+  const thumbnail = (post.thumbnail ? post.thumbnail.gatsbyImageData : post.image.gatsbyImageData)
 
-  let mobile = false
-  if (typeof window !== 'undefined') {
-    const { height, width } = useWindowDimensions()
-    if (width <= 500)
-      mobile = true
-    else
-      mobile = false
+  const mobile = isMobile()
 
-    require('smooth-scroll')('a[href*="#"]', {
-      speed: 100,
-      easing: 'easeInOutCubic',
-      updateURL: false,
-    })
-  }
   return (
     <>
       <PostMeta
         title={`${post.title} | ${config.siteTitle}`}
         description={post.description}
+        pathname={location.pathname}
         thumbnail={thumbnail}
         url={`/blog${post.fields.slug}`}
       />
@@ -47,35 +40,57 @@ const PostTemplate = ({ data, pageContext, location }) => {
         post={post}
         mobile={mobile}
         location={location}
-        context={pageContext}>
-        <div className='post-body'>
-          <MDXRenderer content={post.body} />
-        </div>
+        context={pageContext}
+      >
+        <MDXRenderer content={post.body} />
       </PostLayout>
     </>
   )
 }
-
 PostTemplate.propTypes = {
   data: PropTypes.shape({
-    avatar: PropTypes.shape.isRequired,
-    post: PropTypes.shape.isRequired,
+    avatar: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        gatsbyImageData: PropTypes.object.isRequired,
+      }).isRequired,
+    }).isRequired,
+    post: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      body: PropTypes.node.isRequired,
+      fields: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+      }).isRequired,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        tags: PropTypes.array.isRequired,
+        image: PropTypes.shape({
+          childImageSharp: PropTypes.shape({
+            gatsbyImageData: PropTypes.object.isRequired,
+          }).isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
   }).isRequired,
   pageContext: PropTypes.shape({
-    next: PropTypes.shape,
-    prev: PropTypes.shape,
+    next: PropTypes.object,
+    prev: PropTypes.object,
     slug: PropTypes.string.isRequired,
   }).isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export default PostTemplate
 
 export const postQuery = graphql`
-  query($slug: String!) {
-    post: mdx(fields: { slug: { eq: $slug } }) {
+  query ($slug: String!) {
+    post: mdx(fields: {slug: {eq: $slug}}) {
+      id
       body
-      excerpt
       fields {
         slug
       }
@@ -87,21 +102,19 @@ export const postQuery = graphql`
         tags
         image {
           childImageSharp {
-            fluid(maxWidth: 1920, quality: 90) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-            fixed(width: 600) {
-              ...GatsbyImageSharpFixed_withWebp
-            }
+            gatsbyImageData(
+              layout: FULL_WIDTH
+            )
           }
         }
       }
     }
-    avatar: file(relativePath: { eq: "me.png" }) {
+    avatar: file(relativePath: {eq: "me.png"}) {
       childImageSharp {
-        fixed(width: 250, height: 250) {
-          ...GatsbyImageSharpFixed_withWebp
-        }
+        gatsbyImageData(
+          layout: CONSTRAINED,
+          width: 240
+        )
       }
     }
   }

@@ -1,41 +1,51 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
 
+
 const Ordered = styled.ol`
-  ${tw`list-reset mt-0 pl-5`}
   counter-reset: list;
   line-height: 1.625;
-  li::before {
-    ${tw`absolute flex justify-end text-right my-0 mr-0 pr-1`}
-    counter-increment: list;
-    content: counter(list) ".";
-    width: 4em;
-    margin-left: -4em;
-    opacity: 0.45;
-    box-sizing: border-box;
-    pointer-events: none;
+  li {
+    margin-bottom: 0.25rem;
+    &::before {
+      content: counter(list) ".";
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      font-weight: 500;
+      text-align: right;
+      counter-increment: list;
+      width: 4em;
+      margin: 0 0 0 -4em;
+      padding-right: 0.5rem;
+      opacity: 0.5;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
   }
 `
 
 const Unordered = styled.ul`
-  ${tw`list-reset leading-loose align-middle mt-0 ml-5`}
   line-height: 1.625;
   li::before {
-    ${tw`absolute flex justify-end leading-loose text-right align-middle mb-0 mr-1`}
     content: '';
+    position: absolute;
+    display: flex;
     background: rgba(0,0,0,0.45);
+    justify-content: flex-end;
+    text-align: right;
+    line-height: 1.7;
+    vertical-align: middle;
     width: 0.4rem;
     height: 0.4rem;
     border-radius: 0.5rem;
-    margin-top: 0.55rem;
-    margin-left: -1rem;
+    margin: 0.55rem 0.25rem 0 -1rem;
   }
 `
 
 export const OrderedList = ({ children }) => (
-  <Ordered>
+  <Ordered className='list-reset w-9/10 mx-auto sm:w-full mt-0 pl-6'>
     {children}
   </Ordered>
 )
@@ -47,7 +57,7 @@ OrderedList.propTypes = {
 }
 
 export const UnorderedList = ({ children }) => (
-  <Unordered>
+  <Unordered className='list-reset w-9/10 mx-auto sm:w-full leading-loose align-middle mt-0 sm:ml-5'>
     {children}
   </Unordered>
 )

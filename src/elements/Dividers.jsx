@@ -1,24 +1,19 @@
 import styled from 'styled-components'
-import tw from 'tailwind.macro'
-import { Parallax } from 'react-spring/renderprops-addons'
 
-export const Divider = styled(Parallax.Layer)`
-  ${tw`absolute w-full h-full`}
-  background: ${props => props.bg};
+
+export const Divider = styled.div`
+  position: relative;
   clip-path: ${props => props.clipPath};
-  svg {
-    fill: ${props => props.fill};
-  }
+  width: 100%;
+  height: 100%;
 `
 
 export const DividerStatic = styled.div`
-  background: ${props => props.bg};
   clip-path: ${props => props.clipPath};
-  svg {
-    fill: ${props => props.fill};
-  }
+  width: 100%;
+  height: 100%;
 `
 
 export const DividerMiddle = styled(Divider)`
-  clip-path: polygon(0 15%, 100% 25%, 100% 85%, 0 75%);
+  clip-path: ${props => props.clipPath ? props.clipPath : 'polygon(0 15%, 100% 25%, 100% 85%, 0 75%)'};
 `

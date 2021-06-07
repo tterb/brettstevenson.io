@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 
+
 // Meta-tags for blog posts
 const PostMeta = (props) => (
   <Helmet defer={false}>
@@ -26,7 +27,6 @@ const PostMeta = (props) => (
     {props.thumbnail && <meta name='twitter:image' content={props.thumbnail} />}
   </Helmet>
 )
-
 PostMeta.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

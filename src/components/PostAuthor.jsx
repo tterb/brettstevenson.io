@@ -1,88 +1,81 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Image from 'gatsby-image'
-import tw from 'tailwind.macro'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
-// FontAwesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faTwitter, faDribbble, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
-import { accent } from '../../tailwind'
+// Icons
+import { Envelope } from '@styled-icons/fa-solid'
+import { Dribbble, Github, LinkedinIn, Twitter } from '@styled-icons/fa-brands'
 
-const Wrapper = styled.div`
-  ${tw`max-w-md md:max-w-lg text-center md:text-left m-auto mt-10 mb-18`}
-  @media (min-width: 900px) {
-    /* max-width: 780px !important; */
-  }
-`
-
-const Avatar = styled.span`
-  vertical-align: bottom;
-  .author-img {
-    width: 135px !important;
-    height: 135px !important;
-    border-radius: 100%;
-  }
-`
 
 const AuthorText = styled.span`
-  ${tw`inline-block max-w-9/10 ml-0 md:max-w-3/4 md:ml-5 xl:max-w-3/5`}
   .author-bio, p {
-    ${tw`leading-tight mx-auto my-1`}
-    color: rgba(0,0,0,0.7);
     padding-left: 2px;
   }
 `
 
-const AuthorTitle = styled.h4`
-  ${tw`text-2xl m-auto mt-3 mb-2`}
-  color: rgba(0,0,0,0.75);
-`
-
 const AuthorLinks = styled.ul`
-  ${tw`list-reset text-2xl my-3 ml-1 pl-0`}
   li {
-    ${tw`inline-block cursor-pointer`}
-    margin-right: 0.65rem;
     &:first-child {
       font-size: 105%;
-    }
-    @media (max-width: 500px) {
-      ${tw`mt-2 mr-3`}
-    }
-    a {
-      color: rgba(0,0,0,0.7);
-      transition: all 200ms ease-in-out;
-      &:hover {
-        color: ${accent};
-      }
     }
   }
 `
 
+const SocialLink = ({ link, icon }) => (
+  <li className='inline-block mt-2 sm:mt-0 mr-3 cursor-pointer'>
+    <a
+      href={link}
+      className='text-black text-opacity-70 hover:text-accent hover:text-opacity-100 transition-color duration-200 ease-in-out'
+      target='_blank'
+      rel='noopener noreferrer'
+    >
+      {icon}
+    </a>
+  </li>
+)
+
 const PostAuthor = ({ author }) => (
-  <Wrapper className='author-wrapper'>
-    <Avatar>
-      <Image className='author-img' alt={author.name} fixed={author.image.fixed} />
-    </Avatar>
-    <AuthorText>
-      <AuthorTitle>{author.name}</AuthorTitle>
-      <p className='author-bio'>{ author.bio }</p>
-      <AuthorLinks>
-        <li><a href={author.github} target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faGithub} /></a></li>
-        <li><a href={author.twitter} target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faTwitter} /></a></li>
-        <li><a href={author.dribbble} target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faDribbble} /></a></li>
-        <li><a href={author.linkedIn} target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faLinkedinIn} /></a></li>
-        <li><a href='https://brettstevenson.io/contact' target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faEnvelope} /></a></li>
+  <div className='author-wrapper flex flex-col items-center text-center w-9/10 max-w-160 md:flex-row md:w-4/5 md:max-w-200 md:text-left lg:w-3/4 lg:max-w-250 m-auto mt-10 mb-18'>
+    <span className='w-40 h-40 align-middle mx-auto sm:ml-auto sm:mr-0'>
+      <GatsbyImage
+        className='author-img w-40 h-full rounded-full overflow-hidden'
+        image={author.image}
+        alt={author.name}
+      />
+    </span>
+    <AuthorText className='inline-block max-w-9/10 mx-auto sm:ml-0 md:max-w-3/4 md:ml-5 xl:max-w-3/5'>
+      <h4 className='text-2xl text-black text-opacity-80 font-semibold mx-auto mt-3 mb-2'>{author.name}</h4>
+      <p className='author-bio text-black text-opacity-70 leading-tight mx-auto my-1'>{ author.bio }</p>
+      <AuthorLinks className='list-reset text-2xl my-3 ml-1 pl-0'>
+        <SocialLink
+          link={author.github}
+          icon={<Github size='1em' />}
+        />
+        <SocialLink
+          link={author.dribbble}
+          icon={<Dribbble size='1em' />}
+        />
+        <SocialLink
+          link={author.twitter}
+          icon={<Twitter size='1em' />}
+        />
+        <SocialLink
+          link={author.twitter}
+          icon={<LinkedinIn size='1em' />}
+        />
+        <SocialLink
+          link={'https://brettstevenson.io/contact'}
+          icon={<Envelope size='1em' />}
+        />
       </AuthorLinks>
     </AuthorText>
-  </Wrapper>
+  </div>
 )
 
 PostAuthor.propTypes = {
   author: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.object.isRequired,
     bio: PropTypes.string.isRequired,
     github: PropTypes.string.isRequired,
     twitter: PropTypes.string.isRequired,

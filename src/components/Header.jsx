@@ -1,45 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
-import { ParallaxLayer } from 'react-spring/renderprops-addons'
 
 
-const HeaderContent = styled(ParallaxLayer)`
-  ${tw`flex justify-center items-center text-2xl p-2 px-8 md:p-12 md:px-20 lg:py-16 lg:px-22`}
+const HeaderContent = styled.div`
   height: 47vh !important;
   z-index: -9;
   @media (min-width: 600px) {
-    height: 50vh !important;
+    height: 45vh !important;
   }
   @media (min-width: 800px) {
-    height: 50vh !important;
     max-height: 400px !important;
   }
 `
 
-const Wrapper = styled.div`
-  ${tw`relative w-4/5 mr-auto xl:w-5/6`}
-  &.full {
-    ${tw`w-full`}
-  }
-`
-
-const Header = ({ offset, speed, children, ...props }) => {
-  const full = (props.full ? 'full' : null)
+const Header = ({ className, children, ...props }) => {
+  const full = (props.full ? ' w-full' : '')
   return (
-    <>
-      <HeaderContent className='header' speed={speed} offset={offset}>
-        <Wrapper className={full}>{children}</Wrapper>
+    <div className={`w-full mx-auto my-0${className ? ` ${className}` : ''}`}>
+      <HeaderContent className='header flex justify-center items-center text-2xl w-9/10 max-w-250 mx-auto py-2 md:w-4/5 md:py-12 lg:py-16 xxl:w-2/3'>
+        <div className={`relative w-9/10 md:w-4/5 xl:w-5/6 mr-auto${full}`}>
+          {children}
+        </div>
       </HeaderContent>
-    </>
+    </div>
   )
 }
-
 Header.propTypes = {
   full: PropTypes.bool,
-  offset: PropTypes.number.isRequired,
-  speed: PropTypes.number.isRequired,
+  className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

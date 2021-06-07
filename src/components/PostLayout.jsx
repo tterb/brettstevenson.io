@@ -1,62 +1,60 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import Image from 'gatsby-image'
-import tw from 'tailwind.macro'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 import { Disqus } from 'gatsby-plugin-disqus'
-// FontAwesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowUp } from '@fortawesome/free-solid-svg-icons'
+// Icons
+import {ArrowUp, ArrowAltCircleLeft, ArrowAltCircleRight } from '@styled-icons/fa-solid'
 // Config
-import { accent } from '../../tailwind'
-import config from '../../config/website'
+import config from 'config/website'
 // Components
-import Nav from './Nav'
-import PostHeader from './PostHeader'
-import PostAuthor from './PostAuthor'
-import PageLink from './PageLink'
+import Nav from 'components/Nav'
+import PostHeader from 'components/PostHeader'
+import PostAuthor from 'components/PostAuthor'
+import PageLink from 'components/PageLink'
 
 
 const Wrapper = styled.div`
-  ${tw`font-default m-0`}
   background: rgba(255,255,255,0.985);
   margin-bottom: 2vh;
 `
 
 const Content = styled.div`
-  ${tw`leading-normal w-9/10 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-9 md:pb-9`}
-  color: rgba(0,0,0,0.85);
   font-size: 1.1rem;
   letter-spacing: 0.01em;
   max-width: 900px;
 `
 
-const HeroImage = styled(Image)`
-  width: 100.5%;
-  height: 60vw;
-  max-height: 45vh;
-  top: -1px;
-  left: -1px;
+const HeroImage = styled(GatsbyImage)`
+  max-height: 40vh;
   > div {
     padding-bottom: 28% !important;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to bottom, black, rgba(0,0,0,0.3), transparent 95%);
+    width: 100vw;
+    height: 60px;
+    padding: 60px;
+    top: 0;
+    z-index: 99;
+    @media (max-width: 500px) {
+      display: none;
+    }
   }
 `
 
 const Separator = styled.hr`
-  ${tw`w-4/5 border-none my-4 mt-8`}
   border-bottom: 2px solid rgba(0,0,0,0.095);
 `
 
 const BackToTop = styled(Link)`
-  ${tw`fixed rounded-full text-center w-6 h-6 p-4 shadow-md hover:shadow-lg cursor-pointer`}
   background: rgba(255,255,255,0.985);
-  line-height: inherit;
   right: 4vw;
   bottom: 10vh;
-  transition: all 450ms ease-in-out;
   svg {
-    ${tw`absolute flex items-center justify-between w-10 h-10 p-0`}
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -69,23 +67,9 @@ const BackToTop = styled(Link)`
   &:hover svg {
     transition: all 450ms ease-in-out 100ms;
     path {
-      fill: ${accent};
-      transition: all 450m ease-in-out 100ms;
+      fill: #F2433B;
+      transition: all 450ms ease-in-out 100ms;
     }
-  }
-`
-
-const Comments = styled(Disqus)`
-  ${tw`w-9/10 md:w-4/5 lg:w-3/4`}
-  margin-bottom: 3rem !important;
-  @media (min-width: 350px) {
-    width: 90% !important;
-  }
-  @media (min-width: 650px) {
-    width: 80% !important;
-  }
-  @media (min-width: 900px) {
-    width: 75% !important;
   }
 `
 
@@ -97,64 +81,98 @@ class PostLayout extends React.Component {
 
   render() {
     const { post, mobile, location, context, children } = this.props
-    const { prev, next } = context
-    let rootPath = `/`
-    if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__)
+    const { prevPost, nextPost } = context
+
+    if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
       rootPath = `${__PATH_PREFIX__  }/`
+    }
+    const disqusConfig = {
+      url: `${config.siteUrl}${location.pathname}`,
+      identifier: post.id,
+      title: post.title,
+    }
 
     return (
-      <>
+      <div className='post-body w-full m-auto'>
         <span id='top' />
         <Nav mobile={mobile} />
-        <HeroImage alt={post.title} fluid={post.image.childImageSharp.fluid} />
-        <Wrapper className='wrapper'>
-          <PostHeader id='postHero' post={post} />
-          <Content>
+        <HeroImage 
+          className='w-full top-0 left-0'
+          image={post.image.childImageSharp.gatsbyImageData}
+          alt={post.title}
+        />
+        <Wrapper className='wrapper font-default m-0 pb-20'>
+          <PostHeader post={post} />
+          <Content className='text-black text-opacity-85 leading-normal w-full sm:w-9/10 max-w-300 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-9 md:pb-9'>
             {children}
-            <BackToTop to={`${location.pathname}/#top`}>
-              <FontAwesomeIcon icon={faArrowUp} />
+            <BackToTop className='fixed hidden rounded-full text-center w-14 h-14 p-4 shadow-md hover:shadow-lg transition-all duration-400 ease-in-out cursor-pointer md:block' to={`${location.pathname}/#top`}>
+              <ArrowUp className='absolute flex items-center justify-between w-6 h-6 p-0' size='1em' />
             </BackToTop>
           </Content>
-          <Separator />
+          <Separator className='w-5/6 border-none my-4 mt-8 mx-auto' />
           <PostAuthor author={post.author} />
           <div className='prev-next'>
-            { prev &&
+            {prevPost &&
               <span className='prev'>
-                <PageLink label='previous' rel='prev' to={`blog${prev.node.fields.slug}`}>
-                  <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-                  <span className='prev-title'>{prev.node.frontmatter.title}</span>
+                <PageLink 
+                  label='previous'
+                  rel='prev'
+                  to={`${location.pathname}/blog${prevPost.fields.slug}`}
+                >
+                  <ArrowAltCircleLeft size='1em' />
+                  <span className='prev-title'>{prevPost.frontmatter.title}</span>
                 </PageLink>
               </span>
             }
-            { next &&
+            {nextPost &&
               <span className='next'>
                 <PageLink
-                  label='next' rel='next' direction='right'
-                  to={`blog${next.node.fields.slug}`}>
-                  <span className='next-title'>{next.node.frontmatter.title}</span>
-                  <FontAwesomeIcon icon={faArrowAltCircleRight} />
+                  label='next'
+                  rel='next'
+                  to={`${location.pathname}/blog${nextPost.fields.slug}`}
+                >
+                  <span className='next-title'>{nextPost.frontmatter.title}</span>
+                  <ArrowAltCircleRight size='1em' />
                 </PageLink>
               </span>
             }
           </div>
-          <Comments identifier={post.id} title={post.title} url={`${config.siteUrl}${location.pathname}`} />
+          <Disqus
+            className='w-9/10 md:w-4/5 lg:w-3/4 mx-auto mt-18 mb-20'
+            config={disqusConfig}
+          />
         </Wrapper>
-      </>
+      </div>
     )
   }
 }
-
 PostLayout.propTypes = {
   post: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        gatsbyImageData: PropTypes.object.isRequired,
+      }).isRequired,
+    }).isRequired,
+    author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      bio: PropTypes.string.isRequired,
+      image: PropTypes.object.isRequired,
+      github: PropTypes.string.isRequired,
+      dribbble: PropTypes.string.isRequired,
+      twitter: PropTypes.string.isRequired,
+      linkedIn: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   context: PropTypes.shape({
-    next: PropTypes.shape,
-    prev: PropTypes.shape,
+    nextPost: PropTypes.object,
+    prevPost: PropTypes.object,
   }).isRequired,
   mobile: PropTypes.bool,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

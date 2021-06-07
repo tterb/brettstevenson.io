@@ -1,60 +1,47 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Highlight, { defaultProps } from 'prism-react-renderer'
-import tw from 'tailwind.macro'
 import styled from 'styled-components'
-// FontAwesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCopy } from '@fortawesome/free-regular-svg-icons'
+// Icons
+import { Copy as CopyIcon } from '@styled-icons/fa-regular'
+
 
 const RE = /{([\d,-]+)}/
 
 const Wrapper = styled.div`
-  ${tw`w-full mr-auto mb-3 overflow-auto`}
   &.multiline {
-    ${tw`mx-auto my-5`}
-    width: 95%;
-    pre {
-      ${tw`p-4 pb-5 my-0`}
-    }
     button {
       top: 0.75rem !important;
       right: 0.75rem;
     }
   }
   pre {
-    ${tw`relative p-4`}
-  }
-  button {
+    width: 95%;
+    border-radius: 5px;
     transition: all 350ms ease-in-out;
-    opacity: 0.45;
-  }
-  &:hover {
-    button {
-      opacity: 1;
+    @media (max-width: 500px) {
+      width: 100vw;
+      border-radius: 0;
+      box-shadow: inset 0 -4px 30px -10px rgba(0,0,0,0.8);
+      .token-line .number-line {
+        display: none;
+      }
     }
   }
 `
 
-const CopyButton = styled.button`
-  ${tw`absolute text-sm align-middle cursor-pointer outline-none p-2`}
+const CopyBtn = styled.button`
   background: hsl(275, 5%, 25%);
-  color: rgba(255,255,255,0.65);
   top: 0.6rem;
   right: 1rem;
-  border-radius: 5px;
   border: 1px solid rgba(255,255,255,0.1);
   transition: background 300ms ease;
-  svg {
-    ${tw`text-base align-bottom pl-1`}
-  }
   &:hover {
     background: hsl(275, 5%, 28%);
-    color: rgba(255,255,255,0.8);
   }
   &[data-a11y='true']:focus::after {
-    ${tw`absolute`}
     content: '';
+    position: absolute;
     background: rgba(255, 255, 255, 0.01);
     left: -2%;
     top: -2%;
@@ -96,11 +83,12 @@ const CodeBlock = ({ codeString, language, metaString }) => {
   return (
     <Highlight {...defaultProps} code={codeString} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
-        const multiline = tokens.length > 1 ? 'multiline' : ''
+        const multiline = tokens.length > 1 ? ' mx-auto my-2 multiline' : ''
+        const preClass = `${className} group relative p-4${multiline.length ? ' pb-5 my-0' : ''}`
         return (
-          <Wrapper className={multiline}>
-            <pre className={className}>
-              <Copy toCopy={codeString} />
+          <Wrapper className={`w-full mr-auto mb-0 overflow-auto${multiline}`}>
+            <pre className={preClass}>
+              <CopyButton toCopy={codeString} />
               {tokens.map((line, index) => {
                 const { className } = getLineProps({
                   line,
@@ -129,7 +117,6 @@ const CodeBlock = ({ codeString, language, metaString }) => {
     </Highlight>
   )
 }
-
 CodeBlock.propTypes = {
   codeString: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
@@ -138,11 +125,14 @@ CodeBlock.propTypes = {
 
 export default CodeBlock
 
-function Copy({ toCopy }) {
+function CopyButton({ toCopy }) {
+  
   const [hasCopied, setHasCopied] = useState(false)
 
   function copyToClipboardOnClick() {
-    if (hasCopied) return
+    if (hasCopied) {
+      return
+    }
     copyToClipboard(toCopy)
     setHasCopied(true)
     setTimeout(() => {
@@ -151,16 +141,19 @@ function Copy({ toCopy }) {
   }
 
   return (
-    <CopyButton onClick={copyToClipboardOnClick} data-a11y='false'>
+    <CopyBtn
+      onClick={copyToClipboardOnClick}
+      className='absolute hidden sm:flex text-sm text-white text-opacity-60 hover:text-opacity-80 leading-none items-start rounded outline-none p-2 pl-3 opacity-80 group-hover:opacity-100 transition-opacity duration-300 ease-in-out cursor-pointer'
+      data-a11y='false'
+    >
       {hasCopied ? (
-        <>Copied <FontAwesomeIcon icon={faCopy} /></>
+        <>Copied <CopyIcon className='text-base leading-none pl-1' size='1em' /></>
       ) : (
-        <>Copy <FontAwesomeIcon icon={faCopy} /></>
+        <>Copy <CopyIcon className='text-base leading-none pl-1' size='1em' /></>
       )}
-    </CopyButton>
+    </CopyBtn>
   )
 }
-
-Copy.propTypes = {
-  toCopy: PropTypes.func.isRequired,
+CopyButton.propTypes = {
+  toCopy: PropTypes.string.isRequired,
 }

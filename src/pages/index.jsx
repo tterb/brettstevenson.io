@@ -1,32 +1,63 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 // Components
-import Layout from '../components/Layout'
+import Layout from 'components/Layout'
 // Views
-import Hero from '../views/Hero'
-import Projects from '../views/Projects'
-import About from '../views/About'
-import Contact from '../views/Contact'
+import Hero from 'views/Hero'
+import Projects from 'views/Projects'
+import About from 'views/About'
+import Contact from 'views/Contact'
 // Hooks
-import useWindowDimensions from '../hooks/WindowDimensions'
-// Styles
-import '../styles/main.scss'
+import { isMobile } from 'hooks/WindowDimensions'
 
 
-const Index = () => {
-  let pages = 3.85
-  if (typeof window !== 'undefined') {
-    const { height, width } = useWindowDimensions()
-    if (width <= 420)
-      pages *= 1.025
-  }
+const Index = ({ data, ...props }) => {
+  const mobile = isMobile()
+  const avatar = data.avatar.childImageSharp.gatsbyImageData
+  const projects = data.projects.nodes || []
   return (
-    <Layout pages={pages} navLogo={false}>
-      <Hero offset={0} />
-      <About offset={0.925} factor={1.25} id='about' />
-      <Projects offset={2} factor={2.2} id='projects' />
-      <Contact offset={3} factor={0.35} />
+    <Layout navLogo={false}>
+      <Hero {...props} />
+      <About 
+        id='about'
+        avatar={avatar}
+        isMobile={mobile}
+      />
+      <Projects
+        id='projects'
+        projects={projects}
+        isMobile={mobile}
+      />
+      <Contact
+        id='contact'
+        isMobile={mobile}
+      />
     </Layout>
   )
 }
+
+export const indexQuery = graphql`{
+  avatar: file(name: {eq: "me"}) {
+    childImageSharp {
+      gatsbyImageData(width: 800, layout: CONSTRAINED)
+    }
+  }
+  projects: allMdx(
+    filter: {fields: {sourceInstanceName: {eq: "projects"}}}
+    sort: {fields: [frontmatter___key], order: ASC}
+  ) {
+    nodes {
+      id
+      frontmatter {
+        description
+        title
+        link
+        github
+        languages
+      }
+    }
+  }
+}
+`
 
 export default Index

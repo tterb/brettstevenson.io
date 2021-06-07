@@ -1,0 +1,20 @@
+input, textarea {
+  &:active, &:focus, &:visited,
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover, 
+  &:-webkit-autofill:focus, 
+  &:-webkit-autofill:active,
+  &:-internal-autofill-selected {
+    background-color: $bg_color !important;
+    color: $text_color !important;
+    border: none !important;
+    box-shadow: 0 0 0 30px #161719 inset !important;
+    outline-offset: -2px;
+  }
+}
+
+::-webkit-input-placeholder,
+::-ms-input-placeholder,
+::-moz-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(#fff, 0.4) !important;
+}

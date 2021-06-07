@@ -1,94 +1,58 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
-import styled from 'styled-components'
-import tw from 'tailwind.macro'
-import { colors } from '../../tailwind'
+import { GatsbyImage } from 'gatsby-plugin-image'
 // Elements
-import { Divider } from '../elements/Dividers'
-import Content from '../elements/Content'
-import Inner from '../elements/Inner'
-import { Title } from '../elements/Titles'
+import { Divider } from 'elements/Dividers'
+import Content from 'elements/Content'
+import Inner from 'elements/Inner'
+import { SectionTitle } from 'elements/Titles'
 // Components
-import Cube from '../components/Cube'
+import Cube from 'components/Cube'
 
 
-const AboutHero = styled.div`
-  ${tw`flex flex-col md:flex-row items-center mt-0 md:mt-4 px-2`}
-`
+const avatarStyle = {
+  boxShadow: '0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25)',
+}
 
-const Avatar = styled(Image)`
-  ${tw`rounded-full xs:w-1/2 md:w-full xl:h-auto xs:hidden sm:block`}
-  box-shadow: 0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25);
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  @media (max-width: 500px) {
-    min-width: 50vw;
-  }
-  @media (max-width: 900px) {
-    min-width: 25vw;
-  }
-  @media (min-width: 900px) {
-    max-width: 200px;
-  }
-`
-
-const AboutTitle = styled(Title)`
-  ${tw`xs:mb-2 sm:mb-6`}
-`
-const AboutSub = styled.span`
-  ${tw`text-white text-2xl font-medium pt-8 xs:hidden md:block md:pt-0 md:pl-10 lg:pl-12 lg:text-3xl xl:text-4xl`}
-`
-const AboutDesc = styled.p`
-  ${tw`text-grey-light xs:text-xl lg:text-2xl font-sans xs:pt-0 sm:pt-4  md:pt-6`}
-  line-height: 1.45;
-`
-
-const About = ({ offset, factor }) => {
-  const avatar = useStaticQuery(aboutQuery).file.childImageSharp
-  return (
-    <>
-      <Content id='about' offset={offset} speed={0.25}>
-        <Inner>
+const About = ({ id, avatar, isMobile }) => (
+  <Divider
+    className='flex relative bg-base-300 w-full h-full max-h-320 md:max-h-300'
+    clipPath='polygon(0 12%, 100% 0%, 100% 88%, 0 100%)'
+  >
+    <Content id={id}>
+      <Inner style={{ marginTop: '12%' }}>
+        <div className='section-title flex items-baseline mb-2 sm:mb-0'>
           <Cube color='blue' />
-          <AboutTitle>About</AboutTitle>
-          <AboutHero>
-            <Avatar fluid={avatar.fluid} alt='Brett Stevenson' />
-            <AboutSub>
-              The English language can not fully capture the depth and complexity of my thoughts. So I choose to incorporate
-              Emojis into my speech to better express myself 😜
-            </AboutSub>
-          </AboutHero>
-          <AboutDesc>
-             I'm a full-stack developer with a passion for experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy. I have experience working in a variety of languages, though I'm particularly fond of <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=python'>Python</a>, <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=javascript'>Javascript</a>, and <a href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=java'>Java</a>.
-          </AboutDesc>
-        </Inner>
-      </Content>
-      <Divider bg={colors['blue-grey']} clipPath='polygon(0 16%, 100% 4%, 100% 82%, 0 94%)' offset={`${offset + 0.019}`} factor={factor} speed={0.35} />
-    </>
-  )
-}
-
+          <SectionTitle>About</SectionTitle>
+        </div>
+        <div className='flex flex-col md:flex-row items-center mt-0 md:pt-2 px-2'>
+          <GatsbyImage
+            className='rounded-full w-auto h-auto max-w-50vw xs:w-1/2 xs:hidden sm:block md:w-full md:max-w-160 xl:max-w-200'
+            image={avatar}
+            alt='Brett Stevenson'
+            style={avatarStyle}
+          />
+          <span className='text-white text-2xl font-medium leading-tighter pt-8 xs:hidden md:block md:pt-0 md:pl-10 lg:pl-12 lg:text-3xl xl:text-4xl'>
+            The English language can not fully capture the depth and complexity of my thoughts. So I choose to incorporate
+            Emojis into my speech to better express myself 😜
+          </span>
+        </div>
+        <p className='text-gray-700 xs:text-xl lg:text-2xl font-sans leading-normal pt-8 md:pt-6 lg:pt-8'>
+            I'm a full-stack engineer with a passion for using technology to create unique and memorable experiences. I have experience working in a variety of languages, but I'm particularly fond of <a className='text-white font-medium' href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=python font-medium'>Python</a> and <a className='text-white font-medium' href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=javascript'>Javascript</a>.
+        </p>
+      </Inner>
+    </Content>
+  </Divider>
+)
 About.propTypes = {
-  offset: PropTypes.number.isRequired,
-  factor: PropTypes.number,
+  id: PropTypes.string.isRequired,
+  avatar: PropTypes.object.isRequired,
+  isMobile: PropTypes.bool,
 }
-
-const aboutQuery = graphql`
-  query {
-    file(name: {eq: "me"}) {
-      childImageSharp {
-        fluid(maxWidth: 900) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
-  }
-`
 
 export default About
 
-// I enjoy using technology to provide unique and memorable experiences.
+// I enjoy using technology to create unique and memorable experiences.
 
 // As a designer. I'm passionate about bridging the gap between intent and realization, while making for an enjoyable ride
 

@@ -1,13 +1,6 @@
 const path = require('path')
 const _ = require('lodash')
 
-// graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
-const wrapper = promise => promise.then(result => {
-  if (result.errors) {
-    throw result.errors
-  }
-  return result
-})
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -15,6 +8,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // Only use MDX nodes
   if (node.internal.type === 'Mdx') {
     const fileNode = getNode(node.parent)
+    // console.log('slug: ' + node.frontmatter.slug);
     // If the frontmatter contains a "slug", use it
     if (
       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
@@ -35,28 +29,36 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+// graphql function doesn't throw an error so we have to check to check for the query.errors to throw manually
+const queryWrapper = promise => promise.then(query => {
+  if (query.errors) {
+    throw query.errors
+  }
+  return query
+})
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   // page templates
-  const blogTemplate = path.resolve('./src/templates/blog.jsx')
-  const postTemplate = path.resolve('./src/templates/post.jsx')
-  const tagTemplate = path.resolve('src/templates/tags.jsx')
+  const blogTemplate = path.resolve('src/templates/blog.jsx')
+  const postTemplate = path.resolve('src/templates/post.jsx')
+  const categoryTemplate = path.resolve('src/templates/category.jsx')
 
-  const result = await wrapper(
+  const postQuery = await queryWrapper(
     graphql(`
       {
         posts: allMdx(filter: { fields: { sourceInstanceName: { eq: "posts" } } }
         sort: { fields: [frontmatter___date], order: DESC }) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                tags
-              }
+          nodes {
+            frontmatter {
+              category
+              slug
+              title
+              published
+            }
+            fields {
+              slug
             }
           }
         }
@@ -64,64 +66,61 @@ exports.createPages = async ({ graphql, actions }) => {
     `),
   )
 
-  const posts = result.data.posts.edges
+  const posts = postQuery.data.posts.nodes.filter(post => post.frontmatter.published)
+  const postCategories = []
   posts.forEach((post, index) => {
+    postCategories.push(post.frontmatter.category)
     createPage({
-      path: `/blog${post.node.fields.slug}/`,
+      path: `/blog${post.frontmatter.slug}`,
       component: postTemplate,
       context: {
         // Pass "slug" through context so we can reference it in our query like "$slug: String!"
-        // slug: post.node.slug,
-        slug: post.node.fields.slug,
-        prev: index === 0 ? null : posts[index - 1],
-        next: index === result.length - 1 ? null : posts[index + 1],
+        slug: post.fields.slug,
+        prevPost: index === 0 ? null : posts[index - 1],
+        nextPost: index === postQuery.length - 1 ? null : posts[index + 1],
       },
     })
   })
 
   // Handle blog pagination
-  const postsPerPage = 4
+  const postsPerPage = 6
   const numPages = Math.ceil(posts.length / postsPerPage)
-  Array.from({ length: numPages }).forEach((x, i) => {
+  Array.from({ length: numPages }).forEach((x, index) => {
     createPage({
-      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      path: index === 0 ? `/blog` : `/blog/${index + 1}`,
       component: blogTemplate,
       context: {
         limit: postsPerPage,
-        skip: i * postsPerPage,
-        numPages,
-        currentPage: i + 1,
+        skip: index * postsPerPage,
+        currentPage: index + 1,
         count: posts.length,
+        numPages,
       },
     })
   })
 
-  // Iterate through posts collecting tags
-  let allTags = []
-  _.each(posts, edge => {
-    if (_.get(edge, 'node.frontmatter.tags'))
-      allTags = _.concat(allTags, edge.node.frontmatter.tags)
-  })
-  const tags = _.countBy(allTags)
-
-  for(var tag in tags) {
-    const tagPageCount = Math.ceil(tags[tag]/postsPerPage)
-    Array.from({ length: tagPageCount }).forEach((x, i) => {
+  // Create post-category pages
+  const categories = _.countBy(postCategories)
+  for (var name in categories) {
+    const pageCount = Math.ceil(categories[name]/postsPerPage)
+    Array.from({ length: pageCount }).forEach((x, index) => {
+      console.log(name + ': ' + pageCount);
       createPage({
-        path: i === 0 ? `blog/tag/${_.kebabCase(tag)}/` : `blog/tag/${_.kebabCase(tag)}/${i + 1}`,
-        component: tagTemplate,
+        path: index === 0 ? `blog/category/${_.kebabCase(name)}` : `blog/category/${_.kebabCase(name)}/${index + 1}`,
+        component: categoryTemplate,
         context: {
           limit: postsPerPage,
-          skip: i * postsPerPage,
-          currentPage: i + 1,
-          count: tags[tag],
-          numPages: tagPageCount,
-          tag: tag,
+          skip: index * postsPerPage,
+          currentPage: index + 1,
+          count: categories[name],
+          numPages: pageCount,
+          category: name,
         }
       })
     })
   }
 }
+
 
 // Necessary changes to get gatsby-mdx and Cypress working
 exports.onCreateWebpackConfig = ({ stage, actions, loaders, getConfig }) => {

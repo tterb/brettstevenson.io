@@ -1,0 +1,282 @@
+/*
+* Syntax highlighting styles
+*/
+
+code[class*='language-'],
+pre[class*='language-'] {
+	font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
+	color: $syntax_text;
+	background: none;
+	font-weight: 500;
+	line-height: 1.5;
+	text-shadow: none;
+	text-align: left;
+	text-shadow: none;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	white-space: pre;
+	tab-size: 4;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+	padding: 0 1em;
+	margin: 0;
+	@media (max-width: 600px) {
+		padding-left: 0;
+	}
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+	display: inline;
+	background: rgba($syntax_base, 0.1);
+	color: rgba(0, 0, 0, 0.85);
+	font-size: 0.85em;
+	letter-spacing: -0.5px;
+	border-radius: 4px;
+	margin: 0;
+	padding: 0.15em 0.4em;
+	white-space: normal;
+}
+
+pre[class*='language-'] {
+	display: block;
+}
+
+pre[class*='language-'],
+code[class*='language-'] {
+	display: block;
+	background-color: $syntax_base;
+  	color: $syntax_text;
+	font-size: 0.85em;
+  	letter-spacing: normal;
+	line-height: 1.4;
+	font-variant-ligatures: normal;
+  	font-feature-settings: 'calt' 1;
+  	font-smoothing: antialiased;
+  	text-rendering: optimizeLegibility;
+  	text-transform: none;
+	border-radius: 8px;
+	white-space: pre;
+	margin: 0 auto 0 0.75%;
+  	padding: 1em 1.15em 1.15em 1.15em;
+	overflow: hidden;
+  	overflow-x: auto;
+	/* .token {
+		&.entity,
+		&.url,
+		&.variable,
+		&.punctuation {
+			color: $syntax_text;
+		}
+		
+		&.cdata,
+		&.comment,
+		&.prolog,
+		&.doctype,
+		&.plain-text {
+			color: $syntax_subtle !important;
+		}
+		
+		&.property,
+		&.tag,
+		&.constant,
+		&.symbol,
+		&.deleted {
+			color: $syntax_magenta;
+		}
+		&.tag {
+			&.class-name {
+				color: $syntax_text;
+			}
+			&.script {
+				color: $syntax_text;
+				&.punctuation {
+					color: $syntax_magenta;
+				}
+			}
+		}
+
+		&.boolean,
+		&.number,
+		&.decorator,
+		&.interpolation, {
+			color: $syntax_purple;
+		}
+
+		&.selector,
+		&.attr-name,
+		&.string,
+		&.char,
+		&.inserted {
+			color: $syntax_yellow;
+		}
+
+		&.atrule,
+		&.builtin,
+		&.url-link,
+		&.attr-value,
+		&.function {
+			color: $syntax_green;
+		}
+
+		&.keyword {
+			color: $syntax_blue;
+		}
+
+		&.regex,
+		&.important {
+			color: $syntax_orange;
+		}
+		
+		&.operator,
+		&.keyword-if {
+			color: $syntax_magenta;
+		}
+
+		&.important,
+		&.operator .ow,
+		&.bold {
+			font-weight: bold;
+		}
+		&.italic {
+			font-style: italic;
+		}
+
+		&.entity {
+			cursor: help;
+		}
+	}
+	.nd {
+		color: $syntax_purple;
+	} */
+}
+
+.language-css .token.string,
+.style .token.string {
+	color: $syntax_text;
+}
+
+.language-bash {
+	.token.function {
+		color: $syntax_blue !important;
+	}
+	.nt {
+		color: $syntax_orange;
+	}
+	.nv {
+		color: darken($syntax_text, 20%);
+	}
+}
+
+.language-jsx {
+	.token {
+		&.punctuation,
+		&.function-variable {
+			color: $syntax_text  !important;
+		}
+		&.keyword,
+		&.tag.punctuation {
+			color: $syntax_magenta !important;
+		}
+		&.attr-name {
+			color: $syntax_blue !important;
+		}
+		&.script.punctuation,
+		&.interpolation-punctuation {
+			color: $syntax_red !important;
+		}
+	}
+}
+
+.namespace {
+	opacity: 0.7;
+}
+
+
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+}
+
+.line-highlight {
+	position: absolute;
+	background: hsla(24, 20%, 50%, 0.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%, 0.1) 70%, hsla(24, 20%, 50%, 0));
+	line-height: inherit;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em; /* Same as .prism’s padding-top */
+	pointer-events: none;
+	white-space: pre;
+	&:before, &:after {
+		content: none;
+	}
+}
+
+.line-highlight:before,
+.line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	background-color: hsla(24, 20%, 50%, 0.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	text-shadow: none;
+	top: 0.4em;
+	left: 0.6em;
+	min-width: 1em;
+	border-radius: 999px;
+	vertical-align: 0.3em;
+	box-shadow: 0 1px white;
+	padding: 0 0.5em;
+}
+
+.line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: 0.4em;
+}
+
+.token a {
+	color: inherit;
+}
+
+.token.string,
+.token.string a {
+	color: $syntax_yellow;
+}
+
+.token.string .se {
+	color: $syntax_purple;
+}
+
+.command-line-prompt {
+	display: block;
+	font-size: 100%;
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+	float: left;
+	margin-right: 1em;
+	pointer-events: none;
+	user-select: none;
+	> span:before {
+		color: #999;
+		content: ' ';
+		display: block;
+		padding-right: 0.8em;
+	}
+	> span[data-user]:before {
+		content: '[' attr(data-user) '@' attr(data-host) '] $';
+	}
+	> span[data-prompt]:before {
+		content: attr(data-prompt);
+	}
+	> span[data-user='root']:before {
+		content: '[' attr(data-user) '@' attr(data-host) '] #';
+	}
+}
