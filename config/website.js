@@ -48,5 +48,5 @@ module.exports = {
   googleAnalyticsID: `UA-82760104-1`, // Google Analytics ID
   googleOptimizeID: `GTM-P9NNBQ3`, // Google Optimize container ID
   // Manifest and Progress color
-  backgroundColor: '#23262B',
+  backgroundColor: `#23262B`,
 }
