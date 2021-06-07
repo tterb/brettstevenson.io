@@ -36,21 +36,20 @@ Category.propTypes = {
           image: PropTypes.object.isRequired,
         }).isRequired,
       })).isRequired,
-      categories: PropTypes.shape({
-        group: PropTypes.arrayOf(PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired).isRequired,
-      }).isRequired,
     }).isRequired,
-    site: PropTypes.object.isRequired,
+    categories: PropTypes.shape({
+      group: PropTypes.arrayOf(PropTypes.shape({
+        fieldValue: PropTypes.string.isRequired,
+        totalCount: PropTypes.number.isRequired,
+      }).isRequired).isRequired,
+    }).isRequired,
   }).isRequired,
 }
 
 export default Category
 
 export const categoryQuery = graphql`
-  query ($skip: Int!, $limit: Int!, $category: String!) {
+  query CategoryQuery($skip: Int!, $limit: Int!, $category: String!) {
     posts: allMdx(
       filter: {fields: {sourceInstanceName: {eq: "posts"}}, frontmatter: {category: {eq: $category}}}
       sort: {fields: frontmatter___date, order: DESC}
@@ -68,7 +67,11 @@ export const categoryQuery = graphql`
           category
           image {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+              gatsbyImageData(
+                layout: CONSTRAINED,
+                placeholder: DOMINANT_COLOR,
+                height: 320,
+              )
             }
           }
         }
