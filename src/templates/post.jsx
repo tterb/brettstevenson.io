@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import assign from 'lodash/assign'
 // Config
 import config from 'config/website'
 // Components
@@ -19,10 +18,9 @@ import 'styles/syntax.css'
 const PostTemplate = ({ data, pageContext, location }) => {
   // require('typeface-source-code-pro')
   const mobile = isMobile()
-  const post = data.post
-  assign(post, post.frontmatter)
-  post.author = config.author
-  post.author.image = data.avatar.childImageSharp.gatsbyImageData
+  const author = config.author
+  author.image = data.avatar
+  const post = Object.assign({}, data.post, data.post.frontmatter, {author: author})
 
   return (
     <>
@@ -85,7 +83,12 @@ export default PostTemplate
 
 export const postQuery = graphql`
   query ($slug: String!) {
-    post: mdx(fields: {slug: {eq: $slug}}) {
+    post: mdx(
+      fields: {
+        sourceInstanceName: {eq: "posts"},
+        slug: {eq: $slug}
+      }
+    ) {
       id
       body
       fields {
@@ -94,9 +97,7 @@ export const postQuery = graphql`
       frontmatter {
         title
         date(formatString: "DD MMMM YYYY")
-        description
         category
-        tags
         image {
           childImageSharp {
             gatsbyImageData(

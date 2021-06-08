@@ -48,7 +48,8 @@ const PostHeader = ({ post }) => (
 )
 PostHeader.propTypes = {
   post: PropTypes.shape({
-    title: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
   }).isRequired,
 }
 

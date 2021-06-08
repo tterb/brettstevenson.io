@@ -152,6 +152,7 @@ PostLayout.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
     image: PropTypes.shape({
       childImageSharp: PropTypes.shape({
         gatsbyImageData: PropTypes.object.isRequired,
