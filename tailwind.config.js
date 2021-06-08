@@ -33,7 +33,7 @@ module.exports = {
           700: '#808FA3',
           800: '#A2B1C5',
           900: '#D9E9FF',
-          1000:'#F5F7F9'
+          1000:'#F5F6F8'
         },
         gray: {
           100:  '#1D2428',
@@ -647,7 +647,7 @@ module.exports = {
     spacing: {
       px:        '1px',
       0:           '0',
-      0.5:  '0.125rem', 
+      0.5:  '0.125rem',
       1:     '0.25rem',
       2:      '0.5rem',
       3:     '0.75rem',
@@ -771,7 +771,7 @@ module.exports = {
     objectPosition: ['responsive'],
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
     order: ['responsive'],
-    outline: ['responsive', 'focus'],
+    outline: ['responsive', 'focus', 'active'],
     overflow: ['responsive'],
     padding: ['responsive', 'first', 'last', 'hover', 'focus'],
     placeholderColor: ['responsive', 'focus'],
