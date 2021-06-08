@@ -39,6 +39,12 @@ button::focus {
   height: 100vh !important;
 }
 
+.outline-none,
+.outline-none:focus,
+.outline-none:active {
+  outline: none !important;
+}
+
 .large-title {
   @apply font-title text-white text-opacity-95 font-bold tracking-wide leading-tighter w-full mt-4 mb-6 ml-0;
   font-size: 3em;
@@ -251,7 +257,7 @@ svg.logo {
   &.cube-blue .cube-side {
     border-image: linear-gradient(to top, $cube_blue, $cube_green) 1 3%;
     border-top-color: $cube_green;
-    &.cube-side-top, 
+    &.cube-side-top,
     &.cube-side-bottom {
       border-image: none;
       border-color: $cube_green;
@@ -259,7 +265,7 @@ svg.logo {
   }
   &.cube-purple .cube-side {
     border-image: linear-gradient(to top, $cube_purple, $cube_blue) 1 3%;
-    &.cube-side-top, 
+    &.cube-side-top,
     &.cube-side-bottom {
       border-image: none;
       border-color: $cube_blue;

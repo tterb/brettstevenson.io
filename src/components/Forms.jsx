@@ -120,7 +120,7 @@ Form.propTypes = {
 export const Input = (props) => (
   <InputWrapper className={`contact-input${props.value.length ? ' has-input' : ''} relative mb-6`}>
     <input
-      className='bg-transparent text-lg text-white text-opacity-80 text-left w-full md:w-9/10 border-none outline-none py-2 px-4 pl-1 transition-all duration-300 ease-in-out'
+      className='form-input bg-transparent text-lg text-white text-opacity-80 text-left w-full md:w-9/10 border-none outline-none py-2 px-4 pl-1 transition-all duration-300 ease-in-out'
       type={props.type}
       name={props.name}
       value={props.value}
@@ -151,7 +151,7 @@ Input.propTypes = {
 export const TextArea = (props) => (
   <InputWrapper className={`contact-input ${props.value.length ? 'has-input' : ''} relative mb-6`}>
     <textarea
-      className='bg-transparent text-lg text-white text-opacity-80 text-left w-full md:w-9/10 min-h-32 border-none outline-none py-2 px-4 pl-1 transition-all duration-300 ease-in-out mt-1 focus:mt-1'
+      className='form-textarea bg-transparent text-lg text-white text-opacity-80 text-left w-full md:w-9/10 min-h-32 border-none outline-none py-2 px-4 pl-1 transition-all duration-300 ease-in-out mt-1 focus:mt-1'
       name={props.name}
       value={props.value}
       autoComplete={props.autocomplete ? 'false' : 'true'}

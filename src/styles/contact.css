@@ -1,8 +1,8 @@
-input, textarea {
+.form-input, .form-textarea {
   &:active, &:focus, &:visited,
   &:-webkit-autofill,
-  &:-webkit-autofill:hover, 
-  &:-webkit-autofill:focus, 
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
   &:-webkit-autofill:active,
   &:-internal-autofill-selected {
     background-color: $bg_color !important;
