@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const H1 = styled.h1`
   color: rgba(0,0,0,0.8);
+  font-family: 'TTNorms2', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.15;
@@ -16,6 +17,7 @@ const H1 = styled.h1`
 
 const H2 = styled.h2`
   color: rgba(0,0,0,0.8);
+  font-family: 'TTNorms2', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.15;
@@ -30,7 +32,8 @@ const H2 = styled.h2`
 
 const H3 = styled.h3`
   color: rgba(0,0,0,0.8);
-  font-size: 2rem;
+  font-family: 'TTNorms2', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1.6rem;
   font-weight: 700;
   line-height: 1.15;
   margin-top: 0.75rem;
@@ -43,6 +46,7 @@ const H3 = styled.h3`
 
 const H4 = styled.h4`
   color: rgba(0,0,0,0.8);
+  font-family: 'TTNorms2', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1;
@@ -55,6 +59,7 @@ const H4 = styled.h4`
 
 const H5 = styled.h4`
   color: rgba(0,0,0,0.6);
+  font-family: 'TTNorms2', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1;

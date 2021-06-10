@@ -7,12 +7,13 @@ const pStyles = {
     lineHeight: '1.55',
 }
 
-const Paragraph = ({ children }) => (
-    <p className='text-black text-opacity-80 w-9/10 mx-auto sm:w-full sm:m-0 mb-4' style={pStyles}>
+const Paragraph = ({ className, children }) => (
+    <p className={`text-black text-opacity-80 w-9/10 sm:w-full mx-auto mt-0 mb-2${className ? ` ${className}` : ''}`} style={pStyles}>
         {children}
     </p>
 )
 Paragraph.propTypes = {
+    className: PropTypes.string,
     children: PropTypes.node.isRequired,
 }
 

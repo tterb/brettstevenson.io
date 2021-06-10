@@ -126,7 +126,7 @@ const CategoryMenu = (props) => {
   return (
     <div className='relative group-hover:bg-none w-14 h-14 items-center justify-center rounded-full p-2'>
       <CategoryWrapper className='absolute flex bg-white text-base font-normal items-center justify-center w-12 h-12 top-7 left-13 outline-none box-border'>
-        <CategoryButton className={`absolute flex bg-none items-center justify-center w-10 h-10 rounded-full border-none p-0 outline-none transition-all duration-300 ease-in-out overflow-visible cursor-pointer focus:outline-none focus:ring-4 focus:ring-base-700 focus:ring-opacity-50${open ? ' open' : ''}`} onClick={() => setOpen(!open)}>
+        <CategoryButton className={`absolute flex bg-none items-center justify-center w-10 h-10 rounded-full border-none p-0 outline-none transition-all duration-300 ease-in-out overflow-visible cursor-pointer focus:outline-none${open ? ' open' : ''}`} onClick={() => setOpen(!open)}>
           <CategoryIcon isOpen={open} />
           <CloseIcon className='close flex bg-none text-base-600 items-center justify-center w-10 h-10 mx-auto' />
         </CategoryButton>

@@ -41,7 +41,7 @@ const BlogLayout = ({ title, posts, categories, pageContext }) => {
         </div>
       </Header>
       <div className='w-full h-full -mt-9 mb-0 mx-auto p-0 z-10'>
-        <div className='w-4/5 max-w-240 m-auto mt-8 pt-8 pb-20 z-9999 sm:mt-9 sm:mb-1 md:pt-12'>
+        <div className='w-4/5 sm:w-9/10 md:w-4/5 max-w-240 m-auto mt-8 pt-8 pb-20 z-9999 sm:mt-9 sm:mb-1 md:pt-12'>
           <div className='hidden md:flex relative justify-between items-end w-32 h-12 ml-0 z-9999 md:ml-auto mr-auto md:mr-1'>
             <Search />
             <CategoryMenu categories={categories} />

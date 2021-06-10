@@ -28,11 +28,11 @@ const Ordered = styled.ol`
 
 const Unordered = styled.ul`
   line-height: 1.625;
-  li::before {
+  /* li::before {
     content: '';
     position: absolute;
     display: flex;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.6);
     justify-content: flex-end;
     text-align: right;
     line-height: 1.7;
@@ -41,11 +41,11 @@ const Unordered = styled.ul`
     height: 0.4rem;
     border-radius: 0.5rem;
     margin: 0.55rem 0.25rem 0 -1rem;
-  }
+  } */
 `
 
 export const OrderedList = ({ children }) => (
-  <Ordered className='list-reset w-9/10 mx-auto sm:w-full mt-0 pl-6'>
+  <Ordered className='w-9/10 sm:w-full mx-auto mt-2 sm:ml-6'>
     {children}
   </Ordered>
 )
@@ -57,7 +57,7 @@ OrderedList.propTypes = {
 }
 
 export const UnorderedList = ({ children }) => (
-  <Unordered className='list-reset w-9/10 mx-auto sm:w-full leading-loose align-middle mt-0 sm:ml-5'>
+  <Unordered className='list-disc w-9/10 leading-loose align-middle mx-auto sm:w-full mt-2 sm:ml-6'>
     {children}
   </Unordered>
 )

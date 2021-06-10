@@ -2,14 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { animated } from 'react-spring'
 import assignIn from 'lodash/assignIn'
 import kebabCase from 'lodash/kebabCase'
 import styled from 'styled-components'
 // Components
 import PageLink from 'components/PageLink'
 // Icons
-import { CalendarAlt } from '@styled-icons/fa-regular'
 import { Calendar, Tag } from '@styled-icons/octicons'
 import { Circle } from '@styled-icons/fa-solid'
 
@@ -46,16 +44,11 @@ const Text = styled.p`
   }
 `
 
-const Meta = styled.span`
-  /* svg {
-    margin: 0 8px 0 4px;
-  } */
-  .separator {
-    height: 0.3rem;
-    margin-top: -1px;
-    margin-left: 6px;
-    margin-right: 1px;
-  }
+const Separator = styled(Circle)`
+  height: 0.3rem;
+  margin-top: -1px;
+  margin-left: 6px;
+  margin-right: 1px;
 `
 
 class BlogCard extends React.Component {
@@ -69,36 +62,34 @@ class BlogCard extends React.Component {
     assignIn(post, post.frontmatter, post.fields)
 
     return (
-      <Card className='flex flex-col relative bg-center bg-no-repeat w-full h-100 rounded-lg mx-auto my-7 mb-14 transition-all duration-300 ease-in-out cursor-pointer sm:flex-row sm:h-64 md:h-68 lg:h-80' onClick={this.handleClick.bind(this)}>
+      <Card className='flex flex-col relative items-stretch w-full h-100 rounded-lg mx-auto my-7 mb-14 transition-all duration-300 ease-in-out cursor-pointer sm:flex-row sm:h-auto sm:min-h-64 sm:max-h-76 md:min-h-68 lg:min-h-80' onClick={this.handleClick.bind(this)}>
         <BgImage
-          className='relative block sm:inline-block w-full h-1/3 top-0 left-0 rounded-none z-min xs:rounded-t-lg sm:w-5/12 sm:h-full sm:rounded-l-lg sm:rounded-t-none'
+          className='relative block sm:inline-block w-full h-1/3 top-0 left-0 rounded-none z-min xs:rounded-t-lg sm:w-5/12 sm:h-auto sm:min-h-auto sm:rounded-l-lg sm:rounded-t-none'
           image={post.image.childImageSharp.gatsbyImageData}
           alt={post.title}
         />
-        <div className='content-mask relative block bg-white w-full md:w-9/10 h-2/3 py-4 px-4 rounded-none overflow-hidden cursor-pointer z-5 xs:rounded-b-lg sm:rounded-r-lg sm:rounded-b-none focus:sm:inline-block sm:h-full sm:py-6 sm:px-6 sm:pr-8 md:px-8 md:pr-10 lg:pr-12'>
-          <div className='flex flex-col h-full'>
-            <CardTitle className='font-title font-bold text-3xl sm:text-4xl lg:text-5xl leading-tighter tracking-tight w-full mt-0 ml-0 mr-auto pb-3'>
-              <PageLink
-                className='w-9/10 no-underline text-base-100 text-opacity-80 mr-auto hover:text-base-100'
-                to={`/blog${post.slug}`}
-                content={post.title}
-              />
-            </CardTitle>
-            <Text className='text-lg text-base-400 leading-normal w-full mt-0 md:mt-1 mb-4 pb-1 cursor-pointer z-10'>
-              {post.description}
-            </Text>
-            <Meta className='flex text-base text-base-400 text-opacity-90 items-center align-middle mt-auto mb-0'>
-              <Tag className='text-base-700 my-0 ml-0 mr-2' size='1.2em' />
-              <PageLink
-                className='text-base-400 text-opacity-90'
-                to={`/blog/category/${kebabCase(post.category)}`}
-                content={post.category}
-              />
-              <Circle className='separator text-base-700 text-opacity-40 align-middle' size='1em' />
-              <Calendar className='text-base-700 my-0 ml-1 mr-2' size='1.1em' />
-              {post.date}
-            </Meta>
-          </div>
+        <div className='content-mask relative flex flex-col bg-white w-full md:w-9/10 h-2/3 py-4 px-4 rounded-none overflow-hidden cursor-pointer z-5 xs:rounded-b-lg sm:rounded-r-lg sm:rounded-b-none sm:h-auto sm:py-6 sm:px-6 sm:pr-8 md:px-8 md:pr-10 lg:pr-12'>
+          <CardTitle className='font-title font-bold text-3xl sm:text-4xl lg:text-5xl leading-tighter tracking-tight w-full mt-0 ml-0 mr-auto pb-3'>
+            <PageLink
+              className='w-9/10 no-underline text-base-100 text-opacity-80 mr-auto hover:text-base-100'
+              to={`/blog${post.slug}`}
+              content={post.title}
+            />
+          </CardTitle>
+          <Text className='text-lg text-base-400 leading-normal w-full mt-0 md:mt-1 mb-4 pb-1 cursor-pointer z-10'>
+            {post.description}
+          </Text>
+          <span className='flex text-base text-base-400 text-opacity-90 items-center align-middle mt-auto mb-0'>
+            <Tag className='text-base-700 my-0 ml-0 mr-2' size='1.2em' />
+            <PageLink
+              className='text-base-400 text-opacity-90'
+              to={`/blog/category/${kebabCase(post.category)}`}
+              content={post.category}
+            />
+            <Separator className='text-base-700 text-opacity-40 align-middle' size='1em' />
+            <Calendar className='text-base-700 my-0 ml-1 mr-2' size='1.1em' />
+            {post.date}
+          </span>
         </div>
       </Card>
     )

@@ -83,7 +83,7 @@ const CodeBlock = ({ codeString, language, metaString }) => {
   return (
     <Highlight {...defaultProps} code={codeString} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
-        const multiline = tokens.length > 1 ? ' mx-auto my-2 multiline' : ''
+        const multiline = tokens.length > 1 ? ' mx-auto my-0 multiline' : ''
         const preClass = `${className} group relative p-4${multiline.length ? ' pb-5 my-0' : ''}`
         return (
           <Wrapper className={`w-full mr-auto mb-0 overflow-auto${multiline}`}>
