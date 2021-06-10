@@ -56,10 +56,9 @@ const Footer = () => {
   }
 
   return (
-    <div className='relative flex w-full justify-center items-center -mt-16 py-12 z-50 md:py-16 lg:py-24' style={{ zIndex: `99999` }}>
+    <div className='relative flex w-full justify-center items-center -mt-16 py-16 lg:py-24 z-999'>
       <DividerStatic
         className='absolute fill-base-300 bottom-0 z-999'
-        style={{ height: '350px' }}
       >
         <div className='absolute top-0 left-0 bottom-0 w-full h-full' style={{ transform: 'matrix(1, 0, 0, -1, 0, 0)' }}>
           <div className='relative h-full top-0'>
@@ -71,7 +70,7 @@ const Footer = () => {
           </div>
         </div>
       </DividerStatic>
-      <FooterWrapper className='relative font-sans text-xxs text-gray-600 text-center top-2 sm:top-10 md:top-16 lg:top-20 p-6 px-4 z-9999'>
+      <FooterWrapper className='relative font-sans text-xxs text-gray-600 text-center top-10 sm:top-14 md:top-16 lg:top-20 p-6 px-4 z-9999'>
         <ul className='list-reset text-3xl xs:text-4xl lg:text-4xl mt-0 mb-4`'>
           <SocialLink
             link='https://github.com/tterb'
