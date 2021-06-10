@@ -23,7 +23,7 @@ const MenuItem = styled.li`
 
 const Panel = styled.div`
   box-shadow: 0 0 10px rgba(0,0,0,0.7);
-  transform: translatey(-100vh);
+  transform: translateY(-100vh);
   transform-style: preserve-3d;
   transition: all 450ms ease, transform 0ms ease;
   &.open {
@@ -54,7 +54,7 @@ const MenuLink = styled(PageLink)`
     }
 
     &:hover, &:active {
-        &::before { 
+        &::before {
             transform: scale(1);
         }
         .menu-item-mask {
@@ -128,12 +128,12 @@ MenuButton.propTypes = {
 }
 
 const MenuPanel = ({ isOpen }) => (
-  <Panel className={`fixed flex flex-col bg-base-100 text-left items-center w-screen h-screen top-0 right-0 p-10 opacity-0 z-min${isOpen ? ' open' : ''}`}>
-    <div className='flex flex-col items-start justify-center ml-2 mr-auto pt-20'>
+  <Panel className={`fixed flex flex-col bg-base-100 text-left items-center w-screen h-screen top-0 right-0 p-6 opacity-0 z-min${isOpen ? ' open' : ''}`}>
+    <div className='flex flex-col items-start justify-center ml-2 mr-auto pt-12'>
     {config.menuLinks.map((item) => (
         <MenuLink
           key={item.name}
-          className='group menu-item relative text-6xl font-bold cursor-pointer'
+          className='group menu-item relative text-5xl font-bold cursor-pointer'
           to={item.link}
           external={item.external}
         >
@@ -147,14 +147,14 @@ const MenuPanel = ({ isOpen }) => (
         </MenuLink>
     ))}
     </div>
-  </Panel> 
+  </Panel>
 )
 MenuButton.propTypes = {
   isOpen: PropTypes.bool,
 }
 
 
-const Nav = (props) => {
+const Nav = ({ showLogo, isMobile }) => {
 
   const [isOpen, setOpen] = useState(false)
 
@@ -162,14 +162,14 @@ const Nav = (props) => {
     <Wrapper className='nav-wrapper relative block font-title h-0 top-0 left-0 right-0 z-999'>
       <Fade top delay={250}>
         <div className='flex absolute w-full h-16 flex-wrap items-center justify-between top-0 p-4 pt-6 box-border'>
-          {props.logo ? (
-            <Logo className='logo-container' link={config.menuLinks[0].link} /> 
+          {showLogo ? (
+            <Logo className='logo-container' link={config.menuLinks[0].link} />
           ) : null}
 
-          {props.mobile ? (
+          {isMobile ? (
             <MenuButton isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
           )  : (
-            <div className='absolute right-0 sm:right-10'>
+            <div className='hidden sm:block absolute right-0 sm:right-10'>
               <InlineMenu className='menu flex relative bg-transparent w-full font-title font-medium  text-right list-reset m-0 md:mr-4 lg:mr-8'>
                 {config.menuLinks.map((item) => (
                     <MenuItem key={item.name} className='menu-item inline-block text-gray-1000 text-xl cursor-pointer py-0 px-3 last:pr-0'>
@@ -196,12 +196,11 @@ const Nav = (props) => {
   )
 }
 Nav.defaultProps = {
-  logo: true,
-  mobile: false,
+  showLogo: true,
 }
 Nav.propTypes = {
-  logo: PropTypes.bool,
-  mobile: PropTypes.bool,
+  showLogo: PropTypes.bool,
+  isMobile: PropTypes.bool.isRequired,
 }
 
 export default Nav

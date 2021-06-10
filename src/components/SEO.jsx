@@ -9,9 +9,9 @@ import config from 'config/website'
 const Head = props => {
   const {
     data: {
-      site: { 
+      site: {
         siteMetadata,
-        buildTime 
+        buildTime
       },
     },
   } = props
@@ -87,6 +87,7 @@ const Head = props => {
       <link rel='icon' type='image/png' sizes='16x16' href='/favicons/favicon-16x16.png' />
       <meta name='Brett Stevenson' content='Developer, Designer, Student' />
       <link rel='shortcut icon' href='favicon.ico' />
+      <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=yes' />
       <meta name='msapplication-TileColor' content={config.backgroundColor} />
       <meta name='msapplication-config' content='browserconfig.xml' />
       <meta name='description' content={description} />

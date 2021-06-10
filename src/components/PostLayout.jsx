@@ -80,7 +80,7 @@ class PostLayout extends React.Component {
   }
 
   render() {
-    const { post, mobile, location, context, children } = this.props
+    const { post, location, context, isMobile, children } = this.props
     const { prevPost, nextPost } = context
 
     if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
@@ -95,7 +95,7 @@ class PostLayout extends React.Component {
     return (
       <div className='post-body w-full m-auto'>
         <span id='top' />
-        <Nav mobile={mobile} />
+        <Nav isMobile={isMobile} />
         {post.image ? (
           <HeroImage
             className='w-full top-0 left-0'
@@ -172,7 +172,6 @@ PostLayout.propTypes = {
     nextPost: PropTypes.object,
     prevPost: PropTypes.object,
   }).isRequired,
-  mobile: PropTypes.bool,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,
@@ -180,6 +179,7 @@ PostLayout.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  isMobile: PropTypes.bool.isRequired,
 }
 
 export default PostLayout

@@ -9,20 +9,17 @@ import Inner from 'elements/Inner'
 // Components
 import ProjectCard from 'components/ProjectCard'
 import Cube from 'components/Cube'
-// Hooks
-import useWindowDimensions from 'hooks/WindowDimensions'
 
 
-const Projects = ({  id, projects, isMobile }) => {
-  const win = useWindowDimensions()
-  const colors = win.width < 650 ? [
+const Projects = ({  id, projects, windowSize }) => {
+  const colors = windowSize.width < 650 ? [
     'linear-gradient(to right, #7f7fd5, #76bef6)'
   ] : [
     'linear-gradient(to right, #7f7fd5, #86a8ef)',
     'linear-gradient(to right, #83a0e8, #76bef6)',
   ]
-  const projectCount = isMobile ? projects.length - 2 : projects.length
-  const clipPath = win.width < 650 ? 'polygon(0 0, 100% 7%, 100% 100%, 0 93%)' : 'polygon(0 0, 100% 10%, 100% 100%, 0 90%)'
+  const projectCount = windowSize.isMobile ? projects.length - 2 : projects.length
+  const clipPath = windowSize.width < 650 ? 'polygon(0 0, 100% 7%, 100% 100%, 0 93%)' : 'polygon(0 0, 100% 10%, 100% 100%, 0 90%)'
 
   const trail = useTrail(projectCount, {
     from: { top: '100rem' },
@@ -30,7 +27,7 @@ const Projects = ({  id, projects, isMobile }) => {
   })
   return (
     <DividerMiddle
-      className='flex relative bg-gradient-to-r from-indigo-600 to-blue-500 w-full h-full min-h-400 md:min-h-320 mt-28'
+      className='flex relative bg-gradient-to-r from-indigo-600 to-blue-500 w-full h-full min-h-360 sm:min-h-400 md:min-h-320 mt-28'
       clipPath={clipPath}
     >
       <Content id={id}>
@@ -48,7 +45,7 @@ const Projects = ({  id, projects, isMobile }) => {
                 style={style}
               />
             ))}
-            {isMobile ?
+            {windowSize.isMobile ?
               <ProjectCard
                 project={{
                   title: 'More..',
@@ -77,7 +74,7 @@ Projects.propTypes = {
       }).isRequired,
     }).isRequired,
   ).isRequired,
-  isMobile: PropTypes.bool.isRequired,
+  windowSize: PropTypes.object.isRequired,
 }
 
 export default Projects

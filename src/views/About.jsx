@@ -16,11 +16,11 @@ const avatarStyle = {
 
 const About = ({ id, avatar, isMobile }) => (
   <Divider
-    className='flex relative bg-base-300 w-full h-full max-h-320 md:max-h-300'
+    className='flex relative bg-base-300 w-full h-full max-h-180 md:max-h-300'
     clipPath='polygon(0 12%, 100% 0%, 100% 88%, 0 100%)'
   >
     <Content id={id}>
-      <Inner style={{ marginTop: '12%' }}>
+      <Inner className='sm:mt-24'>
         <div className='section-title flex items-baseline mb-2 sm:mb-0'>
           <Cube color='blue' />
           <SectionTitle>About</SectionTitle>
@@ -47,7 +47,7 @@ const About = ({ id, avatar, isMobile }) => (
 About.propTypes = {
   id: PropTypes.string.isRequired,
   avatar: PropTypes.object.isRequired,
-  isMobile: PropTypes.bool,
+  isMobile: PropTypes.bool.isRequired,
 }
 
 export default About
@@ -56,4 +56,4 @@ export default About
 
 // As a designer. I'm passionate about bridging the gap between intent and realization, while making for an enjoyable ride
 
-// As a developer, I have experience working in both front and back-end development and enjoy experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy.  
+// As a developer, I have experience working in both front and back-end development and enjoy experimenting with new frameworks and platforms, while striving to create tools that myself and others can enjoy.

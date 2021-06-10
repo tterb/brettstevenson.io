@@ -17,7 +17,7 @@ const BackgroundTitleStyle = {
   letterSpacing: '-0.35rem',
 }
 
-const BlogLayout = ({ title, posts, categories, pageContext }) => {
+const BlogLayout = ({ title, posts, categories, pageContext, isMobile }) => {
   // config({ ssrFadeout: true })
   const { currentPage, numPages, count } = pageContext
   const categoryPage = (title !== 'Blog')
@@ -28,7 +28,7 @@ const BlogLayout = ({ title, posts, categories, pageContext }) => {
     to: { top: '0' },
   });
   return (
-    <Layout className='bg-gray-900 h-auto'>
+    <Layout className='bg-gray-900 h-auto' isMobile={isMobile}>
       <Header className='bg-base-200' full={true}>
         <div className='absolute h-full -top-20 -left-8 pt-0 px-0'>
           <h2 className='font-title font-semibold text-white text-opacity-5 leading-none w-full mt-0 mb-6 ml-0 cursor-default z-min' style={BackgroundTitleStyle}>Blog</h2>
@@ -72,7 +72,6 @@ const BlogLayout = ({ title, posts, categories, pageContext }) => {
     </Layout>
   )
 }
-
 BlogLayout.propTypes = {
   title: PropTypes.string.isRequired,
   posts: PropTypes.array.isRequired,
@@ -81,6 +80,7 @@ BlogLayout.propTypes = {
     numPages: PropTypes.number.isRequired,
     count: PropTypes.number.isRequired,
   }).isRequired,
+  isMobile: PropTypes.bool.isRequired,
 }
 
 export default BlogLayout

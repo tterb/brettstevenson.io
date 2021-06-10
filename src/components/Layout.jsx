@@ -7,18 +7,17 @@ import SEO from 'components/SEO'
 import Footer from 'views/Footer'
 // Styles
 import GlobalStyle from 'styles/global'
-// Hooks
-import { isMobile } from 'hooks/WindowDimensions'
 
 
-const Layout = ({ nav, navLogo, className, children, ...props }) => {
-  const mobile = isMobile()
+const Layout = ({ nav, navLogo, isMobile, className, children, ...props }) => {
   return (
     <>
       <SEO />
       <GlobalStyle />
       <div className={`relative w-full${className ? ` ${className}` : ' h-full'}`}>
-        { nav ? <Nav logo={navLogo} mobile={mobile} /> : null }
+        {nav ?
+          <Nav showLogo={navLogo} isMobile={isMobile} />
+        : null }
         {children}
         <Footer />
       </div>
@@ -32,6 +31,7 @@ Layout.defaultProps = {
 Layout.propTypes = {
   nav: PropTypes.bool,
   navLogo: PropTypes.bool,
+  isMobile: PropTypes.bool.isRequired,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
 }

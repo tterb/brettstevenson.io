@@ -8,6 +8,7 @@ body {
   font-kerning: normal;
   text-rendering: optimizelegibility;
   backface-visibility: hidden;
+  overflow-x: hidden;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-font-smoothing: antialiased;
@@ -140,8 +141,8 @@ svg.logo {
 }
 
 .code-svg {
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   top: 4.5rem;
   right: 0rem;
   @media screen and (min-width: 500px) {
