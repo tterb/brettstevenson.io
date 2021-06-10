@@ -25,12 +25,13 @@ Before we start writing tests, we need to create a new file with the following c
 ```bash
 $ pytest
 ```
-<p class="h-tip">I prefer running pytest with the `-v` or `--verbose` flag, as this prints the test that is being run and whether it passed/failed.</p>
+<p className='h-tip'>I prefer running pytest with the `-v` or `--verbose` flag, as this prints the test that is being run and whether it passed/failed.</p>
 
 
 ## Basic Testing  
 
 To get started, the first test we&rsquo;re going to write is going to ensure that the program is able to accurately retrieve the title of a YouTube video when given a URL.  
+
 For this we&rsquo;re going to:  
   * Get the URL for a YouTube video with a known title
   * provide the URL to the yt2mp3.getVideoTitle() function
@@ -49,6 +50,7 @@ def test_video_title():
 You&rsquo;ll notice that the only difference in this function is that pytest uses an `assert`&ndash;statement where you might usually expect a `return`&ndash;statement.  
 
 Similarly, we can also write a test to check that the `yt2mp3.getVideoList()` function successfully retrieves the URLs for each video in the provided playlist. For this test, I&rsquo;ve created a simple test playlist that features three videos to keep the number of URLs manageable and prevent modifications from changing the expected result.  
+
 So we need to:  
   * Provide the URL for our test playlist
   * Provide a list of the URLs for each video in the playlist
@@ -81,7 +83,7 @@ def test_song():
 While, you can see that there&rsquo;s not a lot of code that goes into creating the object, it&rsquo;s best to follow the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principal and avoid redundancy.  
 Now that our fixture is defined, we are going to use it to write two tests to check the program&rsquo;s ability to download a video and convert the video to an mp3.  
 To test the program&rsquo;s download functionality, we&rsquo;ll utilize the fact that the `yt2mp3.download()` function returns the filepath when the download is successful by asserting that the returned filepath exists.  
-<p class="h-note">Notice that we&rsquo;ve provided our `test_song` fixture as a parameter of the test function.</p>
+<p className='h-note'>Notice that we&rsquo;ve provided our `test_song` fixture as a parameter of the test function.</p>
 
 ```python
 def test_video_download(test_song):

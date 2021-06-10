@@ -13,19 +13,19 @@ tags:
 published: true
 ---
   
-  <p class="h-tip">
-  For a more up-to-date and comprehensive explanation this subject has been revisited <a href="https://brettstevenson.io/blog/optimizing-jekyll-with-gulp-revisited.html">here</a>
+  <p className='h-tip'>
+  For a more up-to-date and comprehensive explanation this subject has been revisited <a href='https://brettstevenson.io/blog/optimizing-jekyll-with-gulp-revisited.html'>here</a>
   </p>
   
   Upon launching my new redesigned website, I've been spending the some time optimizing the site performance and load speeds using **[Google PageSpeed Insights]**.
   Therefore, I thought I would take a second to share with you my discoveries and also recommend a few helpful resources for improving the performance of your own Jekyll website.
   Using these methods, I have managed to receive the following PageSpeed rating. Though this is still a work-in-progress, and I will be adding [updates](#updates) as I explore this topic further.
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/16360374/27520456-f313f3de-59c0-11e7-81ce-40273d1ffcbb.png" class="shadow" width="800" alt="PageSpeed" style="margin-bottom:0.5em"/>
+<p align='center'>
+  <img src='https://user-images.githubusercontent.com/16360374/27520456-f313f3de-59c0-11e7-81ce-40273d1ffcbb.png' className='shadow' width='800' alt='PageSpeed' style={{marginBottom: '0.5em'}} />
 </p>
 
-  <p class="h-note" style="margin-bottom:3em">In an effort not to repeat the information in the articles listed below, I'll only share findings that weren't explicitly discussed in any of the following resources.</p>
+  <p className='h-note' style={{marginBottom: '3em'}}>In an effort not to repeat the information in the articles listed below, I'll only share findings that weren't explicitly discussed in any of the following resources.</p>
 
 ### Optimize your own images
   As with most websites, when I first launched the new design, the biggest hindrance to my websites loading speed was the size of the images on my page. Though, after observing the disappointing quality of the &ldquo;*optimized*&rdquo; images provided by PageSpeed Insights, I instead elected to use **[GIMP]** to manually decrease and compress my images to preserve the image quality until PageSpeeds requirements were satisfied.
@@ -77,7 +77,7 @@ gulp.task('optimize-html', function() {
         .pipe(minifyHTML({
             quotes: true
         }))
-        .pipe(replace(/<link href=\"\/css\/style.scss\"[^>]*>/, function(s) {
+        .pipe(replace(/<link href=\'\/css\/style.scss\'[^>]*>/, function(s) {
             var style = fs.readFileSync('_site/css/style.scss', 'utf8');
             return '<style>\n' + style + '\n</style>';
         }))
@@ -106,7 +106,7 @@ gulp.task('optimize-css', function() {
 // Eliminate render-blocking CSS
 gulp.task('include-css', function() {
   return gulp.src('_site/**/*.html')
-    .pipe(replace(/<link href=\"\/css\/style.scss\"[^>]*>/, function(s) {
+    .pipe(replace(/<link href=\'\/css\/style.scss\'[^>]*>/, function(s) {
       var style = fs.readFileSync('_site/css/style.scss', 'utf8');
       return '<style>\n' + style + '\n</style>';
     }))

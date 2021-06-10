@@ -16,7 +16,7 @@ published: true
 While the previous entry on optimizing your Jekyll site provided some basics to optimizing your Jekyll site performance, in this post I want to focus on providing a more comprehensive explanation of how you can create a more enjoyable development experience with the magic of [**Gulp**](https://gulpjs.com/).  
 To get started, lets first discuss the basic workflow and file structure that we&rsquo;ll be working with. As shown in the image below, we'll be storing our site assets in the `_assets/` directory.  
 
-<img src="https://user-images.githubusercontent.com/16360374/41262490-f9d106b4-6d95-11e8-9e2d-c63b80bfdd45.png" alt="file tree" style="width:50%"/>  
+<img src='https://user-images.githubusercontent.com/16360374/41262490-f9d106b4-6d95-11e8-9e2d-c63b80bfdd45.png' alt='file tree' style={{width: '50%'}} />  
 
 This will allow these files to be processed from within our [Gulpfile](https://gist.github.com/tterb/9bd8e94eb094f1f38fc3dd33a250a2ed), while remaining ignored by Jekyll. Though, a more in-depth explaination of the file-structure will be provided during each of the respective tasks.
 
@@ -117,8 +117,8 @@ npm i -D autoprefixer browser-sync del gulp gulp-cssnano gulp-concat gulp-util g
 
 ## Styles  
 To optimize our site&rsquo;s stylesheets, we&rsquo;re first going to compile our main Sass file and utilize *autoprefixer* and *cssnano* to add the necessary vendor-prefixes and optimize the resulting CSS. Additionally, the use of [PostCSS](https://github.com/postcss/postcss) allows us to perform both of these processes while only parsing the CSS once. All of which, produces a single stylesheet that gets placed in our `assets` and `_site/assets` directories.  
-<p class="h-note">
-  If you&rsquo;re really looking to squeeze out all the performance possible, you can check out the <a href="https://github.com/GoalSmashers/css-minification-benchmark">CSS minification benchmark</a> and see which one works best for you.
+<p className='h-note'>
+  If you&rsquo;re really looking to squeeze out all the performance possible, you can check out the <a href='https://github.com/GoalSmashers/css-minification-benchmark'>CSS minification benchmark</a> and see which one works best for you.
 </p>
 
 ```js
@@ -327,7 +327,7 @@ gulp.task('clean', ['clean:jekyll', 'clean:styles', 'clean:scripts', 'clean:imag
 );
 ```
 
-<p class="h-tldr">Here&rsquo;s a <a href="https://gist.github.com/tterb/9bd8e94eb094f1f38fc3dd33a250a2ed">gist</a> with the resulting Gulpfile.js</p>
+<p className='h-tldr'>Here&rsquo;s a <a href='https://gist.github.com/tterb/9bd8e94eb094f1f38fc3dd33a250a2ed'>gist</a> with the resulting Gulpfile.js</p>
 
 ## Conclusion  
 While this Gulpfile provides a lot of optimization and added convenience to just about any site, there is definitely still room for improvement. Feel free to contact me or leave a comment with any improvements or suggestions!
