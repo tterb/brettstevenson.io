@@ -274,6 +274,8 @@ module.exports = {
         60:          '15rem',
         64:          '16rem',
         68:          '17rem',
+        72:          '18rem',
+        76:          '19rem',
         100:         '25rem',
         112:         '28rem',
         '1/12':  '8.333333%',
@@ -436,7 +438,7 @@ module.exports = {
         'Helvetica Neue',
         'sans-serif',
       ],
-      DEFAULT: [
+      default: [
         '-apple-system',
         'system-ui',
         'BlinkMacSystemFont',
@@ -681,7 +683,9 @@ module.exports = {
       60:      '15rem',
       62:    '15.5rem',
       64:      '16rem',
+      68:      '17rem',
       72:      '18rem',
+      76:      '19rem',
       80:      '20rem',
       92:      '23rem',
       100:     '25rem',
