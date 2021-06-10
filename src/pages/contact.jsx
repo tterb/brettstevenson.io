@@ -9,20 +9,25 @@ import Inner from 'elements/Inner'
 import { BigTitle } from 'elements/Titles'
 // Styles
 import 'styles/contact.css'
+// Hooks
+import useWindowSize from 'hooks/useWindowSize'
 
 
-const ContactPage = () => (
-  <Layout>
-    <Header>
-      <BigTitle className='mt-24'>Say<br />Hello<span className='text-accent accent-dot'>.</span></BigTitle>
-    </Header>
-    <Content className='xs:-mt-8 xs:pb-32 md:mt-0 md:pb-28'>
-      <Inner>
-        <ContactForm />
-      </Inner>
-    </Content>
-  </Layout>
-)
+const ContactPage = () => {
+  const windowSize = useWindowSize()
+  return (
+    <Layout isMobile={windowSize.isMobile}>
+      <Header>
+        <BigTitle className='mt-24'>Say<br />Hello<span className='text-accent accent-dot'>.</span></BigTitle>
+      </Header>
+      <Content className='xs:-mt-8 xs:pb-32 md:mt-0 md:pb-28'>
+        <Inner>
+          <ContactForm />
+        </Inner>
+      </Content>
+    </Layout>
+  )
+}
 
 class ContactForm extends React.Component {
 
@@ -56,7 +61,7 @@ class ContactForm extends React.Component {
           placeholder={'Email'}
           value={this.state.email}
           autocomplete={true}
-          onChange={this.handleInputChange} 
+          onChange={this.handleInputChange}
         />
         <Input
           name={'subject'}

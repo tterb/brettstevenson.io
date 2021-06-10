@@ -8,7 +8,7 @@ import PostLayout from 'components/PostLayout'
 import PostMeta from 'components/PostMeta'
 import MDXRenderer from 'components/Post/MDX'
 // Hooks
-import { isMobile } from 'hooks/WindowDimensions'
+import useWindowSize from 'hooks/useWindowSize'
 // Styles
 import 'styles/post.css'
 import 'styles/syntax.css'
@@ -17,7 +17,7 @@ import 'styles/syntax.css'
 
 const PostTemplate = ({ data, pageContext, location }) => {
   // require('typeface-source-code-pro')
-  const mobile = isMobile()
+  const windowSize = useWindowSize()
   const author = config.author
   author.image = data.avatar
   const post = Object.assign({}, data.post, data.post.frontmatter, {author: author})
@@ -33,9 +33,9 @@ const PostTemplate = ({ data, pageContext, location }) => {
       />
       <PostLayout
         post={post}
-        mobile={mobile}
         location={location}
         context={pageContext}
+        isMobile={windowSize.isMobile}
       >
         <MDXRenderer content={post.body} />
       </PostLayout>

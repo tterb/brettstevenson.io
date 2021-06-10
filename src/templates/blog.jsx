@@ -3,16 +3,22 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 // Components
 import BlogLayout from 'components/BlogLayout'
+// Hooks
+import useWindowSize from 'hooks/useWindowSize'
 
 
-const Blog = ({ pageContext, data }) => (
-  <BlogLayout
-    title='Blog'
-    posts={data.posts.nodes}
-    categories={data.categories.group}
-    pageContext={pageContext}
-  />
-)
+const Blog = ({ pageContext, data }) => {
+  const windowSize = useWindowSize()
+  return (
+    <BlogLayout
+      title='Blog'
+      posts={data.posts.nodes}
+      categories={data.categories.group}
+      pageContext={pageContext}
+      isMobile={windowSize.isMobile}
+    />
+  )
+}
 Blog.propTypes = {
   pageContext: PropTypes.shape({
     currentPage: PropTypes.number.isRequired,
@@ -68,7 +74,7 @@ export const blogQuery = graphql`
           category
           image {
             childImageSharp {
-              gatsbyImageData( 
+              gatsbyImageData(
                 layout: CONSTRAINED,
                 placeholder: DOMINANT_COLOR,
                 height: 320,

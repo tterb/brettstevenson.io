@@ -8,29 +8,32 @@ import Projects from 'views/Projects'
 import About from 'views/About'
 import Contact from 'views/Contact'
 // Hooks
-import { isMobile } from 'hooks/WindowDimensions'
+import useWindowSize from 'hooks/useWindowSize'
 
 
 const Index = ({ data, ...props }) => {
-  const mobile = isMobile()
+  const windowSize = useWindowSize()
   const avatar = data.avatar.childImageSharp.gatsbyImageData
   const projects = data.projects.nodes || []
   return (
-    <Layout navLogo={false}>
+    <Layout
+      navLogo={false}
+      isMobile={windowSize.isMobile}
+    >
       <Hero {...props} />
-      <About 
+      <About
         id='about'
         avatar={avatar}
-        isMobile={mobile}
+        isMobile={windowSize.isMobile}
       />
       <Projects
         id='projects'
         projects={projects}
-        isMobile={mobile}
+        windowSize={windowSize}
       />
       <Contact
         id='contact'
-        isMobile={mobile}
+        isMobile={windowSize.isMobile}
       />
     </Layout>
   )
