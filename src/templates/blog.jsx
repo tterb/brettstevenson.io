@@ -50,7 +50,9 @@ export default Blog
 export const blogQuery = graphql`
   query BlogQuery($skip: Int!, $limit: Int!) {
     posts: allMdx(
-      filter: {fields: {sourceInstanceName: {eq: "posts"}}}
+      filter: {
+        fields: {sourceInstanceName: {eq: "posts"}, published: {eq: true}}
+      }
       sort: {fields: [frontmatter___date], order: DESC}
       limit: $limit
       skip: $skip

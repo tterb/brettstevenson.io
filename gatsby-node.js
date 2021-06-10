@@ -1,25 +1,48 @@
 const path = require('path')
+const env = require('dotenv')
 const _ = require('lodash')
 
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   let slug
+  let published = false
   // Only use MDX nodes
   if (node.internal.type === 'Mdx') {
     const fileNode = getNode(node.parent)
 
-    if (Object.prototype.hasOwnProperty.call(node, 'frontmatter')
-      && Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
-      // If the frontmatter contains a "slug", use it
-      slug = node.frontmatter.slug
-    } else if (Object.prototype.hasOwnProperty.call(node, 'frontmatter')
-      && Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')) {
-      // Otherwise use the title for the slug
-      slug = `/${_.kebabCase(node.frontmatter.title)}`
+    // Add 'slug' field
+    // if (Object.prototype.hasOwnProperty.call(node, 'frontmatter')
+    //   && Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
+    //   // If the frontmatter contains a "slug", use it
+    //   slug = node.frontmatter.slug
+    // } else if (Object.prototype.hasOwnProperty.call(node, 'frontmatter')
+    //   && Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')) {
+    //   // Otherwise use the title for the slug
+    //   slug = `/${_.kebabCase(node.frontmatter.title)}`
+    // }
+
+    if (Object.prototype.hasOwnProperty.call(node, 'frontmatter')) {
+      // Add 'slug' field
+      if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
+        // If the frontmatter contains a 'slug', use it
+        slug = node.frontmatter.slug
+      } else if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')) {
+        // Otherwise use the title for the slug
+        slug = `/${_.kebabCase(node.frontmatter.title)}`
+      }
+      
+      // Add 'published' field
+      if (process.env.NODE_ENV === 'development') {
+        published = true
+      } else if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'published')) {
+        published = node.frontmatter.published
+      }
     }
 
     createNodeField({ node, name: 'slug', value: slug })
+    createNodeField({ node, name: 'published', value: published })
+
     // Adds the name of "gatsby-source-filesystem" as field (in this case "projects" or "pages")
     createNodeField({ node, name: 'sourceInstanceName', value: fileNode.sourceInstanceName })
   }
@@ -62,7 +85,11 @@ exports.createPages = async ({ graphql, actions }) => {
     `),
   )
 
-  const posts = postQuery.data.posts.nodes.filter(post => post.frontmatter.published)
+  let posts = postQuery.data.posts.nodes
+  if (process.env.NODE_ENV !== 'development') {
+    posts = posts.filter(post => post.frontmatter.published === true)
+  }
+
   const postCategories = []
   posts.forEach((post, index) => {
     postCategories.push(post.frontmatter.category)
