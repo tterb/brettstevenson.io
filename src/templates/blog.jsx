@@ -15,7 +15,7 @@ const Blog = ({ pageContext, data }) => {
       posts={data.posts.nodes}
       categories={data.categories.group}
       pageContext={pageContext}
-      isMobile={windowSize.isMobile}
+      windowSize={windowSize}
     />
   )
 }

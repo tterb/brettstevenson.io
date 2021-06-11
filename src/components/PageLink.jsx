@@ -26,18 +26,14 @@ const PageLink = (props) => {
   )
 }
 PageLink.defaultProps = {
-  direction: 'left',
-  duration: 1.15,
   external: false,
 }
 PageLink.propTypes = {
-  className: PropTypes.string,
-  duration: PropTypes.number,
-  direction: PropTypes.string,
   external: PropTypes.bool,
   label: PropTypes.string,
   to: PropTypes.string.isRequired,
   content: PropTypes.node,
+  className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

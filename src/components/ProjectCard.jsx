@@ -59,7 +59,7 @@ function ProjectsCard(props) {
   return (
     <animated.div
       key={project.id}
-      className='card-wrapper group relative block w-9/10 md:w-full h-full rounded-lg text-white border-none no-underline cursor-pointer shadow-lg xs:mx-auto px-6 py-4 overflow-hidden hover:text-white'
+      className='card-wrapper group relative block w-9/10 md:w-full h-full rounded-lg text-white border-none no-underline cursor-pointer shadow-lg mx-auto px-6 py-4 overflow-hidden hover:text-white'
       target='_blank'
       rel='noopener noreferrer'
       style={wrapperStyle}

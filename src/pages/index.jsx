@@ -18,7 +18,7 @@ const Index = ({ data, ...props }) => {
   return (
     <Layout
       navLogo={false}
-      isMobile={windowSize.isMobile}
+      windowSize={windowSize}
     >
       <Hero {...props} />
       <About

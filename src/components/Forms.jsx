@@ -178,7 +178,7 @@ TextArea.propTypes = {
 
 
 export const Button = (props) => (
-  <Submit type={props.type} className='block text-lg text-white text-opacity-90 font-semibold text-center w-1/2 md:w-1/4 max-w-44 h-auto border-none rounded mt-12 px-5 py-3 transition-all duration-300 ease-in-out outline-none cursor-pointer'>
+  <Submit type={props.type} className='block text-lg text-white text-opacity-90 font-semibold text-center w-1/2 md:w-1/4 max-w-44 h-auto border-none rounded-lg mt-12 lg:mt-20 px-5 py-3 transition-all duration-300 ease-in-out outline-none cursor-pointer'>
     {props.value ? props.value : props.children}
   </Submit>
 )

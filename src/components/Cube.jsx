@@ -21,13 +21,13 @@ const WrapperInner = styled.div`
 const Cube = ({ color }) => (
     <Wrapper className='relative hidden md:block'>
       <WrapperInner className='opacity-0 md:opacity-100'>
-        <div className={`cube cube-${color}`}>
-          <div className='cube-side cube-side-top absolute w-full h-full' />
-          <div className='cube-side cube-side-bottom absolute w-full h-full' />
-          <div className='cube-side cube-side-left absolute w-full h-full' />
-          <div className='cube-side cube-side-right absolute w-full h-full' />
-          <div className='cube-side cube-side-front absolute w-full h-full' />
-          <div className='cube-side cube-side-back absolute w-full h-full' />
+        <div className={`cube cube-${color} absolute inline-block w-9 h-9`}>
+          <div className='cube-side cube-side-top absolute bg-black bg-opacity-10 w-full h-full' />
+          <div className='cube-side cube-side-bottom absolute bg-transparent w-full h-full' />
+          <div className='cube-side cube-side-left absolute bg-black bg-opacity-10 w-full h-full' />
+          <div className='cube-side cube-side-right absolute bg-black bg-opacity-10 w-full h-full' />
+          <div className='cube-side cube-side-front absolute bg-black bg-opacity-10 w-full h-full' />
+          <div className='cube-side cube-side-back absolute bg-black bg-opacity-10 w-full h-full' />
         </div>
       </WrapperInner>
     </Wrapper>

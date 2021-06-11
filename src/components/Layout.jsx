@@ -9,14 +9,17 @@ import Footer from 'views/Footer'
 import GlobalStyle from 'styles/global'
 
 
-const Layout = ({ nav, navLogo, isMobile, className, children, ...props }) => {
+const Layout = ({ nav, navLogo, windowSize, className, children, ...props }) => {
   return (
     <>
       <SEO />
       <GlobalStyle />
       <div className={`relative w-full${className ? ` ${className}` : ' h-full'}`}>
         {nav ?
-          <Nav showLogo={navLogo} isMobile={isMobile} />
+          <Nav
+            showLogo={navLogo} 
+            windowSize={windowSize} 
+          />
         : null }
         {children}
         <Footer />
@@ -31,7 +34,7 @@ Layout.defaultProps = {
 Layout.propTypes = {
   nav: PropTypes.bool,
   navLogo: PropTypes.bool,
-  isMobile: PropTypes.bool.isRequired,
+  windowSize: PropTypes.object.isRequired,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
 }

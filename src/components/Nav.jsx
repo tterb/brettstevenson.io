@@ -9,18 +9,6 @@ import PageLink from 'components/PageLink'
 import config from 'config/website.js'
 
 
-const Wrapper = styled.div`
-  transform: translate3D(0, 0, 0);
-`
-
-const InlineMenu = styled.ul`
-  z-index: 999999;
-`
-
-const MenuItem = styled.li`
-  z-index: 999999;
-`
-
 const Panel = styled.div`
   box-shadow: 0 0 10px rgba(0,0,0,0.7);
   transform: translateY(-100vh);
@@ -76,50 +64,29 @@ const MenuLink = styled(PageLink)`
 `
 
 const MenuItemMask = styled.span`
-    transition: all .8s cubic-bezier(.16,1.08,.38,.98);
+    transition: all 800ms cubic-bezier(0.16, 1.08, 0.38, 0.98);
 `
 
 const Button = styled.span`
+  transition: width 200ms ease-in-out, transform 200ms ease-in-out 200ms;
   &.open {
-    width: 25px;
-    transform: rotate(-45deg);
-    .half {
-      width: 50%;
-    }
-    .start {
-      transform: rotate(-90deg) translateX(2px);
-      transition: width 300ms ease-out 25ms, transform 300ms cubic-bezier(0.54, -0.81, 0.57, 0.57) 25ms;
-      transform-origin: right;
-    }
-    .end {
-      transform: rotate(-90deg) translateX(-2px);
-      transition: width 300ms ease-out 25ms, transform 300ms cubic-bezier(0.54, -0.81, 0.57, 0.57) 25ms;
-      transform-origin: left;
+    width: 22px;
+    .start, .end {
+      transition: width 100ms ease-in-out, transform 300ms cubic-bezier(0.54, -0.81, 0.57, 0.57) 50ms;
     }
   }
 `
 
 const Line = styled.div`
   height: 3px;
-  &.half {
-    width: 60%;
-  }
-  &.start {
-    transition: width 300ms ease-out, transform 250ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
-    transform-origin: right;
-  }
-  &.end {
-    align-self: flex-end;
-    transition: width 300ms ease-out, transform 250ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
-    transform-origin: left;
-  }
+  transition: width 100ms ease-in-out, transform 250ms cubic-bezier(0.54, -0.81, 0.57, 0.57) 50ms;
 `
 
 const MenuButton = ({ isOpen, onClick }) => (
-  <Button className={`menu-button absolute flex flex-col justify-between text-white text-opacity-75 w-8 h-6 top-3 right-4 transition-all duration-300 ease-in-out z-9999 cursor-pointer${isOpen ? ' open' : ''}`} onClick={onClick}>
-    <Line className='half start bg-white bg-opacity-75 w-full rounded transition-transform duration-300 ease-out' />
+  <Button className={`menu-button relative flex flex-col justify-between text-white text-opacity-75 h-6 -top-1 transform rotate-0 ml-auto z-9999 cursor-pointer ${isOpen ? 'open -rotate-45' : 'w-8'}`} onClick={onClick}>
+    <Line className={`start bg-white bg-opacity-75 rounded origin-right transform ${isOpen ? 'w-1/2 -rotate-90 top-0.5' : 'w-3/5 top-0'}`} />
     <Line className='bg-white bg-opacity-75 w-full rounded transition-transform duration-300 ease-out' />
-    <Line className='half end bg-white bg-opacity-75 w-full rounded transition-transform duration-300 ease-out' />
+    <Line className={`end bg-white bg-opacity-75 self-end rounded origin-left transform ${isOpen ? 'w-1/2 -rotate-90 -top-0.5' : 'w-3/5 top-0'}`} />
   </Button>
 )
 MenuButton.propTypes = {
@@ -129,7 +96,7 @@ MenuButton.propTypes = {
 
 const MenuPanel = ({ isOpen }) => (
   <Panel className={`fixed flex flex-col bg-base-100 text-left items-center w-screen h-screen top-0 right-0 p-6 opacity-0 z-min${isOpen ? ' open' : ''}`}>
-    <div className='flex flex-col items-start justify-center ml-2 mr-auto pt-12'>
+    <div className='flex flex-col items-start justify-center ml-2 mr-auto pt-16'>
     {config.menuLinks.map((item) => (
         <MenuLink
           key={item.name}
@@ -149,50 +116,52 @@ const MenuPanel = ({ isOpen }) => (
     </div>
   </Panel>
 )
-MenuButton.propTypes = {
+MenuPanel.propTypes = {
   isOpen: PropTypes.bool,
 }
 
+const InlineMenu = ({ links }) => (
+  <div className='hidden sm:block right-0 sm:right-10 ml-auto'>
+    <ul className='menu flex relative bg-transparent w-full font-title font-medium text-right list-reset m-0 z-9999'>
+      {links.map((item) => (
+          <li key={item.name} className='menu-item inline-block text-gray-1000 text-opacity-90 text-xl py-0 px-3 last:pr-0 cursor-pointer z-9999'>
+            <PageLink
+              className='no-underline hover:tracking-wide focus:tracking-wide border-none transition-all duration-300 ease-in-out'
+              external={item.external}
+              content={item.name}
+              to={item.link}
+            />
+          </li>
+      ))}
+    </ul>
+  </div>
+)
+InlineMenu.propTypes = {
+  links: PropTypes.array,
+}
 
-const Nav = ({ showLogo, isMobile }) => {
-
+const Nav = ({ showLogo, windowSize }) => {
+  const isMobile = (windowSize.width && windowSize.width <= 600)
   const [isOpen, setOpen] = useState(false)
-
   return (
-    <Wrapper className='nav-wrapper relative block font-title h-0 top-0 left-0 right-0 z-999'>
+    <div className='nav-wrapper relative block font-title h-0 top-0 left-0 right-0 z-999'>
       <Fade top delay={250}>
-        <div className='flex absolute w-full h-16 flex-wrap items-center justify-between top-0 p-4 pt-6 box-border'>
+        <div className='flex relative w-5/6 md:w-9/10 h-16 flex-wrap items-center justify-between top-0 mx-auto pt-6 pb-4 px-0 box-border'>
           {showLogo ? (
-            <Logo className='logo-container' link={config.menuLinks[0].link} />
+            <Logo className='logo-container' link='/' />
           ) : null}
 
-          {isMobile ? (
+          {isMobile ?
             <MenuButton isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
-          )  : (
-            <div className='hidden sm:block absolute right-0 sm:right-10'>
-              <InlineMenu className='menu flex relative bg-transparent w-full font-title font-medium  text-right list-reset m-0 md:mr-4 lg:mr-8'>
-                {config.menuLinks.map((item) => (
-                    <MenuItem key={item.name} className='menu-item inline-block text-gray-1000 text-xl cursor-pointer py-0 px-3 last:pr-0'>
-                    {item.external ? (
-                      <a className='no-underline border-none' href={item.link}>
-                        {item.name}
-                      </a>
-                    ) : (
-                      <PageLink
-                        className='no-underline border-none'
-                        content={item.name}
-                        to={item.link}
-                      />
-                    )}
-                    </MenuItem>
-                ))}
-              </InlineMenu>
-            </div>
-          )}
+          :
+            <InlineMenu links={config.menuLinks} />
+          }
         </div>
       </Fade>
-      <MenuPanel isOpen={isOpen} />
-    </Wrapper>
+      {isMobile ?
+        <MenuPanel isOpen={isOpen} />
+      : null}
+    </div>
   )
 }
 Nav.defaultProps = {
@@ -200,7 +169,7 @@ Nav.defaultProps = {
 }
 Nav.propTypes = {
   showLogo: PropTypes.bool,
-  isMobile: PropTypes.bool.isRequired,
+  windowSize: PropTypes.object.isRequired,
 }
 
 export default Nav

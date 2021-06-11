@@ -16,11 +16,14 @@ import useWindowSize from 'hooks/useWindowSize'
 const ContactPage = () => {
   const windowSize = useWindowSize()
   return (
-    <Layout isMobile={windowSize.isMobile}>
+    <Layout windowSize={windowSize}>
       <Header>
-        <BigTitle className='mt-24'>Say<br />Hello<span className='text-accent accent-dot'>.</span></BigTitle>
+        <BigTitle className='mt-32'>
+          Say<br />
+          Hello<span className='text-accent accent-dot'>.</span>
+        </BigTitle>
       </Header>
-      <Content className='xs:-mt-8 xs:pb-32 md:mt-0 md:pb-28'>
+      <Content className='-mt-8 pb-32 md:mt-0 md:pb-28 lg:pt-6'>
         <Inner>
           <ContactForm />
         </Inner>

@@ -62,13 +62,13 @@ class BlogCard extends React.Component {
     assignIn(post, post.frontmatter, post.fields)
 
     return (
-      <Card className='flex flex-col relative items-stretch w-full h-100 rounded-lg mx-auto my-7 mb-14 transition-all duration-300 ease-in-out cursor-pointer sm:flex-row sm:h-auto sm:min-h-64 sm:max-h-76 md:min-h-68 lg:min-h-80' onClick={this.handleClick.bind(this)}>
+      <Card className='flex flex-col relative items-stretch w-full h-100 rounded-lg mx-auto mt-7 mb-12 transition-all duration-300 ease-in-out cursor-pointer sm:flex-row sm:h-auto sm:min-h-64 sm:max-h-76 md:min-h-68 lg:min-h-80' onClick={this.handleClick.bind(this)}>
         <BgImage
-          className='relative block sm:inline-block w-full h-1/3 top-0 left-0 rounded-none z-min xs:rounded-t-lg sm:w-5/12 sm:h-auto sm:min-h-auto sm:rounded-l-lg sm:rounded-t-none'
+          className='relative block sm:inline-block w-full h-1/3 top-0 left-0 rounded-none z-min rounded-t-lg sm:w-5/12 sm:h-auto sm:min-h-auto sm:rounded-l-lg sm:rounded-t-none'
           image={post.image.childImageSharp.gatsbyImageData}
           alt={post.title}
         />
-        <div className='content-mask relative flex flex-col bg-white w-full md:w-9/10 h-2/3 py-4 px-4 rounded-none overflow-hidden cursor-pointer z-5 xs:rounded-b-lg sm:rounded-r-lg sm:rounded-b-none sm:h-auto sm:py-6 sm:px-6 sm:pr-8 md:px-8 md:pr-10 lg:pr-12'>
+        <div className='content-mask relative flex flex-col bg-white w-full md:w-9/10 h-2/3 py-4 px-4 rounded-none overflow-hidden cursor-pointer z-5 rounded-b-lg sm:rounded-r-lg sm:rounded-b-none sm:h-auto sm:py-6 sm:px-6 sm:pr-8 md:px-8 md:pr-10 lg:pr-12'>
           <CardTitle className='font-title font-bold text-3xl sm:text-4xl lg:text-5xl leading-tighter tracking-tight w-full mt-0 ml-0 mr-auto pb-3'>
             <PageLink
               className='w-9/10 no-underline text-base-100 text-opacity-80 mr-auto hover:text-base-100'
@@ -84,7 +84,7 @@ class BlogCard extends React.Component {
             <PageLink
               className='text-base-400 text-opacity-90'
               to={`/blog/category/${kebabCase(post.category)}`}
-              content={post.category}
+              content={post.category === 'Web Development' ? 'Web Dev' : post.category}
             />
             <Separator className='text-base-700 text-opacity-40 align-middle' size='1em' />
             <Calendar className='text-base-700 my-0 ml-1 mr-2' size='1.1em' />
@@ -95,7 +95,6 @@ class BlogCard extends React.Component {
     )
   }
 }
-
 BlogCard.propTypes = {
   post: PropTypes.shape({
     fields: PropTypes.shape({

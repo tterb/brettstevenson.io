@@ -9,7 +9,6 @@ import PageLink from 'components/PageLink'
 
 const Title = styled.span`
   font-size: 1.4rem;
-  top: -0.125rem;
 `
 
 class Logo extends React.Component {
@@ -17,29 +16,26 @@ class Logo extends React.Component {
     super(props)
     this.bPath = React.createRef()
     this.sPath = React.createRef()
-    // this.pathAnim = React.createRef()
   }
 
   componentDidMount() {
     const bPath = this.bPath
-    // const pathAnim = this.pathAnim
     const trackLength = bPath.getTotalLength().toString()
     bPath.setAttribute('stroke-dasharray', `${trackLength},${trackLength}`)
-    // pathAnim.setAttribute('values', `-${trackLength};0`)
   }
 
   render() {
     const { className, link, children } = this.props
     const siteTitle = config.siteTitleShort
     return (
-      <div className={`group flex absolute text-white items-normal justify-center ml-6 z-10 ${className}`}>
+      <div className={`group flex text-white items-normal justify-center ml-0 z-10 ${className}`}>
         <PageLink 
           className='relative w-6 h-auto'
           label={siteTitle} 
           to={link}
         >
           <svg 
-            className='logo text-white stroke-current max-w-full h-auto m-0 box-border z-999'
+            className='logo text-white stroke-current max-w-full h-auto m-0 overflow-visible box-border z-999'
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 121.92 188.66'
           >
@@ -67,7 +63,7 @@ class Logo extends React.Component {
           </svg>
           {children}
         </PageLink>
-        <Title className='logo-title relative font-medium text-white text-opacity-90 opacity-0 group-hover:opacity-100 ml-3 transition-opacity duration-300 ease-in-out cursor-default z-10'>{siteTitle}</Title>
+        <Title className='logo-title relative font-medium text-white text-opacity-90 -top-0.5 opacity-0 group-hover:opacity-100 ml-3 transition-opacity duration-200 ease-in-out cursor-default z-10'>{siteTitle}</Title>
       </div>
     )
   }

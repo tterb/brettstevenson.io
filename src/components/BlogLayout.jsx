@@ -12,12 +12,7 @@ import Search from 'components/Search'
 import CategoryMenu from 'components/CategoryMenu'
 
 
-const BackgroundTitleStyle = {
-  fontSize: '40vw',
-  letterSpacing: '-0.35rem',
-}
-
-const BlogLayout = ({ title, posts, categories, pageContext, isMobile }) => {
+const BlogLayout = ({ title, posts, categories, pageContext, windowSize }) => {
   // config({ ssrFadeout: true })
   const { currentPage, numPages, count } = pageContext
   const categoryPage = (title !== 'Blog')
@@ -28,10 +23,10 @@ const BlogLayout = ({ title, posts, categories, pageContext, isMobile }) => {
     to: { top: '0' },
   });
   return (
-    <Layout className='bg-gray-900 h-auto' isMobile={isMobile}>
+    <Layout className='bg-gray-900 h-auto' windowSize={windowSize}>
       <Header className='bg-base-200' full={true}>
-        <div className='absolute h-full -top-20 -left-8 pt-0 px-0'>
-          <h2 className='font-title font-semibold text-white text-opacity-5 leading-none w-full mt-0 mb-6 ml-0 cursor-default z-min' style={BackgroundTitleStyle}>Blog</h2>
+        <div className='absolute h-full -left-14 sm:-left-8 md:-top-20 pt-0 px-0'>
+          <h2 className='font-title font-semibold text-white text-opacity-5 text-60vw sm:text-50vw md:text-40vw leading-none w-full mt-0 mb-6 ml-0 cursor-default z-min' style={{ letterSpacing: '-0.35rem' }}>Blog</h2>
         </div>
         <div className='w-full max-w-200 mx-auto'>
           <h1 className='relative inline-block text-7xl font-title font-bold text-white text-opacity-90 leading-none tracking-normal m-0 mt-12 pb-3 transition-all duration-200 ease-in-out md:text-8xl md:mt-6'>
@@ -41,7 +36,7 @@ const BlogLayout = ({ title, posts, categories, pageContext, isMobile }) => {
         </div>
       </Header>
       <div className='w-full h-full -mt-9 mb-0 mx-auto p-0 z-10'>
-        <div className='w-4/5 sm:w-9/10 md:w-4/5 max-w-240 m-auto mt-8 pt-8 pb-20 z-9999 sm:mt-9 sm:mb-1 md:pt-12'>
+        <div className='w-5/6 sm:w-9/10 md:w-4/5 max-w-240 m-auto mt-8 pt-8 pb-20 z-9999 sm:mt-9 sm:mb-1 md:pt-12'>
           <div className='hidden md:flex relative justify-between items-end w-32 h-12 ml-0 z-9999 md:ml-auto mr-auto md:mr-1'>
             <Search />
             <CategoryMenu categories={categories} />
@@ -80,7 +75,7 @@ BlogLayout.propTypes = {
     numPages: PropTypes.number.isRequired,
     count: PropTypes.number.isRequired,
   }).isRequired,
-  isMobile: PropTypes.bool.isRequired,
+  windowSize: PropTypes.object.isRequired,
 }
 
 export default BlogLayout

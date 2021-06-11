@@ -35,7 +35,7 @@ const PostTemplate = ({ data, pageContext, location }) => {
         post={post}
         location={location}
         context={pageContext}
-        isMobile={windowSize.isMobile}
+        windowSize={windowSize}
       >
         <MDXRenderer content={post.body} />
       </PostLayout>

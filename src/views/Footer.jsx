@@ -70,8 +70,8 @@ const Footer = () => {
           </div>
         </div>
       </DividerStatic>
-      <FooterWrapper className='relative font-sans text-xxs text-gray-600 text-center top-10 sm:top-14 md:top-16 lg:top-20 p-6 px-4 z-9999'>
-        <ul className='list-reset text-3xl xs:text-4xl lg:text-4xl mt-0 mb-4`'>
+      <FooterWrapper className='relative font-sans text-xxs text-gray-600 text-center top-10 sm:top-14 md:top-16 lg:top-24 p-6 px-4 z-9999'>
+        <ul className='list-reset text-4xl mt-0 mb-4`'>
           <SocialLink
             link='https://github.com/tterb'
             title='GitHub'

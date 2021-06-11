@@ -5,13 +5,13 @@ export const Divider = styled.div`
   position: relative;
   clip-path: ${props => props.clipPath};
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 `
 
 export const DividerStatic = styled.div`
   clip-path: ${props => props.clipPath};
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 `
 
 export const DividerMiddle = styled(Divider)`
