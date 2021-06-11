@@ -1,15 +1,6 @@
 @import 'syntax';
 
-$body-width: 90%;
-
-.wrapper {
-  @media (max-width: 500px) {
-    padding-top: 1rem;
-  }
-}
-
 .post-body {
-  @apply font-default;
   font-size: 1.1rem;
   
   ul, ol {
@@ -28,7 +19,7 @@ $body-width: 90%;
   }
   
   code {
-    @apply relative bg-base-200 bg-opacity-5 text-base text-black text-opacity-80 rounded;
+    @apply relative bg-base-100 bg-opacity-5 text-base text-black text-opacity-90 rounded;
     font-size: 0.9rem;
     top: -1px;
     padding: 1px 6px 2px;
@@ -104,23 +95,6 @@ $body-width: 90%;
   .header-logo {
     position: relative;
     top: 0.2rem;
-  }
-  &.fixed {
-    background-color: lighten(saturate($bg_color, 5%), 5%);
-    color: rgba(0,0,0,0.85);
-    width: calc(100% - 60px);
-    transition: all 400ms ease-in-out, color 300ms ease-in-out;
-    animation: fromTop 1s 1;
-    .header-logo {
-      .logo {
-        font-size: 1.35rem;
-        top: 0.5rem;
-        left: 1rem;
-        @media (max-width: 500px) {
-          left: 0;
-        }
-      }
-    }
   }
 }
 
@@ -210,7 +184,3 @@ $body-width: 90%;
   }
 }
 
-@keyframes fromTop {
-    0% { height: 0; }
-    100% { height: 50px; }
-}

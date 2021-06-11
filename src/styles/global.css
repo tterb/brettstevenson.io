@@ -16,8 +16,7 @@ body {
 }
 
 a {
-	@apply no-underline border-none outline-none transition-all duration-300 ease-in-out cursor-pointer;
-	color: $text_color;
+	@apply text-white text-opacity-80 no-underline border-none outline-none transition-all duration-300 ease-in-out cursor-pointer;
 	&:hover,
 	&.active a {
 		@apply text-accent;
@@ -46,39 +45,6 @@ button::focus {
   outline: none !important;
 }
 
-.large-title {
-  @apply font-title text-white text-opacity-95 font-bold tracking-wide leading-tighter w-full mt-4 mb-6 ml-0;
-  font-size: 3em;
-  text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
-}
-
-.title {
-  @apply relative inline-block text-6xl text-white text-opacity-90 font-title font-bold tracking-normal my-6 ml-0;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  transition: all 200ms ease-in-out;
-}
-
-.post-list {
-  @apply list-none leading-loose align-middle mt-0 ml-5 p-0;
-}
-.post-list li::before {
-  @apply absolute flex justify-end leading-loose text-right align-middle mb-0 mr-1;
-}
-.post-ol {
-  @apply list-none p-0 mt-0 pl-5;
-}
-.post-ol li::before {
-  @apply absolute flex justify-end text-right w-16 box-border my-0 mr-0 pr-1;
-}
-
-.pagination-link::before,
-.pagination-link::after {
-  @apply block absolute w-full h-full top-0 rounded-full border-3 border-solid border-black border-opacity-90;
-}
-.pagination-link::before {
-  @apply bg-black bg-opacity-90;
-}
-
 .accent,
 .accent-text {
   @apply text-accent;
@@ -89,31 +55,10 @@ button::focus {
   line-height: 0.7;
 }
 
-.accent-blue {
-  color: $secondary_accent;
-}
-
-/* Menu */
-.menu .menu-item {
-  a {
-    color: $text_color;
-    transition: all 450ms ease-in-out;
-    &:hover {
-      color: $accent;
-      letter-spacing: 0.5px !important;
-    }
-  }
-}
-
-.nav-wrapper .react-reveal {
-  height: 4rem;
-}
-
 svg.logo {
   position: absolute;
   width: 1.35rem;
   height: auto;
-  /* top: 1rem; */
   overflow: visible !important;
   path {
     fill: none;
@@ -125,11 +70,12 @@ svg.logo {
     filter: url(#dropshadow);
     overflow: visible;
     animation-iteration-count: 20;
+    animation-delay: 250ms;
   }
   .sPath {
     stroke-dasharray: 600;
     stroke-dashoffset: 600;
-    animation-delay: 1500ms;
+    animation-delay: 1750ms;
     animation: dash 4s linear forwards 500ms;
   }
 }
@@ -140,75 +86,13 @@ svg.logo {
   margin-left: 1px;
 }
 
-.code-svg {
-  width: 10rem;
-  height: 10rem;
-  top: 4.5rem;
-  right: 0rem;
-  @media screen and (min-width: 500px) {
-    width: 10rem;
-    height: 10rem;
-    top: 5.5rem;
-    right: 2.5vw;
-  }
-  @media screen and (min-width: 600px) {
-    width: 15.5rem;
-    height: 15.5rem;
-    top: 5.5rem;
-    left: 21.5rem;
-  }
-  @media screen and (min-width: 700px) {
-    width: 16rem;
-    height: 16rem;
-    top: 5rem;
-    left: 26rem;
-  }
-  @media screen and (min-width: 900px) {
-    width: 17rem;
-    height: 17rem;
-    top: 7rem;
-    left: 31rem;
-  }
-}
-
-/* Pagination */
-.pagination-link {
-  text-indent: -99em;
-  &::before,
-  &::after {
-    content: '';
-    transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  &::before {
-    transform: scale(0.2);
-  }
-  &:hover {
-    &::after {
-      transform: scale(1.1);
-    }
-  }
-  &.active {
-    &::before {
-      transform: scale(0.4);
-    }
-    &::after {
-      transform: scale(0.2);
-    }
-  }
-}
-
 /* Title Cubes */
 .cube {
-  position: absolute;
-  display: inline-block;
-  width: 36px;
-  height: 36px;
   left: -10px;
   top: 10px;
   transform-style: preserve-3D;
   animation: flipY 5.2s infinite;
   .cube-side {
-    background: rgba(#000, 0.1);
     transform: rotatex(90deg) translate3d(0, 0, 18px);
     transform-style: preserve-3D;
     border-image: linear-gradient(to top, $cube_red, $cube_orange) 1 3%;
@@ -224,7 +108,6 @@ svg.logo {
       border-color: $cube_orange;
     }
     &.cube-side-bottom {
-      background: transparent;
       border-image: none;
       border-color: $cube_orange;
     }
