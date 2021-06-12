@@ -124,7 +124,7 @@ const InlineMenu = ({ links }) => (
   <div className='hidden sm:block right-0 sm:right-10 ml-auto'>
     <ul className='menu grid grid-cols-4 gap-x-1 relative bg-transparent w-full font-title font-medium text-right list-reset m-0 z-9999'>
       {links.map((item) => (
-          <li key={item.name} className='menu-item inline-block text-gray-1000 text-opacity-90 text-xl text-center font-normal hover:font-semibold focus:font-semibold max-w-24 py-0 px-0 last:pr-0 cursor-pointer z-9999'>
+          <li key={item.name} className='menu-item inline-block text-gray-1000 text-opacity-90 text-xl text-center font-normal hover:font-semibold focus:font-semibold w-19 max-w-24 py-0 px-0 last:pr-0 cursor-pointer z-9999'>
             <PageLink
               className='gradient-text-blue no-underline border-none transition-all duration-300 ease-in-out'
               external={item.external}
