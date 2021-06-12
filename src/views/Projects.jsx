@@ -12,7 +12,7 @@ import Cube from 'components/Cube'
 
 
 const Projects = ({  id, projects, windowSize }) => {
-  const colors = windowSize.width < 650 ? [
+  const colors = (windowSize && windowSize.width && windowSize.width < 650) ? [
     'linear-gradient(to right, #7f7fd5, #76bef6)'
   ] : [
     'linear-gradient(to right, #7f7fd5, #86a8ef)',
@@ -60,6 +60,9 @@ const Projects = ({  id, projects, windowSize }) => {
       </Content>
     </DividerMiddle>
   )
+}
+Projects.defaultProps = {
+  windowSize: {},
 }
 Projects.propTypes = {
   id: PropTypes.string.isRequired,
