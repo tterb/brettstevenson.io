@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components'
+import { keyframes, css } from 'styled-components'
 
 
 const wave = keyframes`
