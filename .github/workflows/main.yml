@@ -1,0 +1,17 @@
+name: Pagespeed Metrics
+on:
+  # Lines below let you run workflow manually and on each commit (optional)
+  workflow_dispatch:
+  push: {branches: ["master"]}
+jobs:
+  pagespeed-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      # See action.yml for all options
+      - uses: lowlighter/metrics@latest
+        with:
+          plugin_pagespeed: yes
+          plugin_pagespeed_detailed: no                          # Print detailed audit metrics
+          plugin_pagespeed_screenshot: no                        # Display a screenshot of your website
+          plugin_pagespeed_url: "https://brettstevenson.io/"     # Website to audit (defaults to your GitHub linked website)
+      
