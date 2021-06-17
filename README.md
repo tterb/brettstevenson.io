@@ -40,5 +40,5 @@ A personal portfolio website created using [GatsbyJS](https://www.gatsbyjs.org).
 <br /><br />
 
 <p align="center">
-  <img src="https://github.com/tterb/brettstevenson.io/blob/master/github-metrics.svg" alt="PageSpeed Insights" />
+  <img src="./pagespeed.svg" alt="PageSpeed Insights" height="175px" />
 </p>
