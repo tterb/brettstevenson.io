@@ -70,7 +70,7 @@ function ProjectsCard(props) {
       <div className='min-h-36 max-h-50 md:min-h-44 md:max-h-62'>
         <span className='absolute bg-black bg-opacity-5 text-2xl md:text-2xl -top-4 px-12 py-2 pt-6 transform rotate-45 transition-all duration-300 ease-in-out' style={cornerStyle}>
           <a
-            className='transition-all duration-500 ease-in-out transform group-hover:-rotate-45'
+            className='transition-all duration-500 ease-in-out transform group-hover:-rotate-45 hover:text-white'
             href={link}
             aria-label={project.title}
             target='_blank'
