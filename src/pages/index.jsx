@@ -40,9 +40,12 @@ const Index = ({ data, ...props }) => {
 }
 
 export const indexQuery = graphql`{
-  avatar: file(name: {eq: "me"}) {
+  avatar: file(relativePath: {eq: "me.jpg"}) {
     childImageSharp {
-      gatsbyImageData(width: 800, layout: CONSTRAINED)
+      gatsbyImageData(
+        layout: CONSTRAINED,
+        width: 800
+      )
     }
   }
   projects: allMdx(
