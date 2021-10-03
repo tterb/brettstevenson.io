@@ -19,7 +19,6 @@ const WavePath = styled.path`
 
 const waveStyle = {
   height: '40vh',
-  // filter: 'drop-shadow(0px 1px 16px rgba(0,0,0,0.5))',
   filter: 'drop-shadow(0px 0px 24px rgba(0,0,0,0.25))',
 }
 
@@ -42,7 +41,7 @@ const GatsbyIcon = () => (
 
 const SocialLink = ({ title, link, icon }) => (
   <li className='inline mr-2'>
-    <a className='text-base-600 border-b-0 transition-all duration-200 ease-in-out hover:text-base-800' href={link} aria-label={title}>
+    <a className='text-base-700 border-b-0 transition-all duration-200 ease-in-out hover:text-base-900' href={link} aria-label={title}>
       { icon }
     </a>
   </li>
@@ -62,8 +61,14 @@ const Footer = () => {
       >
         <div className='absolute top-0 left-0 bottom-0 w-full h-full' style={{ transform: 'matrix(1, 0, 0, -1, 0, 0)' }}>
           <div className='relative h-full top-0'>
-            <svg className='fill-base-300 w-full' xmlns='https://www.w3.org/2000/svg' viewBox='0 0 800 338.05' preserveAspectRatio='none' style={waveStyle}>
-              <WavePath style={{}}>
+            <svg
+              className='fill-base-300 w-full max-h-80'
+              xmlns='https://www.w3.org/2000/svg'
+              viewBox='0 0 800 338.05'
+              preserveAspectRatio='none'
+              style={waveStyle}
+            >
+              <WavePath>
                 <animate attributeName='d' values='M 0 100 Q 250 50 400 200 Q 550 350 800 300 L 800 0 L 0 0 L 0 100 Z;M 0 100 Q 200 150 400 200 Q 600 250 800 300 L 800 0 L 0 0 L 0 100 Z;M 0 100 Q 150 350 400 200 Q 650 50 800 300 L 800 0 L 0 0 L 0 100 Z' repeatCount='indefinite' dur='30s' />
               </WavePath>
             </svg>
@@ -103,7 +108,12 @@ const Footer = () => {
           <PageLink to='/'>Brett Stevenson</PageLink>
           <Circle className='relative w-1 my-0 mx-2' size='1em' />
           <span className='flex items-center align-middle'>
-            Powered by<a href='https://www.gatsbyjs.org/' className='gatsby-icon border-b-0 transition-all duration-300 ease-in-out' aria-label='Visit gatsbyjs.org'><GatsbyIcon /></a>
+            Powered by
+            <a
+              href='https://www.gatsbyjs.org/'
+              className='gatsby-icon border-b-0 transition-all duration-300 ease-in-out'
+              aria-label='Visit GatsbyJS.org'
+            ><GatsbyIcon /></a>
           </span>
         </div>
       </FooterWrapper>
