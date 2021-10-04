@@ -88,7 +88,7 @@ const FourOhFour = () => {
         <Title className='fourohfour-title relative font-title font-extrabold text-base-300 leading-none text-center uppercase mt-18 mb-10 z-10 cursor-default'>
           <span className='z-10'>404</span>
         </Title>
-        <div className='text-2xl font-normal text-center m-auto mt-4'> 
+        <div className='text-xl font-normal text-center m-auto mt-4'>
           {message.text}
         </div>
         <Glitch className='glitch absolute w-full top-0 overflow-hidden'>
@@ -97,14 +97,14 @@ const FourOhFour = () => {
       </div>
       <div className='relative flex w-auto h-auto items-center mx-auto mt-28 mb-0 z-10'>
         <Button
-          className='fourohfour-button group relative block bg-white text-base-400 text-xl font-bold text-center w-max min-w-48 py-4 px-6 mx-auto transition duration-300 ease outline-none cursor-pointer hover:text-base-300'
+          className='fourohfour-button group relative block bg-white text-base-400 text-lg font-bold text-center w-max min-w-48 py-4 px-6 mx-auto transition duration-300 ease outline-none cursor-pointer hover:text-base-300'
           data-text='Home'
           label='Home'
           to='/'
         >
           {message.buttonText.length ? message.buttonText : 'Home'}
           <PageLink
-            className='fourohfour-button group absolute block bg-white text-base-400 text-xl font-bold text-center w-max min-w-48 top-0 left-0 border-4 border-solid border-base-400 py-4 px-6 mx-auto transition duration-300 ease outline-none cursor-pointer hover:text-base-300'
+            className='fourohfour-button group absolute block bg-white text-base-400 text-lg font-bold text-center w-max min-w-48 top-0 left-0 border-4 border-solid border-base-400 py-4 px-6 mx-auto transition duration-300 ease outline-none cursor-pointer hover:text-base-300'
             data-text='Home'
             label='Home'
             to='/'

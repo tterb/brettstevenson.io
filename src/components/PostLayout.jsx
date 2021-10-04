@@ -13,16 +13,11 @@ import Nav from 'components/Nav'
 import PostHeader from 'components/PostHeader'
 import PostAuthor from 'components/PostAuthor'
 import PageLink from 'components/PageLink'
+import ScrollTop from 'components/ScrollTop'
 
 
 const Wrapper = styled.div`
   background: rgba(255,255,255,0.985);
-`
-
-const Content = styled.div`
-  /* font-size: 1.1rem; */
-  /* letter-spacing: 0.01em; */
-  /* max-width: 900px; */
 `
 
 const HeroImage = styled(GatsbyImage)`
@@ -91,6 +86,11 @@ class PostLayout extends React.Component {
       title: post.title,
     }
 
+    if (typeof window !== 'undefined') {
+      // eslint-disable-next-line global-require
+      require('smooth-scroll')('a[href*="#"]')
+    }
+
     return (
       <div className='font-default w-full m-auto'>
         <span id='top' />
@@ -104,11 +104,15 @@ class PostLayout extends React.Component {
         ) : null}
         <Wrapper className='font-default m-0 pt-4 sm:pt-0 pb-20'>
           <PostHeader post={post} />
-          <div className='text-black text-opacity-85 text-lg leading-normal w-full sm:w-9/10 max-w-240 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-6 md:pb-9'>
+          <div className='text-black text-opacity-85 text-base leading-normal w-full sm:w-9/10 max-w-240 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-6 md:pb-9'>
             {children}
-            <BackToTop className='fixed hidden rounded-full text-center w-14 h-14 p-4 shadow-md hover:shadow-lg transition-all duration-400 ease-in-out cursor-pointer md:block' to={`${location.pathname}/#top`}>
+            {/* <BackToTop className='fixed hidden rounded-full text-center w-14 h-14 p-4 shadow-md hover:shadow-lg transition-all duration-400 ease-in-out cursor-pointer md:block' to={`${location.pathname}/#top`}>
               <ArrowUp className='absolute flex items-center justify-between w-6 h-6 p-0' size='1em' />
-            </BackToTop>
+            </BackToTop> */}
+            <ScrollTop
+              location={location}
+              visible={true}
+            />
           </div>
           <Separator className='w-5/6 border-none my-4 mt-8 mx-auto' />
           <PostAuthor author={post.author} />

@@ -100,7 +100,7 @@ const MenuPanel = ({ isOpen }) => (
     {config.menuLinks.map((item) => (
         <MenuLink
           key={item.name}
-          className='group menu-item relative text-5xl font-bold cursor-pointer'
+          className='group menu-item relative text-4xl font-bold cursor-pointer'
           to={item.link}
           external={item.external}
         >
@@ -121,12 +121,12 @@ MenuPanel.propTypes = {
 }
 
 const InlineMenu = ({ links }) => (
-  <div className='hidden sm:block right-0 sm:right-10 ml-auto'>
+  <nav className='hidden sm:block right-0 sm:right-10 ml-auto'>
     <ul className='menu grid grid-cols-4 gap-x-1 relative bg-transparent w-full font-title font-medium text-right list-reset m-0 z-9999'>
       {links.map((item) => (
-          <li key={item.name} className='menu-item inline-block text-gray-1000 text-opacity-90 text-xl text-center font-normal hover:font-semibold focus:font-semibold w-19 max-w-24 py-0 px-0 last:pr-0 cursor-pointer z-9999'>
+          <li key={item.name} className='menu-item inline-block text-gray-1000 text-opacity-90 text-lg text-center font-normal w-19 max-w-24 py-0 px-0 last:pr-0 cursor-pointer z-9999'>
             <PageLink
-              className='gradient-text-blue no-underline border-none transition-all duration-300 ease-in-out'
+              className='gradient-text-blue border-none hover:font-semibold focus:font-semibold transition-all duration-300 ease-in-out'
               external={item.external}
               content={item.name}
               to={item.link}
@@ -134,7 +134,7 @@ const InlineMenu = ({ links }) => (
           </li>
       ))}
     </ul>
-  </div>
+  </nav>
 )
 InlineMenu.propTypes = {
   links: PropTypes.array,

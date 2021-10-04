@@ -36,7 +36,7 @@ const PostTags = () => (
       let topTags = orderBy(tags, [(tag) => tag.totalCount], ['desc'])
       topTags = take(topTags, 12)
       return (
-        <ul className='list-reset text-left text-lg p-0 pl-3 pr-5'>
+        <ul className='list-reset text-left text-base p-0 pl-3 pr-5'>
           {topTags.map(tag => (
             <Tag key={tag.fieldValue} className='inline-block'>
               <PageLink

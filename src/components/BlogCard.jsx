@@ -69,17 +69,17 @@ class BlogCard extends React.Component {
           alt={post.title}
         />
         <div className='content-mask relative flex flex-col bg-white w-full md:w-9/10 h-2/3 py-4 px-4 rounded-none overflow-hidden cursor-pointer z-5 rounded-b-lg sm:rounded-r-lg sm:rounded-b-none sm:h-auto sm:py-6 sm:px-6 sm:pr-8 md:px-8 md:pr-10 lg:pr-12'>
-          <CardTitle className='font-title font-bold text-3xl sm:text-4xl lg:text-5xl leading-tighter tracking-tight w-full mt-0 ml-0 mr-auto pb-3'>
+          <CardTitle className='font-title font-bold text-2xl sm:text-3xl lg:text-4xl leading-tighter tracking-tight w-full mt-0 ml-0 mr-auto pb-3'>
             <PageLink
               className='w-9/10 no-underline text-base-100 text-opacity-80 mr-auto hover:text-base-100'
               to={`/blog${post.slug}`}
               content={post.title}
             />
           </CardTitle>
-          <Text className='text-lg text-base-400 leading-normal w-full mt-0 md:mt-1 mb-4 pb-1 cursor-pointer z-10'>
+          <Text className='text-base text-base-400 leading-normal w-full mt-0 md:mt-1 mb-4 pb-1 cursor-pointer z-10'>
             {post.description}
           </Text>
-          <span className='flex text-base text-base-400 text-opacity-90 items-center align-middle mt-auto mb-0'>
+          <span className='flex text-sm text-base-400 text-opacity-90 items-center align-middle mt-auto mb-0'>
             <Tag className='text-base-700 my-0 ml-0 mr-2' size='1.2em' />
             <PageLink
               className='text-base-400 text-opacity-90'

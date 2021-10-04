@@ -14,40 +14,7 @@ import CodePre from 'components/Post/Pre'
 import CodeBlock from 'components/Post/Code'
 
 
-const PrismCSS = `
-  .prism-code {
-    background: hsl(275, 5%, 19%);
-    margin: 1rem auto;
-    overflow: scroll;
-    .token-line {
-      border-left: 3px solid transparent;
-      & > span {
-      }
-    }
-    .number-line {
-      display: inline-block;
-      position: relative;
-      color: hsl(275, 5%, 80%);
-      text-align: right;
-      width: 25px;
-      left: -15px;
-      user-select: none;
-      opacity: 0.3;
-    }
-    .token-line.highlight-line {
-      background: hsl(275, 5%, 25%);
-      border-left: 3px solid hsl(275, 5%, 50%);
-      margin: 0 -2rem;
-      padding: 0 2rem;
-    }
-    .operator + .maybe-class-name {
-      color: #F8D377 !important;
-    }
-  }
-`
-
 const MDXBody = styled.div`
-  ${PrismCSS}
   .gatsby-resp-image-wrapper {
     margin: 1rem auto;
   }

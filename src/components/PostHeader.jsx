@@ -36,10 +36,10 @@ const PostTitle = styled.h1`
 
 const PostHeader = ({ post }) => (
   <Wrapper className='font-default leading-normal tracking-tight w-9/10 max-w-300 mx-auto my-0 px-0 pt-6 sm:pt-14 pb-6 md:w-4/5 md:px-9 lg:w-3/4'>
-    <PostTitle className='relative font-bold text-black text-opacity-75 tracking-tight leading-tighter m-0 mr-auto text-5xl sm:text-6xl'>
+    <PostTitle className='relative font-bold text-black text-opacity-75 tracking-tight leading-tighter m-0 mr-auto text-4xl sm:text-5xl'>
       {post.title}
     </PostTitle>
-    <span className='block relative text-lg md:text-xl text-black text-opacity-75 text-right leading-normal top-0 right-1 my-1 mx-0 mt-4'>
+    <span className='block relative text-base md:text-lg text-black text-opacity-75 text-right leading-normal top-0 right-1 my-1 mx-0 mt-4'>
       {post.date.split(' ').map((item, i) => (
         (i !== 1) ? <strong key={i} className='py-0 px-1'>{item}</strong> : item
       ))}

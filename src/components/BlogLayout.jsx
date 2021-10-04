@@ -29,10 +29,10 @@ const BlogLayout = ({ title, posts, categories, pageContext, windowSize }) => {
           <h2 className='font-title font-semibold text-white text-opacity-5 text-60vw sm:text-50vw md:text-40vw leading-none w-full mt-0 mb-6 ml-0 cursor-default z-min' style={{ letterSpacing: '-0.35rem' }}>Blog</h2>
         </div>
         <div className='w-full max-w-200 mx-auto'>
-          <h1 className='relative inline-block text-7xl font-title font-bold text-white text-opacity-90 leading-none tracking-normal m-0 mt-12 pb-3 transition-all duration-200 ease-in-out md:text-8xl md:mt-6'>
+          <h1 className='relative inline-block text-6xl font-title font-bold text-white text-opacity-90 leading-none tracking-normal m-0 mt-12 pb-3 transition-all duration-200 ease-in-out md:text-7xl md:mt-6'>
             {upperFirst(title)}<span className='text-accent accent-dot'>.</span>
           </h1>
-          <h4 className='font-sans text-gray-600 text-lg text-left font-medium leading-tight w-full mt-1 mb-3 ml-0 mr-auto md:text-xl md:w-9/10 lg:w-4/5'>Read my latest articles and posts on software development, design, technology and more.</h4>
+          <h4 className='font-sans text-gray-600 text-base text-left font-medium leading-tight w-full mt-1 mb-3 ml-0 mr-auto md:text-lg md:w-9/10 lg:w-4/5'>Read my latest articles and posts on software development, design, technology and more.</h4>
         </div>
       </Header>
       <div className='w-full h-full -mt-9 mb-0 mx-auto p-0 z-10'>

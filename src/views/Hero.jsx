@@ -51,6 +51,7 @@ const ScrollArrow = ({ location }) => (
     <Fade bottom delay={450}>
       <Arrow
         className='relative text-white text-opacity-20 hover:text-white hover:text-opacity-60 text-center mx-auto my-2 transition-color duration-300 ease-in-out cursor-pointer z-999'
+        aria-label='Scroll Down'
         to={`${location.pathname}#about`}
       >
         <AngleDoubleDown size='1em' />
@@ -63,7 +64,7 @@ const Hero = (props) => (
   <div className='flex flex-col p-6 justify-center items-center min-h-160 top-0 z-50 md:p-16 lg:p-24 lg:pt-28'>
     <div className='relative flex flex-row w-full -top-8 sm:-top-14 mx-2 mt-16 sm:mx-0 sm:mt-32 md:mt-24 lg:mt-12'>
       <div className='flex flex-col'>
-        <Title className='font-title font-bold text-white text-opacity-95 leading-none w-full text-7xl md:text-8xl lg:text-9xl xl:text-10xl mt-4 mb-6 ml-0 lg:mt-6'>
+        <Title className='font-title font-bold text-white text-opacity-95 leading-none w-full text-6xl md:text-7xl lg:text-8xl xl:text-9xl mt-4 mb-6 ml-0 lg:mt-6'>
           Hello,<br />
           I'm Brett<br />
           Stevenson<span className='text-accent accent-dot'>.</span>

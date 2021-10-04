@@ -44,9 +44,9 @@ const PostAuthor = ({ author }) => (
       />
     </span>
     <AuthorText className='inline-block max-w-9/10 mx-auto sm:ml-0 md:max-w-3/4 md:ml-5 xl:max-w-3/5'>
-      <h4 className='text-2xl text-black text-opacity-80 font-semibold mx-auto mt-3 mb-2'>{author.name}</h4>
+      <h4 className='text-xl text-black text-opacity-80 font-semibold mx-auto mt-3 mb-2'>{author.name}</h4>
       <p className='author-bio text-black text-opacity-70 leading-tight mx-auto my-1'>{author.bio}</p>
-      <AuthorLinks className='list-reset text-2xl my-3 ml-1 pl-0'>
+      <AuthorLinks className='list-reset text-xl my-3 ml-1 pl-0'>
         <SocialLink
           link={author.github}
           icon={<Github size='1em' />}

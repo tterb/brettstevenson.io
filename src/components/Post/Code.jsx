@@ -31,13 +31,13 @@ const Wrapper = styled.div`
 `
 
 const CopyBtn = styled.button`
-  background: hsl(275, 5%, 25%);
+  background: hsl(280, 5%, 22%);
   top: 0.6rem;
   right: 1rem;
   border: 1px solid rgba(255,255,255,0.1);
   transition: background 300ms ease;
   &:hover {
-    background: hsl(275, 5%, 28%);
+    background: hsl(280, 5%, 25%);
   }
   &[data-a11y='true']:focus::after {
     content: '';
@@ -84,7 +84,7 @@ const CodeBlock = ({ codeString, language, metaString }) => {
     <Highlight {...defaultProps} code={codeString} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
         const multiline = tokens.length > 1 ? ' mx-auto my-0 multiline' : ''
-        const preClass = `${className} group relative p-4${multiline.length ? ' pb-5 my-0' : ''}`
+        const preClass = `${className} group relative p-4${multiline.length ? ' pt-3 pb-5 my-0' : ''}`
         return (
           <Wrapper className={`w-full mr-auto mb-0 overflow-auto${multiline}`}>
             <pre className={preClass}>
@@ -126,7 +126,7 @@ CodeBlock.propTypes = {
 export default CodeBlock
 
 function CopyButton({ toCopy }) {
-  
+
   const [hasCopied, setHasCopied] = useState(false)
 
   function copyToClipboardOnClick() {
@@ -143,13 +143,13 @@ function CopyButton({ toCopy }) {
   return (
     <CopyBtn
       onClick={copyToClipboardOnClick}
-      className='absolute hidden sm:flex text-sm text-white text-opacity-60 hover:text-opacity-80 leading-none items-start rounded outline-none p-2 pl-3 opacity-80 group-hover:opacity-100 transition-opacity duration-300 ease-in-out cursor-pointer'
+      className='absolute hidden sm:flex text-xs text-white text-opacity-60 hover:text-opacity-80 leading-none items-start rounded outline-none p-2 pl-3 opacity-80 group-hover:opacity-100 transition-opacity duration-300 ease-in-out cursor-pointer'
       data-a11y='false'
     >
       {hasCopied ? (
-        <>Copied <CopyIcon className='text-base leading-none pl-1' size='1em' /></>
+        <>Copied <CopyIcon className='text-sm leading-none pl-1' size='1em' /></>
       ) : (
-        <>Copy <CopyIcon className='text-base leading-none pl-1' size='1em' /></>
+        <>Copy <CopyIcon className='text-sm leading-none pl-1' size='1em' /></>
       )}
     </CopyBtn>
   )

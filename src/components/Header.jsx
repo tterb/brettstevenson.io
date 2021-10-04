@@ -18,7 +18,7 @@ const Header = ({ className, children, ...props }) => {
   const full = (props.full ? ' w-full' : '')
   return (
     <div className={`w-full mx-auto my-0${className ? ` ${className}` : ''}`}>
-      <HeaderContent className='header flex justify-center items-center text-2xl w-5/6 sm:w-9/10 md:w-4/5 max-w-240 h-72 mx-auto py-2 md:py-12 lg:py-16 z-min'>
+      <HeaderContent className='header flex justify-center items-center text-xl w-5/6 sm:w-9/10 md:w-4/5 max-w-240 h-72 mx-auto py-2 md:py-12 lg:py-16 z-min'>
         <div className={`relative w-9/10 md:w-4/5 mr-auto${full}`}>
           {children}
         </div>

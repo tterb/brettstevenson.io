@@ -68,9 +68,9 @@ function ProjectsCard(props) {
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
     >
       <div className='min-h-36 max-h-50 md:min-h-44 md:max-h-62'>
-        <span className='absolute bg-black bg-opacity-5 text-2xl md:text-2xl -top-4 px-12 py-2 pt-6 transform rotate-45 transition-all duration-300 ease-in-out' style={cornerStyle}>
+        <span className='absolute bg-black bg-opacity-5 text-xl md:text-xl -top-4 px-12 py-2 pt-6 transform rotate-45 transition-all duration-300 ease-in-out' style={cornerStyle}>
           <a
-            className='transition-all duration-500 ease-in-out transform group-hover:-rotate-45 hover:text-white'
+            className='text-white transition-all duration-500 ease-in-out transform group-hover:-rotate-45 hover:text-white'
             href={link}
             aria-label={project.title}
             target='_blank'
@@ -90,10 +90,10 @@ function ProjectsCard(props) {
             }
           </a>
         </span>
-        <div className='font-title font-semibold text-white uppercase leading-tight w-5/6 md:w-9/10 text-2xl md:text-3xl xl:text-4xl tracking-normal p-0 pb-2 sm:pb-4 transition-all duration-300 ease-in-out' style={titleStyle}>
+        <div className='font-title font-semibold text-white uppercase leading-tight w-5/6 md:w-9/10 text-xl md:text-2xl xl:text-3xl tracking-normal p-0 pb-2 sm:pb-4 transition-all duration-300 ease-in-out' style={titleStyle}>
           {project.title}
         </div>
-        <span className='desc font-sans text-white text-base text-opacity-95 leading-tight pt-0 pb-4 sm:block sm:text-lg md:pt-0 md:pb-8 transition-all duration-400 ease-in-out' style={descriptionStyle}>
+        <span className='desc font-sans text-white text-sm text-opacity-95 leading-tight pt-0 pb-4 sm:block sm:text-base md:pt-0 md:pb-8 transition-all duration-300 ease-in-out' style={descriptionStyle}>
           {project.description}
         </span>
       </div>

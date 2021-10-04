@@ -18,7 +18,7 @@ const Projects = ({  id, projects, windowSize }) => {
     'linear-gradient(to right, #7f7fd5, #86a8ef)',
     'linear-gradient(to right, #83a0e8, #76bef6)',
   ]
-  const projectCount = windowSize.isMobile ? projects.length - 2 : projects.length
+  const projectCount = windowSize.isMobile ? 4 : 6
   const clipPath = windowSize.width < 650 ? 'polygon(0 0, 100% 7%, 100% 100%, 0 93%)' : 'polygon(0 0, 100% 10%, 100% 100%, 0 90%)'
 
   const trail = useTrail(projectCount, {

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 // Icons
 import { Circle } from '@styled-icons/fa-solid'
@@ -8,7 +7,6 @@ import { Deviantart, Dribbble, Github, LinkedinIn, Twitter } from '@styled-icons
 import PageLink from 'components/PageLink'
 // Elements
 import { DividerStatic } from 'elements/Dividers'
-import Content from 'elements/Content'
 // Styles
 import { waveAnimation } from 'styles/animations'
 
@@ -76,7 +74,7 @@ const Footer = () => {
         </div>
       </DividerStatic>
       <FooterWrapper className='relative font-sans text-xxs text-gray-600 text-center top-10 sm:top-14 md:top-16 lg:top-24 p-6 px-4 z-9999'>
-        <ul className='list-reset text-4xl mt-0 mb-4`'>
+        <ul className='list-reset text-3xl mt-0 mb-4`'>
           <SocialLink
             link='https://github.com/tterb'
             title='GitHub'
@@ -103,7 +101,7 @@ const Footer = () => {
             icon={<Deviantart size='0.9em' />}
           />
         </ul>
-        <div className='flex text-base items-center align-middle pt-2'>
+        <div className='flex text-sm items-center align-middle pt-2'>
           &copy; {getCurrentYear()} by &nbsp;
           <PageLink to='/'>Brett Stevenson</PageLink>
           <Circle className='relative w-1 my-0 mx-2' size='1em' />
