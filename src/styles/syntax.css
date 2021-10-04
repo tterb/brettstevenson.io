@@ -1,7 +1,32 @@
 /*
+* Syntax highlighting colors
+*/
+$syntax_hue:          280;
+$syntax_saturation:    5%;
+$syntax_brightness:   15%;
+
+$syntax_base:        hsl(280, 5%, 15%);
+$syntax_text:        hsl(280, 9%, 90%);
+$syntax_subtle:      hsl(280,  9%, 65%);
+$syntax_highlight:   hsl(280, 9%, 95%);
+$syntax_red:         hsl(  2, 55%, 58%);
+/* $syntax_orange:      hsl( 20, 96%, 69%); */
+$syntax_orange:      #fc975c;
+/* $syntax_yellow:      hsl( 43, 87%, 74%); */
+$syntax_yellow:      #f8d377;
+/* $syntax_green:       hsl(120, 58%, 70%); */
+$syntax_green:       #6ae16a;
+/* $syntax_blue:        hsl(190, 74%, 70%); */
+$syntax_blue:        #3edcf4;
+/* $syntax_purple:      hsl(246, 70%, 78%); */
+$syntax_purple:      #9d94eb;
+/* $syntax_magenta:     hsl(350, 98%, 70%); */
+$syntax_magenta:     #fe5d79;
+$syntax_error:       hsl(  2, 55%, 58%);
+
+/*
 * Syntax highlighting styles
 */
-
 code[class*='language-'],
 pre[class*='language-'] {
 	font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
@@ -22,28 +47,12 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
+	display: block;
 	padding: 0 1em;
 	margin: 0;
 	@media (max-width: 600px) {
 		padding-left: 0;
 	}
-}
-
-/* Inline code */
-:not(pre) > code[class*='language-'] {
-	display: inline;
-	background: rgba($syntax_base, 0.1);
-	color: rgba(0, 0, 0, 0.85);
-	font-size: 0.85em;
-	letter-spacing: -0.5px;
-	border-radius: 4px;
-	margin: 0;
-	padding: 0.15em 0.4em;
-	white-space: normal;
-}
-
-pre[class*='language-'] {
-	display: block;
 }
 
 pre[class*='language-'],
@@ -61,98 +70,141 @@ code[class*='language-'] {
   	text-transform: none;
 	border-radius: 8px;
 	white-space: pre;
-	margin: 0 auto 0 0.75%;
+	margin: 0 auto;
   	padding: 1em 1.15em 1.15em 1.15em;
 	overflow: hidden;
   	overflow-x: auto;
-	/* .token {
-		&.entity,
-		&.url,
-		&.variable,
-		&.punctuation {
+}
+
+/* Inline code */
+:not(pre) > code {
+	display: inline;
+	background: hsla(280, 5%, 15%, 0.075);
+	color: rgba(0, 0, 0, 0.85);
+	font-size: 0.85em;
+	letter-spacing: -0.5px;
+	border-radius: 4px;
+	margin: 0;
+	padding: 0.15em 0.4em;
+	white-space: normal;
+}
+
+pre.prism-code {
+	background: $syntax_base;
+	margin: 1rem auto;
+    overflow: scroll;
+	.operator + .maybe-class-name {
+      color: $syntax_yellow !important;
+    }
+	.token-line {
+      border-left: 3px solid transparent;
+    }
+	.token-line.highlight-line {
+      background: hsl(280, 5%, 25%);
+      border-left: 3px solid hsl(280, 5%, 50%);
+      margin: 0 -2rem;
+      padding: 0 2rem;
+    }
+	.number-line {
+	  display: inline-block;
+      position: relative;
+	  color: hsl(280, 5%, 80%);
+      text-align: right;
+      width: 20px;
+      left: -15px;
+      user-select: none;
+      opacity: 0.3;
+    }
+}
+
+.token {
+	&.entity,
+	&.url,
+	&.variable,
+	&.punctuation {
+		color: $syntax_text;
+	}
+
+	&.cdata,
+	&.comment,
+	&.prolog,
+	&.doctype,
+	&.plain-text {
+		color: $syntax_subtle !important;
+	}
+
+	&.property,
+	&.tag,
+	&.constant,
+	&.symbol,
+	&.deleted {
+		color: $syntax_magenta;
+	}
+	&.tag {
+		&.class-name {
 			color: $syntax_text;
 		}
-		
-		&.cdata,
-		&.comment,
-		&.prolog,
-		&.doctype,
-		&.plain-text {
-			color: $syntax_subtle !important;
-		}
-		
-		&.property,
-		&.tag,
-		&.constant,
-		&.symbol,
-		&.deleted {
-			color: $syntax_magenta;
-		}
-		&.tag {
-			&.class-name {
-				color: $syntax_text;
+		&.script {
+			color: $syntax_text;
+			&.punctuation {
+				color: $syntax_magenta;
 			}
-			&.script {
-				color: $syntax_text;
-				&.punctuation {
-					color: $syntax_magenta;
-				}
-			}
-		}
-
-		&.boolean,
-		&.number,
-		&.decorator,
-		&.interpolation, {
-			color: $syntax_purple;
-		}
-
-		&.selector,
-		&.attr-name,
-		&.string,
-		&.char,
-		&.inserted {
-			color: $syntax_yellow;
-		}
-
-		&.atrule,
-		&.builtin,
-		&.url-link,
-		&.attr-value,
-		&.function {
-			color: $syntax_green;
-		}
-
-		&.keyword {
-			color: $syntax_blue;
-		}
-
-		&.regex,
-		&.important {
-			color: $syntax_orange;
-		}
-		
-		&.operator,
-		&.keyword-if {
-			color: $syntax_magenta;
-		}
-
-		&.important,
-		&.operator .ow,
-		&.bold {
-			font-weight: bold;
-		}
-		&.italic {
-			font-style: italic;
-		}
-
-		&.entity {
-			cursor: help;
 		}
 	}
-	.nd {
+
+	&.boolean,
+	&.number,
+	&.decorator,
+	&.interpolation, {
 		color: $syntax_purple;
-	} */
+	}
+
+	&.selector,
+	&.attr-name,
+	&.string,
+	&.string a,
+	&.char,
+	&.inserted {
+		color: $syntax_yellow;
+	}
+
+	&.atrule,
+	&.builtin,
+	&.url-link,
+	&.attr-value,
+	&.function {
+		color: $syntax_green;
+	}
+
+	&.keyword {
+		color: $syntax_blue;
+	}
+
+	&.regex,
+	&.important {
+		color: $syntax_orange;
+	}
+
+	&.operator,
+	&.keyword-if {
+		color: $syntax_magenta;
+	}
+
+	&.important,
+	&.operator .ow,
+	&.bold {
+		font-weight: bold;
+	}
+	&.italic {
+		font-style: italic;
+	}
+
+	&.entity {
+		cursor: help;
+	}
+}
+.nd {
+	color: $syntax_purple;
 }
 
 .language-css .token.string,
@@ -168,7 +220,7 @@ code[class*='language-'] {
 		color: $syntax_orange;
 	}
 	.nv {
-		color: darken($syntax_text, 20%);
+		color: $syntax_subtle;
 	}
 }
 
@@ -240,19 +292,6 @@ pre[data-line] {
 	content: attr(data-end);
 	top: auto;
 	bottom: 0.4em;
-}
-
-.token a {
-	color: inherit;
-}
-
-.token.string,
-.token.string a {
-	color: $syntax_yellow;
-}
-
-.token.string .se {
-	color: $syntax_purple;
 }
 
 .command-line-prompt {

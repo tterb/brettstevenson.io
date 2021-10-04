@@ -2,7 +2,7 @@
 
 .post-body {
   font-size: 1.1rem;
-  
+
   ul, ol {
     margin-block-start: unset;
     margin-block-end: unset;
@@ -17,9 +17,9 @@
       margin-left: 1px;
     }
   }
-  
+
   code {
-    @apply relative bg-base-100 bg-opacity-5 text-base text-black text-opacity-90 rounded;
+    @apply relative bg-base-100 bg-opacity-5 text-sm text-black text-opacity-90 rounded;
     font-size: 0.9rem;
     top: -1px;
     padding: 1px 6px 2px;
@@ -28,7 +28,7 @@
   pre code {
     padding: 1.15em 1.4em 1.65em;
   }
-  
+
   .gatsby-highlight pre {
     margin: 1.5em 0;
   }
@@ -176,7 +176,6 @@
 .h-warning {
   background: rgba(255,153,0,0.075);
   border-left-color: rgba(244,172,48, 0.75);
-  RGB (244, 172, 48)						 
   &::before {
     content: 'Warning:';
     color: #D49C10;
