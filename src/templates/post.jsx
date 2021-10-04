@@ -60,7 +60,6 @@ PostTemplate.propTypes = {
         date: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         category: PropTypes.string.isRequired,
-        tags: PropTypes.array.isRequired,
         image: PropTypes.shape({
           childImageSharp: PropTypes.shape({
             gatsbyImageData: PropTypes.object.isRequired,
@@ -96,6 +95,7 @@ export const postQuery = graphql`
       }
       frontmatter {
         title
+        description
         date(formatString: "DD MMMM YYYY")
         category
         image {
@@ -107,7 +107,7 @@ export const postQuery = graphql`
         }
       }
     }
-    avatar: file(relativePath: {eq: "me.png"}) {
+    avatar: file(relativePath: {eq: "me.jpg"}) {
       childImageSharp {
         gatsbyImageData(
           layout: CONSTRAINED,
