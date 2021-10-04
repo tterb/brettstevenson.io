@@ -16,6 +16,33 @@ export const waveAnimation = length => css`
   animation: ${wave} ${length} linear infinite alternate;
 `
 
+const buttonClick = keyframes`
+  0% { transform: scale(1) translateY(0); }
+  5% { transform: scale(0.95) translateY(24px); }
+  20% { transform: translateY(-36px); }
+  30% { transform: scale(1); }
+  35% { transform: translateY(0); }
+  40% { transform: scale(1) translateY(0); }
+  50% { transform: scale(0.975) translateY(12px); }
+  65% { transform: scale(1) translateY(0); }
+`
+export const buttonClickAnimation = length => css`
+  animation: ${buttonClick} ${length} ease 0s 1;
+`
+
+const scrollArrow = keyframes`
+  0% { transform: scaleY(1) translateY(0); }
+	10% { transform: scaleY(0.7) translateY(20px); }
+	40% { transform: scaleY(1.5) translateY(-200px); }
+	50% { transform: translateY(0); }
+	55% { transform: scaleY(0.9) translateY(10px); }
+	60% { transform: scaleY(1) translateY(0); }
+	100% { transform: scaleY(1) translateY(0); }
+`
+export const scrollArrowAnimation = length => css`
+  animation: ${scrollArrow} ${length} ease 0s 1;
+`
+
 const glitch = keyframes`
   0%   { clip: rect( 31px, 9999px,  94px, 0) }
   10%  { clip: rect(112px, 9999px, 156px, 0) }
