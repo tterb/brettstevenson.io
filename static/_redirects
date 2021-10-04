@@ -2,6 +2,10 @@
 /atomic-monokai-pro/ https://atomic-monokai-pro.netlify.com/:splat 200!
 /atomic-monokai-pro https://atomic-monokai-pro.netlify.com/:splat 200!
 
+/awesomelink/* https://awesomelink.netlify.com/:splat 200!
+/awesomelink/ https://awesomelink.netlify.com/:splat 200!
+/awesomelink https://awesomelink.netlify.com/:splat 200!
+
 /gatsby-plugin-disqus/* https://gatsby-plugin-disqus.netlify.com/:splat 200!
 /gatsby-plugin-disqus/ https://gatsby-plugin-disqus.netlify.com/:splat 200!
 /gatsby-plugin-disqus https://gatsby-plugin-disqus.netlify.com/:splat 200!
