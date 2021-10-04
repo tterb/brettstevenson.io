@@ -65,7 +65,8 @@ module.exports = {
     { resolve: `gatsby-plugin-react-helmet` },
     { resolve: `gatsby-plugin-sitemap` },
     { resolve: `gatsby-plugin-styled-components` },
-    { 
+    { resolve: `gatsby-plugin-react-axe` },
+    {
       resolve: `gatsby-plugin-image`,
       options: {
         defaults: {
