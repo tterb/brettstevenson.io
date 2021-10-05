@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useTrail } from 'react-spring'
 // Elements
-import { DividerMiddle } from 'elements/Dividers'
+import Divider from 'elements/Dividers'
 import { SectionTitle } from 'elements/Titles'
 import Content from 'elements/Content'
 import Inner from 'elements/Inner'
@@ -18,20 +18,20 @@ const Projects = ({  id, projects, windowSize }) => {
     'linear-gradient(to right, #7f7fd5, #86a8ef)',
     'linear-gradient(to right, #83a0e8, #76bef6)',
   ]
+  const dividerOffset = windowSize.width < 650 ? 7 : 10
   const projectCount = windowSize.isMobile ? 4 : 6
-  const clipPath = windowSize.width < 650 ? 'polygon(0 0, 100% 7%, 100% 100%, 0 93%)' : 'polygon(0 0, 100% 10%, 100% 100%, 0 90%)'
-
   const trail = useTrail(projectCount, {
     from: { top: '100rem' },
     to: { top: '-0.75rem' },
   })
   return (
-    <DividerMiddle
-      className='flex relative bg-gradient-to-r from-indigo-600 to-blue-500 w-full h-full min-h-360 sm:min-h-400 md:min-h-320 mt-28'
-      clipPath={clipPath}
+    <Divider
+      className='flex relative bg-gradient-to-r from-indigo-600 to-blue-500 w-full h-auto mt-28'
+      direction='left'
+      offset={dividerOffset}
     >
       <Content id={id}>
-        <Inner>
+        <Inner className='mb-16'>
           <div className='section-title flex items-baseline'>
             <Cube color='red' />
             <SectionTitle>Projects</SectionTitle>
@@ -58,7 +58,7 @@ const Projects = ({  id, projects, windowSize }) => {
           </div>
         </Inner>
       </Content>
-    </DividerMiddle>
+    </Divider>
   )
 }
 Projects.defaultProps = {

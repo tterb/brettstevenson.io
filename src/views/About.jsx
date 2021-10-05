@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { GatsbyImage } from 'gatsby-plugin-image'
 // Elements
-import { Divider } from 'elements/Dividers'
+import Divider from 'elements/Dividers'
 import Content from 'elements/Content'
 import Inner from 'elements/Inner'
 import { SectionTitle } from 'elements/Titles'
@@ -20,18 +20,19 @@ const avatarStyle = {
 
 const About = ({ id, avatar, isMobile }) => (
   <Divider
-    className='flex relative bg-base-300 h-full max-h-180 md:max-h-160 lg:max-h-200'
-    clipPath='polygon(0 12%, 100% 0%, 100% 88%, 0 100%)'
+    className='flex relative bg-base-300'
+    direction='right'
+    offset={12}
   >
     <Content id={id}>
-      <Inner className='sm:mt-24 md:mt-12 lg:mt-6'>
+      <Inner>
         <div className='section-title flex items-baseline mb-2 sm:mb-0'>
           <Cube color='blue' />
           <SectionTitle>About</SectionTitle>
         </div>
         <div className='flex flex-col md:flex-row items-center mt-0 md:pt-2 px-2'>
           <GatsbyImage
-            className='hidden sm:block w-1/2 md:w-full min-w-44 h-auto max-w-50vw md:max-w-160 xl:max-w-200 rounded-full'
+            className='hidden sm:block w-1/2 md:w-full min-w-44 h-auto max-w-80 md:max-w-60 xl:max-w-120 rounded-full'
             image={avatar}
             alt='Brett Stevenson'
             style={avatarStyle}
@@ -42,7 +43,7 @@ const About = ({ id, avatar, isMobile }) => (
           </span>
         </div>
         <p className='text-gray-700 text-lg lg:text-xl font-sans leading-normal pt-8 md:pt-6 lg:pt-8'>
-            I'm a full-stack engineer with a passion for using technology to create unique and memorable experiences. I have experience working in a variety of languages, but I'm particularly fond of <a className='gradient-text-green text-white font-medium' href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=javascript'>Javascript</a> and <a className='gradient-text-green text-white font-medium' href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=python font-medium'>Python</a>.
+            I'm a full-stack engineer with a passion for using technology to create unique and memorable experiences. I have experience working in a variety of languages, but I'm particularly fond of <a className='gradient-text-green text-white font-semibold' href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=javascript'>Javascript</a> and <a className='gradient-text-green text-white font-semibold' href='https://github.com/tterb?utf8=%E2%9C%93&tab=repositories&q=&type=&language=python font-medium'>Python</a>.
         </p>
       </Inner>
     </Content>

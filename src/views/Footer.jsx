@@ -6,7 +6,7 @@ import { Deviantart, Dribbble, Github, LinkedinIn, Twitter } from '@styled-icons
 // Components
 import PageLink from 'components/PageLink'
 // Elements
-import { DividerStatic } from 'elements/Dividers'
+// import Divider from 'elements/Dividers'
 // Styles
 import { waveAnimation } from 'styles/animations'
 
@@ -39,7 +39,13 @@ const GatsbyIcon = () => (
 
 const SocialLink = ({ title, link, icon }) => (
   <li className='inline mr-2'>
-    <a className='text-base-700 border-b-0 transition-all duration-200 ease-in-out hover:text-base-900' href={link} aria-label={title}>
+    <a
+      className='text-base-700 border-b-0 transition-all duration-200 ease-in-out hover:text-base-900 focus:text-base-900'
+      href={link}
+      aria-label={title}
+      target='_blank'
+      rel='noopener noreferrer'
+    >
       { icon }
     </a>
   </li>
@@ -54,9 +60,7 @@ const Footer = () => {
 
   return (
     <div className='relative flex w-full justify-center items-center -mt-16 py-16 lg:py-24 z-999'>
-      <DividerStatic
-        className='absolute fill-base-300 bottom-0 z-999'
-      >
+      <div className='absolute fill-base-300 w-full bottom-0 z-999'>
         <div className='absolute top-0 left-0 bottom-0 w-full h-full' style={{ transform: 'matrix(1, 0, 0, -1, 0, 0)' }}>
           <div className='relative h-full top-0'>
             <svg
@@ -72,7 +76,7 @@ const Footer = () => {
             </svg>
           </div>
         </div>
-      </DividerStatic>
+      </div>
       <FooterWrapper className='relative font-sans text-xxs text-gray-600 text-center top-10 sm:top-14 md:top-16 lg:top-24 p-6 px-4 z-9999'>
         <ul className='list-reset text-3xl mt-0 mb-4`'>
           <SocialLink
@@ -103,7 +107,7 @@ const Footer = () => {
         </ul>
         <div className='flex text-sm items-center align-middle pt-2'>
           &copy; {getCurrentYear()} by &nbsp;
-          <PageLink to='/'>Brett Stevenson</PageLink>
+          <PageLink className='gradient-text-green' to='/'>Brett Stevenson</PageLink>
           <Circle className='relative w-1 my-0 mx-2' size='1em' />
           <span className='flex items-center align-middle'>
             Powered by

@@ -50,7 +50,7 @@ const ScrollArrow = ({ location }) => (
   >
     <Fade bottom delay={450}>
       <Arrow
-        className='relative text-white text-opacity-20 hover:text-white hover:text-opacity-60 text-center mx-auto my-2 transition-color duration-300 ease-in-out cursor-pointer z-999'
+        className='relative text-white text-opacity-20 hover:text-white hover:text-opacity-60 focus:text-white focus:text-opacity-60 text-center mx-auto my-2 transition-color duration-300 ease-in-out cursor-pointer z-999'
         aria-label='Scroll Down'
         to={`${location.pathname}#about`}
       >
