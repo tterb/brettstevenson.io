@@ -16,15 +16,18 @@ body {
 }
 
 a {
-	@apply text-white text-opacity-80 no-underline border-none outline-none transition-all duration-300 ease-in-out cursor-pointer;
+	@apply text-white text-opacity-80 no-underline border-none transition-all duration-300 ease-in-out cursor-pointer;
 	&:hover,
+  &:focus,
 	&.active a {
 		@apply text-accent;
 	}
+  &::focus:not(:focus-visible) {
+    @apply outline-none;
+  }
 }
 
-button,
-button::focus {
+button::focus:not(:focus-visible) {
 	@apply outline-none;
 }
 
@@ -39,10 +42,72 @@ button::focus {
   height: 100vh !important;
 }
 
-.outline-none,
-.outline-none:focus,
-.outline-none:active {
-  outline: none !important;
+.gradient-text-green {
+  position: relative;
+  background: linear-gradient(to right, $cube_green, $cube_blue 50%, rgba(255,255,255,0.8) 50%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  background-clip: text;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: background-position 250ms ease;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  &:hover,
+  &:focus {
+      background-position: 0 50%;
+  }
+}
+
+.gradient-text-red {
+  position: relative;
+  background: linear-gradient(to right, $cube_orange, $cube_red 50%, rgba(255,255,255,0.8) 50%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  background-clip: text;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: background-position 250ms ease;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  &:hover,
+  &:focus {
+      background-position: 0 50%;
+  }
+}
+
+.gradient-text-blue {
+  position: relative;
+  background: linear-gradient(to right, DeepSkyBlue, SlateBlue 50%, rgba(255,255,255,0.8) 50%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  background-clip: text;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: background-position 250ms ease;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  &:hover,
+  &:focus {
+      background-position: 0 50%;
+  }
+}
+
+.gradient-text-blue-dark {
+  position: relative;
+  background: linear-gradient(to right, DeepSkyBlue, SlateBlue 50%, rgba(53,59,69,0.9) 50%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  background-clip: text;
+  color: rgba(53,59,69,0.9);
+  text-decoration: none;
+  transition: background-position 250ms ease;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  &:hover,
+  &:focus {
+      background-position: 0 50%;
+  }
 }
 
 .accent,
