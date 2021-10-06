@@ -33,7 +33,7 @@ export const SectionTitle = (props) => (
 )
 
 export const Subtitle = (props) => (
-  <StyledSubtitle className={`font-sans text-grey text-xl mt-0 lg:text-2xl text-white ml-2 xl:w-3/4 ${props.className}`}>
+  <StyledSubtitle className={`font-sans text-grey text-xl mt-0 lg:text-2xl text-white ml-2 xl:w-3/4${props.className ? ` ${props.className}` : ''}`}>
     {props.children}
   </StyledSubtitle>
 )
