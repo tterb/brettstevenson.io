@@ -35,7 +35,7 @@ const PostTitle = styled.h1`
 `
 
 const PostHeader = ({ post }) => (
-  <Wrapper className='font-default leading-normal tracking-tight w-9/10 max-w-300 mx-auto my-0 px-0 pt-6 sm:pt-14 pb-6 md:w-4/5 md:px-9 lg:w-3/4'>
+  <Wrapper className='font-default leading-normal tracking-tight w-9/10 max-w-300 mx-auto my-0 px-0 pt-6 sm:pt-14 pb-6 md:w-4/5 md:px-9 lg:w-3/4' role='banner'>
     <PostTitle className='relative font-bold text-black text-opacity-75 tracking-tight leading-tighter m-0 mr-auto text-4xl sm:text-5xl'>
       {post.title}
     </PostTitle>

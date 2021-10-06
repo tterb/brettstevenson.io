@@ -83,7 +83,7 @@ const FourOhFour = () => {
   }, [])
 
   return (
-    <div className='absolute bg-white font-title w-full h-full top-0 left-0 -translate-y-1/2 overflow-hidden'>
+    <div className='absolute bg-white font-title w-full h-full top-0 left-0 -translate-y-1/2 overflow-hidden' role='main'>
       <div>
         <Title className='fourohfour-title relative font-title font-extrabold text-base-300 leading-none text-center uppercase mt-18 mb-10 z-10 cursor-default'>
           <span className='z-10'>404</span>

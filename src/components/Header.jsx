@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 
-const HeaderContent = styled.header`
+const HeaderContent = styled.div`
   height: 47vh !important;
   z-index: -9;
   @media (min-width: 600px) {
@@ -17,13 +17,13 @@ const HeaderContent = styled.header`
 const Header = ({ className, children, ...props }) => {
   const full = (props.full ? ' w-full' : '')
   return (
-    <div className={`w-full mx-auto my-0${className ? ` ${className}` : ''}`}>
+    <header className={`w-full mx-auto my-0${className ? ` ${className}` : ''}`} role='banner'>
       <HeaderContent className='header flex justify-center items-center text-xl w-5/6 sm:w-9/10 md:w-4/5 max-w-240 h-72 mx-auto py-2 md:py-12 lg:py-16 z-min'>
         <div className={`relative w-9/10 md:w-4/5 mr-auto${full}`}>
           {children}
         </div>
       </HeaderContent>
-    </div>
+    </header>
   )
 }
 Header.propTypes = {

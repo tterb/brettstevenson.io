@@ -20,21 +20,23 @@ const Index = ({ data, ...props }) => {
       navLogo={false}
       windowSize={windowSize}
     >
-      <Hero {...props} />
-      <About
-        id='about'
-        avatar={avatar}
-        isMobile={windowSize.isMobile}
-      />
-      <Projects
-        id='projects'
-        projects={projects}
-        windowSize={windowSize}
-      />
-      <Contact
-        id='contact'
-        isMobile={windowSize.isMobile}
-      />
+      <span role='main'>
+        <Hero {...props} />
+        <About
+          id='about'
+          avatar={avatar}
+          isMobile={windowSize.isMobile}
+        />
+        <Projects
+          id='projects'
+          projects={projects}
+          windowSize={windowSize}
+        />
+        <Contact
+          id='contact'
+          isMobile={windowSize.isMobile}
+        />
+      </span>
     </Layout>
   )
 }

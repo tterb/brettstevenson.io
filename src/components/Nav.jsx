@@ -144,7 +144,11 @@ const Nav = ({ showLogo, windowSize }) => {
   const isMobile = (windowSize.width && windowSize.width <= 600)
   const [isOpen, setOpen] = useState(false)
   return (
-    <div className='nav-wrapper relative block font-title h-0 top-0 left-0 right-0 z-999'>
+    <div
+      className='nav-wrapper relative block font-title h-0 top-0 left-0 right-0 z-999'
+      role='navigation'
+      title='navigation'
+    >
       <Fade top delay={250}>
         <div className='flex relative w-5/6 md:w-9/10 h-16 flex-wrap items-center justify-between top-0 mx-auto pt-6 pb-4 px-0 box-border'>
           {showLogo ? (

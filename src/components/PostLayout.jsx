@@ -80,7 +80,7 @@ class PostLayout extends React.Component {
         ) : null}
         <Wrapper className='font-default m-0 pt-4 sm:pt-0 pb-0'>
           <PostHeader post={post} />
-          <div className='text-black text-opacity-85 text-base leading-normal w-full sm:w-9/10 max-w-240 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-6 md:pb-9'>
+          <div className='text-black text-opacity-85 text-base leading-normal w-full sm:w-9/10 max-w-240 md:w-4/5 lg:w-3/4 mt-0 mb-8 mx-auto p-0 pb-4 md:px-6 md:pb-9' role='main'>
             {children}
             <ScrollTop
               location={location}

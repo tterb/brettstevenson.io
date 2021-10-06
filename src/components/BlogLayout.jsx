@@ -32,10 +32,10 @@ const BlogLayout = ({ title, posts, categories, pageContext, windowSize }) => {
           <h1 className='relative inline-block text-6xl font-title font-bold text-white text-opacity-90 leading-none tracking-normal m-0 mt-12 pb-3 transition-all duration-200 ease-in-out md:text-7xl md:mt-6'>
             {upperFirst(title)}<span className='bg-gradient-to-br from-blue-500 to-indigo-600 bg-clip-text '>.</span>
           </h1>
-          <h4 className='font-sans text-gray-600 text-base text-left font-medium leading-tight w-full mt-1 mb-3 ml-0 mr-auto md:text-lg md:w-9/10 xl:w-4/5'>Read my latest articles and posts on software development, design, technology and more.</h4>
+          <h2 className='font-sans text-gray-600 text-base text-left font-medium leading-tight w-full mt-1 mb-3 ml-0 mr-auto md:text-lg md:w-9/10 xl:w-4/5'>Read my latest articles and posts on software development, design, technology and more.</h2>
         </div>
       </Header>
-      <div className='w-full h-full -mt-9 mb-0 mx-auto p-0 z-10'>
+      <div className='w-full h-full -mt-9 mb-0 mx-auto p-0 z-10' role='main'>
         <div className='w-5/6 sm:w-9/10 md:w-4/5 max-w-240 m-auto mt-8 pt-8 pb-20 z-9999 sm:mt-9 sm:mb-1 md:pt-12'>
           <div className='hidden md:flex relative justify-between items-end w-32 h-12 ml-0 z-9999 md:ml-auto mr-auto md:mr-1'>
             <Search />

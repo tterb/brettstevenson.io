@@ -23,7 +23,7 @@ const ContactPage = () => {
           Hello<span className='text-accent accent-dot'>.</span>
         </BigTitle>
       </Header>
-      <Content className='-mt-8 pb-32 md:mt-0 md:pb-28 lg:pt-6'>
+      <Content className='-mt-8 pb-32 md:mt-0 md:pb-28 lg:pt-6' role='main'>
         <Inner className='my-8'>
           <ContactForm />
         </Inner>
@@ -56,6 +56,7 @@ class ContactForm extends React.Component {
           name={'name'}
           placeholder={'Name'}
           value={this.state.name}
+          autocomplete={true}
           onChange={this.handleInputChange}
         />
         <Input
