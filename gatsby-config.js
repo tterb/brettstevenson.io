@@ -14,6 +14,8 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 const githubToken = process.env.GITHUB_TOKEN
 
 module.exports = {
@@ -65,7 +67,13 @@ module.exports = {
     { resolve: `gatsby-plugin-react-helmet` },
     { resolve: `gatsby-plugin-sitemap` },
     { resolve: `gatsby-plugin-styled-components` },
-    { resolve: `gatsby-plugin-webpack-bundle-analyser-v2` },
+    {
+      resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+      options: {
+        devMode: false,
+        disable: isProduction,
+      },
+    },
     {
       resolve: `gatsby-plugin-image`,
       options: {
