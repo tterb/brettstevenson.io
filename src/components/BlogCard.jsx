@@ -12,7 +12,7 @@ import { Calendar, Tag } from '@styled-icons/octicons'
 import { Circle } from '@styled-icons/fa-solid'
 
 
-const Card = styled(PageLink)`
+const Card = styled.div`
   box-shadow: 2px 7px 12px -2px rgba(38, 48, 73, 0.1);
   transform: translate3D(0, 0, 0) scale(1.0);
   &:focus-visible {
@@ -69,8 +69,9 @@ class BlogCard extends React.Component {
 
     return (
       <Card
-        className='flex flex-col relative items-stretch w-full h-100 text-left rounded-lg mx-auto mt-7 mb-12 transition-all duration-300 ease-in-out cursor-pointer sm:flex-row sm:h-auto sm:min-h-64 sm:max-h-76 md:min-h-68 lg:min-h-80'
-        to={`/blog${post.slug}`}
+        className='flex flex-col relative items-stretch w-full h-100 rounded-lg mx-auto mt-7 mb-12 transition-all duration-300 ease-in-out cursor-pointer sm:flex-row sm:h-auto sm:min-h-64 sm:max-h-76 md:min-h-68 lg:min-h-80'
+        onClick={this.handleClick.bind(this)}
+        tabIndex='0'
       >
         <BgImage
           className='relative block sm:inline-block w-full h-1/3 top-0 left-0 rounded-none z-min rounded-t-lg sm:w-5/12 sm:h-auto sm:min-h-auto sm:rounded-l-lg sm:rounded-t-none'
