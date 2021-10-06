@@ -25,7 +25,8 @@ const SocialLink = ({ link, icon }) => (
   <li className='inline-block mt-2 sm:mt-0 mr-3 cursor-pointer'>
     <a
       href={link}
-      className='text-black text-opacity-70 hover:text-accent hover:text-opacity-100 transition-color duration-200 ease-in-out'
+      className='text-black text-opacity-70
+      transition-color duration-200 ease-in-out hover:text-blue-400 hover:text-opacity-100 focus:text-blue-400 focus:text-opacity-100'
       target='_blank'
       rel='noopener noreferrer'
     >

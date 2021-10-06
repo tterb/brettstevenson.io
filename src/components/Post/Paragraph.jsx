@@ -8,7 +8,7 @@ const pStyles = {
 }
 
 const Paragraph = ({ className, children }) => (
-    <p className={`text-black text-opacity-80 w-9/10 sm:w-full mx-auto mt-0 mb-2${className ? ` ${className}` : ''}`} style={pStyles}>
+    <p className={`text-black text-opacity-80 w-9/10 sm:w-full mx-auto mt-0 mb-4${className ? ` ${className}` : ''}`} style={pStyles}>
         {children}
     </p>
 )

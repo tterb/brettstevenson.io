@@ -30,7 +30,7 @@ const Arrow = styled.span`
         background: #677486;
         width: 22px;
         height: 6px;
-        border-radius: 6px;
+        border-radius: 2px;
     }
     .arrow-top::after {
         width: 6px;
@@ -39,7 +39,7 @@ const Arrow = styled.span`
     }
     .arrow-base {
         width: 6px;
-        border-radius: 6px;
+        border-radius: 2px;
     }
 `
 
@@ -50,17 +50,17 @@ const ScrollTop = ({ location, visible }) => {
     const topPath = location.pathname.substr(-1) === '/' ? `${location.pathname}#top` : `${location.pathname}/#top`
 
     return (
-        <Wrapper 
-            className='fixed hidden md:block text-center w-14 h-14 rounded-full transition-all duration-300 ease-in-out cursor-pointer'
+        <Wrapper
+            className='group fixed hidden md:block text-center w-14 h-14 rounded-full transition-all duration-300 ease-in-out cursor-pointer'
             aria-label='Scroll to top'
             to={topPath}
         >
             <Button
-                className={`flex bg-white items-center justify-center w-full h-full rounded-full overflow-hidden cursor-pointer shadow-md hover:shadow-lg${animationClass}`} 
+                className={`flex bg-white items-center justify-center w-full h-full rounded-full overflow-hidden cursor-pointer shadow-md group-hover:shadow-lg group-focus:shadow-lg transition-all duration-200 ease-in-out${animationClass}`}
                 onClick={() => setAnimationClass(' animated')}
                 onAnimationEnd={() => setAnimationClass('')}
             >
-                <Arrow className='arrow flex relative items-center justify-center w-full h-full top-0.5'>
+                <Arrow className='arrow flex relative items-center justify-center w-full h-full top-0.5 opacity-60 transition-opacity duration-200 ease-in-out group-hover:opacity-100 group-focus:opacity-100'>
                     <span className='arrow-top block relative w-8 h-8 top-1 transform rotate-45' />
                     <span className='arrow-base absolute block bg-base-600 h-7' />
                 </Arrow>
