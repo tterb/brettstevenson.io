@@ -31,7 +31,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         // Otherwise use the title for the slug
         slug = `/${_.kebabCase(node.frontmatter.title)}`
       }
-      
+
       // Add 'published' field
       if (process.env.NODE_ENV === 'development') {
         published = true
@@ -99,8 +99,6 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         // Pass "slug" through context so we can reference it in our query like "$slug: String!"
         slug: post.fields.slug,
-        prevPost: index === 0 ? null : posts[index - 1],
-        nextPost: index === postQuery.length - 1 ? null : posts[index + 1],
       },
     })
   })
