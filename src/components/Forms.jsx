@@ -98,6 +98,7 @@ export const Form = (props) => (
     <input
       type='email'
       name='only_for_bots'
+      aria-label='honeypot'
       className='absolute w-0 h-0 top-0 left-0 opacity-0 z-min'
     />
   </form>
@@ -113,7 +114,10 @@ Form.propTypes = {
   name: PropTypes.string.isRequired,
   button: PropTypes.string.isRequired,
   action: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 }
 
 
@@ -124,8 +128,9 @@ export const Input = (props) => (
       type={props.type}
       name={props.name}
       value={props.value}
-      autoComplete={props.autocomplete ? 'false' : 'true'}
+      autoComplete={props.autocomplete ? 'off' : 'on'}
       onChange={props.onChange}
+      aria-label={props.name}
       required
     />
     <FocusLine
@@ -154,8 +159,9 @@ export const TextArea = (props) => (
       className='form-textarea bg-transparent text-base text-white text-opacity-80 text-left w-full md:w-9/10 min-h-32 border-none outline-none py-2 px-4 pl-1 transition-all duration-300 ease-in-out mt-1 focus:mt-1'
       name={props.name}
       value={props.value}
-      autoComplete={props.autocomplete ? 'false' : 'true'}
+      autoComplete={props.autocomplete ? 'off' : 'on'}
       onChange={props.onChange}
+      aria-label={props.name}
       required
     />
     <FocusLine

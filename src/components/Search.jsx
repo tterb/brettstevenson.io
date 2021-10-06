@@ -122,12 +122,14 @@ class Search extends React.Component {
         <SearchInput
           type='text'
           name='input'
+          aria-label='Search'
           className={`absolute bg-white text-sm text-white text-opacity-85 font-normal items-center justify-center w-12 h-12 top-7 left-13 border-none outline-none box-border focus:bg-white active:bg-white focus:text-base-300 active:text-base-300${this.state.open ? ` square text-sm text-accent font-normal h-12 rounded-none border-none py-0 pl-4 pr-10  box-border focus:outline-none focus:ring-4 focus:ring-base-700 focus:ring-opacity-50` : ``}`}
         />
         <SearchButton
-          onClick={this.handleOnClick}
           type='reset'
           className={`absolute bg-none w-10 h-10 top-7 left-12 self-center rounded-full border-none p-0 outline-none transition duration-200 ease-in-out cursor-pointer focus:outline-none${this.state.open ? ` close` : ``}`}
+          aria-label='Search'
+          onClick={this.handleOnClick}
         />
       </SearchWrapper>
     )

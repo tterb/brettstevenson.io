@@ -21,12 +21,13 @@ const AuthorLinks = styled.ul`
   }
 `
 
-const SocialLink = ({ link, icon }) => (
+const SocialLink = ({ link, label, icon }) => (
   <li className='inline-block mt-2 sm:mt-0 mr-3 cursor-pointer'>
     <a
       href={link}
       className='text-black text-opacity-70
       transition-color duration-200 ease-in-out hover:text-blue-400 hover:text-opacity-100 focus:text-blue-400 focus:text-opacity-100'
+      aria-label={label}
       target='_blank'
       rel='noopener noreferrer'
     >
@@ -49,22 +50,27 @@ const PostAuthor = ({ author }) => (
       <p className='author-bio text-black text-opacity-70 leading-tight mx-auto my-1'>{author.bio}</p>
       <AuthorLinks className='list-reset text-xl my-3 ml-1 pl-0'>
         <SocialLink
+          Label='Check out my Github'
           link={author.github}
           icon={<Github size='1em' />}
         />
         <SocialLink
+          Label='Check out my Dribbble'
           link={author.dribbble}
           icon={<Dribbble size='1em' />}
         />
         <SocialLink
+          Label='Check out my Twitter'
           link={author.twitter}
           icon={<Twitter size='1em' />}
         />
         <SocialLink
-          link={author.twitter}
+          Label='Check out my LinkedIn'
+          link={author.linkedIn}
           icon={<LinkedinIn size='1em' />}
         />
         <SocialLink
+          Label='Contact me'
           link={'https://brettstevenson.io/contact'}
           icon={<Envelope size='1em' />}
         />

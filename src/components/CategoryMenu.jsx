@@ -126,7 +126,11 @@ const CategoryMenu = (props) => {
   return (
     <div className='relative group-hover:bg-none w-14 h-14 items-center justify-center rounded-full p-2'>
       <CategoryWrapper className='absolute flex bg-white text-sm font-normal items-center justify-center w-12 h-12 top-7 left-13 outline-none box-border'>
-        <CategoryButton className={`absolute flex bg-none items-center justify-center w-12 h-12 rounded-full border-2 border-solid border-transparent p-0 outline-none transition-all duration-300 ease-in-out overflow-visible cursor-pointer focus:outline-none focus:border-blue-400${open ? ' open' : ''}`} onClick={() => setOpen(!open)}>
+        <CategoryButton
+          className={`absolute flex bg-none items-center justify-center w-12 h-12 rounded-full border-2 border-solid border-transparent p-0 outline-none transition-all duration-300 ease-in-out overflow-visible cursor-pointer focus:outline-none focus:border-blue-400${open ? ' open' : ''}`}
+          aria-label='Categories'
+          onClick={() => setOpen(!open)}
+        >
           <CategoryIcon isOpen={open} />
           <CloseIcon className='close flex bg-none text-base-600 items-center justify-center w-10 h-10 mx-auto' />
         </CategoryButton>
