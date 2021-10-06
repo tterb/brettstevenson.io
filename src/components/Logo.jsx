@@ -28,13 +28,13 @@ class Logo extends React.Component {
     const { className, link, children } = this.props
     const siteTitle = config.siteTitleShort
     return (
-      <div className={`group flex text-white items-normal justify-center ml-0 z-10 ${className}`}>
-        <PageLink 
-          className='relative w-6 h-auto'
-          label={siteTitle} 
-          to={link}
-        >
-          <svg 
+      <PageLink
+        className={`group flex text-white items-normal justify-center ml-0 z-10 ${className}`}
+        label={siteTitle}
+        to={link}
+      >
+        <span className='relative w-6 h-auto'>
+          <svg
             className='logo text-white stroke-current max-w-full h-auto m-0 overflow-visible box-border z-999'
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 121.92 188.66'
@@ -62,9 +62,9 @@ class Logo extends React.Component {
             </filter>
           </svg>
           {children}
-        </PageLink>
-        <Title className='logo-title relative font-medium text-white text-opacity-90 -top-0.5 opacity-0 group-hover:opacity-100 ml-3 transition-opacity duration-200 ease-in-out cursor-default z-10'>{siteTitle}</Title>
-      </div>
+        </span>
+        <Title className='logo-title relative invisible font-medium text-white text-opacity-90 -top-0.5 opacity-0 group-hover:visible group-hover:opacity-100 group-focus:visible group-focus:opacity-100 ml-3 transition-opacity duration-200 ease-in-out cursor-default z-10'>{siteTitle}</Title>
+      </PageLink>
     )
   }
 }

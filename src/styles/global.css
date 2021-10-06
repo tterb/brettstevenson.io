@@ -105,7 +105,8 @@ button::focus:not(:focus-visible) {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
       background-position: 0 50%;
   }
 }

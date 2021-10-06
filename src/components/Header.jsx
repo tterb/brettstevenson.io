@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 
-const HeaderContent = styled.div`
+const HeaderContent = styled.header`
   height: 47vh !important;
   z-index: -9;
   @media (min-width: 600px) {

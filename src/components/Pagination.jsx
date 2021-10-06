@@ -58,7 +58,7 @@ const Pagination = ({ path, current, numPages }) => {
             {indices.map((index) => (
               <PageLink
                 key={index}
-                className={`h-5 rounded-full transition duration-200 ease-in-out cursor-pointer ${current === index ? 'w-15 bg-red-500 hover:bg-red-400' : 'w-5 bg-base-600 hover:bg-base-500'}${index === indices.length ? ' mr-0' : ' mr-5'}`}
+                className={`h-5 rounded-full transition duration-200 ease-in-out cursor-pointer ${current === index ? 'w-15 bg-gradient-to-br from-blue-500 to-indigo-600' : 'w-5 bg-base-600 hover:bg-base-500'}${index === indices.length ? ' mr-0' : ' mr-5'}`}
                 label={`Page ${index}`}
                 to={index > 1 ? `/${path}/${index}` : `/${path}`}
               />

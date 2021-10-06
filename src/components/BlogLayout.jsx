@@ -30,9 +30,9 @@ const BlogLayout = ({ title, posts, categories, pageContext, windowSize }) => {
         </div>
         <div className='w-full max-w-200 mx-auto'>
           <h1 className='relative inline-block text-6xl font-title font-bold text-white text-opacity-90 leading-none tracking-normal m-0 mt-12 pb-3 transition-all duration-200 ease-in-out md:text-7xl md:mt-6'>
-            {upperFirst(title)}<span className='text-accent accent-dot'>.</span>
+            {upperFirst(title)}<span className='bg-gradient-to-br from-blue-500 to-indigo-600 bg-clip-text '>.</span>
           </h1>
-          <h4 className='font-sans text-gray-600 text-base text-left font-medium leading-tight w-full mt-1 mb-3 ml-0 mr-auto md:text-lg md:w-9/10 lg:w-4/5'>Read my latest articles and posts on software development, design, technology and more.</h4>
+          <h4 className='font-sans text-gray-600 text-base text-left font-medium leading-tight w-full mt-1 mb-3 ml-0 mr-auto md:text-lg md:w-9/10 xl:w-4/5'>Read my latest articles and posts on software development, design, technology and more.</h4>
         </div>
       </Header>
       <div className='w-full h-full -mt-9 mb-0 mx-auto p-0 z-10'>

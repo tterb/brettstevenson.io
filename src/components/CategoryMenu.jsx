@@ -20,7 +20,7 @@ const CategoryButton = styled.button`
       &::before, &::after {
         display: flex;
         height: 1.5rem;
-        top: 0.5rem;
+        top: 0.65rem;
         opacity: 1;
         transform-origin: center;
         transition: opacity 100ms ease-in-out 300ms, transform 400ms ease-in-out 500ms, height 200ms ease-in-out 200ms, top 200ms ease-in-out 200ms;
@@ -51,7 +51,7 @@ const CloseIcon = styled.span`
 		background: #677486;
 		width: 0.25rem;
 		height: 2rem;
-		top: 4px;
+		top: 0.25rem;
 		border-radius: 4px;
 		opacity: 0;
 		transform: scale(1) rotate(0);
@@ -133,13 +133,13 @@ const CategoryMenu = (props) => {
         <ListWrapper className={`relative list-reset h-0 top-0 p-0 overflow-visible${open ? ' open' : ''}`}>
           <Menu className={`relative bg-white list-reset w-44 h-0 top-0 p-0 overflow-scroll transition-all duration-300 ease-in-out${open ? ' open block h-64 py-1' : ' hidden'}`}>
             {categories.map((category, index) => (
-              <li key={index} className='hover:bg-gray-900 transition-all duration-200 ease-in-out'>
+              <li key={index} className='transition-all duration-200 ease-in-out hover:bg-gray-900 focus-within:bg-gray-900'>
                 <CategoryLink
-                  className='group flex text-base-400 font-medium w-auto mx-2 p-2 hover:text-base-300'
+                  className='group flex text-base-500 font-medium w-auto mx-2 p-2 transition-all duration-200 ease-in-out outline-none hover:text-base-300 focus:text-base-300'
                   label={category.fieldValue}
                   to={category.link}
                 >
-                  {category.display} <span className='text-base-600 font-normal ml-auto group-hover:text-accent'>{category.totalCount}</span>
+                  {category.display} <span className='text-base-600 font-normal ml-auto group-hover:text-blue-400 group-hover:font-semibold group-focus:text-blue-400 group-focus:font-semibold'>{category.totalCount}</span>
                 </CategoryLink>
               </li>
             ))}
