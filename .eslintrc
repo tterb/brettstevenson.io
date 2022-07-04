@@ -1,12 +1,13 @@
 {
-  "extends": ["eslint:recommended", "airbnb"],
+  "extends": ["standard", "prettier", "plugin:import/errors", "plugin:import/warnings"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2017,
     "ecmaFeatures": {
       "classes": true,
       "experimentalObjectRestSpread": true,
-      "impliedStrict": true
+      "impliedStrict": true,
+      "jsx": true
     }
   },
   "globals": {
@@ -15,7 +16,8 @@
   "env": {
     "browser": true,
     "jquery": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
   "rules": {
     "arrow-body-style": ["error", "as-needed"],
@@ -86,7 +88,7 @@
         "allowTemplateLiterals": true
       }
     ],
-    "semi": "error",
+    "semi": ["error", "always"],
     "keyword-spacing": "error",
     "space-before-function-paren": "off",
     "jsx-quotes": ["error", "prefer-single"],
@@ -128,6 +130,8 @@
     "react/no-unescaped-entities": "off",
     "react/no-unused-prop-types": "warn",
     "react/react-in-jsx-scope": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error"
   }
 }
