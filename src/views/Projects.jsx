@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useTrail } from 'react-spring'
+import { useTrail } from '@react-spring/web'
 // Elements
 import Divider from 'elements/Dividers'
 import { SectionTitle } from 'elements/Titles'
