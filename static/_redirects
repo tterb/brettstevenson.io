@@ -1,15 +1,19 @@
-/atomic-monokai-pro/* https://atomic-monokai-pro.netlify.com/:splat 200!
+/atomic-monokai-pro/\* https://atomic-monokai-pro.netlify.com/:splat 200!
 /atomic-monokai-pro/ https://atomic-monokai-pro.netlify.com/:splat 200!
 /atomic-monokai-pro https://atomic-monokai-pro.netlify.com/:splat 200!
 
-/awesomelink/* https://awesomelink.netlify.com/:splat 200!
-/awesomelink/ https://awesomelink.netlify.com/:splat 200!
-/awesomelink https://awesomelink.netlify.com/:splat 200!
+/awesomelink/\* https://awesomelink.netlify.app/:splat 200!
+/awesomelink/ https://awesomelink.netlify.app/:splat 200!
+/awesomelink https://awesomelink.netlify.app/:splat 200!
 
-/gatsby-plugin-disqus/* https://gatsby-plugin-disqus.netlify.com/:splat 200!
+/gatsby-plugin-disqus/\* https://gatsby-plugin-disqus.netlify.com/:splat 200!
 /gatsby-plugin-disqus/ https://gatsby-plugin-disqus.netlify.com/:splat 200!
 /gatsby-plugin-disqus https://gatsby-plugin-disqus.netlify.com/:splat 200!
 
-/hyde/* https://hyde-tterb.netlify.com/:splat 200!
+/hyde/\* https://hyde-tterb.netlify.com/:splat 200!
 /hyde/ https://hyde-tterb.netlify.com/:splat 200!
 /hyde https://hyde-tterb.netlify.com/:splat 200!
+
+/design/\* https://tterb-design.netlify.app/:splat 200!
+/design/ https://tterb-design.netlify.app/:splat 200!
+/design https://tterb-design.netlify.app/:splat 200!
