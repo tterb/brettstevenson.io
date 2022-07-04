@@ -23,7 +23,7 @@ module.exports = {
   siteMetadata: {
     title: `Brett Stevenson`,
     description: `Full-Stack Software Developer, Designer, and Student`,
-    siteUrl: config.siteUrl + pathPrefix,
+    siteUrl: `https://brettstevenson.io`,
     author: `Brett Stevenson`,
     keywords: [
       `brett stevenson`, `full-stack`, `software`, `developer`,

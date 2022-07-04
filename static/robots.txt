@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-sitemap: https://cara.lekoarts.de/sitemap.xml
+sitemap: https://brettstevenson.io/sitemap/sitemap-index.xml
