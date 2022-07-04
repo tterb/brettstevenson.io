@@ -44,8 +44,7 @@ module.exports = {
 
     $syntax_base:        'hsl(280, 5%, 15%)',
     $syntax_text:        'hsl(280, 9%, 90%)',
-    $syntax_light_text:  'hsl(280,  9%, 65%)',
-    $syntax_subtle:      'darken($text, 35%)',
+    $syntax_subtle:      'hsl(280,  9%, 65%)',
     $syntax_highlight:   'hsl(280, 9%, 95%)',
     $syntax_red:         'hsl(  2, 55%, 58%)',
     $syntax_orange:      'hsl( 20, 96%, 69%)',
