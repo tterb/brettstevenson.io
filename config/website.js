@@ -26,7 +26,7 @@ module.exports = {
     },
     {
       name: `Design`,
-      link: `https://brettstevenson.design`,
+      link: `https://brettstevenson.io/design`,
       external: true,
     },
     {
