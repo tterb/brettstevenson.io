@@ -18,13 +18,13 @@ const ContactPage = () => {
   return (
     <Layout windowSize={windowSize}>
       <Header>
-        <BigTitle className='mt-32'>
+        <BigTitle className='md:mt-32 mt-18'>
           Say<br />
           Hello<span className='text-accent accent-dot'>.</span>
         </BigTitle>
       </Header>
       <Content className='-mt-8 pb-32 md:mt-0 md:pb-28 lg:pt-6' role='main'>
-        <Inner className='my-8'>
+        <Inner className='my-8 sm:mt-8 mt-0'>
           <ContactForm />
         </Inner>
       </Content>
