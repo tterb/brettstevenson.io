@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { animated, useTrail } from 'react-spring'
+import { animated, useTransition } from '@react-spring/web'
 import kebabCase from 'lodash/kebabCase'
 import upperFirst from 'lodash/upperFirst'
 // Components
 import Layout from 'components/Layout'
 import Header from 'components/Header'
 import BlogCard from 'components/BlogCard'
-import Pagination from 'components/Pagination'
 import Search from 'components/Search'
 import CategoryMenu from 'components/CategoryMenu'
+import useInfiniteScroll from 'hooks/useInfiniteScroll'
 
+const POST_PAGINATION_COUNT = 6;
 
-const BlogLayout = ({ title, posts, categories, pageContext, windowSize }) => {
+const BlogLayout = ({ title, posts, categories, windowSize }) => {
   // config({ ssrFadeout: true })
-  const { currentPage, numPages, count } = pageContext
-  const categoryPage = (title !== 'Blog')
-  const path = categoryPage ? `blog/category/${kebabCase(title)}` : `blog`
+  const loadRef = useRef();
+  const currentPosts = useInfiniteScroll(posts, POST_PAGINATION_COUNT, loadRef);
 
-  const trail = useTrail(posts.length, {
-    from: { top: '100rem' },
-    to: { top: '0' },
+  // Build a transition and catch its ref
+  const transitions = useTransition(currentPosts, {
+    from: { position: 'relative', top: '20rem', opacity: 0 },
+    enter: { top: '0', opacity: 1 },
+    trail: 400 / currentPosts.length,
+    unique: true,
+    reset: false,
   });
+
   return (
     <Layout className='bg-gray-900 h-auto' windowSize={windowSize}>
       <Header className='bg-base-200' full={true}>
@@ -42,39 +47,26 @@ const BlogLayout = ({ title, posts, categories, pageContext, windowSize }) => {
             <CategoryMenu categories={categories} />
           </div>
           <div className='inline w-full mt-0 mx-auto pt-8 z-9999'>
-            {trail.map((style, index) => (
-                <animated.div
-                  key={index}
-                  className='relative'
-                  style={style}
-                >
-                  <BlogCard
-                    key={index}
-                    post={posts[index]}
-                  />
-                </animated.div>
+            {transitions((styles, item) => (
+              <animated.div
+                key={item.id}
+                style={styles}
+              >
+                <BlogCard
+                  post={item}
+                />
+              </animated.div>
             ))}
           </div>
-          {numPages > 1 ? (
-            <Pagination
-              path={path}
-              current={currentPage}
-              numPages={numPages}
-            />
-          ) : null}
         </div>
       </div>
+      <span ref={loadRef} />
     </Layout>
   )
 }
 BlogLayout.propTypes = {
   title: PropTypes.string.isRequired,
   posts: PropTypes.array.isRequired,
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number.isRequired,
-    numPages: PropTypes.number.isRequired,
-    count: PropTypes.number.isRequired,
-  }).isRequired,
   windowSize: PropTypes.object.isRequired,
 }
 

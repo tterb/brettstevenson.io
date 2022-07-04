@@ -7,29 +7,22 @@ import BlogLayout from 'components/BlogLayout'
 import useWindowSize from 'hooks/useWindowSize'
 
 
-const Blog = ({ pageContext, data }) => {
+const Blog = ({ data }) => {
   const windowSize = useWindowSize()
   return (
     <BlogLayout
       title='Blog'
       posts={data.posts.nodes}
       categories={data.categories.group}
-      pageContext={pageContext}
       windowSize={windowSize}
     />
   )
 }
 Blog.propTypes = {
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number.isRequired,
-    count: PropTypes.number.isRequired,
-    limit: PropTypes.number.isRequired,
-    numPages: PropTypes.number.isRequired,
-    skip: PropTypes.number.isRequired,
-  }).isRequired,
   data: PropTypes.shape({
     posts: PropTypes.shape({
       nodes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
         fields: PropTypes.shape({
           slug: PropTypes.string.isRequired,
         }).isRequired,
@@ -54,16 +47,15 @@ Blog.propTypes = {
 export default Blog
 
 export const blogQuery = graphql`
-  query BlogQuery($skip: Int!, $limit: Int!) {
+  query BlogQuery {
     posts: allMdx(
       filter: {
         fields: {sourceInstanceName: {eq: "posts"}, published: {eq: true}}
       }
       sort: {fields: [frontmatter___date], order: DESC}
-      limit: $limit
-      skip: $skip
     ) {
       nodes {
+        id,
         fields {
           slug
         }
