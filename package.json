@@ -48,7 +48,7 @@
     "gatsby-source-filesystem": "^3.6.0",
     "gatsby-transformer-remark": "^4.3.0",
     "gatsby-transformer-sharp": "^3.6.0",
-    "gsap": "^2.1.2",
+    "gsap": "^3.6.0",
     "lodash": "^4.17.21",
     "prism-react-renderer": "^1.2.0",
     "prop-types": "^15.7.2",
