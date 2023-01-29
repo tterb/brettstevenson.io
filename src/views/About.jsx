@@ -14,10 +14,6 @@ const avatarStyle = {
   boxShadow: '0 5px 30px 0 rgba(0,0,0,0.3), 0 1px 15px 0 rgba(0,0,0,0.25)',
 }
 
-{/* <svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1366 345.3" className='relative w-screen top-0 left-0 z-99'>
-  <path d="M0,345.3V60.7c132,52.5,264.1,105,407,85.4S703.5,34.8,865.1,8.5s331.3,13,500.9,52.2v284.6H0z" fill='#23262B' />
-</svg> */}
-
 const About = ({ id, avatar, isMobile }) => (
   <Divider
     className='flex relative bg-base-300'

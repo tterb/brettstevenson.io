@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import Typed from 'react-typed'
-import Fade from 'react-reveal/Fade'
+import { Fade } from 'react-awesome-reveal'
 // Icons
 import { AngleDoubleDown } from '@styled-icons/fa-solid'
 // Elements
 import { Subtitle } from 'elements/Titles'
+import { Typed } from 'components/Typed'
 
 
 const Title = styled.h1`
@@ -48,7 +48,7 @@ const ScrollArrow = ({ location }) => (
   <div
     className='relative text-center w-1/2 top-0 sm:-top-8 mx-auto my-2 mt-18 md:mt-6 xl:mt-2'
   >
-    <Fade bottom delay={450}>
+    <Fade direction='up' delay={450}>
       <Arrow
         className='relative text-white text-opacity-20 hover:text-white hover:text-opacity-60 focus:text-white focus:text-opacity-60 text-center mx-auto my-2 transition-color duration-300 ease-in-out cursor-pointer z-999'
         aria-label='Scroll Down'
@@ -77,7 +77,7 @@ const Hero = (props) => (
             style={typedStyle}
             strings={[
               'I am a Software Engineer',
-              'I am a UI/UX Designer',
+              'I am a Designer',
               'I am a Code Monkey',
               'I am a Full-Stack Developer',
               '. . .^1000',

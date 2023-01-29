@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import Fade from 'react-reveal/Fade'
+import { Fade } from "react-awesome-reveal";
 import styled from 'styled-components'
 // Components
 import Logo from 'components/Logo'
@@ -149,7 +149,7 @@ const Nav = ({ showLogo, windowSize }) => {
       role='navigation'
       title='navigation'
     >
-      <Fade top delay={250}>
+      <Fade direction='down' delay={250} triggerOnce>
         <div className='flex relative w-5/6 md:w-9/10 h-16 flex-wrap items-center justify-between top-0 mx-auto pt-6 pb-4 px-0 box-border'>
           {showLogo ? (
             <Logo className='logo-container' link='/' />
