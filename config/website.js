@@ -6,10 +6,10 @@ module.exports = {
   siteTitleShort: `Brett Stevenson`, // short_name for manifest
   siteHeadline: `Software Engineer and Designer`, // Headline for schema.org JSONLD
   siteUrl: `https://brettstevenson.io`, // Domain of your site. No trailing slash!
-  siteKeywords: [`brett stevenson`, `full-stack`, `software`, `developer`, `design`, `portfolio`, `blog`, `python`, `javascript`, `react`, `gatsby`, `website optimization`],
+  siteKeywords: [`brett stevenson`, `brett`, `stevenson`, `fullstack`, `software`, `engineer`, `developer`, `design`, `portfolio`, `blog`, `python`, `javascript`, `react`],
   siteLanguage: `en`, // Language Tag on <html> element
   siteLogo: `/logo.png`, // Used for SEO and manifest
-  siteDescription: `Full-stack software engineer and designer with a passion for using technology to create unique and memorable experiences`,
+  siteDescription: `Brett Stevenson. Full-stack software engineer and designer with a passion for using technology to create unique and memorable experiences`,
   author: {
     name: `Brett Stevenson`,
     bio: `Software engineer and designer with a passion for exploring new ideas, platforms, and web-technologies, while creating tools that myself and other enjoy.`,
